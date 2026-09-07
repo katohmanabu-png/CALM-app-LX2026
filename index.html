@@ -9440,6 +9440,144 @@ var LIGHTS = {
 
   
   nanlite_lux: {
+    evoke600c: {
+      url:'https://www.nanlux.com/product-evoke-600c',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"34\"/><circle cx=\"66\" cy=\"42\" r=\"22\"/><circle cx=\"66\" cy=\"42\" r=\"10\"/><path d=\"M100 30 H130 V54 H100\"/><line x1=\"32\" y1=\"42\" x2=\"32\" y2=\"88\"/><line x1=\"100\" y1=\"42\" x2=\"100\" y2=\"88\"/><line x1=\"32\" y1=\"88\" x2=\"100\" y2=\"88\"/></g></svg>', name:'Evoke 600C', desc:'600W IP66 Full Color LED Spotlight', emoji:'🔵', watts:600,
+      weight:'7.26 kg', weightExtra:'ヨーク 1.35 kg', size:'358×246×205 mm',
+      ccts:[3200, 5600],
+      accessories:['be55', 'fl20g_10', 'fl20g_45', 'fl22e_15', 'fl22e_50', 'none', 'pj_bm19', 'pj_bm36', 'r25', 'r45'],
+      accAngles:{none:65, r25:25, r45:45, fl22e_15:15, fl22e_50:50, fl20g_10:10, fl20g_45:45},
+      // BE55 のパラレルビームと PJ-BM は角度の公表がない
+      accUnknown:['be55','pj_bm19','pj_bm36'],
+      dmx:{led:'RGB+ALGC',power:'600W',cct:'1000K–20000K + RGB',cri:'Average 98',tlci:'Average 98',tm30:'Rf 96 / Rg 100',ip:'IP66',
+        control:'On-board / Wired / App / DMX-RDM / CRMX / Art-Net / sACN / NFC',dimming:'0%–100%'},
+      // Nanlux 公式の製品ページ（Illumination）。素の状態のビーム角は公式値 65°。10系統 × 3200K/5600K。
+      // 併記の fc と全値を突き合わせてある。
+      refData:{
+        3200:{1:{'fl22e_15':255700, 'fl22e_50':27130, 'none':22130}, 3:{'be55':45800, 'fl20g_10':14900, 'fl20g_45':5820, 'fl22e_15':20070, 'fl22e_50':2853, 'none':2512, 'pj_bm19':15780, 'pj_bm36':5480, 'r25':17610, 'r45':6700}, 5:{'be55':21860, 'fl20g_10':5090, 'fl20g_45':2143, 'fl22e_15':6750, 'fl22e_50':1082, 'none':952, 'pj_bm19':5070, 'pj_bm36':1855, 'r25':5780, 'r45':2400}, 7:{'be55':10920, 'fl20g_10':2556, 'fl20g_45':1137, 'pj_bm19':2484, 'pj_bm36':924, 'r25':2866, 'r45':1241}},
+        5600:{1:{'fl22e_15':282100, 'fl22e_50':29710, 'none':24620}, 3:{'be55':51300, 'fl20g_10':16400, 'fl20g_45':6380, 'fl22e_15':22110, 'fl22e_50':3180, 'none':2754, 'pj_bm19':17260, 'pj_bm36':6010, 'r25':20820, 'r45':7740}, 5:{'be55':24400, 'fl20g_10':5600, 'fl20g_45':2355, 'fl22e_15':7350, 'fl22e_50':1190, 'none':1042, 'pj_bm19':5550, 'pj_bm36':2031, 'r25':6810, 'r45':2766}, 7:{'be55':12100, 'fl20g_10':2816, 'fl20g_45':1248, 'pj_bm19':2715, 'pj_bm36':1014, 'r25':3380, 'r45':1429}}
+      }
+    },
+    evoke150c: {
+      url:'https://www.nanlux.com/product-evoke-150c',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"34\"/><circle cx=\"66\" cy=\"42\" r=\"22\"/><circle cx=\"66\" cy=\"42\" r=\"10\"/><path d=\"M100 30 H130 V54 H100\"/><line x1=\"32\" y1=\"42\" x2=\"32\" y2=\"88\"/><line x1=\"100\" y1=\"42\" x2=\"100\" y2=\"88\"/><line x1=\"32\" y1=\"88\" x2=\"100\" y2=\"88\"/></g></svg>', name:'Evoke 150C', desc:'150W IP66 Full Color LED Spotlight', emoji:'🔵', watts:150,
+      weight:'2.11 kg', weightExtra:'ヨーク 0.54 kg', size:'209×147×127 mm',
+      ccts:[3200, 5600],
+      accessories:['fe30', 'fl12_15', 'fl12_30', 'fl12e_15', 'fl12e_35', 'none', 'r25', 'r45'],
+      accAngles:{none:47, r25:25, r45:45, fl12_15:15, fl12_30:30, fl12e_15:15, fl12e_35:35},
+      // FE30 のパラレルビームは角度の公表がない
+      accUnknown:['fe30'],
+      dmx:{led:'RGB+ALGC',power:'150W',cct:'1000K–20000K + RGB',cri:'Average 98',tlci:'Average 98',tm30:'Rf 96 / Rg 100',ip:'IP66',
+        control:'On-board / Wired / App / DMX-RDM / CRMX / Art-Net / sACN / NFC',dimming:'0%–100%'},
+      // Nanlux 公式の製品ページ（Illumination）。素の状態のビーム角は公式値 47°。8系統 × 3200K/5600K。
+      // 併記の fc と全値を突き合わせてある。
+      refData:{
+        3200:{1:{'fl12_15':88000, 'fl12_30':26520, 'fl12e_15':104400, 'fl12e_35':18830, 'none':12120, 'r25':85400, 'r45':22640}, 2:{'none':2921, 'r25':14030, 'r45':5000}, 3:{'fe30':15650, 'fl12_15':9320, 'fl12_30':2978, 'fl12e_15':9960, 'fl12e_35':2130, 'none':1320, 'r25':5570, 'r45':2177}, 5:{'fe30':5710, 'fl12_15':3280, 'fl12_30':1089, 'fl12e_15':3450, 'fl12e_35':773}, 7:{'fe30':2551}},
+        5600:{1:{'fl12_15':88600, 'fl12_30':26620, 'fl12e_15':105500, 'fl12e_35':19030, 'none':12160, 'r25':83500, 'r45':22230}, 2:{'none':2940, 'r25':13730, 'r45':4950}, 3:{'fe30':16120, 'fl12_15':9370, 'fl12_30':2994, 'fl12e_15':10080, 'fl12e_35':2133, 'none':1328, 'r25':5460, 'r45':2155}, 5:{'fe30':5820, 'fl12_15':3310, 'fl12_30':1093, 'fl12e_15':3490, 'fl12e_35':777}, 7:{'fe30':2600}}
+      }
+    },
+    dyno650c: {
+      url:'https://www.nanlux.com/product-dyno-650c-1200c',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'Dyno 650C', desc:'650W Full Color LED Soft Panel', emoji:'🔵', watts:650,
+      weight:'15.18 kg', weightExtra:'電源 4.2 kg / ディフューザー 1.8 kg', size:'851×173×630 mm',
+      ccts:[3200, 5600],
+      accessories:['mode_std', 'mode_boost'],
+      // 面光源でビーム角の公表がない。Standard と Boost は出力モードで、
+      // 光学系ではないがアクセサリーの枠で切り替える
+      accUnknown:['mode_std','mode_boost'],
+      dmx:{led:'RGB+ALGC',power:'650W（最大 700W）',cct:'2700K–20000K + RGB',cri:'Average 95',tlci:'Average 95',ip:'未公表',
+        control:'On-board / Bluetooth / 2.4G / DMX / RDM / CRMX',dimming:'0%–100%'},
+      // Nanlux 公式の製品ページ（Illumination）。Standard と Boost の2モード × 3200K/5600K。
+      // 併記の fc と全値を突き合わせてある。
+      refData:{
+        3200:{3:{'mode_boost':2403, 'mode_std':2080}, 5:{'mode_boost':979, 'mode_std':850}, 7:{'mode_boost':546, 'mode_std':474}},
+        5600:{3:{'mode_boost':2649, 'mode_std':2237}, 5:{'mode_boost':1082, 'mode_std':919}, 7:{'mode_boost':601, 'mode_std':512}}
+      }
+    },
+    dyno1200c: {
+      url:'https://www.nanlux.com/product-dyno-650c-1200c',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'Dyno 1200C', desc:'1200W Full Color LED Soft Panel', emoji:'🔵', watts:1200,
+      weight:'26.2 kg', weightExtra:'電源 7.5 kg / ディフューザー 3 kg', size:'1023×173×918 mm',
+      ccts:[3200, 5600],
+      accessories:['mode_std', 'mode_boost'],
+      // 面光源でビーム角の公表がない。Standard と Boost は出力モードで、
+      // 光学系ではないがアクセサリーの枠で切り替える
+      accUnknown:['mode_std','mode_boost'],
+      dmx:{led:'RGB+ALGC',power:'1200W（最大 1400W）',cct:'2700K–20000K + RGB',cri:'Average 95',tlci:'Average 95',ip:'未公表',
+        control:'On-board / Bluetooth / 2.4G / DMX / RDM / CRMX',dimming:'0%–100%'},
+      // Nanlux 公式の製品ページ（Illumination）。Standard と Boost の2モード × 3200K/5600K。
+      // 併記の fc と全値を突き合わせてある。
+      refData:{
+        3200:{3:{'mode_boost':5083, 'mode_std':4403}, 5:{'mode_boost':2077, 'mode_std':1804}, 7:{'mode_boost':1145, 'mode_std':975}},
+        5600:{3:{'mode_boost':5596, 'mode_std':4718}, 5:{'mode_boost':2282, 'mode_std':1934}, 7:{'mode_boost':1247, 'mode_std':1048}}
+      }
+    },
+    tk200: {
+      url:'https://www.nanlux.com/product-tk-200-450-140b-280b',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'TK-200', desc:'240W LED Soft Panel', emoji:'🔵', watts:240,
+      weight:'5.68 kg', weightExtra:'ヨーク 1.4〜1.7 kg', size:'890×85×540 mm',
+      ccts:[5600],
+      accessories:['none'],
+      // 面光源でビーム角の公表がない
+      accUnknown:['none'],
+      dmx:{led:'Daylight',power:'240W',cct:'5600K',cri:'96',tlci:'98',ip:'未公表',
+        control:'On-board / Remote / App / DMX-RDM / CRMX',dimming:'0%–100%'},
+      // Nanlux 公式の製品ページ（Illumination）。1系統 × 1/3/5/7m。
+      // 併記の fc と全値を突き合わせてある。
+      refData:{
+        5600:{1:{'none':6888}, 3:{'none':901}, 5:{'none':374}, 7:{'none':208}}
+      }
+    },
+    tk450: {
+      url:'https://www.nanlux.com/product-tk-200-450-140b-280b',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'TK-450', desc:'455W LED Soft Panel', emoji:'🔵', watts:455,
+      weight:'8.58 kg', weightExtra:'ヨーク 1.4〜1.7 kg', size:'1340×85×540 mm',
+      ccts:[5600],
+      accessories:['none'],
+      // 面光源でビーム角の公表がない
+      accUnknown:['none'],
+      dmx:{led:'Daylight',power:'455W',cct:'5600K',cri:'96',tlci:'98',ip:'未公表',
+        control:'On-board / Remote / App / DMX-RDM / CRMX',dimming:'0%–100%'},
+      // Nanlux 公式の製品ページ（Illumination）。1系統 × 1/3/5/7m。
+      // 併記の fc と全値を突き合わせてある。
+      refData:{
+        5600:{1:{'none':12480}, 3:{'none':1776}, 5:{'none':736}, 7:{'none':405}}
+      }
+    },
+    tk140b: {
+      url:'https://www.nanlux.com/product-tk-200-450-140b-280b',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'TK-140B', desc:'160W LED Soft Panel', emoji:'🔵', watts:160,
+      weight:'6.06 kg', weightExtra:'ヨーク 1.4〜1.7 kg', size:'890×85×540 mm',
+      ccts:[3200, 5600],
+      accessories:['none'],
+      // 面光源でビーム角の公表がない
+      accUnknown:['none'],
+      dmx:{led:'Bi-Color',power:'160W',cct:'2700K–7500K',cri:'95',tlci:'98',ip:'未公表',
+        control:'On-board / Remote / App / DMX-RDM / CRMX',dimming:'0%–100%'},
+      // Nanlux 公式の製品ページ（Illumination）。1系統 × 1/3/5/7m。
+      // 併記の fc と全値を突き合わせてある。
+      refData:{
+        3200:{1:{'none':3506}, 3:{'none':407}, 5:{'none':168}, 7:{'none':93}},
+        5600:{1:{'none':3757}, 3:{'none':428}, 5:{'none':175}, 7:{'none':97}}
+      }
+    },
+    tk280b: {
+      url:'https://www.nanlux.com/product-tk-200-450-140b-280b',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'TK-280B', desc:'280W LED Soft Panel', emoji:'🔵', watts:280,
+      weight:'10.5 kg', weightExtra:'ヨーク 1.4〜1.7 kg', size:'1340×85×540 mm',
+      ccts:[3200, 5600],
+      accessories:['none'],
+      // 面光源でビーム角の公表がない
+      accUnknown:['none'],
+      dmx:{led:'Bi-Color',power:'280W',cct:'2700K–7500K',cri:'95',tlci:'98',ip:'未公表',
+        control:'On-board / Remote / App / DMX-RDM / CRMX',dimming:'0%–100%'},
+      // Nanlux 公式の製品ページ（Illumination）。1系統 × 1/3/5/7m。
+      // 併記の fc と全値を突き合わせてある。
+      refData:{
+        3200:{1:{'none':5572}, 3:{'none':809}, 5:{'none':333}, 7:{'none':185}},
+        5600:{1:{'none':5900}, 3:{'none':860}, 5:{'none':353}, 7:{'none':195}}
+      }
+    },
     matrix_2500b: {
       group:'LED COB', name:'Matrix 2500B', desc:'2500W 4-Head Bi-Color Array Fixture', emoji:'🔵', watts:2500,
       svgIcon:'<svg width="160" height="100" viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="#111" stroke-width="3" stroke-linejoin="round"><rect x="34" y="18" width="72" height="72" rx="6"/><circle cx="52" cy="40" r="10"/><circle cx="88" cy="40" r="10"/><circle cx="52" cy="68" r="10"/><circle cx="88" cy="68" r="10"/></g></svg>',
@@ -13749,6 +13887,26 @@ var ACC_INFO = {
   mgr30:    { label:'Reflector MGR30', beam:'30°',        emoji:'🔦', angle:30 },
   gf14_spot:  { label:'Fresnel GF14 (Spot)',  beam:'Fresnel Spot',  emoji:'🔬' },
   gf14_flood: { label:'Fresnel GF14 (Flood)', beam:'Fresnel Flood', emoji:'🔆' },
+  // Nanlux Evoke のレンズとリフレクター。ズームレンズは公式の配光表が
+  // 端の2点（例 FL-22E は 15°と50°）だけを出しているので、その2点を
+  // 別のアクセサリーとして持つ。BE55 / FE30 のパラレルビームと
+  // PJ-BM-19 / PJ-BM-36 は角度の公表がないので accUnknown で扱う。
+  r25:      { label:'25° Reflector',     beam:'25°',            emoji:'🔦', angle:25 },
+  fl22e_15: { label:'FL-22E (15°)',      beam:'Fresnel 15°',    emoji:'🔬', angle:15 },
+  fl22e_50: { label:'FL-22E (50°)',      beam:'Fresnel 50°',    emoji:'🔆', angle:50 },
+  fl20g_10: { label:'FL-20G (10°)',      beam:'Fresnel 10°',    emoji:'🔬', angle:10 },
+  fl20g_45: { label:'FL-20G (45°)',      beam:'Fresnel 45°',    emoji:'🔆', angle:45 },
+  fl12_15:  { label:'FL-12 (15°)',       beam:'Fresnel 15°',    emoji:'🔬', angle:15 },
+  fl12_30:  { label:'FL-12 (30°)',       beam:'Fresnel 30°',    emoji:'🔦', angle:30 },
+  fl12e_15: { label:'FL-12E (15°)',      beam:'Fresnel 15°',    emoji:'🔬', angle:15 },
+  fl12e_35: { label:'FL-12E (35°)',      beam:'Fresnel 35°',    emoji:'🔦', angle:35 },
+  be55:     { label:'BE55 Para. Beam',   beam:'Parallel',       emoji:'🎯' },
+  fe30:     { label:'FE30 Para. Beam',   beam:'Parallel',       emoji:'🎯' },
+  pj_bm19:  { label:'PJ-BM-19',          beam:'Projection',     emoji:'🎬' },
+  pj_bm36:  { label:'PJ-BM-36',          beam:'Projection',     emoji:'🎬' },
+  // Dyno の出力モード。光学系ではないが、アクセサリーの枠で切り替える
+  mode_std:   { label:'Standard Mode',   beam:'Standard',       emoji:'⚪' },
+  mode_boost: { label:'Boost Mode',      beam:'Boost',          emoji:'🔺' },
   deg60:    { label:'60° Beam',  beam:'Flood 60°',  emoji:'🔆', angle:60 },
   // Lightstar LUXED-4 のスペースライト（黒／シルクのスカート）。
   // メーカーはこの状態のビーム角を出していないので accUnknown で扱う。
