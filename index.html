@@ -12356,6 +12356,151 @@ var LIGHTS = {
         5600:{1:{'none':2734}, 2:{'none':1084}, 3:{'none':481}, 5:{'none':173}}
       }
     },
+    luxed_ps: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"70\" cy=\"42\" r=\"34\"/><circle cx=\"70\" cy=\"42\" r=\"24\"/><circle cx=\"70\" cy=\"42\" r=\"12\"/><path d=\"M104 30 H132 V54 H104\"/><line x1=\"36\" y1=\"42\" x2=\"36\" y2=\"88\"/><line x1=\"104\" y1=\"42\" x2=\"104\" y2=\"88\"/><line x1=\"36\" y1=\"88\" x2=\"104\" y2=\"88\"/></g></svg>', name:'LUXED-PS', desc:'160W IP20 RGBWW LED Light', emoji:'💡', watts:160,
+      weight:'2.4 kg', size:'365×360×98 mm', ccts:[3200,5600],
+      accessories:['none'],
+      // 1系統のみ。メーカーはビーム角を出していない（径の表から逆算すると
+      // 75〜80°で一定にならない）ので、角度は出さない
+      accUnknown:['none'],
+      dmx:{led:'RGBWW',power:'160W',cct:'2400K–10000K + RGBWW',cri:'≥95',tlci:'>90',r9:'≥90',ip:'IP20',control:'DMX / Bluetooth',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // Lightstar 公式ブローシュア 2022（p05）。色温度ごとに値が違うので
+      // 3200K と 5600K を別に入れている。
+      refData: {
+        'none':{
+          3200:{3:1430, 4:825, 5:550},
+          5600:{3:2000, 4:1160, 5:726}
+        }
+      }
+    },
+    luxed_p2: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>', name:'LUXED-P2', desc:'320W IP20 RGBWW LED Light (1×2)', emoji:'💡', watts:320,
+      weight:'8.8 kg', size:'763×563×172 mm', ccts:[3200,5600],
+      accessories:['deg28','deg60'],
+      accAngles:{deg28:28, deg60:60},
+      dmx:{led:'RGBWW',power:'320W',cct:'2400K–10000K + RGBWW',cri:'≥95',tlci:'>90',r9:'≥90',ip:'IP20',control:'DMX / CRMX / LumenRadio / Bluetooth',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // Lightstar 公式ブローシュア 2022（p06）。色温度ごとに値が違うので
+      // 3200K と 5600K を別に入れている。
+      refData: {
+        'deg28':{
+          3200:{3:2900, 4:1850, 5:1200},
+          5600:{3:3000, 4:1800, 5:1200}
+        },
+        'deg60':{
+          3200:{3:900, 4:560, 5:380},
+          5600:{3:910, 4:550, 5:380}
+        }
+      }
+    },
+    luxed_p3: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>', name:'LUXED-P3', desc:'480W IP20 RGBWW LED Light (1×3)', emoji:'💡', watts:480,
+      weight:'11.8 kg', size:'1048×563×172 mm', ccts:[3200,5600],
+      accessories:['deg28','deg60'],
+      accAngles:{deg28:28, deg60:60},
+      dmx:{led:'RGBWW',power:'480W',cct:'2400K–10000K + RGBWW',cri:'≥95',tlci:'>90',r9:'≥90',ip:'IP20',control:'DMX / CRMX / LumenRadio / Bluetooth',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // Lightstar 公式ブローシュア 2022（p07）。色温度ごとに値が違うので
+      // 3200K と 5600K を別に入れている。
+      refData: {
+        'deg28':{
+          3200:{3:4400, 5:1800, 7:950},
+          5600:{3:4000, 5:1600, 7:850}
+        },
+        'deg60':{
+          3200:{3:1350, 5:550, 7:300},
+          5600:{3:1200, 5:500, 7:280}
+        }
+      }
+    },
+    luxed_p4: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>', name:'LUXED-P4', desc:'640W IP20 RGBWW LED Light (2×2)', emoji:'💡', watts:640,
+      weight:'24 kg', size:'945×910×216 mm', ccts:[3200,5600],
+      accessories:['deg28','deg60'],
+      accAngles:{deg28:28, deg60:60},
+      dmx:{led:'RGBWW',power:'640W',cct:'2400K–10000K + RGBWW',cri:'≥95',tlci:'>90',r9:'≥90',ip:'IP20',control:'DMX / CRMX / LumenRadio / Bluetooth',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // Lightstar 公式ブローシュア 2022（p07）。色温度ごとに値が違うので
+      // 3200K と 5600K を別に入れている。
+      refData: {
+        'deg28':{
+          3200:{3:5200, 5:2200, 7:1200},
+          5600:{3:6800, 5:2800, 7:1500}
+        },
+        'deg60':{
+          3200:{3:1600, 5:680, 7:380},
+          5600:{3:2060, 5:880, 7:480}
+        }
+      }
+    },
+    luxed_p6: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>', name:'LUXED-P6', desc:'960W IP20 RGBWW LED Light (2×3)', emoji:'💡', watts:960,
+      weight:'33 kg', size:'1256×910×216 mm', ccts:[3200,5600],
+      accessories:['deg28','deg60'],
+      accAngles:{deg28:28, deg60:60},
+      dmx:{led:'RGBWW',power:'960W',cct:'2400K–10000K + RGBWW',cri:'≥95',tlci:'>90',r9:'≥90',ip:'IP20',control:'DMX / CRMX / LumenRadio / Bluetooth',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // Lightstar 公式ブローシュア 2022（p08）。色温度ごとに値が違うので
+      // 3200K と 5600K を別に入れている。 3200K と 5600K は同値。
+      refData: {
+        'deg28':{
+          3200:{3:8200, 5:3400, 7:1900},
+          5600:{3:8200, 5:3400, 7:1900}
+        },
+        'deg60':{
+          3200:{3:2500, 5:1100, 7:630},
+          5600:{3:2500, 5:1100, 7:630}
+        }
+      }
+    },
+    luxed_p9: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>', name:'LUXED-P9', desc:'1440W IP20 RGBWW LED Light (3×3)', emoji:'💡', watts:1440,
+      weight:'37.5 kg', size:'1256×1218×216 mm', ccts:[3200,5600],
+      accessories:['deg28','deg60'],
+      accAngles:{deg28:28, deg60:60},
+      dmx:{led:'RGBWW',power:'1440W',cct:'2400K–10000K + RGBWW',cri:'≥95',tlci:'>90',r9:'≥90',ip:'IP20',control:'DMX / CRMX / LumenRadio / Bluetooth',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // Lightstar 公式ブローシュア 2022（p08）。色温度ごとに値が違うので
+      // 3200K と 5600K を別に入れている。 別に安定器 4.4kg。
+      refData: {
+        'deg28':{
+          3200:{3:11500, 5:4350, 7:2300},
+          5600:{3:12500, 5:4700, 7:2500}
+        },
+        'deg60':{
+          3200:{3:3350, 5:1350, 7:760},
+          5600:{3:4000, 5:1600, 7:860}
+        }
+      }
+    },
+    luxed_p12: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>', name:'LUXED-P12', desc:'1920W IP20 RGBWW LED Light (4×3)', emoji:'💡', watts:1920,
+      weight:'48 kg', size:'1256×1526×216 mm', ccts:[3200,5600],
+      accessories:['deg28','deg60'],
+      accAngles:{deg28:28, deg60:60},
+      dmx:{led:'RGBWW',power:'1920W',cct:'2400K–10000K + RGBWW',cri:'≥95',tlci:'>90',r9:'≥90',ip:'IP20',control:'DMX / CRMX / LumenRadio / Bluetooth',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // Lightstar 公式ブローシュア 2022（p09）。色温度ごとに値が違うので
+      // 3200K と 5600K を別に入れている。 別に安定器 5.2kg。
+      refData: {
+        'deg28':{
+          3200:{3:16000, 5:6000, 7:3300},
+          5600:{3:15000, 5:5800, 7:3100}
+        },
+        'deg60':{
+          3200:{3:5000, 5:2100, 7:1250},
+          5600:{3:4900, 5:2000, 7:1150}
+        }
+      }
+    },
     luxed_s: {
       url:'https://www.lightstarusa.com/product-category/luxed/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"70\" cy=\"42\" r=\"34\"/><circle cx=\"70\" cy=\"42\" r=\"24\"/><circle cx=\"70\" cy=\"42\" r=\"12\"/><path d=\"M104 30 H132 V54 H104\"/><line x1=\"36\" y1=\"42\" x2=\"36\" y2=\"88\"/><line x1=\"104\" y1=\"42\" x2=\"104\" y2=\"88\"/><line x1=\"36\" y1=\"88\" x2=\"104\" y2=\"88\"/></g></svg>', name:'LUXED-S', desc:'180W IP20 Bi-Color LED Spotlite', emoji:'💡', watts:180,
@@ -12516,9 +12661,16 @@ var LIGHTS = {
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>', weight:'40 kg', name:'LUXED PRO-P12', desc:'2160W RGB LED Panel', emoji:'💡', watts:2160,
       ccts:[3200,5600],
       accessories:['flood'],
-      dmx:{led:'RGBWW',power:'2160W',cct:'2700K–10000K',cri:'≥95',tlci:'≥97',ip:'IP20',control:'DMX / LumenRadio CRMX'},
+      dmx:{led:'RGBWW',power:'2160W',cct:'2700K–10000K',cri:'≥95',tlci:'≥97',ip:'IP65',control:'DMX / LumenRadio CRMX / App'},
+      size:'1266×1540×258 mm',
       url:'https://www.lightstarusa.com/product/luxed-pro-p12-ip65/',
-      // Lightstar 公式カタログ（LUXED PRO-P12）の距離別照度表
+      // Lightstar 公式カタログ（LUXED PRO-P12）の距離別照度表。
+      // 製品ページは IP65 と書いている（IP20 と入れていたのを直した）。
+      // どのレンズで測った表なのかは、製品ページにもブローシュアにも
+      // 書かれていない。'flood'（55°）と決めて入れていたが、同じ書き方を
+      // していた LUXED-9 は実際には Spot の列だった。角度を言い切れないので
+      // accUnknown にして、角度と径を出さないようにしている。
+      accUnknown:['flood'],
       refData: {
         'flood':{
           3200:{3:24000, 5:8800, 7:4500},
@@ -12533,6 +12685,12 @@ var LIGHTS = {
       dmx:{led:'RGBWW',power:'1620W',cct:'2700K–10000K',cri:'≥95',tlci:'≥97',ip:'IP20',control:'DMX / LumenRadio CRMX'},
       url:'https://www.lightstarusa.com/product/luxed-pro-p9-ip65/',
       // Lightstar 公式カタログ（LUXED PRO-P9, RGB版）。Bi-Color の LUXED-9 とは別機種。
+      // レンズの記載が無い表なので、角度は未確認にしている（LUXED-9 で同じ
+      // 書き方をしていた表が実際には Spot の列だった）。
+      // なお上の url のページは「LUXED PRO 9 Bi-Color 1620W / 2800-6500K /
+      // IP65」を指している。RGBWW の PRO P9 とは別の出品で、どちらの機種と
+      // して持つかは未確定。
+      accUnknown:['flood'],
       refData: {
         'flood':{
           3200:{3:18000, 5:6800, 7:3500},
@@ -13288,6 +13446,7 @@ var ACC_INFO = {
   // Lightstar LUXED の Spot(25°) / Flood(60°)。既存の spot は 10°、flood は
   // 55° なので、そのまま当てるとビーム角が食い違う。
   deg25:    { label:'25° Beam',  beam:'Spot 25°',   emoji:'🔦', angle:25 },
+  deg28:    { label:'28° Beam',  beam:'Spot 28°',   emoji:'🔦', angle:28 },
   deg60:    { label:'60° Beam',  beam:'Flood 60°',  emoji:'🔆', angle:60 },
   // Lightstar LUXED-4 のスペースライト（黒／シルクのスカート）。
   // メーカーはこの状態のビーム角を出していないので accUnknown で扱う。
