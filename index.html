@@ -20458,7 +20458,7 @@ function _sheetShell(id, icon, title, sub, bodyHTML) {
  *   ・--header-h    → syncHeaderHeight() で割り戻す
  * の2か所で戻している。1 倍のときはどちらも素通りする。 */
 var UI_ZOOM_KEY  = 'calm_ui_zoom';
-var UI_ZOOM_LIST = [1, 1.25, 1.5, 1.75, 2];
+var UI_ZOOM_LIST = [1, 1.25, 1.5, 1.75, 2, 2.5, 3];
 
 function uiZoomGet() {
   var v = NaN;
@@ -20495,6 +20495,9 @@ window.addEventListener('resize', applyAppWidth);
    360px を下回ると、この画面は元々そういう幅で組んでいないので崩れる
    （お気に入りのパネルが right:-100% でも隠れきらず、はみ出す）。
    下回らない範囲でいちばん大きい段階までに抑える。 */
+/* Mac では iPad の寸法のまま描かれるので、iPad 用の大きさだと小さく見える。
+   200% でも足りないことがあるため 250% と 300% まで用意した。
+   下の上限（レイアウト幅 360px）で、画面に入らない段階は出さない。 */
 var UI_ZOOM_MIN_VW = 360;
 function uiZoomMax() {
   var w = window.innerWidth || 480, m = UI_ZOOM_LIST[0];
