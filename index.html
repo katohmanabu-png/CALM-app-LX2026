@@ -8919,9 +8919,15 @@ var LIGHTS = {
         effects:['Flash','Pulse','TV','Paparazzi','Fire','Fireworks','Lightning','Strobe']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/NovaP300c-P600c/P600c%20All%20Files/Nova-P600c-DMX-Profile-Specification-V1.1.1.pdf',
       dmxVer:'v1.1.1',
+      // Aputure 公表の配光表（1m / 3m / 5m、2700–6500K）に差し替えた。
+      // それまでの値は出どころが揃っておらず、公表値と合っていなかった。
+      // 10000K は公表表に無いので、近い色温度で代用（アプリ上は ≈ が付く）。
       refData:{
-        5600:{2:{none:2858},3:{none:1512},5:{none:588},8:{none:233},12:{none:119}},
-        3200:{2:{none:2269},3:{none:1200},5:{none:476},8:{none:208},12:{none:106}},
+        2700:{1:{none:14586},3:{none:1850},5:{none:725}},
+        3200:{1:{none:15240},3:{none:1936},5:{none:746}},
+        4300:{1:{none:15533},3:{none:1945},5:{none:758}},
+        5600:{1:{none:17520},3:{none:2167},5:{none:847}},
+        6500:{1:{none:18346},3:{none:2298},5:{none:867}},
       }
     },
     nova_p2_2x1: {
@@ -9023,51 +9029,87 @@ var LIGHTS = {
       url:'https://www.aputure.com/products/nova-p300c/',
       group:'LED', name:'NOVA P300c', desc:'300W RGBWW LED Panel', emoji:'💡', watts:300, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'9.4 kg', size:'598×378×113 mm',
-      ccts:[2700,3200,5600,10000],
+      // Aputure 公表の配光表の測定点。5500K は公表どおりの値で、
+      // 5600K を選ぶとこれで代用される（アプリ上は ≈ が付く）。
+      ccts:[2700,3200,4300,5500,6500,10000],
       accessories:['none'], accAngles:{none:120},  // Aputure 公表 Native Beam Angle 120°
       dmx:{led:'RGBWW',power:'300W',cct:'2700K–10000K + Full RGBWW',cri:'≥96',tlci:'≥97',ip:'IP54',
         control:'On-board / App / DMX / RDM',dimming:'0%–100%',
         effects:['Flash','Pulse','TV','Paparazzi','Fire','Strobe']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/NovaP300c-P600c/All%20Files/Nova-P300c-DMX-Profile-Specification-V1.1.pdf',
       dmxVer:'v1.1',
+      // Aputure 公表の配光表（1m / 3m / 5m）に差し替えた。公表の測定点は
+      // 2700 / 3200 / 4300 / 5500 / 6500K。5600K は 5500K で代用される。
       refData:{
-        5600:{2:{none:1697},3:{none:832},5:{none:378},8:{none:147},12:{none:58}},
-        3200:{2:{none:1512},3:{none:741},5:{none:476},8:{none:233},12:{none:52}},
+        2700:{1:{none:7450},3:{none:890},5:{none:350}},
+        3200:{1:{none:8200},3:{none:960},5:{none:370}},
+        4300:{1:{none:8600},3:{none:1000},5:{none:395}},
+        5500:{1:{none:9000},3:{none:1100},5:{none:430}},
+        6500:{1:{none:8550},3:{none:1020},5:{none:400}},
       }
     },
     ls600d_pro: {
       url:'https://www.aputure.com/products/ls-600d-pro/',
       group:'LED COB', name:'LS 600d Pro', desc:'720W Daylight LED Fresnel', emoji:'💡', watts:720, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'7.2 kg', size:'306×245×355 mm',
-      ccts:[2700,3200,4300,5600,6500],
-      accessories:['none','r30','r15'], accUnknown:['none'],  // Aputure は bare の角度を公表していない（公式仕様表にも記載なし）
+      // デイライト機なので色温度は 5600K のみ（Aputure 公表 5600K±200K）。
+      ccts:[5600],
+      // r30 / r15 という 30°/15° リフレクターは Aputure の製品に無い。
+      // 公表の配光表にある付属品（Hyper Reflector と F10 Fresnel）に置き換えた。
+      accessories:['none','hyper','f10_flood','f10_spot'],
+      // bare と Hyper Reflector のビーム角は Aputure が公表していない
+      accUnknown:['none'],
       dmx:{led:'Daylight COB',power:'600W',cct:'5600K',cri:'≥96',tlci:'≥97',ip:'IP54',
         control:'On-board / App / DMX / RDM',dimming:'0%–100%',
         effects:['Flash','Pulse','Storm','Lightning','TV','Paparazzi','Fire','Fireworks']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20300d%20II/All%20files/LS-600d-Pro-LS-300d-II-common-DMX-Profile-Specification-V1.0.pdf',
       dmxVer:'v1.0',
+      // Aputure 公表の配光表（5600K、1m / 3m / 5m）。
+      // help.aputure.com の bare / Hyper Reflector と、製品ページの
+      // F10 Fresnel (Flood 45° / Spot 15°) で同じ表の値。
       refData:{
-        5600:{2:{none:11434,r30:12834,r15:37969},3:{none:4800,r30:6788,r15:19200},5:{none:1905,r30:2269,r15:6788},8:{none:832,r30:1200,r15:2858},12:{none:424,r30:588,r15:1512}}
+        5600:{
+          1:{none:22150,hyper:98500,f10_flood:89200,f10_spot:224200},
+          3:{none:2600, hyper:8500, f10_flood:11440,f10_spot:29300},
+          5:{none:1020, hyper:3000, f10_flood:4260, f10_spot:10580}
+        }
       }
     },
     ls600c: {
       url:'https://www.aputure.com/products/ls-600c-pro/',
       group:'LED COB', name:'LS 600c Pro', desc:'720W RGBWW LED Fresnel', emoji:'💡', watts:720, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'7.5 kg', size:'306×245×355 mm',
-      ccts:[2500,5600,10000],
-      accessories:['none','r30','r15'], accUnknown:['none'],  // Aputure は bare の角度を公表していない
+      // Aputure 公表の配光表の測定点に合わせた
+      ccts:[2300,3200,4300,5600,7500,10000],
+      accessories:['none','hyper','f10_flood','f10_spot'],
+      // bare と Hyper Reflector のビーム角は Aputure が公表していない
+      accUnknown:['none'],
       dmx:{led:'RGBWW',power:'600W',cct:'2500K–10000K + Full RGBWW',cri:'≥96',tlci:'≥97',ip:'IP54',
         control:'On-board / App / DMX / RDM',dimming:'0%–100%',
         effects:['Flash','Pulse','Storm','Lightning','TV','Paparazzi','Fire','Fireworks']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20600c%20Pro/All%20Files/LS600c-Pro-DMX-Profile-Specification-V1.0.1-.pdf',
       dmxVer:'v1.0.1',
-      // 3200K はリフレクター r15 / r30 の値、5600K はリフレクター無し('none')の値と、
-      // 出どころの違う2系統が混ざっている。'none' を宣言していなかったため 5600K で
-      // 値がまったく返らなくなっていた。宣言を足して読めるようにしてある。
-      // 同じ光学条件で揃ったデータが手に入ったら差し替えたい。
+      // 出どころの違う2系統が混ざっていたので、Aputure 公表の配光表
+      // （help.aputure.com、1m / 3m / 5m、2300–10000K）に丸ごと差し替えた。
       refData:{
-        5600:{2:{none:9075},3:{none:3208},5:{none:1200},8:{none:476},12:{none:208}},
-        3200:{2:{r30:3208,r15:9075},3:{r30:1697,r15:3601},5:{r30:741,r15:1697},8:{r30:300,r15:741},12:{r30:147,r15:378}},
+        2300:{1:{none:12460,hyper:39500,f10_flood:19930,f10_spot:44300},
+              3:{none:1481, hyper:3770, f10_flood:2517, f10_spot:5710},
+              5:{none:608,  hyper:1444, f10_flood:1007, f10_spot:2265}},
+        3200:{1:{none:13700,hyper:42800,f10_flood:21570,f10_spot:48700},
+              3:{none:1638, hyper:4160, f10_flood:2770, f10_spot:6270},
+              5:{none:668,  hyper:1586, f10_flood:1085, f10_spot:2490}},
+        4300:{1:{none:15030,hyper:46800,f10_flood:23490,f10_spot:52700},
+              3:{none:1778, hyper:4570, f10_flood:3030, f10_spot:6840},
+              5:{none:743,  hyper:1728, f10_flood:1169, f10_spot:2740}},
+        5600:{1:{none:16450,hyper:51100,f10_flood:25500,f10_spot:57300},
+              3:{none:1937, hyper:5020, f10_flood:3320, f10_spot:7440},
+              5:{none:817,  hyper:1889, f10_flood:1254, f10_spot:3010}},
+        7500:{1:{none:16440,hyper:50700,f10_flood:25300,f10_spot:57000},
+              3:{none:1935, hyper:5030, f10_flood:3320, f10_spot:7420},
+              5:{none:819,  hyper:1877, f10_flood:1245, f10_spot:3010}},
+        10000:{1:{none:14300,hyper:44300,f10_flood:22280,f10_spot:50200},
+               3:{none:1686, hyper:4500, f10_flood:2950, f10_spot:6530},
+               5:{none:721,  hyper:1651, f10_flood:1099, f10_spot:2685}},
       }
     },
     ls300x: {
@@ -9075,14 +9117,22 @@ var LIGHTS = {
       url:'https://www.aputure.com/products/ls-300x/',
       group:'LED COB', name:'LS 300X', desc:'350W Bi-Color LED Spot', emoji:'💡', watts:350, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'4.1 kg', size:'244×214×310 mm',
-      ccts:[2700,3200,5600,6500],
-      accessories:['none','r30','r15'], accUnknown:['none'],  // Aputure は bare の角度を公表していない
+      // Aputure 公表の配光表の測定点は 3200 / 4300 / 5500K
+      ccts:[2700,3200,4300,5500,6500],
+      // 公表の配光表にあるのは bare と Hyper Reflector の2つだけ。
+      // Fresnel 2X は 1m の値しか公表がないので入れていない。
+      accessories:['none','hyper'],
+      // bare と Hyper Reflector のビーム角は Aputure が公表していない
+      accUnknown:['none'],
       dmx:{led:'Bi-Color COB',power:'350W',cct:'2700K–6500K',cri:'≥96',tlci:'≥97',ip:'IP54',
         control:'On-board / App / DMX / RDM',dimming:'0%–100%',
         effects:['Flash','Pulse','TV','Paparazzi','Fire','Fireworks']},
+      // Aputure 公表の配光表（1m / 3m / 5m）。バイカラー機なので
+      // 4300K がいちばん明るく、5500K はそれより落ちる（公表どおり）。
       refData:{
-        5600:{2:{none:2858,r30:4800,r15:11434},3:{none:1200,r30:2269,r15:3601},5:{none:424,r30:832,r15:1512},8:{none:185,r30:378,r15:741},12:{none:46,r30:185,r15:378}},
-        3200:{2:{none:1697,r30:3208,r15:6788},3:{none:741,r30:1512,r15:3208},5:{none:300,r30:588,r15:1200},8:{none:106,r30:233,r15:476},12:{none:52,r30:119,r15:208}},
+        3200:{1:{none:5100,hyper:16200},3:{none:580,hyper:1300},5:{none:220,hyper:450}},
+        4300:{1:{none:7500,hyper:24300},3:{none:800,hyper:2100},5:{none:350,hyper:700}},
+        5500:{1:{none:6300,hyper:20500},3:{none:700,hyper:1700},5:{none:250,hyper:550}},
       }
     },
     ls120d_ii: {
@@ -9446,10 +9496,43 @@ var LIGHTS = {
     ls600x: {
       url:'https://www.aputure.com/products/ls-600x-pro/',
       group:'LED COB', weight:'5.9 kg', name:'LS 600X Pro', emoji:'💡', watts:720, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
-      ccts:[3200, 5600], accessories:["hyper"],
+      // Aputure 公表の配光表の測定点
+      ccts:[2700,3200,4300,5600,6500],
+      accessories:['none','hyper','f10_flood','f10_spot'],
+      // bare と Hyper Reflector のビーム角は Aputure が公表していない
+      accUnknown:['none'],
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20600x%20Pro/All%20Files/LS600X-Pro-DMX-Profile-Specification-V1.0-.pdf',
       dmxVer:'v1.0',
-      refData:{hyper:{5600:{2:7620,3:3208,4:1512,5:588,8:233},3200:{2:6048,3:2269,4:832,5:424,8:185}}}
+      // Aputure 公表の配光表（1m / 2m / 3m / 5m / 7m、2700–6500K）に
+      // 丸ごと差し替えた。それまでは 'hyper' 1つだけで、値も距離の並びも
+      // 公表表と合っておらず、5m→8m が逆二乗より速く落ちていた。
+      refData:{
+        2700:{1:{none:9420, hyper:36500,f10_flood:32300,f10_spot:79100},
+              2:{none:2427, hyper:7760, f10_flood:8810, f10_spot:22160},
+              3:{none:1104, hyper:3220, f10_flood:4070, f10_spot:10740},
+              5:{none:423,  hyper:1150, f10_flood:1530, f10_spot:3900},
+              7:{none:230,  hyper:583,  f10_flood:808,  f10_spot:2037}},
+        3200:{1:{none:11630,hyper:45300,f10_flood:39800,f10_spot:98500},
+              2:{none:2995, hyper:9650, f10_flood:10950,f10_spot:27550},
+              3:{none:1364, hyper:4010, f10_flood:5060, f10_spot:13270},
+              5:{none:524,  hyper:1426, f10_flood:1898, f10_spot:4840},
+              7:{none:285,  hyper:722,  f10_flood:1001, f10_spot:2526}},
+        4300:{1:{none:16040,hyper:62900,f10_flood:55100,f10_spot:135300},
+              2:{none:4130, hyper:13390,f10_flood:15150,f10_spot:38200},
+              3:{none:1874, hyper:5560, f10_flood:7010, f10_spot:18370},
+              5:{none:724,  hyper:1978, f10_flood:2629, f10_spot:6690},
+              7:{none:391,  hyper:1002, f10_flood:1374, f10_spot:3490}},
+        5600:{1:{none:16060,hyper:63900,f10_flood:55800,f10_spot:137000},
+              2:{none:4150, hyper:13530,f10_flood:15280,f10_spot:38600},
+              3:{none:1880, hyper:5610, f10_flood:7070, f10_spot:18510},
+              5:{none:728,  hyper:1996, f10_flood:2653, f10_spot:6730},
+              7:{none:393,  hyper:1012, f10_flood:1398, f10_spot:3530}},
+        6500:{1:{none:13890,hyper:55300,f10_flood:48300,f10_spot:119200},
+              2:{none:3590, hyper:11750,f10_flood:13250,f10_spot:33600},
+              3:{none:1628, hyper:4880, f10_flood:6150, f10_spot:16060},
+              5:{none:629,  hyper:1731, f10_flood:2301, f10_spot:5850},
+              7:{none:340,  hyper:878,  f10_flood:1215, f10_spot:3060}},
+      }
     }
   },
 
@@ -13932,6 +14015,10 @@ var ACC_INFO = {
   nova9_diffuser: { label:'NOVA 9° Diffuser', beam:'Diffused ~60°', emoji:'🔆', angle:60 },
   diffuser: { label:'Mini Diffuser',       beam:'Diffused',      emoji:'⬜', angle:100 },
   hyper:    { label:'Hyper Reflector',     beam:'Narrow Spot',   emoji:'🔦', angle:15 },
+  // Aputure F10 Fresnel。角度は Aputure が配光表の見出しに書いている値
+  // （Flood 45° / Spot 15°）。
+  f10_flood:{ label:'F10 Fresnel (Flood)', beam:'45°',           emoji:'🔆', angle:45 },
+  f10_spot: { label:'F10 Fresnel (Spot)',  beam:'15°',           emoji:'🔦', angle:15 },
   // Storm 80c
   cf4_15:   { label:'CF4 Fresnel (15°)',   beam:'Fresnel Spot',  emoji:'🔬', angle:15 },
   cf4_40:   { label:'CF4 Fresnel (40°)',   beam:'Fresnel Flood', emoji:'🔬', angle:40 },
