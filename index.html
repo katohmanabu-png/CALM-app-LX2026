@@ -20677,6 +20677,46 @@ function drawerOrderSave(a){
 function drawerLabel(it){ return it.key ? t(it.key) : it.lbl; }
 
 /** ドロワーの項目を並び順どおりに描く */
+/**
+ * Mac の画面上部のメニューバーへ、ハンバーガーメニューと同じ中身を渡す。
+ *
+ * Mac では iPad 向けのまま動くので、OS が付けるメニューバーには
+ * アプリの項目が何も出ない。上のバーから選べたほうが速いので、
+ * ドロワーと同じ並び・同じ言語で項目を送る。
+ * 押されたときにネイティブが動かす文は、ドロワーのボタンと同じもの。
+ *
+ * iPhone / iPad でも送るが、メニューバーが無いので何も起きない
+ * （キーボードを繋いだ iPad では Command キーの一覧に出る）。
+ */
+function _calmMenuBar() {
+  try {
+    if (!_calmIsNative()) return null;
+    var C = window.Capacitor; if (!C) return null;
+    if (C.Plugins && C.Plugins.CalmMenu) return C.Plugins.CalmMenu;
+    if (typeof C.nativePromise !== 'function') return null;
+    // 呼ぶ名前は jsName ではなく identifier。CalmCloud と同じ理由
+    return { setItems: function(o){ return C.nativePromise('CalmMenuPlugin', 'setItems', o || {}); } };
+  } catch(e) { return null; }
+}
+
+var _menuBarSent = '';
+function syncNativeMenu() {
+  var m = _calmMenuBar(); if (!m) return;
+  var arOK = !!(_cmARState && _cmARState.available);
+  var items = [];
+  drawerOrder().forEach(function(id){
+    var it = _drawerItem(id); if (!it) return;
+    if (it.needsAR && !arOK) return;          // AR は対応端末だけ。ドロワーと同じ判断
+    items.push({ title: drawerLabel(it),
+                 action: it.page ? "showPage('" + it.page + "')" : it.open + "()" });
+  });
+  // 中身が同じなら送らない（言語も並びも変わっていないとき）
+  var sig = JSON.stringify(items);
+  if (sig === _menuBarSent) return;
+  _menuBarSent = sig;
+  try { m.setItems({ title: 'CALM', items: items }); } catch(e) {}
+}
+
 function renderDrawerItems(){
   var host = document.getElementById('drawer-scroll'); if (!host) return;
   var arOK = !!(_cmARState && _cmARState.available);
@@ -20692,6 +20732,8 @@ function renderDrawerItems(){
       '<span>' + drawerLabel(it) + '</span></button>';
   }).join('');
   try { updateDrawerActiveItem(S.page || 'calc'); } catch(e) {}
+  // Mac のメニューバーにも同じ中身を渡す
+  try { syncNativeMenu(); } catch(e) {}
 }
 
 var NAV_ITEMS = [
