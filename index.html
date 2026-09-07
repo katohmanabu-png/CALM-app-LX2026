@@ -11309,6 +11309,128 @@ var LIGHTS = {
   },
 
   godox: {
+    mg1200r: {
+      group:'LED', name:'KNOWLED MG1200R', desc:'1600W IP54 Full Color LED Spotlight', emoji:'🟡', watts:1600, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
+      weight:'9.8 kg', weightExtra:'コントローラー 6.7 kg', size:'400×589×339 mm',
+      ccts:[1800, 2800, 3200, 4300, 5600, 6500, 8500, 10000],
+      accessories:['none', 'gr15', 'gr30', 'gr45', 'gr60', 'gf14_spot', 'gf14_flood'], accAngles:{gr15:15, gr30:30, gr45:45, gr60:60},
+      // 裸灯とフレネル GF14 はビーム角の公表がない
+      accUnknown:['none', 'gf14_spot', 'gf14_flood'],
+      dmx:{led:'RGBWW',power:'1600W',cct:'1800K–10000K + RGBWW',cri:'≥96',tlci:'≥95',ip:'IP54',
+        control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
+        effects:['14 FX modes']},
+      dmxUrl:'https://godox.com/user-guides-knowled/',
+      url:'https://godox.com/user-guides-knowled/',
+      // Godox 公式取説（KNOWLED_MG1200R.pdf）の Illuminance Data（Normal Mode）。
+      // 7系統 × 色温度8水準 × 3m/5m/7m/9m。取説に併記の fc 値と全値を突き合わせてある。
+      refData:{
+        1800:{3:{'none':1500, 'gr15':29000, 'gr30':13000, 'gr45':6090, 'gr60':3450, 'gf14_spot':16300, 'gf14_flood':5400}, 5:{'none':634, 'gr15':9700, 'gr30':4470, 'gr45':2200, 'gr60':1340, 'gf14_spot':5520, 'gf14_flood':2080}, 7:{'none':380, 'gr15':4830, 'gr30':2340, 'gr45':1210, 'gr60':758, 'gf14_spot':2570, 'gf14_flood':1130}, 9:{'none':205, 'gr15':2960, 'gr30':1450, 'gr45':796, 'gr60':433, 'gf14_spot':1360, 'gf14_flood':679}},
+        2800:{3:{'none':5310, 'gr15':101000, 'gr30':46100, 'gr45':21200, 'gr60':11900, 'gf14_spot':56700, 'gf14_flood':19200}, 5:{'none':2200, 'gr15':34200, 'gr30':15700, 'gr45':7720, 'gr60':4630, 'gf14_spot':19400, 'gf14_flood':7280}, 7:{'none':1300, 'gr15':17200, 'gr30':8250, 'gr45':4190, 'gr60':2620, 'gf14_spot':8770, 'gf14_flood':3970}, 9:{'none':771, 'gr15':10500, 'gr30':5160, 'gr45':2460, 'gr60':1740, 'gf14_spot':4810, 'gf14_flood':2420}},
+        3200:{3:{'none':5600, 'gr15':108000, 'gr30':49100, 'gr45':22600, 'gr60':12700, 'gf14_spot':60600, 'gf14_flood':20400}, 5:{'none':2330, 'gr15':36300, 'gr30':16700, 'gr45':8220, 'gr60':4890, 'gf14_spot':20400, 'gf14_flood':7780}, 7:{'none':1370, 'gr15':18100, 'gr30':8650, 'gr45':4430, 'gr60':2760, 'gf14_spot':9310, 'gf14_flood':4210}, 9:{'none':850, 'gr15':11100, 'gr30':5420, 'gr45':2840, 'gr60':1850, 'gf14_spot':5120, 'gf14_flood':2560}},
+        4300:{3:{'none':5440, 'gr15':105000, 'gr30':48000, 'gr45':22100, 'gr60':12400, 'gf14_spot':58700, 'gf14_flood':19900}, 5:{'none':2280, 'gr15':35500, 'gr30':16400, 'gr45':8040, 'gr60':4760, 'gf14_spot':19700, 'gf14_flood':7600}, 7:{'none':1340, 'gr15':17600, 'gr30':8390, 'gr45':4300, 'gr60':2680, 'gf14_spot':9230, 'gf14_flood':4120}, 9:{'none':844, 'gr15':10700, 'gr30':5290, 'gr45':2760, 'gr60':1800, 'gf14_spot':5030, 'gf14_flood':2510}},
+        5600:{3:{'none':5220, 'gr15':101000, 'gr30':46100, 'gr45':21300, 'gr60':12000, 'gf14_spot':56500, 'gf14_flood':19200}, 5:{'none':2190, 'gr15':34200, 'gr30':15700, 'gr45':7710, 'gr60':4600, 'gf14_spot':18900, 'gf14_flood':7310}, 7:{'none':1290, 'gr15':16900, 'gr30':8040, 'gr45':4150, 'gr60':2570, 'gf14_spot':8960, 'gf14_flood':3960}, 9:{'none':824, 'gr15':10300, 'gr30':5090, 'gr45':2720, 'gr60':1730, 'gf14_spot':4830, 'gf14_flood':2420}},
+        6500:{3:{'none':5030, 'gr15':98100, 'gr30':44500, 'gr45':20500, 'gr60':11600, 'gf14_spot':54500, 'gf14_flood':18500}, 5:{'none':2110, 'gr15':32800, 'gr30':15200, 'gr45':7470, 'gr60':4430, 'gf14_spot':18100, 'gf14_flood':7040}, 7:{'none':1240, 'gr15':16300, 'gr30':7730, 'gr45':3990, 'gr60':2480, 'gf14_spot':8650, 'gf14_flood':3830}, 9:{'none':799, 'gr15':9970, 'gr30':4910, 'gr45':2620, 'gr60':1660, 'gf14_spot':4670, 'gf14_flood':2330}},
+        8500:{3:{'none':4570, 'gr15':89400, 'gr30':40400, 'gr45':18600, 'gr60':10500, 'gf14_spot':49400, 'gf14_flood':16800}, 5:{'none':1910, 'gr15':29900, 'gr30':13800, 'gr45':6780, 'gr60':4020, 'gf14_spot':16400, 'gf14_flood':6410}, 7:{'none':1130, 'gr15':14800, 'gr30':7010, 'gr45':3630, 'gr60':2260, 'gf14_spot':7820, 'gf14_flood':3480}, 9:{'none':728, 'gr15':9040, 'gr30':4450, 'gr45':2380, 'gr60':1510, 'gf14_spot':4230, 'gf14_flood':2090}},
+        10000:{3:{'none':4370, 'gr15':85500, 'gr30':38600, 'gr45':17900, 'gr60':10100, 'gf14_spot':47500, 'gf14_flood':16100}, 5:{'none':1850, 'gr15':28800, 'gr30':13200, 'gr45':6520, 'gr60':3860, 'gf14_spot':15800, 'gf14_flood':6140}, 7:{'none':1090, 'gr15':14200, 'gr30':6720, 'gr45':3480, 'gr60':2170, 'gf14_spot':7510, 'gf14_flood':3330}, 9:{'none':700, 'gr15':8680, 'gr30':4270, 'gr45':2290, 'gr60':1450, 'gf14_spot':4070, 'gf14_flood':2030}}
+      }
+    },
+    mg2400r: {
+      group:'LED', name:'KNOWLED MG2400R', desc:'2650W IP54 Full Color LED Spotlight', emoji:'🟡', watts:2650, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
+      weight:'21 kg', weightExtra:'コントローラー 12 kg', size:'409×385×356 mm',
+      ccts:[1800, 2800, 3200, 4300, 5600, 6500, 8500, 10000],
+      accessories:['none', 'gr15', 'gr30', 'gr45', 'gr60', 'gf14_spot', 'gf14_flood'], accAngles:{gr15:15, gr30:30, gr45:45, gr60:60},
+      // 裸灯とフレネル GF14 はビーム角の公表がない
+      accUnknown:['none', 'gf14_spot', 'gf14_flood'],
+      dmx:{led:'RGBWW',power:'2650W',cct:'1800K–10000K + RGBWW',cri:'≈96',tlci:'≈95',ip:'IP54',
+        control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
+        effects:['14 FX modes']},
+      dmxUrl:'https://godox.com/user-guides-knowled/',
+      url:'https://godox.com/user-guides-knowled/',
+      // Godox 公式取説（KNOWLED_MG2400R.pdf）の Illuminance Data（Normal Mode）。
+      // 7系統 × 色温度8水準 × 3m/5m/10m。取説に併記の fc 値と全値を突き合わせてある。
+      refData:{
+        1800:{3:{'none':3430, 'gr15':68700, 'gr30':30700, 'gr45':14400, 'gr60':8680, 'gf14_spot':36200, 'gf14_flood':13900}, 5:{'none':1500, 'gr15':22600, 'gr30':10500, 'gr45':5230, 'gr60':3290, 'gf14_spot':12800, 'gf14_flood':5330}, 10:{'none':499, 'gr15':5390, 'gr30':2550, 'gr45':1410, 'gr60':998, 'gf14_spot':2810, 'gf14_flood':1420}},
+        2800:{3:{'none':8980, 'gr15':163000, 'gr30':70000, 'gr45':33300, 'gr60':20600, 'gf14_spot':90200, 'gf14_flood':33900}, 5:{'none':3610, 'gr15':53600, 'gr30':24400, 'gr45':12400, 'gr60':7930, 'gf14_spot':31200, 'gf14_flood':13100}, 10:{'none':1230, 'gr15':12800, 'gr30':6290, 'gr45':3510, 'gr60':2370, 'gf14_spot':6990, 'gf14_flood':3610}},
+        3200:{3:{'none':8950, 'gr15':164000, 'gr30':70200, 'gr45':34000, 'gr60':20700, 'gf14_spot':90900, 'gf14_flood':34200}, 5:{'none':3700, 'gr15':54200, 'gr30':24500, 'gr45':12500, 'gr60':7940, 'gf14_spot':31500, 'gf14_flood':13300}, 10:{'none':1220, 'gr15':12900, 'gr30':6330, 'gr45':3540, 'gr60':2390, 'gf14_spot':7040, 'gf14_flood':3640}},
+        4300:{3:{'none':8800, 'gr15':163000, 'gr30':69400, 'gr45':33300, 'gr60':20300, 'gf14_spot':90000, 'gf14_flood':33600}, 5:{'none':3660, 'gr15':53400, 'gr30':24100, 'gr45':12300, 'gr60':7820, 'gf14_spot':31000, 'gf14_flood':13100}, 10:{'none':1190, 'gr15':12700, 'gr30':6210, 'gr45':3490, 'gr60':2340, 'gf14_spot':6900, 'gf14_flood':3570}},
+        5600:{3:{'none':8470, 'gr15':158000, 'gr30':67100, 'gr45':32100, 'gr60':19700, 'gf14_spot':87100, 'gf14_flood':32500}, 5:{'none':3490, 'gr15':52000, 'gr30':23400, 'gr45':11900, 'gr60':7550, 'gf14_spot':29900, 'gf14_flood':12700}, 10:{'none':1150, 'gr15':12300, 'gr30':6000, 'gr45':3370, 'gr60':2260, 'gf14_spot':6660, 'gf14_flood':3440}},
+        6500:{3:{'none':8110, 'gr15':150000, 'gr30':63800, 'gr45':30500, 'gr60':18500, 'gf14_spot':83300, 'gf14_flood':31000}, 5:{'none':3290, 'gr15':49400, 'gr30':22200, 'gr45':11300, 'gr60':7180, 'gf14_spot':28400, 'gf14_flood':12100}, 10:{'none':1090, 'gr15':11700, 'gr30':5700, 'gr45':3200, 'gr60':2110, 'gf14_spot':6320, 'gf14_flood':3280}},
+        8500:{3:{'none':8040, 'gr15':129000, 'gr30':54700, 'gr45':26100, 'gr60':15900, 'gf14_spot':71000, 'gf14_flood':26500}, 5:{'none':2840, 'gr15':42300, 'gr30':19000, 'gr45':9670, 'gr60':6100, 'gf14_spot':24500, 'gf14_flood':10400}, 10:{'none':925, 'gr15':9950, 'gr30':4860, 'gr45':2730, 'gr60':1820, 'gf14_spot':5330, 'gf14_flood':2780}},
+        10000:{3:{'none':6530, 'gr15':123000, 'gr30':52300, 'gr45':25000, 'gr60':15200, 'gf14_spot':67700, 'gf14_flood':25200}, 5:{'none':2700, 'gr15':40500, 'gr30':18200, 'gr45':9270, 'gr60':5850, 'gf14_spot':23200, 'gf14_flood':9900}, 10:{'none':882, 'gr15':9530, 'gr30':4660, 'gr45':2600, 'gr60':1720, 'gf14_spot':5130, 'gf14_flood':2660}}
+      }
+    },
+    mg4kr: {
+      group:'LED', name:'KNOWLED MG4KR', desc:'3250W IP65 Full Color LED Spotlight', emoji:'🟡', watts:3250, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
+      weight:'23 kg', weightExtra:'コントローラー 6.9 kg', size:'356×386×378 mm',
+      ccts:[1800, 2800, 3200, 4300, 5600, 6500, 8500, 10000],
+      accessories:['none', 'mgr15', 'mgr20', 'mgr30', 'gf14_spot', 'gf14_flood'], accAngles:{mgr15:15, mgr20:20, mgr30:30},
+      // 裸灯とフレネル GF14 はビーム角の公表がない
+      accUnknown:['none', 'gf14_spot', 'gf14_flood'],
+      dmx:{led:'RGBWW',power:'3250W',cct:'1800K–10000K + RGBWW',cri:'≈97',tlci:'≈96',ip:'IP65',
+        control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
+        effects:['14 FX modes']},
+      dmxUrl:'https://godox.com/user-guides-knowled/',
+      url:'https://godox.com/user-guides-knowled/',
+      // Godox 公式取説（KNOWLED_MG4KR.pdf）の Illuminance Data（Normal Mode）。
+      // 6系統 × 色温度8水準 × 3m/5m/10m。取説に併記の fc 値と全値を突き合わせてある。
+      refData:{
+        1800:{3:{'none':2110, 'mgr15':46900, 'mgr20':44300, 'mgr30':18200, 'gf14_spot':22500, 'gf14_flood':11700}, 5:{'none':805, 'mgr15':24500, 'mgr20':15900, 'mgr30':5970, 'gf14_spot':8530, 'gf14_flood':4250}, 10:{'none':223, 'mgr15':6130, 'mgr20':3760, 'mgr30':1510, 'gf14_spot':2020, 'gf14_flood':1130}},
+        2800:{3:{'none':8360, 'mgr15':154000, 'mgr20':158000, 'mgr30':63900, 'gf14_spot':83700, 'gf14_flood':42200}, 5:{'none':3080, 'mgr15':83100, 'mgr20':55200, 'mgr30':21400, 'gf14_spot':30000, 'gf14_flood':15500}, 10:{'none':851, 'mgr15':20600, 'mgr20':12900, 'mgr30':5310, 'gf14_spot':7290, 'gf14_flood':4070}},
+        3200:{3:{'none':8960, 'mgr15':167000, 'mgr20':170000, 'mgr30':68900, 'gf14_spot':90100, 'gf14_flood':45600}, 5:{'none':3300, 'mgr15':89300, 'mgr20':58900, 'mgr30':23000, 'gf14_spot':32400, 'gf14_flood':16700}, 10:{'none':915, 'mgr15':22300, 'mgr20':14000, 'mgr30':5710, 'gf14_spot':7860, 'gf14_flood':4390}},
+        4300:{3:{'none':10400, 'mgr15':189000, 'mgr20':198800, 'mgr30':81600, 'gf14_spot':106000, 'gf14_flood':54000}, 5:{'none':3870, 'mgr15':105000, 'mgr20':70800, 'mgr30':27100, 'gf14_spot':38400, 'gf14_flood':19800}, 10:{'none':1050, 'mgr15':26300, 'mgr20':16600, 'mgr30':6740, 'gf14_spot':9300, 'gf14_flood':5210}},
+        5600:{3:{'none':11100, 'mgr15':197200, 'mgr20':209400, 'mgr30':86300, 'gf14_spot':113000, 'gf14_flood':57500}, 5:{'none':4090, 'mgr15':111000, 'mgr20':75100, 'mgr30':28600, 'gf14_spot':40600, 'gf14_flood':21000}, 10:{'none':1130, 'mgr15':27800, 'mgr20':17500, 'mgr30':7140, 'gf14_spot':9880, 'gf14_flood':5510}},
+        6500:{3:{'none':10300, 'mgr15':188000, 'mgr20':195000, 'mgr30':80200, 'gf14_spot':105000, 'gf14_flood':53500}, 5:{'none':3800, 'mgr15':104000, 'mgr20':69900, 'mgr30':26700, 'gf14_spot':37800, 'gf14_flood':19600}, 10:{'none':915, 'mgr15':26000, 'mgr20':16300, 'mgr30':6640, 'gf14_spot':9190, 'gf14_flood':5150}},
+        8500:{3:{'none':8510, 'mgr15':160000, 'mgr20':167000, 'mgr30':66900, 'gf14_spot':87700, 'gf14_flood':44600}, 5:{'none':3160, 'mgr15':87200, 'mgr20':58700, 'mgr30':22300, 'gf14_spot':31600, 'gf14_flood':16300}, 10:{'none':875, 'mgr15':21800, 'mgr20':13600, 'mgr30':5550, 'gf14_spot':7670, 'gf14_flood':4300}},
+        10000:{3:{'none':7550, 'mgr15':142000, 'mgr20':148000, 'mgr30':59300, 'gf14_spot':77500, 'gf14_flood':39400}, 5:{'none':2800, 'mgr15':77300, 'mgr20':51900, 'mgr30':19700, 'gf14_spot':27900, 'gf14_flood':14400}, 10:{'none':772, 'mgr15':19300, 'mgr20':12000, 'mgr30':4930, 'gf14_spot':6760, 'gf14_flood':3800}}
+      }
+    },
+    mg4k: {
+      group:'LED', name:'KNOWLED MG4K', desc:'2300W IP65 Bi-Color LED Spotlight', emoji:'🟡', watts:2300, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
+      weight:'10 kg', weightExtra:'コントローラー 6.4 kg', size:'265×339×299 mm',
+      ccts:[2800, 3200, 4300, 5600, 6500, 8500],
+      accessories:['none', 'mgr15', 'mgr20', 'mgr30', 'gf14_spot', 'gf14_flood'], accAngles:{mgr15:15, mgr20:20, mgr30:30},
+      // 裸灯とフレネル GF14 はビーム角の公表がない
+      accUnknown:['none', 'gf14_spot', 'gf14_flood'],
+      dmx:{led:'Bi-Color',power:'2300W',cct:'2800K–10000K',cri:'≈97',tlci:'≈98',ip:'IP65',
+        control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
+        effects:['11 FX modes']},
+      dmxUrl:'https://godox.com/user-guides-knowled/',
+      url:'https://godox.com/user-guides-knowled/',
+      // Godox 公式取説（KNOWLED_MG4K.pdf）の Illuminance Data（Normal Mode）。
+      // 6系統 × 色温度6水準 × 3m/5m/10m。取説に併記の fc 値と全値を突き合わせてある。
+      refData:{
+        2800:{3:{'none':5720, 'mgr15':145000, 'mgr20':129000, 'mgr30':45700, 'gf14_spot':75200, 'gf14_flood':32700}, 5:{'none':2160, 'mgr15':74200, 'mgr20':45300, 'mgr30':15400, 'gf14_spot':26000, 'gf14_flood':11900}, 10:{'none':584, 'mgr15':18200, 'mgr20':10800, 'mgr30':3840, 'gf14_spot':6340, 'gf14_flood':3150}},
+        3200:{3:{'none':6770, 'mgr15':172000, 'mgr20':154000, 'mgr30':54100, 'gf14_spot':88500, 'gf14_flood':38800}, 5:{'none':2570, 'mgr15':88300, 'mgr20':53900, 'mgr30':18300, 'gf14_spot':30700, 'gf14_flood':14200}, 10:{'none':690, 'mgr15':21700, 'mgr20':12900, 'mgr30':4540, 'gf14_spot':7510, 'gf14_flood':3740}},
+        4300:{3:{'none':8680, 'mgr15':224900, 'mgr20':196000, 'mgr30':69300, 'gf14_spot':113000, 'gf14_flood':49800}, 5:{'none':3290, 'mgr15':114000, 'mgr20':68700, 'mgr30':23500, 'gf14_spot':39100, 'gf14_flood':18200}, 10:{'none':884, 'mgr15':27900, 'mgr20':16500, 'mgr30':5850, 'gf14_spot':9580, 'gf14_flood':4790}},
+        5600:{3:{'none':9400, 'mgr15':244400, 'mgr20':211200, 'mgr30':75400, 'gf14_spot':122000, 'gf14_flood':54000}, 5:{'none':3580, 'mgr15':124000, 'mgr20':74900, 'mgr30':25600, 'gf14_spot':42200, 'gf14_flood':19700}, 10:{'none':964, 'mgr15':30200, 'mgr20':17900, 'mgr30':6350, 'gf14_spot':10400, 'gf14_flood':5190}},
+        6500:{3:{'none':9620, 'mgr15':248700, 'mgr20':215000, 'mgr30':76600, 'gf14_spot':124000, 'gf14_flood':55000}, 5:{'none':3650, 'mgr15':127000, 'mgr20':76500, 'mgr30':26100, 'gf14_spot':42900, 'gf14_flood':20000}, 10:{'none':980, 'mgr15':30900, 'mgr20':18300, 'mgr30':6490, 'gf14_spot':10600, 'gf14_flood':5300}},
+        8500:{3:{'none':9000, 'mgr15':233800, 'mgr20':200300, 'mgr30':70500, 'gf14_spot':116000, 'gf14_flood':51300}, 5:{'none':3420, 'mgr15':120000, 'mgr20':71900, 'mgr30':24600, 'gf14_spot':39900, 'gf14_flood':18700}, 10:{'none':916, 'mgr15':29100, 'mgr20':17100, 'mgr30':6080, 'gf14_spot':9840, 'gf14_flood':4950}}
+      }
+    },
+    mg6k: {
+      group:'LED', name:'KNOWLED MG6K', desc:'4300W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:4300, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
+      weight:'24.5 kg', weightExtra:'コントローラー 13 kg', size:'356×378×434 mm',
+      ccts:[2800, 3200, 4300, 5600, 6500, 8500, 10000],
+      accessories:['none', 'mgr30', 'mgr15'], accAngles:{mgr30:30, mgr15:15},
+      // 裸灯とフレネル GF14 はビーム角の公表がない
+      accUnknown:['none'],
+      dmx:{led:'Bi-Color',power:'4300W',cct:'2800K–10000K',cri:'≈97',tlci:'≈97',ip:'IP54',
+        control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
+        effects:['11 FX modes']},
+      dmxUrl:'https://godox.com/user-guides-knowled/',
+      url:'https://godox.com/user-guides-knowled/',
+      // Godox 公式取説（KNOWLED_MG6K.pdf）の Illuminance Data（Normal Mode）。
+      // 3系統 × 色温度7水準 × 3m/5m/10m。取説に併記の fc 値と全値を突き合わせてある。
+      refData:{
+        2800:{3:{'none':11000, 'mgr30':76300, 'mgr15':176000}, 5:{'none':3690, 'mgr30':24000, 'mgr15':85600}, 10:{'none':1060, 'mgr30':5870, 'mgr15':21000}},
+        3200:{3:{'none':13000, 'mgr30':90000, 'mgr15':198300}, 5:{'none':4380, 'mgr30':28300, 'mgr15':101000}, 10:{'none':1250, 'mgr30':6900, 'mgr15':24800}},
+        4300:{3:{'none':16400, 'mgr30':115000, 'mgr15':249600}, 5:{'none':5540, 'mgr30':36200, 'mgr15':128000}, 10:{'none':1580, 'mgr30':8790, 'mgr15':31700}},
+        5600:{3:{'none':18600, 'mgr30':130000, 'mgr15':282800}, 5:{'none':6250, 'mgr30':41000, 'mgr15':147000}, 10:{'none':1780, 'mgr30':10000, 'mgr15':36500}},
+        6500:{3:{'none':19000, 'mgr30':133000, 'mgr15':288500}, 5:{'none':6410, 'mgr30':41900, 'mgr15':149000}, 10:{'none':1840, 'mgr30':10300, 'mgr15':37300}},
+        8500:{3:{'none':19200, 'mgr30':136000, 'mgr15':290800}, 5:{'none':6480, 'mgr30':42300, 'mgr15':152000}, 10:{'none':1840, 'mgr30':10400, 'mgr15':37900}},
+        10000:{3:{'none':19000, 'mgr30':135000, 'mgr15':288400}, 5:{'none':6400, 'mgr30':42100, 'mgr15':151000}, 10:{'none':1830, 'mgr30':10400, 'mgr15':37600}}
+      }
+    },
     mg2400bi: {
       group:'LED', name:'KNOWLED MG2400Bi', desc:'2900W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:2900, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
       weight:'20 kg', weightExtra:'コントローラー 13 kg', size:'409×385×356 mm',
@@ -13582,6 +13704,18 @@ var ACC_INFO = {
   // 55° なので、そのまま当てるとビーム角が食い違う。
   deg25:    { label:'25° Beam',  beam:'Spot 25°',   emoji:'🔦', angle:25 },
   deg28:    { label:'28° Beam',  beam:'Spot 28°',   emoji:'🔦', angle:28 },
+  // Godox KNOWLED のリフレクターとフレネル。GR は MG1200R / MG2400R 用、
+  // MGR は MG4K / MG4KR / MG6K 用で別物。GF14 は 14インチのフレネルで、
+  // Spot / Flood の角度は取説に出ていないので accUnknown で扱う。
+  gr15:     { label:'Reflector GR15',  beam:'Spot 15°',   emoji:'🔦', angle:15 },
+  gr30:     { label:'Reflector GR30',  beam:'30°',        emoji:'🔦', angle:30 },
+  gr45:     { label:'Reflector GR45',  beam:'45°',        emoji:'🔆', angle:45 },
+  gr60:     { label:'Reflector GR60',  beam:'Flood 60°',  emoji:'🔆', angle:60 },
+  mgr15:    { label:'Reflector MGR15', beam:'Spot 15°',   emoji:'🔦', angle:15 },
+  mgr20:    { label:'Reflector MGR20', beam:'20°',        emoji:'🔦', angle:20 },
+  mgr30:    { label:'Reflector MGR30', beam:'30°',        emoji:'🔦', angle:30 },
+  gf14_spot:  { label:'Fresnel GF14 (Spot)',  beam:'Fresnel Spot',  emoji:'🔬' },
+  gf14_flood: { label:'Fresnel GF14 (Flood)', beam:'Fresnel Flood', emoji:'🔆' },
   deg60:    { label:'60° Beam',  beam:'Flood 60°',  emoji:'🔆', angle:60 },
   // Lightstar LUXED-4 のスペースライト（黒／シルクのスカート）。
   // メーカーはこの状態のビーム角を出していないので accUnknown で扱う。
