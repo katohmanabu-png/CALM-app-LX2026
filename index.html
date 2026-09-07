@@ -11309,6 +11309,27 @@ var LIGHTS = {
   },
 
   godox: {
+    mg2400bi: {
+      group:'LED', name:'KNOWLED MG2400Bi', desc:'2900W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:2900, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
+      weight:'20 kg', weightExtra:'コントローラー 13 kg', size:'409×385×356 mm',
+      ccts:[2800, 3200, 4300, 5600, 6500],
+      accessories:['none','r45'], accAngles:{r45:45}, accUnknown:['none'],  // 裸灯はビーム角の公表がない
+      dmx:{led:'Bi-Color',power:'≈2900W',cct:'2800K–6500K',cri:'≥96',tlci:'≥96',ip:'IP54',
+        control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
+        effects:['11 FX modes']},
+      dmxUrl:'https://www.godox.com/static/upload/file/20240131/1706669911432152.pdf',
+      url:'https://godox.com/user-guides-knowled/',
+      // Godox 公式取説（KNOWLED_MG2400Bi.pdf）の Illuminance Data。
+      // 裸灯と標準リフレクター45°の2系統、色温度5水準、3/5/7/9/10m。
+      // 取説に併記の fc 値と全部突き合わせてある（lux÷10.7639）。
+      refData:{
+        2800:{3:{'none':8810, 'r45':32200}, 5:{'none':3540, 'r45':11700}, 7:{'none':2120, 'r45':6240}, 9:{'none':1480, 'r45':4000}, 10:{'none':1250, 'r45':3380}},
+        3200:{3:{'none':9700, 'r45':35900}, 5:{'none':3950, 'r45':13000}, 7:{'none':2360, 'r45':6900}, 9:{'none':1640, 'r45':4450}, 10:{'none':1380, 'r45':3740}},
+        4300:{3:{'none':11600, 'r45':43200}, 5:{'none':4740, 'r45':15700}, 7:{'none':2840, 'r45':8340}, 9:{'none':1920, 'r45':5370}, 10:{'none':1650, 'r45':4490}},
+        5600:{3:{'none':12000, 'r45':44600}, 5:{'none':4890, 'r45':16200}, 7:{'none':2900, 'r45':8590}, 9:{'none':1970, 'r45':5520}, 10:{'none':1700, 'r45':4650}},
+        6500:{3:{'none':11300, 'r45':42100}, 5:{'none':4650, 'r45':15300}, 7:{'none':2730, 'r45':8110}, 9:{'none':1870, 'r45':5260}, 10:{'none':1600, 'r45':4400}}
+      }
+    },
     f200r: {
       group:'LED', name:'Godox F200R', desc:'250W Full Color LED Panel', emoji:'🟡', watts:250, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'1 kg', size:'636×636 mm',
