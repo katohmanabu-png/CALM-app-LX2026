@@ -11309,6 +11309,33 @@ var LIGHTS = {
   },
 
   godox: {
+    mg1200bi: {
+      group:'LED', name:'KNOWLED MG1200Bi', desc:'1400W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:1400, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
+      weight:'16 kg', weightExtra:'コントローラー 6.68 kg', size:'378×579×354 mm',
+      ccts:[2800, 3200, 4300, 5600, 6500],
+      accessories:['none','gr15','gr30','gr45','gr60','gf14_spot','gf14_flood'],
+      accAngles:{gr15:15, gr30:30, gr45:45, gr60:60},
+      // 裸灯とフレネル GF14 はビーム角の公表がない
+      accUnknown:['none','gf14_spot','gf14_flood'],
+      dmx:{led:'Bi-Color',power:'1400W',cct:'2800K–6500K',cri:'≥96',tlci:'≥96',tm30:'Rf≥92 / Rg 97–103',cqs:'>94',r9:'≥90 (3200K) / ≥85 (5600K・6500K)',ip:'IP54',
+        control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
+        effects:['11 FX modes']},
+      dmxUrl:'https://www.godox.com/static/upload/file/20230522/1684737267677840.pdf',
+      url:'https://godox.com/user-guides-knowled/',
+      // Godox 公式取説の日本語版（KNOWLED_MG1200Bi_Japanese.pdf）p33-36 の照度データ。
+      // 英語版は表が画像でテキストが取れないため日本語版から読んだ。
+      // 7系統 × 色温度5水準 × 3/5/7/9m。取説に併記の fc と全値を突き合わせてある。
+      // 6500K の裸灯 5m だけ入れていない。取説の lux が 2850、fc が 240
+      //（=2583 lux）で食い違い、どちらが正しいか決められないため。
+      //（3m 6250 と 7m 1480 の間で内挿され、約 2600 lux になる）
+      refData:{
+        2800:{3:{'none':4850, 'gr15':107000, 'gr30':49800, 'gr45':22300, 'gr60':12300, 'gf14_spot':65300, 'gf14_flood':15700}, 5:{'none':1990, 'gr15':36100, 'gr30':17000, 'gr45':7890, 'gr60':4470, 'gf14_spot':22600, 'gf14_flood':6030}, 7:{'none':1150, 'gr15':17800, 'gr30':8540, 'gr45':4210, 'gr60':2580, 'gf14_spot':11500, 'gf14_flood':3500}, 9:{'none':763, 'gr15':10600, 'gr30':4280, 'gr45':2230, 'gr60':1390, 'gf14_spot':6990, 'gf14_flood':2100}},
+        3200:{3:{'none':5330, 'gr15':121000, 'gr30':54300, 'gr45':24400, 'gr60':13400, 'gf14_spot':71400, 'gf14_flood':17200}, 5:{'none':2180, 'gr15':40400, 'gr30':18700, 'gr45':8690, 'gr60':4890, 'gf14_spot':24900, 'gf14_flood':6650}, 7:{'none':1270, 'gr15':19700, 'gr30':9330, 'gr45':4610, 'gr60':2820, 'gf14_spot':12700, 'gf14_flood':3850}, 9:{'none':838, 'gr15':11700, 'gr30':4690, 'gr45':2440, 'gr60':1520, 'gf14_spot':7620, 'gf14_flood':2290}},
+        4300:{3:{'none':5990, 'gr15':139000, 'gr30':61900, 'gr45':27800, 'gr60':15200, 'gf14_spot':81600, 'gf14_flood':19500}, 5:{'none':2470, 'gr15':46900, 'gr30':21400, 'gr45':10000, 'gr60':5610, 'gf14_spot':28500, 'gf14_flood':7490}, 7:{'none':1420, 'gr15':22900, 'gr30':10700, 'gr45':5350, 'gr60':3200, 'gf14_spot':14500, 'gf14_flood':4320}, 9:{'none':942, 'gr15':13700, 'gr30':5350, 'gr45':2780, 'gr60':1610, 'gf14_spot':8750, 'gf14_flood':2600}},
+        5600:{3:{'none':6290, 'gr15':149000, 'gr30':64700, 'gr45':29100, 'gr60':15900, 'gf14_spot':86100, 'gf14_flood':20600}, 5:{'none':2590, 'gr15':49900, 'gr30':22600, 'gr45':10500, 'gr60':5870, 'gf14_spot':30100, 'gf14_flood':7910}, 7:{'none':1490, 'gr15':24400, 'gr30':11200, 'gr45':5530, 'gr60':3340, 'gf14_spot':15300, 'gf14_flood':4510}, 9:{'none':994, 'gr15':14600, 'gr30':5610, 'gr45':2910, 'gr60':1730, 'gf14_spot':9180, 'gf14_flood':2750}},
+        6500:{3:{'none':6250, 'gr15':147000, 'gr30':63900, 'gr45':28700, 'gr60':15700, 'gf14_spot':85000, 'gf14_flood':20300}, 5:{'gr15':49300, 'gr30':22200, 'gr45':10400, 'gr60':5780, 'gf14_spot':29700, 'gf14_flood':7870}, 7:{'none':1480, 'gr15':24300, 'gr30':11000, 'gr45':5460, 'gr60':3280, 'gf14_spot':15100, 'gf14_flood':4420}, 9:{'none':990, 'gr15':14500, 'gr30':5520, 'gr45':2870, 'gr60':1800, 'gf14_spot':9100, 'gf14_flood':2720}}
+      }
+    },
     mg1200r: {
       group:'LED', name:'KNOWLED MG1200R', desc:'1600W IP54 Full Color LED Spotlight', emoji:'🟡', watts:1600, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
       weight:'9.8 kg', weightExtra:'コントローラー 6.7 kg', size:'400×589×339 mm',
