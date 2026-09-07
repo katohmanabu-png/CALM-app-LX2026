@@ -24395,15 +24395,25 @@ function dftInit() {
   function dftResize() {
     _dftFitPage();
     var infoH = 38;
-    canvas.width  = area.clientWidth  || 375;
-    canvas.height = Math.max(200, area.clientHeight - infoH);
+    // 論理サイズ（レイアウト px）。clientWidth/clientHeight は zoom の
+    // 中の px を返すので、そのまま使える。
+    var cw = area.clientWidth || 375;
+    var ch = Math.max(200, area.clientHeight - infoH);
+    // 実画素は表示サイズの倍率ぶん増やす。増やさないと 150% では
+    // 1画素を1.5画素に伸ばすことになり、線と文字がにじむ。
+    var pr = _dftZ();
+    canvas._calmPx     = pr;
+    canvas.width       = Math.round(cw * pr);
+    canvas.height      = Math.round(ch * pr);
+    canvas.style.width  = cw + 'px';   // 実画素と食い違うので寸法は CSS で決める
+    canvas.style.height = ch + 'px';
     if (!_dft._zoomSet) {
       // default: 60 ft fit vertically
-      _dft.zoom = (canvas.height / 60 / 0.3048) * _dft.scale;
+      _dft.zoom = (ch / 60 / 0.3048) * _dft.scale;
       _dft._zoomSet = true;
     }
-    _dft.ox = canvas.width  / 2;
-    _dft.oy = canvas.height / 2;
+    _dft.ox = cw / 2;
+    _dft.oy = ch / 2;
     dftRender();
   }
   setTimeout(dftResize, 60);
@@ -24889,7 +24899,12 @@ function _dftRectDims(o) {
 function dftRender() {
   var c = _dft.canvas, ctx = _dft.ctx;
   if (!c || !ctx) return;
-  var W = c.width, H = c.height;
+  // 実画素が論理サイズより大きいときは、まとめて変換行列で拡大する。
+  // 以降の描画は今までどおり論理 px で書ける。canvas.width を代入すると
+  // 行列は初期化されるので、毎回ここで掛け直す。
+  var _pr = _dftPxR(c);
+  ctx.setTransform(_pr, 0, 0, _pr, 0, 0);
+  var W = c.width / _pr, H = c.height / _pr;
   ctx.clearRect(0, 0, W, H);
   // 書き出し時は白地にする（印刷・共有向け。画面はグレーのまま）
   ctx.fillStyle = _dft._exporting ? '#ffffff' : '#dde0e6';
@@ -25394,7 +25409,7 @@ function _dftDrawObj(ctx, o) {
     var bl = Math.min(120, (o.beamLen || 4) / _dft.scale * _dft.zoom);
     _dftWithVis(ctx, 'beam', function(){
       ctx.save();
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      _dftBaseXf(ctx);
       ctx.fillStyle   = 'rgba(255,210,0,0.13)';
       ctx.strokeStyle = 'rgba(220,150,0,0.35)';
       ctx.lineWidth   = 1;
@@ -25407,7 +25422,7 @@ function _dftDrawObj(ctx, o) {
         ctx.translate(_ts2.x, _ts2.y);
         ctx.rotate(_at.tgt.rot || 0);
         ctx.rect(-_rd2.w/2*pxPerM, -_rd2.h/2*pxPerM, _rd2.w*pxPerM, _rd2.h*pxPerM);
-        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        _dftBaseXf(ctx);
         ctx.clip();
         ctx.beginPath();
         // 狙う面があるなら、そこに当たる範囲まで伸ばす。ライトと範囲の外周を
@@ -25991,7 +26006,7 @@ function _dftDrawBeamPools(ctx) {
     ctx.rotate(at.tgt.rot || 0);
     ctx.beginPath();
     ctx.rect(-rd.w/2*k, -rd.h/2*k, rd.w*k, rd.h*k);
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    _dftBaseXf(ctx);
     ctx.clip();
 
     ctx.translate(c.x, c.y);
@@ -27124,7 +27139,7 @@ function _dftSyncZoomSlider() {
   sl.value = Math.max(0, Math.min(100, val));
 }
 function dftZoomBtn(factor) {
-  var cx = _dft.canvas.width/2, cy = _dft.canvas.height/2;
+  var cx = _dftCW()/2, cy = _dftCH()/2;
   var wc = _dftS2W(cx, cy);
   _dft.zoom = Math.max(0.2, Math.min(20, _dft.zoom * factor));
   var ns = _dftW2S(wc.x, wc.y);
@@ -27133,7 +27148,7 @@ function dftZoomBtn(factor) {
 }
 function dftZoomFromSlider(val) {
   var newZoom = 0.2 * Math.pow(50, val / 100);
-  var cx = _dft.canvas.width/2, cy = _dft.canvas.height/2;
+  var cx = _dftCW()/2, cy = _dftCH()/2;
   var wc = _dftS2W(cx, cy);
   _dft.zoom = Math.max(0.2, Math.min(20, newZoom));
   var ns = _dftW2S(wc.x, wc.y);
@@ -27145,6 +27160,18 @@ function dftZoomFromSlider(val) {
 // 返る。canvas の中身は zoom の中の px なので、倍率で割り戻さないと
 // 置いた物が指の位置からずれる。1倍のときは割っても変わらない。
 function _dftZ() { return (typeof uiZoomNow === 'function') ? uiZoomNow() : 1; }
+
+/* キャンバスの論理サイズ（レイアウト px）。表示サイズを上げたときは
+   実画素を倍率ぶん増やして線がにじまないようにしているので、実画素と
+   レイアウト px が食い違う。描画も座標計算もこの論理サイズで通す。
+   _calmPx は画面用キャンバスにだけ付ける倍率。書き出し用のオフスクリーン
+   には付けないので 1 になり、書き出し側の計算は今までどおり。 */
+function _dftPxR(c) { return (c && c._calmPx) || 1; }
+function _dftCW() { return _dft.canvas ? _dft.canvas.width  / _dftPxR(_dft.canvas) : 0; }
+function _dftCH() { return _dft.canvas ? _dft.canvas.height / _dftPxR(_dft.canvas) : 0; }
+/* 積んだ translate/rotate を捨てて画面座標に戻す。実画素ぶんの拡大は
+   残す（ここで単位行列に戻すと、その後の描画だけ倍率が抜ける）。 */
+function _dftBaseXf(ctx) { var pr = _dftPxR(_dft.canvas); ctx.setTransform(pr, 0, 0, pr, 0, 0); }
 
 // ── MOUSE ──────────────────────────────────────────────────
 function _dftMD(e) {
@@ -28932,7 +28959,7 @@ function dftBounceSettings(oid) {
   // 設定シートは画面下半分を覆うため、対象が下側にあると透明度などの変更が見えない。
   // 隠れる位置にある場合だけ、対象を上部（見える範囲）へパンしてライブプレビューを確保する。
   if (_dft.canvas) {
-    var _ch = _dft.canvas.height, _cw = _dft.canvas.width;
+    var _ch = _dftCH(), _cw = _dftCW();
     var _osy = o.wy / _dft.scale * _dft.zoom + _dft.oy;   // 現在の対象スクリーンY
     if (_osy > _ch * 0.40) {
       _dft.oy = _ch * 0.22 - o.wy / _dft.scale * _dft.zoom;
@@ -30751,7 +30778,7 @@ function _dftLoadPhotoFile(file) {
       var src=oc.toDataURL('image/jpeg',0.78);
       var wm=3.0, hm=3.0*(img.height/img.width);
       _dftPushHistory();
-      var c=_dftS2W(_dft.canvas.width/2, _dft.canvas.height/2);
+      var c=_dftS2W(_dftCW()/2, _dftCH()/2);
       var no=_dftAddObj('image', c.x, c.y, {
         imgSrc:src, wm:wm, hm:hm,
         label: file.name.replace(/\.[^.]+$/,'').slice(0,24)
@@ -30807,8 +30834,8 @@ function _dftRenderPDF(file) {
           _dft.pdfWm = 20;
           _dft.pdfHm = vp.height / vp.width * 20;
           _dft.scale  = _dft.pdfWm / (vp.width / 2);  // world meters per pixel
-          _dft.ox = _dft.canvas.width  / 2;
-          _dft.oy = _dft.canvas.height / 2;
+          _dft.ox = _dftCW() / 2;
+          _dft.oy = _dftCH() / 2;
           dftRender();
           _dftSetStatus('PDF loaded · Use 📐 Scale to calibrate real dimensions');
         });
@@ -31802,7 +31829,7 @@ function dftNew() {
   _dft.nextId=1; _dft.pdfImg=null; _dft.selected=null;
   _dft.layers=[{id:1,name:'L1',visible:true}]; _dft.activeLayer=1;
   _dft.zoom=1; _dft.hiddenLines={};
-  if (_dft.canvas) { _dft.ox=_dft.canvas.width/2; _dft.oy=_dft.canvas.height/2; }
+  if (_dft.canvas) { _dft.ox=_dftCW()/2; _dft.oy=_dftCH()/2; }
   _dftRenderLayerBar(); _dftUpdateHiddenLinesBtn();
   dftRender(); _dftUpdateInfoBar();
 }
@@ -32350,8 +32377,8 @@ window._dftLySheetJump = function(oid) {
   if (!o.hidden) {
     _dft.selected = oid;
     if (_dft.canvas) {
-      _dft.ox = _dft.canvas.width  / 2 - o.wx / _dft.scale * _dft.zoom;
-      _dft.oy = _dft.canvas.height / 2 - o.wy / _dft.scale * _dft.zoom;
+      _dft.ox = _dftCW() / 2 - o.wx / _dft.scale * _dft.zoom;
+      _dft.oy = _dftCH() / 2 - o.wy / _dft.scale * _dft.zoom;
     }
   }
   window._dftLySheetClose();
@@ -32398,7 +32425,7 @@ function dftPanStop() {
 }
 function dftResetView() {
   _dft.zoom = 1;
-  if (_dft.canvas) { _dft.ox = _dft.canvas.width / 2; _dft.oy = _dft.canvas.height / 2; }
+  if (_dft.canvas) { _dft.ox = _dftCW() / 2; _dft.oy = _dftCH() / 2; }
   dftRender(); _dftUpdateInfoBar();
 }
 // ===== END DRAFT ENGINE =====
