@@ -2129,7 +2129,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
 
 
 <!-- Units Fixed -->
-<div id="units-fixed-wrap" style="position:fixed;bottom:calc(126px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:200;display:none;">
+<div id="units-fixed-wrap" style="position:fixed;bottom:calc(var(--nav-h, 49px) + var(--result-h, 77px));left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:200;display:none;">
   <div style="padding:4px 12px;background:var(--white);box-shadow:0 -1px 8px rgba(0,0,0,0.08);">
     <div class="sl-field">
       <div class="sl-top">
@@ -2147,7 +2147,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
 </div>
 
 <!-- Sticky Result -->
-<div id="sticky-result" style="position:fixed;bottom:calc(49px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:250;display:none;">
+<div id="sticky-result" style="position:fixed;bottom:var(--nav-h, 49px);left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:250;display:none;">
   <div style="padding:5px 12px 6px;background:rgba(10,12,22,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
     <!-- RESULT ラベル行 -->
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
@@ -2160,7 +2160,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
 </div>
 
 <!-- MIX 用 固定RESULTバー（スクロールしても常に表示） -->
-<div id="mix-sticky-result" style="position:fixed;bottom:calc(49px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:250;display:none;">
+<div id="mix-sticky-result" style="position:fixed;bottom:var(--nav-h, 49px);left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:250;display:none;">
   <div style="padding:5px 12px 6px;background:rgba(10,12,22,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
       <div style="font-size:10.5px;font-weight:900;color:var(--accent,#f96);letter-spacing:.18em;text-transform:uppercase;line-height:1;">RESULT</div>
@@ -2248,7 +2248,7 @@ var LANGS = {
     help4B:'iPhone では候補が2件しか出ず、ほとんど選べませんでした。一覧から134件すべて選べます。検索もできます。LEE の印は「透過値」から「transmission」に変えました。保存済みの図面はそのまま開けます。',
     help5T:'🔎 表示サイズを変えられます',
     help5W:'設定 → 表示サイズ',
-    help5B:'iPad や Mac の広い画面では、画面の柱を自動で広げるようにしました。それでも小さいときは、設定の表示サイズを 115%・130%・150% にすると文字ごと大きくなります。端末ごとに覚えます。',
+    help5B:'iPad や Mac の広い画面では、画面の柱を自動で広げるようにしました。それでも小さいときは、設定の表示サイズを 125% から 300% まで上げると文字ごと大きくなります。端末ごとに覚えます。',
     help6T:'🎞 ディフュージョンのフィルター',
     help6W:'Factor の名前欄の横「📋 一覧」（Calc・Mix・図面のどこでも）',
     help6B:'「📋 一覧」を押すと全134件が出て、検索して選べます。よく使う品番はチップでも並んでいます。LEE 34品番と Rosco 48件が入っています。LEE は透過率から出した値、Rosco は Filter Facts の公表値で、数字の性質が違います。混ざらないよう LEE は名前に「（透過値）」が付きます。',
@@ -2399,7 +2399,7 @@ var LANGS = {
     help4B:'On iPhone only two suggestions appeared, so you could hardly pick anything. The list gives you all 134, with a search box. The mark on LEE products changed from Japanese to transmission. Saved plans still open as before.',
     help5T:'🔎 You can change the display size',
     help5W:'Settings, then Display size',
-    help5B:'On the wide screens of iPad and Mac the layout now widens by itself. If it is still small, set Display size to 115, 130 or 150 per cent in Settings and everything grows, text included. It is remembered per device.',
+    help5B:'On the wide screens of iPad and Mac the layout now widens by itself. If it is still small, raise Display size in Settings, from 125 up to 300 per cent, and everything grows, text included. It is remembered per device.',
     help6T:'🎞 Named diffusion',
     help6W:'The “📋 List” button beside the Factor name field (Calc, Mix or the plan)',
     help6B:'“📋 List” opens all 134 entries with a search box; the ones you reach for most are also on the chips. 34 LEE products and 48 Rosco entries. LEE publishes transmission; Rosco publishes the stop loss in Filter Facts. They are not the same kind of number, so LEE entries carry a suffix to keep them apart.',
@@ -2505,7 +2505,7 @@ var LANGS = {
     help4B:'En iPhone solo aparecían dos sugerencias, así que casi no se podía elegir. La lista da las 134, con buscador. La marca de los productos LEE pasó del japonés a transmission. Los planos guardados se abren igual que antes.',
     help5T:'🔎 Puedes cambiar el tamaño de pantalla',
     help5W:'Ajustes, luego Tamaño de pantalla',
-    help5B:'En las pantallas anchas de iPad y Mac el diseño ya se ensancha solo. Si aún se ve pequeño, pon el tamaño en 115, 130 o 150 por ciento y todo crece, el texto incluido. Se recuerda en cada dispositivo.',
+    help5B:'En las pantallas anchas de iPad y Mac el diseño ya se ensancha solo. Si aún se ve pequeño, sube el tamaño de pantalla, de 125 a 300 por ciento, y todo crece, el texto incluido. Se recuerda en cada dispositivo.',
     help6T:'🎞 Filtros de difusión',
     help6W:'El botón “📋 Lista” junto al campo de nombre del Factor (Calc, Mix o el plano)',
     help6B:'“📋 Lista” abre las 134 entradas con buscador; las más habituales están también en los chips. 34 referencias LEE y 48 entradas Rosco. LEE publica transmitancia; Rosco publica la pérdida en pasos de Filter Facts: no son el mismo tipo de dato, por eso las entradas LEE llevan un sufijo.',
@@ -2957,7 +2957,7 @@ var LANGS = {
     help4B:'在 iPhone 上候选只出现两条，几乎没法选。现在可以从列表里选全部 134 条，还能搜索。LEE 产品的标记从日文改成了 transmission。已保存的图纸照旧能打开。',
     help5T:'🔎 可以改显示大小',
     help5W:'设置 → 显示大小',
-    help5B:'在 iPad 和 Mac 的宽屏上，版面现在会自动加宽。如果还是觉得小，把显示大小设成 115%、130% 或 150%，整个画面连文字一起变大。每台设备各自记住。',
+    help5B:'在 iPad 和 Mac 的宽屏上，版面现在会自动加宽。如果还是觉得小，把显示大小调到 125% 至 300%，整个画面连文字一起变大。每台设备各自记住。',
     help6T:'🎞 Diffusion',
     help6W:'Factor 名称栏旁边的「📋 全部」按钮（Calc、Mix 或图纸均可）',
     help6B:'点「📋 全部」会列出全部 134 条并可搜索，常用型号也排在标签里。收录 LEE 34 个型号和 Rosco 48 条。LEE 是由透过率换算的值，Rosco 是 Filter Facts 的公布值，两者数字的性质不同。为避免混用，LEE 的名称带有「（透过值）」后缀。',
@@ -3603,7 +3603,7 @@ var LANGS = {
     help4B:'Sur iPhone, seules deux suggestions apparaissaient, donc on ne pouvait presque rien choisir. La liste en donne les 134, avec un champ de recherche. La marque des références LEE est passée du japonais à transmission. Les plans enregistrés s\'ouvrent comme avant.',
     help5T:'🔎 Vous pouvez changer la taille d\'affichage',
     help5W:'Réglages, puis Taille d\'affichage',
-    help5B:'Sur les grands écrans d\'iPad et de Mac, la mise en page s\'élargit maintenant d\'elle-même. Si c\'est encore petit, mettez la taille à 115, 130 ou 150 pour cent et tout grandit, le texte compris. C\'est retenu par appareil.',
+    help5B:'Sur les grands écrans d\'iPad et de Mac, la mise en page s\'élargit maintenant d\'elle-même. Si c\'est encore petit, augmentez la taille d\'affichage, de 125 à 300 pour cent, et tout grandit, le texte compris. C\'est retenu par appareil.',
     help6T:'🎞 Gélatines de diffusion',
     help6W:'Le bouton « 📋 Liste » à côté du champ de nom du Factor (Calc, Mix ou le plan)',
     help6B:'« 📋 Liste » ouvre les 134 références avec un champ de recherche ; les plus courantes sont aussi sur les pastilles. 34 références LEE et 48 entrées Rosco. LEE publie la transmission ; Rosco publie la perte en stops dans Filter Facts. Ce ne sont pas des chiffres de même nature : les entrées LEE portent donc un suffixe pour ne pas les confondre.',
@@ -4249,7 +4249,7 @@ var LANGS = {
     help4B:'Auf dem iPhone kamen nur zwei Vorschläge, man konnte also kaum etwas auswählen. Die Liste gibt alle 134, mit Suchfeld. Die Kennzeichnung der LEE-Produkte ist von Japanisch auf transmission umgestellt. Gespeicherte Pläne öffnen sich wie bisher.',
     help5T:'🔎 Die Anzeigegröße ist einstellbar',
     help5W:'Einstellungen, dann Anzeigegröße',
-    help5B:'Auf den breiten Bildschirmen von iPad und Mac wird das Layout jetzt von selbst breiter. Ist es noch zu klein, stelle die Anzeigegröße auf 115, 130 oder 150 Prozent; dann wird alles größer, der Text eingeschlossen. Pro Gerät gespeichert.',
+    help5B:'Auf den breiten Bildschirmen von iPad und Mac wird das Layout jetzt von selbst breiter. Ist es noch zu klein, stelle die Anzeigegröße von 125 bis 300 Prozent höher; dann wird alles größer, der Text eingeschlossen. Pro Gerät gespeichert.',
     help6T:'🎞 Diffusion nach Produktnummer',
     help6W:'Die Taste „📋 Liste“ neben dem Factor-Namensfeld (Calc, Mix oder im Plan)',
     help6B:'„📋 Liste“ öffnet alle 134 Einträge samt Suchfeld; die gängigsten stehen zusätzlich auf den Chips. Enthalten sind 34 LEE-Produkte und 48 Rosco-Einträge. LEE veröffentlicht die Transmission, Rosco den stop-Verlust aus den Filter Facts — das sind unterschiedliche Arten von Zahlen, deshalb tragen die LEE-Einträge einen Zusatz im Namen.',
@@ -4895,7 +4895,7 @@ var LANGS = {
     help4B:'No iPhone apareciam apenas duas sugestões, então quase não dava para escolher. A lista traz todas as 134, com busca. A marca dos produtos LEE passou do japonês para transmission. As plantas salvas abrem como antes.',
     help5T:'🔎 Você pode mudar o tamanho de exibição',
     help5W:'Ajustes, depois Tamanho de exibição',
-    help5B:'Nas telas largas do iPad e do Mac o layout agora se alarga sozinho. Se ainda estiver pequeno, coloque o tamanho em 115, 130 ou 150 por cento e tudo cresce, incluindo o texto. Fica guardado em cada aparelho.',
+    help5B:'Nas telas largas do iPad e do Mac o layout agora se alarga sozinho. Se ainda estiver pequeno, aumente o tamanho de exibição, de 125 a 300 por cento, e tudo cresce, incluindo o texto. Fica guardado em cada aparelho.',
     help6T:'🎞 Difusores por código',
     help6W:'O botão “📋 Lista” ao lado do campo de nome do Factor (Calc, Mix ou na planta)',
     help6B:'“📋 Lista” abre as 134 entradas com campo de busca; as mais usadas também aparecem nos chips. São 34 produtos LEE e 48 entradas Rosco. A LEE publica a transmitância; a Rosco publica a perda em stops no Filter Facts. Não são o mesmo tipo de número, por isso as entradas LEE levam um sufixo no nome.',
@@ -5541,7 +5541,7 @@ var LANGS = {
     help4B:'iPhonessa näkyi vain kaksi ehdotusta, joten valita ei juuri voinut. Lista antaa kaikki 134 ja siinä on haku. LEE-tuotteiden merkintä muuttui japanista muotoon transmission. Tallennetut pohjat avautuvat kuten ennenkin.',
     help5T:'🔎 Näytön kokoa voi muuttaa',
     help5W:'Asetukset, sitten Näytön koko',
-    help5B:'iPadin ja Macin leveillä näytöillä asettelu levenee nyt itsestään. Jos se on vielä pieni, aseta koko 115, 130 tai 150 prosenttiin, niin kaikki suurenee, myös teksti. Muistetaan laitekohtaisesti.',
+    help5B:'iPadin ja Macin leveillä näytöillä asettelu levenee nyt itsestään. Jos se on vielä pieni, nosta näytön kokoa, 125:stä 300 prosenttiin, niin kaikki suurenee, myös teksti. Muistetaan laitekohtaisesti.',
     help6T:'🎞 Diffusion-kalvot tuotenumeroin',
     help6W:'„📋 Lista“ -painike Factorin nimikentän vieressä (Calc, Mix tai pohjakuva)',
     help6B:'„📋 Lista“ avaa kaikki 134 tuotetta hakukentän kanssa; yleisimmät ovat myös painikkeina. Mukana on 34 LEE-tuotetta ja 48 Rosco-riviä. LEE julkaisee läpäisyn, Rosco Filter Facts -taulukon stop-häviön. Nämä eivät ole samanlaisia lukuja, siksi LEE-riveissä on nimessä lisämerkintä.',
@@ -6187,7 +6187,7 @@ var LANGS = {
     help4B:'iPhone에서는 후보가 두 개만 나와 거의 고를 수 없었습니다. 목록에서 134개를 모두 고를 수 있고 검색도 됩니다. LEE 제품의 표기는 일본어에서 transmission으로 바꿨습니다. 저장한 도면은 그대로 열립니다.',
     help5T:'🔎 표시 크기를 바꿀 수 있습니다',
     help5W:'설정 → 표시 크기',
-    help5B:'iPad와 Mac의 넓은 화면에서는 배치가 저절로 넓어지도록 했습니다. 그래도 작으면 표시 크기를 115%, 130%, 150%로 하면 글자까지 함께 커집니다. 기기별로 기억합니다.',
+    help5B:'iPad와 Mac의 넓은 화면에서는 배치가 저절로 넓어지도록 했습니다. 그래도 작으면 표시 크기를 125%에서 300%까지 올리면 글자까지 함께 커집니다. 기기별로 기억합니다.',
     help6T:'🎞 품번으로 고르는 Diffusion',
     help6W:'Factor 이름 칸 옆의 「📋 목록」 (Calc·Mix·도면 어디서든)',
     help6B:'「📋 목록」을 누르면 134건 전체가 검색과 함께 나옵니다. 자주 쓰는 품번은 칩으로도 놓여 있습니다. LEE 34품번과 Rosco 48건이 들어 있습니다. LEE는 투과율에서 나온 값, Rosco는 Filter Facts의 stop 손실 공표값으로 수치의 성질이 다릅니다. 섞이지 않도록 LEE는 이름에 표시가 붙습니다.',
@@ -6833,7 +6833,7 @@ var LANGS = {
     help4B:'บน iPhone ขึ้นตัวเลือกแค่สองรายการ จึงแทบเลือกไม่ได้ ในรายการมีทั้ง 134 รายการและค้นหาได้ เครื่องหมายของสินค้า LEE เปลี่ยนจากภาษาญี่ปุ่นเป็น transmission ผังที่บันทึกไว้ยังเปิดได้เหมือนเดิม',
     help5T:'🔎 เปลี่ยนขนาดการแสดงผลได้',
     help5W:'ตั้งค่า → ขนาดการแสดงผล',
-    help5B:'บนหน้าจอกว้างของ iPad และ Mac ผังจะกว้างขึ้นเองแล้ว ถ้ายังเล็ก ตั้งขนาดการแสดงผลเป็น 115% 130% หรือ 150% ทุกอย่างจะใหญ่ขึ้นรวมทั้งตัวอักษร จำแยกตามเครื่อง',
+    help5B:'บนหน้าจอกว้างของ iPad และ Mac ผังจะกว้างขึ้นเองแล้ว ถ้ายังเล็ก ตั้งขนาดการแสดงผลเป็น 125% ถึง 300% ทุกอย่างจะใหญ่ขึ้นรวมทั้งตัวอักษร จำแยกตามเครื่อง',
     help6T:'🎞 แผ่น Diffusion ตามรหัสรุ่น',
     help6W:'ปุ่ม “📋 รายการ” ข้างช่องชื่อของ Factor (ใช้ได้ทั้งใน Calc, Mix และผังไฟ)',
     help6B:'กด “📋 รายการ” จะแสดงทั้ง 134 รายการพร้อมช่องค้นหา รุ่นที่ใช้บ่อยก็มีอยู่ในป้ายกำกับด้วย ในนี้มี LEE 34 รหัสและ Rosco 48 รายการ LEE เผยแพร่ค่าการส่องผ่าน ส่วน Rosco เผยแพร่ค่าการสูญเสียเป็น stop ใน Filter Facts ตัวเลขทั้งสองมีลักษณะต่างกัน จึงเติมคำต่อท้ายชื่อของ LEE ไว้เพื่อไม่ให้สับสน',
@@ -7479,7 +7479,7 @@ var LANGS = {
     help4B:'No iPhone apareciam apenas duas sugestões, pelo que quase não era possível escolher. A lista traz todas as 134, com pesquisa. A marca dos produtos LEE passou do japonês para transmission. As plantas guardadas abrem como antes.',
     help5T:'🔎 Pode mudar o tamanho de exibição',
     help5W:'Definições, depois Tamanho de exibição',
-    help5B:'Nos ecrãs largos do iPad e do Mac a disposição alarga agora sozinha. Se ainda estiver pequeno, ponha o tamanho em 115, 130 ou 150 por cento e tudo cresce, incluindo o texto. Fica guardado em cada aparelho.',
+    help5B:'Nos ecrãs largos do iPad e do Mac a disposição alarga agora sozinha. Se ainda estiver pequeno, aumente o tamanho de exibição, de 125 a 300 por cento, e tudo cresce, incluindo o texto. Fica guardado em cada aparelho.',
     help6T:'🎞 Difusores por código',
     help6W:'O botão “📋 Lista” ao lado do campo de nome do Factor (Calc, Mix ou na planta)',
     help6B:'“📋 Lista” abre as 134 entradas com campo de busca; as mais usadas também aparecem nos chips. São 34 produtos LEE e 48 entradas Rosco. A LEE publica a transmitância; a Rosco publica a perda em stops no Filter Facts. Não são o mesmo tipo de número, por isso as entradas LEE levam um sufixo no nome.',
@@ -8125,7 +8125,7 @@ var LANGS = {
     help4B:'在 iPhone 上候選只出現兩條，幾乎沒法選。現在可以從清單裡選全部 134 條，還能搜尋。LEE 產品的標記從日文改成了 transmission。已儲存的圖面照舊能開啟。',
     help5T:'🔎 可以改顯示大小',
     help5W:'設定 → 顯示大小',
-    help5B:'在 iPad 和 Mac 的寬螢幕上，版面現在會自動加寬。如果還是覺得小，把顯示大小設成 115%、130% 或 150%，整個畫面連文字一起變大。每台裝置各自記住。',
+    help5B:'在 iPad 和 Mac 的寬螢幕上，版面現在會自動加寬。如果還是覺得小，把顯示大小調到 125% 至 300%，整個畫面連文字一起變大。每台裝置各自記住。',
     help6T:'🎞 Diffusion',
     help6W:'Factor 名稱欄旁邊的「📋 全部」按鈕（Calc、Mix 或圖面均可）',
     help6B:'點「📋 全部」會列出全部 134 條並可搜索，常用型號也排在標籤裡。收錄 LEE 34 個型號和 Rosco 48 條。LEE 是由透過率換算的值，Rosco 是 Filter Facts 的公布值，兩者數字的性質不同。為避免混用，LEE 的名稱帶有「（透過值）」後綴。',
@@ -19167,9 +19167,15 @@ function calculate() {
     var _uw2 = el('units-fixed-wrap');
     if (_uw2 && (S.page || 'calc') === 'calc') {
       _uw2.style.display = 'block';
-      var uwH = _uw2.offsetHeight || 100;
-      var srH = stickyEl.offsetHeight || 34;
-      var pb = 49 + srH + uwH + 16;
+      /* 積んだバーの実高を測り直してから、その下に隠れないぶんの余白を足す。
+         表示サイズを上げると倍率ぶん寸法が変わるので、決め打ちにはできない。 */
+      try { syncBottomBars(); } catch(e) {}
+      var _z2 = (typeof uiZoomNow === 'function') ? uiZoomNow() : 1;
+      var uwH = Math.ceil((_uw2.getBoundingClientRect().height || 100) / _z2);
+      var srH = Math.ceil((stickyEl.getBoundingClientRect().height || 34) / _z2);
+      var navH = Math.ceil((function(){ var n = document.querySelector('.page-nav');
+        return (n && n.getBoundingClientRect().height) || 49; })() / _z2);
+      var pb = navH + srH + uwH + 16;
       var pc2 = document.getElementById('page-calc');
       if (pc2) pc2.style.paddingBottom = pb + 'px';
     }
@@ -20491,6 +20497,32 @@ function applyAppWidth() {
 }
 window.addEventListener('resize', applyAppWidth);
 
+/* 画面の下に積むもの（下から タブバー → RESULT → 台数）の位置。
+   タブバーの高さは端末の safe-area とボタンの文字で変わるのに 49px と
+   決め打ちしていたので、実際の高さとの差が表示サイズの倍率ぶん開き、
+   バーとバーのあいだから下の中身が覗いていた。実測して配る。
+   getBoundingClientRect は見た目の px なので、倍率で割ってレイアウト上の
+   px に直す（ヘッダーの高さと同じ考え方）。 */
+function syncBottomBars() {
+  var d = document.documentElement;
+  var z = _uiZoomCur || 1;
+  function h(el) {
+    if (!el) return 0;
+    var r = el.getBoundingClientRect();
+    return r.height ? Math.ceil(r.height / z) : 0;
+  }
+  var nav = document.querySelector('.page-nav');
+  var nh  = h(nav);
+  d.style.setProperty('--nav-h', (nh || 49) + 'px');
+  var sr = document.getElementById('sticky-result');
+  var ms = document.getElementById('mix-sticky-result');
+  var rh = 0;
+  if (sr && sr.style.display !== 'none') rh = h(sr);
+  if (!rh && ms && ms.style.display !== 'none') rh = h(ms);
+  d.style.setProperty('--result-h', rh + 'px');
+}
+window.addEventListener('resize', syncBottomBars);
+
 /* 画面ごとの上限。倍率を上げるほど、レイアウト上の画面幅は狭くなる。
    360px を下回ると、この画面は元々そういう幅で組んでいないので崩れる
    （お気に入りのパネルが right:-100% でも隠れきらず、はみ出す）。
@@ -20514,6 +20546,7 @@ function uiZoomApply(z) {
   d.style.setProperty('--ui-zoom', z);
   d.style.zoom = (z === 1) ? '' : z;
   applyAppWidth();
+  try { syncBottomBars(); } catch(e) {}
 }
 // 回転や分割表示で幅が変わったら、保存した設定のまま上限だけ掛け直す
 window.addEventListener('resize', function(){ uiZoomApply(uiZoomGet()); });
@@ -20921,6 +20954,7 @@ function showPage(p) {
   // MIX 固定RESULTバーは Mix タブ以外は非表示
   var _msr = el('mix-sticky-result');
   if (_msr && p !== 'mix') _msr.style.display = 'none';
+  try { syncBottomBars(); } catch(e) {}
   try { if (p === 'calc')   { renderModels(); calculate(); updateLightSelectorHdr(); } }   catch(e) {}
   try { if (p === 'alt')    { syncAltFromCalc(); } }              catch(e) {}
   if (p === 'finder') { try { syncFinderFromCalc(); } catch(e) {} try { initFinderDistSlider(); } catch(e) {} try { renderFinderResults(); } catch(e) {} }
@@ -23852,8 +23886,13 @@ function calcMix() {
   var _msWrap = el('mix-sticky-result');
   if (_msWrap && (S.page === 'mix')) {
     _msWrap.style.display = 'block';
+    try { syncBottomBars(); } catch(e) {}
+    var _zm = (typeof uiZoomNow === 'function') ? uiZoomNow() : 1;
+    var _nhm = Math.ceil((function(){ var n = document.querySelector('.page-nav');
+      return (n && n.getBoundingClientRect().height) || 49; })() / _zm);
+    var _mhm = Math.ceil((_msWrap.getBoundingClientRect().height || 60) / _zm);
     var _pm = document.getElementById('page-mix');
-    if (_pm) _pm.style.paddingBottom = (49 + (_msWrap.offsetHeight || 60) + 20) + 'px';
+    if (_pm) _pm.style.paddingBottom = (_nhm + _mhm + 20) + 'px';
   }
 
   // ─ stopバー生成 ─
