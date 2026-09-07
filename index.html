@@ -8462,17 +8462,17 @@ var DESC_I18N = {
     'グリーン': 'Green', 'グレー': 'Grey', 'ブラック': 'Black', 'ブルー': 'Blue', 'ホワイト': 'White',
     'セットペーパー 2.7m': 'Set paper 2.7m', 'セットペーパー 3.6m': 'Set paper 3.6m',
     'ペーパー灰': 'Paper, grey', 'ペーパー白': 'Paper, white',
-    '16×500Wまたは16×1kW': '16×500W or 16×1kW',
-    '24×500Wまたは24×1kW': '24×500W or 24×1kW',
-    '6×500Wまたは6×1kW': '6×500W or 6×1kW',
-    '9×300Wまたは9×500W': '9×300W or 9×500W',
-    '9×500Wまたは9×1kW': '9×500W or 9×1kW',
+    '16×500W or 16×1kW': '16×500W or 16×1kW',
+    '24×500W or 24×1kW': '24×500W or 24×1kW',
+    '6×500W or 6×1kW': '6×500W or 6×1kW',
+    '9×300W or 9×500W': '9×300W or 9×500W',
+    '9×500W or 9×1kW': '9×500W or 9×1kW',
     '電源ボックス 19 kg': 'Ballast 19 kg',
     '電源ボックス 20.5 kg': 'Ballast 20.5 kg',
     '電源ボックス 5.92 kg': 'Ballast 5.92 kg',
     '電源ボックス 6.12 kg': 'Ballast 6.12 kg',
     'USHIO / サーチライト': 'USHIO / Searchlight',
-    'DMX / リモート（パン 285°・チルト +27.5°/−57°）': 'DMX / remote (pan 285°, tilt +27.5°/−57°)'
+    'DMX / Remote (pan 285°, tilt +27.5°/−57°)': 'DMX / remote (pan 285°, tilt +27.5°/−57°)'
   }
 };
 var ACC_LABEL_I18N = {
@@ -8834,14 +8834,14 @@ var LIGHTS = {
       url:'https://www.aputure.com/products/storm-1200x/',
       group:'LED COB', name:'Storm 1200X', desc:'1200W IP65 Bi-Color LED Spot', emoji:'💡', watts:1550, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       // 重量は公称の「灯体（ヨーク付き）9.50kg」。電源ボックスは別体
-      weight:'9.5 kg', weightExtra:'電源ボックス 5.92 kg', size:'335×338×557 mm',
+      weight:'9.5 kg', weightExtra:'Power box 5.92 kg', size:'335×338×557 mm',
       ccts:[2500, 3200, 4300, 5600, 6500, 7500, 10000],
       // 15°/30° リフレクターは公式ページに配光表が無く、入っていた値も 1000c と同じもの
       // だったため外した。資料が手に入れば戻す
       accessories:['bare', 'bm45', 'cf12_15', 'cf12_45', 'spot50', 'spot36', 'spot19'],
       // 素の COB のビーム角はメーカー公称 67°。CF12 フレネルは 15°〜45° の可変
       accAngles:{bare:67},
-      dmx:{led:'BLAIR',power:'1550W (出力 1200W)',cct:'2500K–10000K',cri:'≥95',tlci:'≥95',cqs:'≥94',ssi:'87',tm30:'Rf 95 / Rg 100',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
+      dmx:{led:'BLAIR',power:'1550W (output 1200W)',cct:'2500K–10000K',cri:'≥95',tlci:'≥95',cqs:'≥94',ssi:'87',tm30:'Rf 95 / Rg 100',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
       dmxUrl:'https://help.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%201200x/documents/STORM%201200x%20DMX%20Profile%20Specification%20V1.5.pdf?hsLang=en',
       dmxVer:'v1.5',
       // 出所: Aputure 公式の製品ページ（STORM 1200x Cine Kit）の配光表（3m / 5m）。
@@ -9197,13 +9197,13 @@ var LIGHTS = {
       group:'LED COB', name:'ElectroStorm XT26', desc:'2600W IP65 Bi-Color LED Point Source', emoji:'💡', watts:3500, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       // 重量は灯体＋ヨーク（18 + 3.2）。以前 15.2kg が入っていたが公称と合わない。
       // 電源ボックスは別体なので weightExtra に分ける
-      weight:'21.2 kg', weightExtra:'電源ボックス 20.5 kg', size:'457×352×281 mm',
+      weight:'21.2 kg', weightExtra:'Power box 20.5 kg', size:'457×352×281 mm',
       ccts:[2700,3200,4300,5600,6500],
       accessories:['flood','refl50','refl35','refl20','fresnel18','fresnel50','spot50','spot36','spot19'],
       // リフレクター無しの公称ビーム角は 62°。ACC_INFO の flood は汎用の 55° なので上書きする
       accAngles:{flood:62},
       accLabels:{flood:'No Reflector'},
-      dmx:{led:'BLAIR',power:'3500W (出力 2600W)',cct:'2700K–6500K',cri:'97',tlci:'98',tm30:'Rf 93 / Rg 101',cqs:'96',ssi:'Tungsten 84 / D56 73',ip:'IP65',control:'Bluetooth / CRMX / Ethernet'},
+      dmx:{led:'BLAIR',power:'3500W (output 2600W)',cct:'2700K–6500K',cri:'97',tlci:'98',tm30:'Rf 93 / Rg 101',cqs:'96',ssi:'Tungsten 84 / D56 73',ip:'IP65',control:'Bluetooth / CRMX / Ethernet'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/Electro%20Storm%20XT26/Electro%20Storm%20XT26%20DMX%20Profile%20Specification%20V1.1.pdf',
       dmxVer:'v1.1',
       // リフレクターの4列は Aputure 公式の製品ページの配光表（3m / 5m）より。
@@ -9290,13 +9290,13 @@ var LIGHTS = {
       url:'https://www.aputure.com/products/electro-storm-cs15/',
       group:'LED COB', name:'ElectroStorm CS15', desc:'2200W IP65 Full Color LED', emoji:'💡', watts:2200, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       // 重量は灯体＋ヨーク（18 + 3.2）。電源ボックスは別体なので weightExtra に分ける
-      weight:'21.2 kg', weightExtra:'電源ボックス 19 kg', size:'457×352×281 mm',
+      weight:'21.2 kg', weightExtra:'Power box 19 kg', size:'457×352×281 mm',
       ccts:[2000,3200,4300,5600,10000],
       accessories:['none','refl50','refl35','refl20','fresnel18','fresnel50'],
       // 素の状態のビーム角はメーカー公称 62°。リフレクターは 20°/35°/50°（35°が付属）。
       // F14 モーターフレネルは 18°〜50° の可変
       accAngles:{none:62},
-      dmx:{led:'RGBWW',power:'2200W (出力 1585W)',cct:'2000K–10000K + Full RGBWW',cri:'98',tlci:'98',tm30:'Rf 93 / Rg 101',cqs:'97',ssi:'Tungsten 90 / D56 86',ip:'IP65',control:'On-board / App / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','Storm','TV','Fire']},
+      dmx:{led:'RGBWW',power:'2200W (output 1585W)',cct:'2000K–10000K + Full RGBWW',cri:'98',tlci:'98',tm30:'Rf 93 / Rg 101',cqs:'97',ssi:'Tungsten 90 / D56 86',ip:'IP65',control:'On-board / App / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','Storm','TV','Fire']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/Electro%20Storm%20CS15/Electro%20Storm%20CS15%20DMX%20Profile%20Specification%20V1.0.pdf',
       dmxVer:'v1.0',
       // Aputure 公式の製品ページの配光表より（3m / 5m、リフレクター無し・50°・35°・20°）。
@@ -9360,13 +9360,13 @@ var LIGHTS = {
       url:'https://www.aputure.com/products/storm-1000c/',
       group:'LED COB', name:'STORM 1000c', desc:'1000W IP65 BLAIR-CG RGBWW LED Spot', emoji:'💡', watts:1440, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       // 重量は公称の「灯体（ヨーク付き）9.66kg」。電源ボックスは別体
-      weight:'9.66 kg', weightExtra:'電源ボックス 6.12 kg', size:'335×338×557 mm',
+      weight:'9.66 kg', weightExtra:'Power box 6.12 kg', size:'335×338×557 mm',
       ccts:[1800, 2500, 3200, 4300, 5600, 6500, 7500, 10000, 15000, 20000],
       accessories:['bare', 'bm7815', 'bm7830', 'bm7845', 'cf12_15', 'cf12_45', 'spot50', 'spot36', 'spot19'],
       // 素の COB のビーム角はメーカー公称 67°。ACC_INFO の bare は汎用の 120° なので上書きする。
       // CF12 フレネルは 15°〜45° の可変
       accAngles:{bare:67},
-      dmx:{led:'BLAIR-CG',power:'1440W (出力 1000W)',cct:'1800K–20000K',cri:'≥97',tlci:'≥97',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
+      dmx:{led:'BLAIR-CG',power:'1440W (output 1000W)',cct:'1800K–20000K',cri:'≥97',tlci:'≥97',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%2080c/manuals/STORM%201000c%20&%2080c%20DMX%20Profile%20Specification%20V1.2.pdf',
       dmxVer:'v1.2',
       // 出所: Aputure 公式の製品ページ（STORM 1000c Cine Kit）の配光表。
@@ -9398,7 +9398,7 @@ var LIGHTS = {
       group:'LED COB', name:'LS 1200d Pro', desc:'1600W Daylight LED Fresnel', emoji:'💡', watts:1600, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'8.9 kg', size:'330×490×330 mm', ccts:[5600],
       accessories:['none','r15','r30','r45'], accAngles:{none:66},  // Aputure 公表 66°（bare bulb）
-      dmx:{led:'5600K固定',power:'1440W',cct:'5600K',cri:'≤96',ip:'IP54',control:'On-board / App / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','TV','Paparazzi','Fire']},
+      dmx:{led:'5600K fixed',power:'1440W',cct:'5600K',cri:'≤96',ip:'IP54',control:'On-board / App / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','TV','Paparazzi','Fire']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%201200d%20Pro/All%20Files/LS1200D-Pro-DMX-Profile-Specification-V1.0-.pdf',
       dmxVer:'v1.0',
       refData:{5600:{2:{none:19200,r15:96762,r30:27153,r45:12834},3:{none:7620,r15:47838,r30:11434,r45:6788},5:{none:2858,r15:12834,r30:3601,r45:2858},8:{none:1512,r15:6048,r30:1697,r45:1200},12:{none:741,r15:2858,r30:832,r45:588}}}
@@ -9443,7 +9443,7 @@ var LIGHTS = {
     evoke600c: {
       url:'https://www.nanlux.com/product-evoke-600c',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"34\"/><circle cx=\"66\" cy=\"42\" r=\"22\"/><circle cx=\"66\" cy=\"42\" r=\"10\"/><path d=\"M100 30 H130 V54 H100\"/><line x1=\"32\" y1=\"42\" x2=\"32\" y2=\"88\"/><line x1=\"100\" y1=\"42\" x2=\"100\" y2=\"88\"/><line x1=\"32\" y1=\"88\" x2=\"100\" y2=\"88\"/></g></svg>', name:'Evoke 600C', desc:'600W IP66 Full Color LED Spotlight', emoji:'🔵', watts:600,
-      weight:'7.26 kg', weightExtra:'ヨーク 1.35 kg', size:'358×246×205 mm',
+      weight:'7.26 kg', weightExtra:'Yoke 1.35 kg', size:'358×246×205 mm',
       ccts:[3200, 5600],
       accessories:['be55', 'fl20g_10', 'fl20g_45', 'fl22e_15', 'fl22e_50', 'none', 'pj_bm19', 'pj_bm36', 'r25', 'r45'],
       accAngles:{none:65, r25:25, r45:45, fl22e_15:15, fl22e_50:50, fl20g_10:10, fl20g_45:45},
@@ -9461,7 +9461,7 @@ var LIGHTS = {
     evoke150c: {
       url:'https://www.nanlux.com/product-evoke-150c',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"34\"/><circle cx=\"66\" cy=\"42\" r=\"22\"/><circle cx=\"66\" cy=\"42\" r=\"10\"/><path d=\"M100 30 H130 V54 H100\"/><line x1=\"32\" y1=\"42\" x2=\"32\" y2=\"88\"/><line x1=\"100\" y1=\"42\" x2=\"100\" y2=\"88\"/><line x1=\"32\" y1=\"88\" x2=\"100\" y2=\"88\"/></g></svg>', name:'Evoke 150C', desc:'150W IP66 Full Color LED Spotlight', emoji:'🔵', watts:150,
-      weight:'2.11 kg', weightExtra:'ヨーク 0.54 kg', size:'209×147×127 mm',
+      weight:'2.11 kg', weightExtra:'Yoke 0.54 kg', size:'209×147×127 mm',
       ccts:[3200, 5600],
       accessories:['fe30', 'fl12_15', 'fl12_30', 'fl12e_15', 'fl12e_35', 'none', 'r25', 'r45'],
       accAngles:{none:47, r25:25, r45:45, fl12_15:15, fl12_30:30, fl12e_15:15, fl12e_35:35},
@@ -9479,13 +9479,13 @@ var LIGHTS = {
     dyno650c: {
       url:'https://www.nanlux.com/product-dyno-650c-1200c',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'Dyno 650C', desc:'650W Full Color LED Soft Panel', emoji:'🔵', watts:650,
-      weight:'15.18 kg', weightExtra:'電源 4.2 kg / ディフューザー 1.8 kg', size:'851×173×630 mm',
+      weight:'15.18 kg', weightExtra:'Power supply 4.2 kg / Diffuser 1.8 kg', size:'851×173×630 mm',
       ccts:[3200, 5600],
       accessories:['mode_std', 'mode_boost'],
       // 面光源でビーム角の公表がない。Standard と Boost は出力モードで、
       // 光学系ではないがアクセサリーの枠で切り替える
       accUnknown:['mode_std','mode_boost'],
-      dmx:{led:'RGB+ALGC',power:'650W（最大 700W）',cct:'2700K–20000K + RGB',cri:'Average 95',tlci:'Average 95',ip:'未公表',
+      dmx:{led:'RGB+ALGC',power:'650W (max 700W)',cct:'2700K–20000K + RGB',cri:'Average 95',tlci:'Average 95',
         control:'On-board / Bluetooth / 2.4G / DMX / RDM / CRMX',dimming:'0%–100%'},
       // Nanlux 公式の製品ページ（Illumination）。Standard と Boost の2モード × 3200K/5600K。
       // 併記の fc と全値を突き合わせてある。
@@ -9497,13 +9497,13 @@ var LIGHTS = {
     dyno1200c: {
       url:'https://www.nanlux.com/product-dyno-650c-1200c',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'Dyno 1200C', desc:'1200W Full Color LED Soft Panel', emoji:'🔵', watts:1200,
-      weight:'26.2 kg', weightExtra:'電源 7.5 kg / ディフューザー 3 kg', size:'1023×173×918 mm',
+      weight:'26.2 kg', weightExtra:'Power supply 7.5 kg / Diffuser 3 kg', size:'1023×173×918 mm',
       ccts:[3200, 5600],
       accessories:['mode_std', 'mode_boost'],
       // 面光源でビーム角の公表がない。Standard と Boost は出力モードで、
       // 光学系ではないがアクセサリーの枠で切り替える
       accUnknown:['mode_std','mode_boost'],
-      dmx:{led:'RGB+ALGC',power:'1200W（最大 1400W）',cct:'2700K–20000K + RGB',cri:'Average 95',tlci:'Average 95',ip:'未公表',
+      dmx:{led:'RGB+ALGC',power:'1200W (max 1400W)',cct:'2700K–20000K + RGB',cri:'Average 95',tlci:'Average 95',
         control:'On-board / Bluetooth / 2.4G / DMX / RDM / CRMX',dimming:'0%–100%'},
       // Nanlux 公式の製品ページ（Illumination）。Standard と Boost の2モード × 3200K/5600K。
       // 併記の fc と全値を突き合わせてある。
@@ -9515,12 +9515,12 @@ var LIGHTS = {
     tk200: {
       url:'https://www.nanlux.com/product-tk-200-450-140b-280b',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'TK-200', desc:'240W LED Soft Panel', emoji:'🔵', watts:240,
-      weight:'5.68 kg', weightExtra:'ヨーク 1.4〜1.7 kg', size:'890×85×540 mm',
+      weight:'5.68 kg', weightExtra:'Yoke 1.4–1.7 kg', size:'890×85×540 mm',
       ccts:[5600],
       accessories:['none'],
       // 面光源でビーム角の公表がない
       accUnknown:['none'],
-      dmx:{led:'Daylight',power:'240W',cct:'5600K',cri:'96',tlci:'98',ip:'未公表',
+      dmx:{led:'Daylight',power:'240W',cct:'5600K',cri:'96',tlci:'98',
         control:'On-board / Remote / App / DMX-RDM / CRMX',dimming:'0%–100%'},
       // Nanlux 公式の製品ページ（Illumination）。1系統 × 1/3/5/7m。
       // 併記の fc と全値を突き合わせてある。
@@ -9531,12 +9531,12 @@ var LIGHTS = {
     tk450: {
       url:'https://www.nanlux.com/product-tk-200-450-140b-280b',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'TK-450', desc:'455W LED Soft Panel', emoji:'🔵', watts:455,
-      weight:'8.58 kg', weightExtra:'ヨーク 1.4〜1.7 kg', size:'1340×85×540 mm',
+      weight:'8.58 kg', weightExtra:'Yoke 1.4–1.7 kg', size:'1340×85×540 mm',
       ccts:[5600],
       accessories:['none'],
       // 面光源でビーム角の公表がない
       accUnknown:['none'],
-      dmx:{led:'Daylight',power:'455W',cct:'5600K',cri:'96',tlci:'98',ip:'未公表',
+      dmx:{led:'Daylight',power:'455W',cct:'5600K',cri:'96',tlci:'98',
         control:'On-board / Remote / App / DMX-RDM / CRMX',dimming:'0%–100%'},
       // Nanlux 公式の製品ページ（Illumination）。1系統 × 1/3/5/7m。
       // 併記の fc と全値を突き合わせてある。
@@ -9547,12 +9547,12 @@ var LIGHTS = {
     tk140b: {
       url:'https://www.nanlux.com/product-tk-200-450-140b-280b',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'TK-140B', desc:'160W LED Soft Panel', emoji:'🔵', watts:160,
-      weight:'6.06 kg', weightExtra:'ヨーク 1.4〜1.7 kg', size:'890×85×540 mm',
+      weight:'6.06 kg', weightExtra:'Yoke 1.4–1.7 kg', size:'890×85×540 mm',
       ccts:[3200, 5600],
       accessories:['none'],
       // 面光源でビーム角の公表がない
       accUnknown:['none'],
-      dmx:{led:'Bi-Color',power:'160W',cct:'2700K–7500K',cri:'95',tlci:'98',ip:'未公表',
+      dmx:{led:'Bi-Color',power:'160W',cct:'2700K–7500K',cri:'95',tlci:'98',
         control:'On-board / Remote / App / DMX-RDM / CRMX',dimming:'0%–100%'},
       // Nanlux 公式の製品ページ（Illumination）。1系統 × 1/3/5/7m。
       // 併記の fc と全値を突き合わせてある。
@@ -9564,12 +9564,12 @@ var LIGHTS = {
     tk280b: {
       url:'https://www.nanlux.com/product-tk-200-450-140b-280b',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"140\" height=\"44\" rx=\"4\"/><rect x=\"18\" y=\"26\" width=\"124\" height=\"28\" rx=\"2\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"86\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"86\"/><line x1=\"4\" y1=\"86\" x2=\"156\" y2=\"86\"/></g></svg>', name:'TK-280B', desc:'280W LED Soft Panel', emoji:'🔵', watts:280,
-      weight:'10.5 kg', weightExtra:'ヨーク 1.4〜1.7 kg', size:'1340×85×540 mm',
+      weight:'10.5 kg', weightExtra:'Yoke 1.4–1.7 kg', size:'1340×85×540 mm',
       ccts:[3200, 5600],
       accessories:['none'],
       // 面光源でビーム角の公表がない
       accUnknown:['none'],
-      dmx:{led:'Bi-Color',power:'280W',cct:'2700K–7500K',cri:'95',tlci:'98',ip:'未公表',
+      dmx:{led:'Bi-Color',power:'280W',cct:'2700K–7500K',cri:'95',tlci:'98',
         control:'On-board / Remote / App / DMX-RDM / CRMX',dimming:'0%–100%'},
       // Nanlux 公式の製品ページ（Illumination）。1系統 × 1/3/5/7m。
       // 併記の fc と全値を突き合わせてある。
@@ -11401,7 +11401,7 @@ var LIGHTS = {
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"18\" y=\"8\" width=\"88\" height=\"72\" rx=\"5\"/><path d=\"M106 20 H140 V68 H106\"/><rect x=\"30\" y=\"20\" width=\"64\" height=\"48\" rx=\"3\"/><path d=\"M51 20 V68 M72 20 V68 M30 36 H94 M30 52 H94\"/><path d=\"M44 80 V90 H80 V80\"/><path d=\"M140 44 H152\"/></g></svg>', name:'Fiilex K40 COLOR', desc:'3600W Full Color LED Punch Light', emoji:'🔴', watts:3600,
       weight:'48.5 kg', size:'892×946×362 mm',
       ccts:[3200, 5600], accessories:['fresnel12','fresnel18','fresnel30','fresnel50'],
-      dmx:{led:'DiCon Dense Matrix LED',power:'AC1系統 1500W / AC2系統 3600W',cct:'2000K–10000K + magenta/green shift',cri:'95',tlci:'90',ip:'IP-25',
+      dmx:{led:'DiCon Dense Matrix LED',power:'1 AC circuit 1500W / 2 AC circuits 3600W',cct:'2000K–10000K + magenta/green shift',cri:'95',tlci:'90',ip:'IP-25',
         control:'DMX / RDM / CRMX / sACN / Art-Net',dimming:'0%–100% flicker free',effects:['Strobe','Pulse']},
       dmxUrl:'https://fiilex.com/downloads/Fiilex_Profiles/COLOR%20Series%20DMX%20_%20RDM%20Mapping-V1.pdf',
       dmxVer:'v1',
@@ -11416,7 +11416,7 @@ var LIGHTS = {
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"18\" y=\"8\" width=\"88\" height=\"72\" rx=\"5\"/><path d=\"M106 20 H140 V68 H106\"/><rect x=\"30\" y=\"20\" width=\"64\" height=\"48\" rx=\"3\"/><path d=\"M51 20 V68 M72 20 V68 M30 36 H94 M30 52 H94\"/><path d=\"M44 80 V90 H80 V80\"/><path d=\"M140 44 H152\"/></g></svg>', name:'Fiilex MOTOK40', desc:'3600W Full Color Motorized LED Punch Light', emoji:'🔴', watts:3600,
       weight:'54.5 kg', size:'924×1035×410 mm',
       ccts:[3200, 5600], accessories:['fresnel12','fresnel18','fresnel30','fresnel50'],
-      dmx:{led:'DiCon Dense Matrix LED',power:'AC1系統 1600W / AC2系統 3600W',cct:'2000K–10000K + magenta/green shift',cri:'95',tlci:'90',ip:'IP-X4',
+      dmx:{led:'DiCon Dense Matrix LED',power:'1 AC circuit 1600W / 2 AC circuits 3600W',cct:'2000K–10000K + magenta/green shift',cri:'95',tlci:'90',ip:'IP-X4',
         control:'DMX / RDM / CRMX / sACN / Art-Net (pan 540° / tilt 300°)',dimming:'0%–100% flicker free',effects:['Strobe','Pulse']},
       dmxUrl:'https://fiilex.com/downloads/Fiilex_Profiles/COLOR%20Series%20DMX%20_%20RDM%20Mapping-V1.pdf',
       dmxVer:'v1',
@@ -11449,13 +11449,13 @@ var LIGHTS = {
   godox: {
     mg1200bi: {
       group:'LED', name:'KNOWLED MG1200Bi', desc:'1400W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:1400, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
-      weight:'16 kg', weightExtra:'コントローラー 6.68 kg', size:'378×579×354 mm',
+      weight:'16 kg', weightExtra:'Controller 6.68 kg', size:'378×579×354 mm',
       ccts:[2800, 3200, 4300, 5600, 6500],
       accessories:['none','gr15','gr30','gr45','gr60','gf14_spot','gf14_flood'],
       accAngles:{gr15:15, gr30:30, gr45:45, gr60:60},
       // 裸灯とフレネル GF14 はビーム角の公表がない
       accUnknown:['none','gf14_spot','gf14_flood'],
-      dmx:{led:'Bi-Color',power:'1400W',cct:'2800K–6500K',cri:'≥96',tlci:'≥96',tm30:'Rf≥92 / Rg 97–103',cqs:'>94',r9:'≥90 (3200K) / ≥85 (5600K・6500K)',ip:'IP54',
+      dmx:{led:'Bi-Color',power:'1400W',cct:'2800K–6500K',cri:'≥96',tlci:'≥96',tm30:'Rf≥92 / Rg 97–103',cqs:'>94',r9:'≥90 (3200K) / ≥85 (5600K, 6500K)',ip:'IP54',
         control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
         effects:['11 FX modes']},
       // Godox の DMX チャート PDF は Illustrator の書き出しで、PDF としての
@@ -11479,7 +11479,7 @@ var LIGHTS = {
     },
     mg1200r: {
       group:'LED', name:'KNOWLED MG1200R', desc:'1600W IP54 Full Color LED Spotlight', emoji:'🟡', watts:1600, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
-      weight:'9.8 kg', weightExtra:'コントローラー 6.7 kg', size:'400×589×339 mm',
+      weight:'9.8 kg', weightExtra:'Controller 6.7 kg', size:'400×589×339 mm',
       ccts:[1800, 2800, 3200, 4300, 5600, 6500, 8500, 10000],
       accessories:['none', 'gr15', 'gr30', 'gr45', 'gr60', 'gf14_spot', 'gf14_flood'], accAngles:{gr15:15, gr30:30, gr45:45, gr60:60},
       // 裸灯とフレネル GF14 はビーム角の公表がない
@@ -11504,7 +11504,7 @@ var LIGHTS = {
     },
     mg2400r: {
       group:'LED', name:'KNOWLED MG2400R', desc:'2650W IP54 Full Color LED Spotlight', emoji:'🟡', watts:2650, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
-      weight:'21 kg', weightExtra:'コントローラー 12 kg', size:'409×385×356 mm',
+      weight:'21 kg', weightExtra:'Controller 12 kg', size:'409×385×356 mm',
       ccts:[1800, 2800, 3200, 4300, 5600, 6500, 8500, 10000],
       accessories:['none', 'gr15', 'gr30', 'gr45', 'gr60', 'gf14_spot', 'gf14_flood'], accAngles:{gr15:15, gr30:30, gr45:45, gr60:60},
       // 裸灯とフレネル GF14 はビーム角の公表がない
@@ -11529,7 +11529,7 @@ var LIGHTS = {
     },
     mg4kr: {
       group:'LED', name:'KNOWLED MG4KR', desc:'3250W IP65 Full Color LED Spotlight', emoji:'🟡', watts:3250, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
-      weight:'23 kg', weightExtra:'コントローラー 6.9 kg', size:'356×386×378 mm',
+      weight:'23 kg', weightExtra:'Controller 6.9 kg', size:'356×386×378 mm',
       ccts:[1800, 2800, 3200, 4300, 5600, 6500, 8500, 10000],
       accessories:['none', 'mgr15', 'mgr20', 'mgr30', 'gf14_spot', 'gf14_flood'], accAngles:{mgr15:15, mgr20:20, mgr30:30},
       // 裸灯とフレネル GF14 はビーム角の公表がない
@@ -11554,7 +11554,7 @@ var LIGHTS = {
     },
     mg4k: {
       group:'LED', name:'KNOWLED MG4K', desc:'2300W IP65 Bi-Color LED Spotlight', emoji:'🟡', watts:2300, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
-      weight:'10 kg', weightExtra:'コントローラー 6.4 kg', size:'265×339×299 mm',
+      weight:'10 kg', weightExtra:'Controller 6.4 kg', size:'265×339×299 mm',
       ccts:[2800, 3200, 4300, 5600, 6500, 8500],
       accessories:['none', 'mgr15', 'mgr20', 'mgr30', 'gf14_spot', 'gf14_flood'], accAngles:{mgr15:15, mgr20:20, mgr30:30},
       // 裸灯とフレネル GF14 はビーム角の公表がない
@@ -11577,7 +11577,7 @@ var LIGHTS = {
     },
     mg6k: {
       group:'LED', name:'KNOWLED MG6K', desc:'4300W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:4300, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
-      weight:'24.5 kg', weightExtra:'コントローラー 13 kg', size:'356×378×434 mm',
+      weight:'24.5 kg', weightExtra:'Controller 13 kg', size:'356×378×434 mm',
       ccts:[2800, 3200, 4300, 5600, 6500, 8500, 10000],
       accessories:['none', 'mgr30', 'mgr15'], accAngles:{mgr30:30, mgr15:15},
       // 裸灯とフレネル GF14 はビーム角の公表がない
@@ -11601,7 +11601,7 @@ var LIGHTS = {
     },
     mg2400bi: {
       group:'LED', name:'KNOWLED MG2400Bi', desc:'2900W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:2900, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
-      weight:'20 kg', weightExtra:'コントローラー 13 kg', size:'409×385×356 mm',
+      weight:'20 kg', weightExtra:'Controller 13 kg', size:'409×385×356 mm',
       ccts:[2800, 3200, 4300, 5600, 6500],
       accessories:['none','r45'], accAngles:{r45:45}, accUnknown:['none'],  // 裸灯はビーム角の公表がない
       dmx:{led:'Bi-Color',power:'≈2900W',cct:'2800K–6500K',cri:'≥96',tlci:'≥96',ip:'IP54',
@@ -11948,7 +11948,7 @@ var LIGHTS = {
       ccts:[5600], accessories:['spot','flood'],
       accAngles:{spot:15, flood:50},
       dmx:{power:'18000W',cct:'5600K',lamp:'HMI 18000W SE (GX51)',ip:'Weather resistant',
-        control:'DMX / リモート（パン 285°・チルト +27.5°/−57°）',dimming:'—'},
+        control:'DMX / Remote (pan 285°, tilt +27.5°/−57°)',dimming:'—'},
       // 公式テクニカルデータシート（V2.5）の配光表。15 / 20 / 30m。
       // ヨーク込み 120kg、バーンドア込み 126kg。最低照射距離 15m。
       // 20m と 30m は逆二乗則に一致。15m は最低照射距離で近距離側のため
@@ -12074,7 +12074,7 @@ var LIGHTS = {
       group:'Tungsten', name:'Dino Light 24', desc:'2P×24 Tungsten Open Face', emoji:'🟠', watts:24000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"4\" width=\"152\" height=\"72\" rx=\"4\"/><circle cx=\"17\" cy=\"13\" r=\"8\"/><circle cx=\"17\" cy=\"13\" r=\"4\"/><circle cx=\"42\" cy=\"13\" r=\"8\"/><circle cx=\"42\" cy=\"13\" r=\"4\"/><circle cx=\"68\" cy=\"13\" r=\"8\"/><circle cx=\"68\" cy=\"13\" r=\"4\"/><circle cx=\"93\" cy=\"13\" r=\"8\"/><circle cx=\"93\" cy=\"13\" r=\"4\"/><circle cx=\"118\" cy=\"13\" r=\"8\"/><circle cx=\"118\" cy=\"13\" r=\"4\"/><circle cx=\"143\" cy=\"13\" r=\"8\"/><circle cx=\"143\" cy=\"13\" r=\"4\"/><circle cx=\"17\" cy=\"31\" r=\"8\"/><circle cx=\"17\" cy=\"31\" r=\"4\"/><circle cx=\"42\" cy=\"31\" r=\"8\"/><circle cx=\"42\" cy=\"31\" r=\"4\"/><circle cx=\"68\" cy=\"31\" r=\"8\"/><circle cx=\"68\" cy=\"31\" r=\"4\"/><circle cx=\"93\" cy=\"31\" r=\"8\"/><circle cx=\"93\" cy=\"31\" r=\"4\"/><circle cx=\"118\" cy=\"31\" r=\"8\"/><circle cx=\"118\" cy=\"31\" r=\"4\"/><circle cx=\"143\" cy=\"31\" r=\"8\"/><circle cx=\"143\" cy=\"31\" r=\"4\"/><circle cx=\"17\" cy=\"49\" r=\"8\"/><circle cx=\"17\" cy=\"49\" r=\"4\"/><circle cx=\"42\" cy=\"49\" r=\"8\"/><circle cx=\"42\" cy=\"49\" r=\"4\"/><circle cx=\"68\" cy=\"49\" r=\"8\"/><circle cx=\"68\" cy=\"49\" r=\"4\"/><circle cx=\"93\" cy=\"49\" r=\"8\"/><circle cx=\"93\" cy=\"49\" r=\"4\"/><circle cx=\"118\" cy=\"49\" r=\"8\"/><circle cx=\"118\" cy=\"49\" r=\"4\"/><circle cx=\"143\" cy=\"49\" r=\"8\"/><circle cx=\"143\" cy=\"49\" r=\"4\"/><circle cx=\"17\" cy=\"67\" r=\"8\"/><circle cx=\"17\" cy=\"67\" r=\"4\"/><circle cx=\"42\" cy=\"67\" r=\"8\"/><circle cx=\"42\" cy=\"67\" r=\"4\"/><circle cx=\"68\" cy=\"67\" r=\"8\"/><circle cx=\"68\" cy=\"67\" r=\"4\"/><circle cx=\"93\" cy=\"67\" r=\"8\"/><circle cx=\"93\" cy=\"67\" r=\"4\"/><circle cx=\"118\" cy=\"67\" r=\"8\"/><circle cx=\"118\" cy=\"67\" r=\"4\"/><circle cx=\"143\" cy=\"67\" r=\"8\"/><circle cx=\"143\" cy=\"67\" r=\"4\"/><circle cx=\"4\" cy=\"40\" r=\"4\"/><circle cx=\"156\" cy=\"40\" r=\"4\"/><line x1=\"0\" y1=\"40\" x2=\"0\" y2=\"90\"/><line x1=\"160\" y1=\"40\" x2=\"160\" y2=\"90\"/><line x1=\"0\" y1=\"90\" x2=\"160\" y2=\"90\"/></g></svg>',
       weight:'92 kg', size:'1750×1320×190 mm',
       ccts:[3200], accessories:['flat','spot'], fixedBeam:true, accAngles:{flat:90,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      dmx:{power:'24×500Wまたは24×1kW',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
+      dmx:{power:'24×500W or 24×1kW',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
       refData:{3200:{
         3: {flat:152000, spot:152000},
         5: {flat:76000, spot:108000},
@@ -12087,7 +12087,7 @@ var LIGHTS = {
       group:'Tungsten', name:'Dino Light 16', desc:'2P×16 Tungsten Open Face', emoji:'🟠', watts:16000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"8\" y=\"4\" width=\"144\" height=\"72\" rx=\"4\"/><circle cx=\"28\" cy=\"13\" r=\"8\"/><circle cx=\"28\" cy=\"13\" r=\"4\"/><circle cx=\"64\" cy=\"13\" r=\"8\"/><circle cx=\"64\" cy=\"13\" r=\"4\"/><circle cx=\"100\" cy=\"13\" r=\"8\"/><circle cx=\"100\" cy=\"13\" r=\"4\"/><circle cx=\"136\" cy=\"13\" r=\"8\"/><circle cx=\"136\" cy=\"13\" r=\"4\"/><circle cx=\"28\" cy=\"31\" r=\"8\"/><circle cx=\"28\" cy=\"31\" r=\"4\"/><circle cx=\"64\" cy=\"31\" r=\"8\"/><circle cx=\"64\" cy=\"31\" r=\"4\"/><circle cx=\"100\" cy=\"31\" r=\"8\"/><circle cx=\"100\" cy=\"31\" r=\"4\"/><circle cx=\"136\" cy=\"31\" r=\"8\"/><circle cx=\"136\" cy=\"31\" r=\"4\"/><circle cx=\"28\" cy=\"49\" r=\"8\"/><circle cx=\"28\" cy=\"49\" r=\"4\"/><circle cx=\"64\" cy=\"49\" r=\"8\"/><circle cx=\"64\" cy=\"49\" r=\"4\"/><circle cx=\"100\" cy=\"49\" r=\"8\"/><circle cx=\"100\" cy=\"49\" r=\"4\"/><circle cx=\"136\" cy=\"49\" r=\"8\"/><circle cx=\"136\" cy=\"49\" r=\"4\"/><circle cx=\"28\" cy=\"67\" r=\"8\"/><circle cx=\"28\" cy=\"67\" r=\"4\"/><circle cx=\"64\" cy=\"67\" r=\"8\"/><circle cx=\"64\" cy=\"67\" r=\"4\"/><circle cx=\"100\" cy=\"67\" r=\"8\"/><circle cx=\"100\" cy=\"67\" r=\"4\"/><circle cx=\"136\" cy=\"67\" r=\"8\"/><circle cx=\"136\" cy=\"67\" r=\"4\"/><circle cx=\"8\" cy=\"40\" r=\"4\"/><circle cx=\"152\" cy=\"40\" r=\"4\"/><line x1=\"2\" y1=\"40\" x2=\"2\" y2=\"90\"/><line x1=\"158\" y1=\"40\" x2=\"158\" y2=\"90\"/><line x1=\"2\" y1=\"90\" x2=\"158\" y2=\"90\"/></g></svg>',
       weight:'53 kg', size:'1220×1280×190 mm',
       ccts:[3200], accessories:['flat','spot'], fixedBeam:true, accAngles:{flat:90,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      dmx:{power:'16×500Wまたは16×1kW',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
+      dmx:{power:'16×500W or 16×1kW',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
       refData:{3200:{
         3: {flat:76000, spot:216000},
         5: {flat:54000, spot:108000},
@@ -12100,7 +12100,7 @@ var LIGHTS = {
       group:'Tungsten', name:'Dino Light 9', desc:'2P×9 Tungsten Open Face', emoji:'🟠', watts:9000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"4\" width=\"140\" height=\"72\" rx=\"4\"/><circle cx=\"37\" cy=\"22\" r=\"13\"/><circle cx=\"37\" cy=\"22\" r=\"6\"/><circle cx=\"80\" cy=\"22\" r=\"13\"/><circle cx=\"80\" cy=\"22\" r=\"6\"/><circle cx=\"123\" cy=\"22\" r=\"13\"/><circle cx=\"123\" cy=\"22\" r=\"6\"/><circle cx=\"37\" cy=\"40\" r=\"13\"/><circle cx=\"37\" cy=\"40\" r=\"6\"/><circle cx=\"80\" cy=\"40\" r=\"13\"/><circle cx=\"80\" cy=\"40\" r=\"6\"/><circle cx=\"123\" cy=\"40\" r=\"13\"/><circle cx=\"123\" cy=\"40\" r=\"6\"/><circle cx=\"37\" cy=\"58\" r=\"13\"/><circle cx=\"37\" cy=\"58\" r=\"6\"/><circle cx=\"80\" cy=\"58\" r=\"13\"/><circle cx=\"80\" cy=\"58\" r=\"6\"/><circle cx=\"123\" cy=\"58\" r=\"13\"/><circle cx=\"123\" cy=\"58\" r=\"6\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"90\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"90\"/><line x1=\"4\" y1=\"90\" x2=\"156\" y2=\"90\"/></g></svg>',
       weight:'33 kg', size:'920×1050×190 mm',
       ccts:[3200], accessories:['flat','spot'], fixedBeam:true, accAngles:{flat:90,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      dmx:{power:'9×500Wまたは9×1kW',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
+      dmx:{power:'9×500W or 9×1kW',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
       refData:{3200:{
         3: {flat:76000, spot:152000},
         5: {flat:38000, spot:76000},
@@ -12113,7 +12113,7 @@ var LIGHTS = {
       group:'Tungsten', name:'Dino Light Straight 6', desc:'2P×6 Tungsten Strip Light', emoji:'🟠', watts:6000, svgIcon:'<svg width=\"160\" height=\"65\" viewBox=\"0 0 160 65\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"8\" width=\"154\" height=\"28\" rx=\"4\"/><circle cx=\"16\" cy=\"22\" r=\"10\"/><circle cx=\"16\" cy=\"22\" r=\"4\"/><circle cx=\"42\" cy=\"22\" r=\"10\"/><circle cx=\"42\" cy=\"22\" r=\"4\"/><circle cx=\"68\" cy=\"22\" r=\"10\"/><circle cx=\"68\" cy=\"22\" r=\"4\"/><circle cx=\"93\" cy=\"22\" r=\"10\"/><circle cx=\"93\" cy=\"22\" r=\"4\"/><circle cx=\"118\" cy=\"22\" r=\"10\"/><circle cx=\"118\" cy=\"22\" r=\"4\"/><circle cx=\"144\" cy=\"22\" r=\"10\"/><circle cx=\"144\" cy=\"22\" r=\"4\"/><circle cx=\"3\" cy=\"22\" r=\"3\"/><circle cx=\"157\" cy=\"22\" r=\"3\"/><line x1=\"0\" y1=\"22\" x2=\"0\" y2=\"58\"/><line x1=\"160\" y1=\"22\" x2=\"160\" y2=\"58\"/><line x1=\"0\" y1=\"58\" x2=\"160\" y2=\"58\"/></g></svg>',
       weight:'19.6 kg', size:'1550×370×220 mm',
       ccts:[3200], accessories:['flat', 'spot'], fixedBeam:true, accAngles:{flat:90,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      dmx:{power:'6×500Wまたは6×1kW',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
+      dmx:{power:'6×500W or 6×1kW',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
       refData:{3200:{
         3: {flat:38000, spot:76000},
         5: {flat:14000, spot:38000},
@@ -12126,7 +12126,7 @@ var LIGHTS = {
       group:'Tungsten', name:'Mini Brute 9', desc:'2P×9 Mini Tungsten Open Face', emoji:'🟠', watts:4500, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"4\" width=\"140\" height=\"72\" rx=\"4\"/><circle cx=\"37\" cy=\"22\" r=\"13\"/><circle cx=\"37\" cy=\"22\" r=\"6\"/><circle cx=\"80\" cy=\"22\" r=\"13\"/><circle cx=\"80\" cy=\"22\" r=\"6\"/><circle cx=\"123\" cy=\"22\" r=\"13\"/><circle cx=\"123\" cy=\"22\" r=\"6\"/><circle cx=\"37\" cy=\"40\" r=\"13\"/><circle cx=\"37\" cy=\"40\" r=\"6\"/><circle cx=\"80\" cy=\"40\" r=\"13\"/><circle cx=\"80\" cy=\"40\" r=\"6\"/><circle cx=\"123\" cy=\"40\" r=\"13\"/><circle cx=\"123\" cy=\"40\" r=\"6\"/><circle cx=\"37\" cy=\"58\" r=\"13\"/><circle cx=\"37\" cy=\"58\" r=\"6\"/><circle cx=\"80\" cy=\"58\" r=\"13\"/><circle cx=\"80\" cy=\"58\" r=\"6\"/><circle cx=\"123\" cy=\"58\" r=\"13\"/><circle cx=\"123\" cy=\"58\" r=\"6\"/><circle cx=\"10\" cy=\"40\" r=\"4\"/><circle cx=\"150\" cy=\"40\" r=\"4\"/><line x1=\"4\" y1=\"40\" x2=\"4\" y2=\"90\"/><line x1=\"156\" y1=\"40\" x2=\"156\" y2=\"90\"/><line x1=\"4\" y1=\"90\" x2=\"156\" y2=\"90\"/></g></svg>',
       weight:'12 kg', size:'650×430×79 mm',
       ccts:[3200], accessories:['flat'],
-      dmx:{power:'9×300Wまたは9×500W',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
+      dmx:{power:'9×300W or 9×500W',cct:'3200K (Tungsten)',cri:'>99',tlci:'>99',ip:'IP20',control:'Manual Dimmer',dimming:'0%–100%',effects:[]},
       refData:{3200:{
         3: {flat:38000},
         5: {flat:19000},
@@ -12634,7 +12634,7 @@ var LIGHTS = {
     mozzie: {
       url:'https://www.hudsonspider.com/shop/fixtureskits',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Hudson Spider Mozzie', desc:'60W LED Spider Compact', emoji:'🕷️', watts:60,
-      weight:'1.47 kg', size:'1200mm(展開時)',
+      weight:'1.47 kg', size:'1200mm (extended)',
       ccts:[3200,5600], accessories:['none'], accUnknown:['none'],  // Hudson Spider の仕様表にビーム角の行が無い
       dmx:{led:'Bi-Color COB',power:'60W',cct:'3200K–5600K',cri:'>95',ip:'IP20',
         control:'On-board / DMX',dimming:'0%–100%',effects:['Strobe', 'Pulse']},
@@ -12649,7 +12649,7 @@ var LIGHTS = {
     airlite_500: {
       url:'https://www.lightstarusa.com/product-category/luxed/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite 500', desc:'500W IP20 Bi-Color LED Airlite Balloon', emoji:'🎈', watts:500,
-      weight:'6.2 kg', weightExtra:'安定器 2.2 kg', size:'φ1180×730 mm',
+      weight:'6.2 kg', weightExtra:'Ballast 2.2 kg', size:'φ1180×730 mm',
       ccts:[3200,5600], accessories:['none'], accUnknown:['none'],  // バルーンなのでビーム角の公表が無い
       dmx:{led:'Bi-Color',power:'500W',cct:'2800K–6500K',ip:'IP20',control:'On-board / DMX / CRMX',dimming:'0%–100%'},
       dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
@@ -12663,7 +12663,7 @@ var LIGHTS = {
     airlite_1000: {
       url:'https://www.lightstarusa.com/product-category/luxed/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite 1000', desc:'1000W IP20 Bi-Color LED Airlite Balloon', emoji:'🎈', watts:1000,
-      weight:'8 kg', weightExtra:'安定器 3.5 kg', size:'φ1800×1300 mm',
+      weight:'8 kg', weightExtra:'Ballast 3.5 kg', size:'φ1800×1300 mm',
       ccts:[3200,5600], accessories:['none'], accUnknown:['none'],  // バルーンなのでビーム角の公表が無い
       dmx:{led:'Bi-Color',power:'1000W',cct:'2800K–6500K',ip:'IP20',control:'On-board / DMX / CRMX',dimming:'0%–100%'},
       dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
@@ -12677,7 +12677,7 @@ var LIGHTS = {
     airlite_1000t: {
       url:'https://www.lightstarusa.com/product-category/luxed/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V16\"/><path d=\"M58 16 H102\"/><rect x=\"14\" y=\"22\" width=\"132\" height=\"52\" rx=\"26\"/><path d=\"M14 56 C40 68 120 68 146 56\"/><path d=\"M44 26 C38 38 38 50 44 62 M116 26 C122 38 122 50 116 62\"/></g></svg>', name:'Airlite Tube 1000', desc:'1000W IP20 Bi-Color LED Airlite Tube', emoji:'🎈', watts:1000,
-      weight:'11 kg', weightExtra:'安定器 3.5 kg', size:'φ900×2400 mm',
+      weight:'11 kg', weightExtra:'Ballast 3.5 kg', size:'φ900×2400 mm',
       ccts:[3200,5600], accessories:['none'], accUnknown:['none'],  // バルーンなのでビーム角の公表が無い
       dmx:{led:'Bi-Color',power:'1000W',cct:'2800K–6500K',ip:'IP20',control:'On-board / DMX / CRMX',dimming:'0%–100%'},
       dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
@@ -12691,7 +12691,7 @@ var LIGHTS = {
     airlite_p500: {
       url:'https://www.lightstarusa.com/product-category/luxed/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite P500', desc:'500W IP20 Full-Color LED Airlite Balloon', emoji:'🎈', watts:500,
-      weight:'6.2 kg', weightExtra:'安定器 2.3 kg', size:'φ1180×730 mm',
+      weight:'6.2 kg', weightExtra:'Ballast 2.3 kg', size:'φ1180×730 mm',
       ccts:[2700,3200,5600,10000], accessories:['none'], accUnknown:['none'],  // バルーンなのでビーム角の公表が無い
       dmx:{led:'RGBWW',power:'500W',cct:'2400K–10000K + RGBWW',ip:'IP20',control:'On-board / DMX / CRMX',dimming:'0%–100%'},
       dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
@@ -12705,7 +12705,7 @@ var LIGHTS = {
     airlite_tube_1000: {
       url:'https://www.lightstarusa.com/product/airlite-tube-1000w/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V16\"/><path d=\"M58 16 H102\"/><rect x=\"14\" y=\"22\" width=\"132\" height=\"52\" rx=\"26\"/><path d=\"M14 56 C40 68 120 68 146 56\"/><path d=\"M44 26 C38 38 38 50 44 62 M116 26 C122 38 122 50 116 62\"/></g></svg>', name:'Airlite Tube P1000', desc:'1000W IP20 Full-Color LED Airlite Tube', emoji:'🎈', watts:1000,
-      weight:'11 kg', weightExtra:'安定器 3.9 kg', size:'φ900×2400 mm',
+      weight:'11 kg', weightExtra:'Ballast 3.9 kg', size:'φ900×2400 mm',
       ccts:[2700, 3200, 5600, 10000], accessories:['none'], accUnknown:['none'],  // Lightstar の仕様表にビーム角の行が無い（色温度・調光・CRI・入力・制御・重量・寸法・IP のみ）
       dmx:{led:'RGBWW',power:'1000W',cct:'2700K–10000K + RGBWW',cri:'>95',ip:'IP20',
         control:'On-board / DMX / CRMX',dimming:'0%–100%',effects:['Chase', 'Pulse']},
@@ -12724,7 +12724,7 @@ var LIGHTS = {
     airlite_balloon_1000: {
       url:'https://www.lightstarusa.com/product/airlite-bi-color-balloon-1000w/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite P1000', desc:'1000W IP20 Full-Color LED Airlite Balloon', emoji:'🎈', watts:1000,
-      weight:'8 kg', weightExtra:'安定器 3.5 kg', size:'φ1800×1300 mm',
+      weight:'8 kg', weightExtra:'Ballast 3.5 kg', size:'φ1800×1300 mm',
       ccts:[2700, 3200, 5600, 10000], accessories:['none'], accUnknown:['none'],  // Lightstar の仕様表にビーム角の行が無い（バルーン型の全方向ソフト光源）
       dmx:{led:'RGBWW',power:'1000W',cct:'2700K–10000K + RGBWW',cri:'>95',ip:'IP20',
         control:'On-board / DMX / CRMX',dimming:'0%–100%',effects:['Chase', 'Pulse']},
@@ -13041,7 +13041,7 @@ var LIGHTS = {
     luxed_pro_12: {
       url:'https://www.lightstarusa.com/product/lightstar-luxed-pro-12-bi-color-led-ip65/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"50\" y=\"4\" width=\"59\" height=\"72\" rx=\"4\"/><circle cx=\"64\" cy=\"18\" r=\"6\"/><circle cx=\"64\" cy=\"18\" r=\"3\"/><circle cx=\"80\" cy=\"18\" r=\"6\"/><circle cx=\"80\" cy=\"18\" r=\"3\"/><circle cx=\"96\" cy=\"18\" r=\"6\"/><circle cx=\"96\" cy=\"18\" r=\"3\"/><circle cx=\"64\" cy=\"33\" r=\"6\"/><circle cx=\"64\" cy=\"33\" r=\"3\"/><circle cx=\"80\" cy=\"33\" r=\"6\"/><circle cx=\"80\" cy=\"33\" r=\"3\"/><circle cx=\"96\" cy=\"33\" r=\"6\"/><circle cx=\"96\" cy=\"33\" r=\"3\"/><circle cx=\"64\" cy=\"47\" r=\"6\"/><circle cx=\"64\" cy=\"47\" r=\"3\"/><circle cx=\"80\" cy=\"47\" r=\"6\"/><circle cx=\"80\" cy=\"47\" r=\"3\"/><circle cx=\"96\" cy=\"47\" r=\"6\"/><circle cx=\"96\" cy=\"47\" r=\"3\"/><circle cx=\"64\" cy=\"62\" r=\"6\"/><circle cx=\"64\" cy=\"62\" r=\"3\"/><circle cx=\"80\" cy=\"62\" r=\"6\"/><circle cx=\"80\" cy=\"62\" r=\"3\"/><circle cx=\"96\" cy=\"62\" r=\"6\"/><circle cx=\"96\" cy=\"62\" r=\"3\"/><circle cx=\"50\" cy=\"40\" r=\"4\"/><circle cx=\"110\" cy=\"40\" r=\"4\"/><line x1=\"44\" y1=\"40\" x2=\"44\" y2=\"90\"/><line x1=\"116\" y1=\"40\" x2=\"116\" y2=\"90\"/><line x1=\"44\" y1=\"90\" x2=\"116\" y2=\"90\"/></g></svg>', name:'LUXED PRO 12', desc:'2160W IP65 Bi-Color LED Spacelite (4×3)', emoji:'💡', watts:2160,
-      weight:'40 kg', weightExtra:'ヨーク 7.9 kg / 安定器 7.9 kg', size:'1266×1540×258 mm', ccts:[3200,5600],
+      weight:'40 kg', weightExtra:'Yoke 7.9 kg / Ballast 7.9 kg', size:'1266×1540×258 mm', ccts:[3200,5600],
       accessories:['deg25','deg60'], accAngles:{deg25:25, deg60:60},
       dmx:{led:'Bi-Color',power:'2160W',cct:'2800K–6500K',cri:'≥95',tlci:'>90',r9:'≥95',ip:'IP65',control:'DMX / CRMX / LumenRadio / App'},
       dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
@@ -13064,7 +13064,7 @@ var LIGHTS = {
     luxed_pro_9: {
       url:'https://www.lightstarusa.com/product/luxed-pro-p9-ip65/',
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"43\" y=\"4\" width=\"73\" height=\"72\" rx=\"4\"/><circle cx=\"60\" cy=\"21\" r=\"8\"/><circle cx=\"60\" cy=\"21\" r=\"3\"/><circle cx=\"80\" cy=\"21\" r=\"8\"/><circle cx=\"80\" cy=\"21\" r=\"3\"/><circle cx=\"100\" cy=\"21\" r=\"8\"/><circle cx=\"100\" cy=\"21\" r=\"3\"/><circle cx=\"60\" cy=\"40\" r=\"8\"/><circle cx=\"60\" cy=\"40\" r=\"3\"/><circle cx=\"80\" cy=\"40\" r=\"8\"/><circle cx=\"80\" cy=\"40\" r=\"3\"/><circle cx=\"100\" cy=\"40\" r=\"8\"/><circle cx=\"100\" cy=\"40\" r=\"3\"/><circle cx=\"60\" cy=\"59\" r=\"8\"/><circle cx=\"60\" cy=\"59\" r=\"3\"/><circle cx=\"80\" cy=\"59\" r=\"8\"/><circle cx=\"80\" cy=\"59\" r=\"3\"/><circle cx=\"100\" cy=\"59\" r=\"8\"/><circle cx=\"100\" cy=\"59\" r=\"3\"/><circle cx=\"43\" cy=\"40\" r=\"4\"/><circle cx=\"117\" cy=\"40\" r=\"4\"/><line x1=\"37\" y1=\"40\" x2=\"37\" y2=\"90\"/><line x1=\"123\" y1=\"40\" x2=\"123\" y2=\"90\"/><line x1=\"37\" y1=\"90\" x2=\"123\" y2=\"90\"/></g></svg>', name:'LUXED PRO 9', desc:'1620W IP65 Bi-Color LED Spacelite (3×3)', emoji:'💡', watts:1620,
-      weight:'32.6 kg', weightExtra:'ヨーク 7.3 kg / 安定器 7.9 kg', size:'1256×1232×258 mm', ccts:[3200,5600],
+      weight:'32.6 kg', weightExtra:'Yoke 7.3 kg / Ballast 7.9 kg', size:'1256×1232×258 mm', ccts:[3200,5600],
       accessories:['deg25','deg60'], accAngles:{deg25:25, deg60:60},
       dmx:{led:'Bi-Color',power:'1620W',cct:'2800K–6500K',cri:'≥95',tlci:'>90',r9:'≥95',ip:'IP65',control:'DMX / CRMX / LumenRadio / App'},
       dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
@@ -13085,7 +13085,7 @@ var LIGHTS = {
       }
     },
     luxed12: {
-      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"50\" y=\"4\" width=\"59\" height=\"72\" rx=\"4\"/><circle cx=\"64\" cy=\"18\" r=\"6\"/><circle cx=\"64\" cy=\"18\" r=\"3\"/><circle cx=\"80\" cy=\"18\" r=\"6\"/><circle cx=\"80\" cy=\"18\" r=\"3\"/><circle cx=\"96\" cy=\"18\" r=\"6\"/><circle cx=\"96\" cy=\"18\" r=\"3\"/><circle cx=\"64\" cy=\"33\" r=\"6\"/><circle cx=\"64\" cy=\"33\" r=\"3\"/><circle cx=\"80\" cy=\"33\" r=\"6\"/><circle cx=\"80\" cy=\"33\" r=\"3\"/><circle cx=\"96\" cy=\"33\" r=\"6\"/><circle cx=\"96\" cy=\"33\" r=\"3\"/><circle cx=\"64\" cy=\"47\" r=\"6\"/><circle cx=\"64\" cy=\"47\" r=\"3\"/><circle cx=\"80\" cy=\"47\" r=\"6\"/><circle cx=\"80\" cy=\"47\" r=\"3\"/><circle cx=\"96\" cy=\"47\" r=\"6\"/><circle cx=\"96\" cy=\"47\" r=\"3\"/><circle cx=\"64\" cy=\"62\" r=\"6\"/><circle cx=\"64\" cy=\"62\" r=\"3\"/><circle cx=\"80\" cy=\"62\" r=\"6\"/><circle cx=\"80\" cy=\"62\" r=\"3\"/><circle cx=\"96\" cy=\"62\" r=\"6\"/><circle cx=\"96\" cy=\"62\" r=\"3\"/><circle cx=\"50\" cy=\"40\" r=\"4\"/><circle cx=\"110\" cy=\"40\" r=\"4\"/><line x1=\"44\" y1=\"40\" x2=\"44\" y2=\"90\"/><line x1=\"116\" y1=\"40\" x2=\"116\" y2=\"90\"/><line x1=\"44\" y1=\"90\" x2=\"116\" y2=\"90\"/></g></svg>', weight:'40 kg', weightExtra:'ヨーク 7.9 kg / 安定器 7.9 kg', name:'LUXED PRO-P12', desc:'2160W IP65 RGBWW LED Spacelite (4×3)', emoji:'💡', watts:2160,
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"50\" y=\"4\" width=\"59\" height=\"72\" rx=\"4\"/><circle cx=\"64\" cy=\"18\" r=\"6\"/><circle cx=\"64\" cy=\"18\" r=\"3\"/><circle cx=\"80\" cy=\"18\" r=\"6\"/><circle cx=\"80\" cy=\"18\" r=\"3\"/><circle cx=\"96\" cy=\"18\" r=\"6\"/><circle cx=\"96\" cy=\"18\" r=\"3\"/><circle cx=\"64\" cy=\"33\" r=\"6\"/><circle cx=\"64\" cy=\"33\" r=\"3\"/><circle cx=\"80\" cy=\"33\" r=\"6\"/><circle cx=\"80\" cy=\"33\" r=\"3\"/><circle cx=\"96\" cy=\"33\" r=\"6\"/><circle cx=\"96\" cy=\"33\" r=\"3\"/><circle cx=\"64\" cy=\"47\" r=\"6\"/><circle cx=\"64\" cy=\"47\" r=\"3\"/><circle cx=\"80\" cy=\"47\" r=\"6\"/><circle cx=\"80\" cy=\"47\" r=\"3\"/><circle cx=\"96\" cy=\"47\" r=\"6\"/><circle cx=\"96\" cy=\"47\" r=\"3\"/><circle cx=\"64\" cy=\"62\" r=\"6\"/><circle cx=\"64\" cy=\"62\" r=\"3\"/><circle cx=\"80\" cy=\"62\" r=\"6\"/><circle cx=\"80\" cy=\"62\" r=\"3\"/><circle cx=\"96\" cy=\"62\" r=\"6\"/><circle cx=\"96\" cy=\"62\" r=\"3\"/><circle cx=\"50\" cy=\"40\" r=\"4\"/><circle cx=\"110\" cy=\"40\" r=\"4\"/><line x1=\"44\" y1=\"40\" x2=\"44\" y2=\"90\"/><line x1=\"116\" y1=\"40\" x2=\"116\" y2=\"90\"/><line x1=\"44\" y1=\"90\" x2=\"116\" y2=\"90\"/></g></svg>', weight:'40 kg', weightExtra:'Yoke 7.9 kg / Ballast 7.9 kg', name:'LUXED PRO-P12', desc:'2160W IP65 RGBWW LED Spacelite (4×3)', emoji:'💡', watts:2160,
       ccts:[3200,5600],
       accessories:['flood'],
       dmx:{led:'RGBWW',power:'2160W',cct:'2700K–10000K',cri:'≥95',tlci:'≥97',ip:'IP65',control:'DMX / LumenRadio CRMX / App'},
@@ -13109,7 +13109,7 @@ var LIGHTS = {
       group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"43\" y=\"4\" width=\"73\" height=\"72\" rx=\"4\"/><circle cx=\"60\" cy=\"21\" r=\"8\"/><circle cx=\"60\" cy=\"21\" r=\"3\"/><circle cx=\"80\" cy=\"21\" r=\"8\"/><circle cx=\"80\" cy=\"21\" r=\"3\"/><circle cx=\"100\" cy=\"21\" r=\"8\"/><circle cx=\"100\" cy=\"21\" r=\"3\"/><circle cx=\"60\" cy=\"40\" r=\"8\"/><circle cx=\"60\" cy=\"40\" r=\"3\"/><circle cx=\"80\" cy=\"40\" r=\"8\"/><circle cx=\"80\" cy=\"40\" r=\"3\"/><circle cx=\"100\" cy=\"40\" r=\"8\"/><circle cx=\"100\" cy=\"40\" r=\"3\"/><circle cx=\"60\" cy=\"59\" r=\"8\"/><circle cx=\"60\" cy=\"59\" r=\"3\"/><circle cx=\"80\" cy=\"59\" r=\"8\"/><circle cx=\"80\" cy=\"59\" r=\"3\"/><circle cx=\"100\" cy=\"59\" r=\"8\"/><circle cx=\"100\" cy=\"59\" r=\"3\"/><circle cx=\"43\" cy=\"40\" r=\"4\"/><circle cx=\"117\" cy=\"40\" r=\"4\"/><line x1=\"37\" y1=\"40\" x2=\"37\" y2=\"90\"/><line x1=\"123\" y1=\"40\" x2=\"123\" y2=\"90\"/><line x1=\"37\" y1=\"90\" x2=\"123\" y2=\"90\"/></g></svg>', weight:'37.5 kg', name:'LUXED PRO-P9', desc:'1620W IP65 RGBWW LED Spacelite (3×3)', emoji:'💡', watts:1620,
       ccts:[3200,5600],
       accessories:['flood'],
-      size:'1256×1218×216 mm', weightExtra:'安定器 4.4 kg',
+      size:'1256×1218×216 mm', weightExtra:'Ballast 4.4 kg',
       dmx:{led:'RGBWW',power:'1620W',cct:'2700K–10000K',cri:'≥95',tlci:'≥97',ip:'IP65',control:'DMX / LumenRadio CRMX / App'},
       url:'https://www.lightstarusa.com/product/lightstar-luxed-pro-p9-full-color-led-ip65/',
       // LUXED PRO の系統は IP65（IP20 の LUXED-P9 とは別機種で、W も違う。
@@ -13768,23 +13768,23 @@ var LIGHTS = {
   // ══ 特殊光源 ══ すべて配光資料の値
   specials: {
     hyper_blast_5k: {
-      group:'HMI', hiddenFromList:true, weight:'8.5 kg', name:'Hyper Blast 5kW', desc:'ハイパーブラスト 5kW', emoji:'⚡', watts:5000,
+      group:'HMI', hiddenFromList:true, weight:'8.5 kg', name:'Hyper Blast 5kW', desc:'Hyper Blast 5kW', emoji:'⚡', watts:5000,
       ccts:[5600], accessories:['flat'],
       refData:{5600:{3:{flat:6800}, 5:{flat:2400}, 8:{flat:840}, 12:{flat:420}, 15:{flat:300}}}
     },
     hyper_blast_3k: {
-      group:'HMI', hiddenFromList:true, weight:'4 kg', name:'Hyper Blast 3kW', desc:'ハイパーブラスト 3kW', emoji:'⚡', watts:3000,
+      group:'HMI', hiddenFromList:true, weight:'4 kg', name:'Hyper Blast 3kW', desc:'Hyper Blast 3kW', emoji:'⚡', watts:3000,
       ccts:[5600], accessories:['flat'],
       refData:{5600:{3:{flat:4800}, 5:{flat:2400}, 8:{flat:1200}, 12:{flat:600}}}
     },
     t_light: {
-      group:'HMI', hiddenFromList:true, weight:'24 kg', name:'T-Light', desc:'T-Light フラット — 消費電力は未確認', emoji:'⚡',
+      group:'HMI', hiddenFromList:true, weight:'24 kg', name:'T-Light', desc:'T-Light flat — wattage unverified', emoji:'⚡',
       // watts は配光資料に記載がないため省略。
       ccts:[5600], accessories:['flat'],
       refData:{5600:{5:{flat:19000}, 8:{flat:9600}, 12:{flat:4800}, 15:{flat:2400}}}
     },
     par_strobe_1k: {
-      group:'HMI', hiddenFromList:true, weight:'2.5 kg', name:'Par Strobe 1kW', desc:'パーストロボ 1kW', emoji:'✨', watts:1000,
+      group:'HMI', hiddenFromList:true, weight:'2.5 kg', name:'Par Strobe 1kW', desc:'PAR Strobe 1kW', emoji:'✨', watts:1000,
       ccts:[5600], accessories:['flat'],
       refData:{5600:{
         2:   {flat:9600},
@@ -13794,7 +13794,7 @@ var LIGHTS = {
       }}
     },
     mercury_lamp: {
-      group:'Tungsten', hiddenFromList:true, name:'Mercury Lamp', desc:'水銀灯 — 消費電力は未確認', emoji:'✨',
+      group:'Tungsten', hiddenFromList:true, name:'Mercury Lamp', desc:'Mercury lamp — wattage unverified', emoji:'✨',
       // 水銀灯の色温度は個体差が大きい。4300K 相当として扱う。
       ccts:[4300], accessories:['flat'],
       refData:{4300:{
@@ -13806,7 +13806,7 @@ var LIGHTS = {
       }}
     },
     freegee_24: {
-      group:'LED', hiddenFromList:true, name:'Freegee Light 24W', desc:'フリージーライト 24W', emoji:'✨', watts:24,
+      group:'LED', hiddenFromList:true, name:'Freegee Light 24W', desc:'Freegee Light 24W', emoji:'✨', watts:24,
       ccts:[5600], accessories:['flat'],
       refData:{5600:{
         1:   {flat:3400},
@@ -13815,7 +13815,7 @@ var LIGHTS = {
       }}
     },
     black_light: {
-      group:'Tungsten', hiddenFromList:true, name:'Black Light', desc:'ブラックライト — UV光源。lux値は参考程度', emoji:'✨',
+      group:'Tungsten', hiddenFromList:true, name:'Black Light', desc:'Black light — UV source, lux is indicative only', emoji:'✨',
       ccts:[5600], accessories:['flat'],
       refData:{5600:{
         1:   {flat:840},
