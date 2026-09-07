@@ -36,6 +36,14 @@
    ヘッダー・中身・下部タブ・結果バーはすべてこの値で揃える。
    （揃えないと幅が食い違う。#page-draft だけは全画面なので外す） */
 :root { --app-w: 480px; }
+
+/* ── 表示サイズ ──────────────────────────────────────
+   画面は px で組んであるので、文字だけ大きくする手がない。
+   ルート要素の zoom で全体を拡大する（設定 → 表示サイズ）。
+   zoom を掛けても vh は拡大されないので、シートの高さは
+   calc(NNvh / var(--ui-zoom)) で割り戻してある。1 のときは
+   calc(88vh / 1) = 88vh で、何も変わらない。 */
+:root { --ui-zoom: 1; }
 @media (min-width: 820px)  { :root { --app-w: 620px; } }
 @media (min-width: 1100px) { :root { --app-w: 760px; } }
 @media (min-width: 1500px) { :root { --app-w: 880px; } }
@@ -649,7 +657,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 
 /* Modal for light picker */
 .mix-modal { position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; display:flex; flex-direction:column; justify-content:flex-end; }
-.mix-modal-sheet { background:white; border-radius:20px 20px 0 0; padding:16px; max-height:80vh;max-height:80dvh; overflow-y:auto; }
+.mix-modal-sheet { background:white; border-radius:20px 20px 0 0; padding:16px; max-height:calc(80vh / var(--ui-zoom));max-height:calc(80dvh / var(--ui-zoom)); overflow-y:auto; }
 .mix-modal-title { font-size:16px; font-weight:800; color:var(--text); margin-bottom:12px; text-align:center; }
 .mix-maker-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
 .mix-maker-btn { padding:10px; border:2px solid #eee; border-radius:12px; background:white; cursor:pointer; font-size:12px; font-weight:700; text-align:center; }
@@ -2166,6 +2174,7 @@ window.onerror = function(m,s,l,c,e){ console.log('[LMP]',m,l,e&&e.stack); retur
 var LANGS = {
   ja: {
     settingsTitle:'設定', settingsDisplay:'表示', settingsHowTo:'使いかた', guideTitle:'各タブの説明', guideSub:'何のための画面か、どう使うか', guideCalc:'機種・アクセサリー・距離・色温度を選ぶと、照度と F値が出ます。\nカメラ設定（ISO・fps・シャッター）がそのまま効きます。\nチップの ⌀ は、その距離で光が何メートルの円になるかです。', guideCamera:'ISO・fps・シャッター角度・T値を入れる画面です。\nデジタル／フィルム／写真で入れ方が変わります。\nここを変えると、全タブの計算が一斉に動きます。', guideMix:'灯体を1台ずつ足して、合計の露出と混ざった色温度を出します。\n台数を増やせます。個別距離を ON にすると1台ずつ距離を変えられます。\n環境光のトグルを入れると、地明かりを含んだ合計になります。', guideFinder:'目標 F値と距離を入れると、届く機材が順位で並びます。\n「環境光から」を選べば、何段上げるかで目標を入れられます。\n距離を変えると順位が入れ替わります。その距離で届く最小の機材が上位です。', guideAlt:'押さえられなかった機材の代わりを探します。\n同じ明るさを作るのに必要な台数と、マッチ率が出ます。\n距離と色温度をそろえて比べるので、レンタル表と突き合わせられます。', guideDraft:'人物・灯体・反射板・DIFF・フラッグ・カメラを置いて図面を作ります。\nPDF や写真を下敷きにして、実寸を合わせられます。\nExposure を開くと、露出計の向きごとの読みとキー比が出ます。', guideSun:'緯度経度と日付から、太陽と月の一日の軌跡を出します。\n日の出・日の入り・マジックアワー・薄明・月相が分かります。\niOS ではカメラに重ねて見られます。撮影日との比較もできます。', guideMired:'色温度の隔たりをミレッドで扱います。K の比では見た目が合いません。\n素材の主光と補助光の関係を、別の主光の色温度で組み直せます。\n必要なフィルターと、その色温度を出せる灯体も出ます。', guideAr:'カメラを向けて距離を測り、そのまま計算に入れられます。\nいる場所から／2点間／2地点から狙って の3通りで測れます。\n虫めがねを押すとルーペが出て、狙う点を細かく決められます。', guideCompare:'複数の灯体を、同じ距離・同じ条件で横に並べます。\n照度・F値・ビーム角・消費電力・重量・IP・制御を一覧できます。\n⚠ は公表表の外、≈ は近い色温度で代用した値です。', guideAmbient:'露出計で測った地明かりを、計算に組み込みます。\n入力は F値でも照度でもできます。トグルで効かせるかを切り替えます。\n灯体を置く距離も逆算できます。図面には光源として置けます。',
+    uiZoomTitle:'表示サイズ', uiZoomHint:'画面全体の大きさを変えます。文字も一緒に大きくなります。',
     orderTitle:'並びの設定', orderBar:'下部タブ', orderMenu:'メニューの並び', orderMenuSub:'三本線のメニューに出る順です',
     langLabel:'言語',
     arErrNoSupport:'この端末はカメラ計測に対応していません', arErrBusy:'すでに測定中です', arErrOpen:'画面を開けませんでした', arSegHere:'ここから', arSegTwo:'2点間', arSegTri:'2地点から', arBtnFix:'ここで決める', arBtnRedo:'やり直す', arBtnUse:'この距離を使う', arBtnPlace:'点をおく', arBtnAimHere:'ここから狙う', arBtnAimAgain:'もう一度狙う', arHintFromMe:'いまいる場所から測ります。測りたい先に十字を合わせて「ここで決める」', arHintTwoA:'離れた2か所の間を測ります。片方の端に十字を合わせて「点をおく」', arHintTwoB:'もう一方の端に十字を合わせて、もう一度「点をおく」', arHintTriA:'遠くを正確に測ります。測りたい所に十字を合わせて「ここから狙う」', arHintTriB:'同じ所に十字を合わせたまま、横へ数メートル歩いて「もう一度狙う」', arHintDone:'この値でよければ「この距離を使う」', arWarnExtended:'面を延長して測っています（LiDAR の届く範囲の外）。遠くなるほど当てになりません。「2地点から」のほうが正確です', arWarnNoPlane:'測れる面が見つかりません。端末を少し動かしてください', arTriProgress:'横に {d}m 歩きました。狙いのすれ違い {g}m。{tail}', arTriWalkMore:'もう少し横へ歩くと正確になります', arTriReady:'同じ所を狙えていれば「もう一度狙う」', arTriNoCross:'横に {d}m 歩きました。まだ交点が出せません。もう少し横へ歩いてください', arTriFail:'交点が出せません。同じ所を狙ったまま、もう少し横へ歩いてください', arTriNoMove:'ほとんど動いていません。横へ数メートル歩いてから狙ってください', arTriFixed:'基線 {b}m・狙いのすれ違い {g}m。この値でよければ「この距離を使う」', arTrackInit:'端末をゆっくり動かして周囲を認識させてください', arTrackLowFeature:'暗いか模様が少ない面です。明るい所か、模様のある面を狙ってください', arTrackFast:'動きが速すぎます。ゆっくり構えてください',
@@ -2230,9 +2239,9 @@ var LANGS = {
     help4T:'📋 Factor の名前を一覧から選べます',
     help4W:'Factor の名前欄の横「📋 一覧」',
     help4B:'iPhone では候補が2件しか出ず、ほとんど選べませんでした。一覧から134件すべて選べます。検索もできます。LEE の印は「透過値」から「transmission」に変えました。保存済みの図面はそのまま開けます。',
-    help5T:'⌀ ビーム直径',
-    help5W:'Calc のチップの隣、ライト比較の行、環境光の画面',
-    help5B:'その距離で光が何メートルの円になるかが出ます。ビーム角はメーカー公表値に洗い直しました。公表されていない機種は数字を出さず「角度未確認」と表示します。',
+    help5T:'🔎 表示サイズを変えられます',
+    help5W:'設定 → 表示サイズ',
+    help5B:'iPad や Mac の広い画面では、画面の柱を自動で広げるようにしました。それでも小さいときは、設定の表示サイズを 115%・130%・150% にすると文字ごと大きくなります。端末ごとに覚えます。',
     help6T:'🎞 ディフュージョンのフィルター',
     help6W:'Factor の名前欄の横「📋 一覧」（Calc・Mix・図面のどこでも）',
     help6B:'「📋 一覧」を押すと全134件が出て、検索して選べます。よく使う品番はチップでも並んでいます。LEE 34品番と Rosco 48件が入っています。LEE は透過率から出した値、Rosco は Filter Facts の公表値で、数字の性質が違います。混ざらないよう LEE は名前に「（透過値）」が付きます。',
@@ -2316,6 +2325,7 @@ var LANGS = {
   },
   en: {
     settingsTitle:'Settings', settingsDisplay:'Display', settingsHowTo:'How to use', guideTitle:'About each tab', guideSub:'What each screen is for, and how to use it', guideCalc:'Pick the fixture, accessory, distance and colour temperature to get illuminance and f-stop.\nYour camera settings (ISO, fps, shutter) are used as they are.\nThe diameter on the chip is how wide the circle of light is at that distance.', guideCamera:'Where you enter ISO, fps, shutter angle and T-stop.\nDigital, film and stills each have their own way of entering it.\nChange it here and every tab recalculates at once.', guideMix:'Add fixtures one at a time for the total exposure and the mixed colour temperature.\nUnit counts can be raised. Switch on per-light distances to set each one separately.\nTurn the ambient on and the total includes the base level on location.', guideFinder:'Enter a target f-stop and a distance, and the fixtures that reach are ranked.\nChoose From ambient to set the target in stops above the ambient.\nChange the distance and the order changes. The smallest fixture that reaches comes first.', guideAlt:'Find a replacement for a fixture you could not get.\nIt gives the number of units needed to match the level, and a match score.\nCompared at the same distance and colour temperature, so it lines up with a rental list.', guideDraft:'Place subjects, fixtures, bounce, DIFF, flags and the camera to build a plan.\nPut a PDF or photo underneath and scale it to real size.\nOpen Exposure for the reading in each meter direction, and the key ratio.', guideSun:'The day\'s path of the sun and moon from a latitude, longitude and date.\nSunrise, sunset, magic hour, twilight and the moon phase.\nOn iOS you can lay it over the camera. You can also compare with the shoot date.', guideMired:'Handles colour temperature differences in mired. Scaling by kelvin does not match visually.\nRebuild a plate\'s key and fill relationship at a different key temperature.\nIt also gives the gel you need, and which fixtures can reach that temperature.', guideAr:'Point the camera to measure a distance and drop it straight into the calculation.\nThree ways: from where you stand, between two points, or sighted from two spots.\nTap the magnifier for a loupe, so you can place the point precisely.', guideCompare:'Fixtures side by side at the same distance and the same conditions.\nIlluminance, f-stop, beam angle, power, weight, IP and control in one view.\nThe warning mark means outside the published table; the approximate mark means a nearby colour temperature was used.', guideAmbient:'Brings the base level you metered on location into the calculation.\nEnter it by f-stop or by illuminance. The toggle decides whether it counts.\nIt also works backwards to give the distance for the fixture, and can be placed on the plan as a source.',
+    uiZoomTitle:'Display size', uiZoomHint:'Scales the whole screen, text included.',
     orderTitle:'Layout', orderBar:'Bottom tabs', orderMenu:'Menu order', orderMenuSub:'The order they appear in the menu',
     langLabel:'Language',
     arErrNoSupport:'This device does not support camera measuring', arErrBusy:'A measurement is already running', arErrOpen:'Could not open the screen', arSegHere:'From here', arSegTwo:'2 points', arSegTri:'2 spots', arBtnFix:'Fix it here', arBtnRedo:'Start again', arBtnUse:'Use this distance', arBtnPlace:'Place a point', arBtnAimHere:'Sight from here', arBtnAimAgain:'Sight again', arHintFromMe:'Measures from where you stand. Put the cross on the target and tap Fix it here.', arHintTwoA:'Measures between two separate places. Put the cross on one end and tap Place a point.', arHintTwoB:'Put the cross on the other end and tap Place a point again.', arHintTriA:'For accuracy at long range. Put the cross on the target and tap Sight from here.', arHintTriB:'Keep the cross on the same spot, walk a few metres sideways, then tap Sight again.', arHintDone:'If the value looks right, tap Use this distance.', arWarnExtended:'Measuring on an extended plane, beyond LiDAR range. The further out, the less you can rely on it. 2 spots is more accurate.', arWarnNoPlane:'No measurable surface found. Move the device a little.', arTriProgress:'Walked {d}m sideways. Sight lines miss by {g}m. {tail}', arTriWalkMore:'Walk a little further sideways for better accuracy.', arTriReady:'If you are on the same spot, tap Sight again.', arTriNoCross:'Walked {d}m sideways. Still no crossing point. Walk a little further sideways.', arTriFail:'No crossing point. Keep aiming at the same spot and walk a little further sideways.', arTriNoMove:'You have hardly moved. Walk a few metres sideways before sighting.', arTriFixed:'Baseline {b}m, sight lines miss by {g}m. If the value looks right, tap Use this distance.', arTrackInit:'Move the device slowly so it can read the surroundings.', arTrackLowFeature:'The surface is dark or has little texture. Aim somewhere brighter, or at a surface with pattern.', arTrackFast:'Moving too fast. Hold it steady.',
@@ -2379,9 +2389,9 @@ var LANGS = {
     help4T:'📋 Pick Factor names from a list',
     help4W:'The List button beside the Factor name field',
     help4B:'On iPhone only two suggestions appeared, so you could hardly pick anything. The list gives you all 134, with a search box. The mark on LEE products changed from Japanese to transmission. Saved plans still open as before.',
-    help5T:'⌀ Beam diameter',
-    help5W:'Next to the chips in Calc, the Compare row, and the ambient screen',
-    help5B:'It shows how wide the circle of light is at that distance. Beam angles have been reworked against the manufacturers’ published figures; where nothing is published we show “angle unverified” instead of a number.',
+    help5T:'🔎 You can change the display size',
+    help5W:'Settings, then Display size',
+    help5B:'On the wide screens of iPad and Mac the layout now widens by itself. If it is still small, set Display size to 115, 130 or 150 per cent in Settings and everything grows, text included. It is remembered per device.',
     help6T:'🎞 Named diffusion',
     help6W:'The “📋 List” button beside the Factor name field (Calc, Mix or the plan)',
     help6B:'“📋 List” opens all 134 entries with a search box; the ones you reach for most are also on the chips. 34 LEE products and 48 Rosco entries. LEE publishes transmission; Rosco publishes the stop loss in Filter Facts. They are not the same kind of number, so LEE entries carry a suffix to keep them apart.',
@@ -2460,6 +2470,7 @@ var LANGS = {
   },
   es: {
     settingsTitle:'Ajustes', settingsDisplay:'Presentación', settingsHowTo:'Cómo se usa', guideTitle:'Sobre cada pestaña', guideSub:'Para qué sirve cada pantalla y cómo usarla', guideCalc:'Elige el equipo, el accesorio, la distancia y la temperatura de color para obtener la iluminancia y el F-stop.\nSe usan tus ajustes de cámara actuales (ISO, fps, obturador).\nEl diámetro del chip indica el tamaño del círculo de luz a esa distancia.', guideCamera:'Aquí se introducen ISO, fps, ángulo de obturación y T-stop.\nDigital, película y foto tienen cada uno su forma de introducirlo.\nAl cambiarlo aquí, todas las pestañas recalculan a la vez.', guideMix:'Añade equipos uno a uno para la exposición total y la temperatura de la mezcla.\nPuedes subir el número de unidades. Activa distancias individuales para ajustar cada una.\nActiva la luz ambiente y el total incluye el nivel base de la localización.', guideFinder:'Introduce un F-stop objetivo y una distancia, y los equipos que llegan se ordenan.\nCon Desde el ambiente indicas el objetivo en pasos por encima del ambiente.\nAl cambiar la distancia cambia el orden. El equipo más pequeño que llega va primero.', guideAlt:'Encuentra un sustituto para el equipo que no conseguiste.\nDa el número de unidades necesarias para igualar el nivel y una puntuación de coincidencia.\nSe compara a la misma distancia y temperatura, así que encaja con la lista de alquiler.', guideDraft:'Coloca sujetos, focos, rebotes, DIFF, banderas y la cámara para armar el plano.\nPon un PDF o una foto de fondo y ajústalo al tamaño real.\nAbre Exposición para la lectura en cada dirección del fotómetro y la relación con la principal.', guideSun:'La trayectoria diaria del sol y la luna a partir de latitud, longitud y fecha.\nAmanecer, atardecer, hora mágica, crepúsculo y fase lunar.\nEn iOS puedes superponerlo a la cámara. También comparar con el día de rodaje.', guideMired:'Trata las diferencias de temperatura en mired. Escalar por kelvin no coincide visualmente.\nReconstruye la relación principal y relleno de una placa a otra temperatura principal.\nTambién da la gelatina necesaria y qué equipos alcanzan esa temperatura.', guideAr:'Apunta la cámara para medir una distancia y pásala directamente al cálculo.\nTres formas: desde donde estás, entre dos puntos, o visado desde dos sitios.\nPulsa la lupa para ampliar y colocar el punto con precisión.', guideCompare:'Equipos en paralelo, a la misma distancia y en las mismas condiciones.\nIluminancia, F-stop, ángulo de haz, potencia, peso, IP y control en una vista.\nLa marca de aviso indica fuera de la tabla publicada; la de aproximación, que se usó una temperatura cercana.', guideAmbient:'Incorpora al cálculo el nivel base que mediste en la localización.\nIntrodúcelo por F-stop o por iluminancia. El interruptor decide si cuenta.\nTambién funciona al revés para dar la distancia del foco, y puede colocarse en el plano como fuente.',
+    uiZoomTitle:'Tamaño de pantalla', uiZoomHint:'Escala toda la pantalla, incluido el texto.',
     orderTitle:'Disposición', orderBar:'Pestañas inferiores', orderMenu:'Orden del menú', orderMenuSub:'El orden en que aparecen en el menú',
     langLabel:'Idioma',
     arErrNoSupport:'Este dispositivo no admite la medición con cámara', arErrBusy:'Ya hay una medición en curso', arErrOpen:'No se pudo abrir la pantalla', arSegHere:'Desde aquí', arSegTwo:'2 puntos', arSegTri:'2 sitios', arBtnFix:'Fijar aquí', arBtnRedo:'Empezar de nuevo', arBtnUse:'Usar esta distancia', arBtnPlace:'Poner un punto', arBtnAimHere:'Visar desde aquí', arBtnAimAgain:'Visar otra vez', arHintFromMe:'Mide desde donde estás. Pon la cruz en el objetivo y pulsa Fijar aquí.', arHintTwoA:'Mide entre dos sitios separados. Pon la cruz en un extremo y pulsa Poner un punto.', arHintTwoB:'Pon la cruz en el otro extremo y pulsa Poner un punto otra vez.', arHintTriA:'Para precisión a larga distancia. Pon la cruz en el objetivo y pulsa Visar desde aquí.', arHintTriB:'Mantén la cruz en el mismo punto, camina unos metros de lado y pulsa Visar otra vez.', arHintDone:'Si el valor te parece bien, pulsa Usar esta distancia.', arWarnExtended:'Midiendo sobre un plano extendido, fuera del alcance del LiDAR. Cuanto más lejos, menos fiable. 2 sitios es más preciso.', arWarnNoPlane:'No se encuentra una superficie medible. Mueve un poco el dispositivo.', arTriProgress:'Has caminado {d}m de lado. Las visuales se cruzan con {g}m de error. {tail}', arTriWalkMore:'Camina un poco más de lado para ganar precisión.', arTriReady:'Si estás en el mismo punto, pulsa Visar otra vez.', arTriNoCross:'Has caminado {d}m de lado. Todavía no hay punto de cruce. Camina un poco más de lado.', arTriFail:'No hay punto de cruce. Sigue apuntando al mismo sitio y camina un poco más de lado.', arTriNoMove:'Casi no te has movido. Camina unos metros de lado antes de visar.', arTriFixed:'Base {b}m, error entre visuales {g}m. Si el valor te parece bien, pulsa Usar esta distancia.', arTrackInit:'Mueve el dispositivo despacio para que reconozca el entorno.', arTrackLowFeature:'La superficie está oscura o tiene poca textura. Apunta a un sitio más iluminado o con dibujo.', arTrackFast:'Te mueves demasiado rápido. Sujétalo con calma.',
@@ -2483,9 +2494,9 @@ var LANGS = {
     help4T:'📋 Elige el nombre del Factor de una lista',
     help4W:'El botón Lista junto al campo de nombre del Factor',
     help4B:'En iPhone solo aparecían dos sugerencias, así que casi no se podía elegir. La lista da las 134, con buscador. La marca de los productos LEE pasó del japonés a transmission. Los planos guardados se abren igual que antes.',
-    help5T:'⌀ Diámetro del haz',
-    help5W:'Junto a los chips de Calc, en Comparar y en la pantalla de ambiente',
-    help5B:'Indica el diámetro del círculo de luz a esa distancia. Los ángulos de haz se han revisado con los valores publicados por los fabricantes; donde no hay dato se muestra “ángulo sin verificar” en lugar de un número.',
+    help5T:'🔎 Puedes cambiar el tamaño de pantalla',
+    help5W:'Ajustes, luego Tamaño de pantalla',
+    help5B:'En las pantallas anchas de iPad y Mac el diseño ya se ensancha solo. Si aún se ve pequeño, pon el tamaño en 115, 130 o 150 por ciento y todo crece, el texto incluido. Se recuerda en cada dispositivo.',
     help6T:'🎞 Filtros de difusión',
     help6W:'El botón “📋 Lista” junto al campo de nombre del Factor (Calc, Mix o el plano)',
     help6B:'“📋 Lista” abre las 134 entradas con buscador; las más habituales están también en los chips. 34 referencias LEE y 48 entradas Rosco. LEE publica transmitancia; Rosco publica la pérdida en pasos de Filter Facts: no son el mismo tipo de dato, por eso las entradas LEE llevan un sufijo.',
@@ -2601,6 +2612,7 @@ var LANGS = {
   },
   zh: {
     settingsTitle:'设置', settingsDisplay:'显示', settingsHowTo:'使用方法', guideTitle:'各标签的说明', guideSub:'每个画面是做什么的，怎么用', guideCalc:'选择型号、配件、距离和色温，就会得出照度和 F-stop。\n相机设定（ISO、fps、快门）会直接生效。\n标签上的直径是指在该距离下光斑有多少米。', guideCamera:'输入 ISO、fps、快门角度和 T-stop 的画面。\n数字、胶片、照片各有各的输入方式。\n在这里一改，所有标签的计算都会同时更新。', guideMix:'一台一台地加灯具，得出合计曝光和混合后的色温。\n可以增加台数。打开单独距离后，可以逐台改距离。\n打开环境光，合计就会包含现场的底子亮度。', guideFinder:'输入目标 F-stop 和距离，能达到的灯具会按顺序排列。\n选「从环境光起算」，就能用高出几 stop 来指定目标。\n改变距离，顺序也会变。在该距离能达到的最小灯具排在最前。', guideAlt:'为没订到的灯具找替代。\n给出达到同样亮度所需的台数，以及匹配度。\n按同一距离和色温比较，因此能与租赁清单对照。', guideDraft:'放置人物、灯具、Bounce、DIFF、遮光旗和相机，做出图纸。\n可以把 PDF 或照片垫在底下，对齐实际尺寸。\n打开 Exposure，会显示测光表各方向的读数和主光比。', guideSun:'根据经纬度和日期，给出太阳与月亮一天的轨迹。\n可以知道日出、日落、Magic hour、暮光和月相。\niOS 上可以叠在相机画面上看，也能与拍摄日比较。', guideMired:'用 mired 处理色温的差距。按 K 的比例算，看起来并不一致。\n可以把素材中 Key 与 Fill 的关系，用另一个 Key 色温重新组建。\n还会给出需要的滤色片，以及能做出该色温的灯具。', guideAr:'把相机对准目标测距，并直接带入计算。\n有三种方式：从所在位置、两点之间、从两个地点瞄准。\n点放大镜会出现放大窗，可以更精细地定下瞄准点。', guideCompare:'把多台灯具在同一距离、同一条件下并排比较。\n照度、F-stop、Beam angle、功率、重量、防护等级、控制一目了然。\n警告标记表示超出公布表格，近似标记表示用了相近的色温代替。', guideAmbient:'把用测光表测到的现场底子亮度纳入计算。\n可以按 F-stop 输入，也可以按照度输入。开关决定是否生效。\n也能反过来算出灯具的摆放距离，并且可以作为光源放在图纸上。',
+    uiZoomTitle:'显示大小', uiZoomHint:'整个画面一起放大，文字也会跟着变大。',
     orderTitle:'排列设置', orderBar:'底部标签', orderMenu:'菜单的排列', orderMenuSub:'在三条线菜单中出现的顺序',
     langLabel:'语言',
     arErrNoSupport:'此设备不支持相机测量', arErrBusy:'已经在测量中', arErrOpen:'无法打开界面', arSegHere:'从这里', arSegTwo:'两点间', arSegTri:'两地点', arBtnFix:'在此确定', arBtnRedo:'重新开始', arBtnUse:'使用此距离', arBtnPlace:'放置点', arBtnAimHere:'从这里瞄准', arBtnAimAgain:'再次瞄准', arHintFromMe:'从您所在的位置测量。把十字对准目标，然后点「在此确定」。', arHintTwoA:'测量相隔两处之间的距离。把十字对准一端，然后点「放置点」。', arHintTwoB:'把十字对准另一端，再点一次「放置点」。', arHintTriA:'用于远距离的精确测量。把十字对准目标，然后点「从这里瞄准」。', arHintTriB:'保持十字对准同一处，向侧面走几米，然后点「再次瞄准」。', arHintDone:'如果数值合适，点「使用此距离」。', arWarnExtended:'正在按延长的平面测量（超出 LiDAR 范围）。越远越不可靠。「两地点」更准确。', arWarnNoPlane:'找不到可测量的面。请稍微移动设备。', arTriProgress:'已向侧面走了 {d} 米。瞄准线相差 {g} 米。{tail}', arTriWalkMore:'再向侧面走一点会更准确。', arTriReady:'如果瞄准的是同一处，请点「再次瞄准」。', arTriNoCross:'已向侧面走了 {d} 米。仍算不出交点。请再向侧面走一点。', arTriFail:'算不出交点。保持瞄准同一处，再向侧面走一点。', arTriNoMove:'几乎没有移动。请先向侧面走几米再瞄准。', arTriFixed:'基线 {b} 米，瞄准线相差 {g} 米。如果数值合适，点「使用此距离」。', arTrackInit:'请慢慢移动设备，让它识别周围环境。', arTrackLowFeature:'这个面偏暗或纹理很少。请瞄准更亮的地方，或有纹理的面。', arTrackFast:'移动太快。请拿稳一些。',
@@ -2933,9 +2945,9 @@ var LANGS = {
     help4T:'📋 Factor 的名称可以从列表里选',
     help4W:'Factor 名称栏旁边的「列表」按钮',
     help4B:'在 iPhone 上候选只出现两条，几乎没法选。现在可以从列表里选全部 134 条，还能搜索。LEE 产品的标记从日文改成了 transmission。已保存的图纸照旧能打开。',
-    help5T:'⌀ Beam diameter',
-    help5W:'Calc 的标签旁、灯具比较的行、环境光画面',
-    help5B:'显示在该距离下光斑是多少米的圆。Beam angle 已按厂商公布值全面核对。厂商未公布的型号不给出数值，显示为「角度未确认」。',
+    help5T:'🔎 可以改显示大小',
+    help5W:'设置 → 显示大小',
+    help5B:'在 iPad 和 Mac 的宽屏上，版面现在会自动加宽。如果还是觉得小，把显示大小设成 115%、130% 或 150%，整个画面连文字一起变大。每台设备各自记住。',
     help6T:'🎞 Diffusion',
     help6W:'Factor 名称栏旁边的「📋 全部」按钮（Calc、Mix 或图纸均可）',
     help6B:'点「📋 全部」会列出全部 134 条并可搜索，常用型号也排在标签里。收录 LEE 34 个型号和 Rosco 48 条。LEE 是由透过率换算的值，Rosco 是 Filter Facts 的公布值，两者数字的性质不同。为避免混用，LEE 的名称带有「（透过值）」后缀。',
@@ -3245,6 +3257,7 @@ var LANGS = {
   },
   fr: {
     settingsTitle:'Réglages', settingsDisplay:'Affichage', settingsHowTo:'Comment s\'en servir', guideTitle:'À propos de chaque onglet', guideSub:'À quoi sert chaque écran, et comment l\'utiliser', guideCalc:'Choisissez le projecteur, l\'accessoire, la distance et la température de couleur pour obtenir l\'éclairement et le F-stop.\nVos réglages caméra (ISO, fps, obturateur) sont utilisés tels quels.\nLe diamètre sur la pastille indique la largeur du cercle de lumière à cette distance.', guideCamera:'C\'est ici que vous saisissez ISO, fps, angle d\'obturation et T-stop.\nNumérique, pellicule et photo ont chacun leur mode de saisie.\nChangez-le ici et tous les onglets se recalculent d\'un coup.', guideMix:'Ajoutez les projecteurs un par un pour l\'exposition totale et la température du mélange.\nLe nombre d\'unités se règle. Activez les distances individuelles pour régler chacune.\nActivez l\'ambiante et le total inclut le niveau de base du décor.', guideFinder:'Saisissez un F-stop visé et une distance, et les projecteurs qui y parviennent sont classés.\nAvec À partir de l\'ambiante, la cible se donne en stops au-dessus de l\'ambiante.\nChangez la distance et le classement change. Le plus petit projecteur qui y parvient passe premier.', guideAlt:'Trouvez un remplacement pour le projecteur que vous n\'avez pas eu.\nIl donne le nombre d\'unités nécessaires pour égaler le niveau, et un score de correspondance.\nComparé à distance et température égales, donc utilisable avec une liste de location.', guideDraft:'Placez sujets, projecteurs, Bounce, DIFF, drapeaux et la caméra pour bâtir le plan.\nMettez un PDF ou une photo en fond et calez-le à la taille réelle.\nOuvrez Exposure pour la lecture dans chaque direction du posemètre et le rapport à la principale.', guideSun:'La trajectoire du jour du soleil et de la lune d\'après latitude, longitude et date.\nLever, coucher, heure magique, crépuscule et phase de la lune.\nSur iOS vous pouvez la superposer à la caméra, et comparer avec le jour de tournage.', guideMired:'Traite les écarts de température en mireds. Un rapport de kelvins ne correspond pas visuellement.\nReconstruit le rapport principale et déboucheuse d\'un plan à une autre température de principale.\nDonne aussi la gélatine nécessaire et les projecteurs capables d\'atteindre cette température.', guideAr:'Pointez la caméra pour mesurer une distance et l\'envoyer directement dans le calcul.\nTrois façons : depuis où vous êtes, entre deux points, ou visé depuis deux endroits.\nAppuyez sur la loupe pour agrandir et placer le point avec précision.', guideCompare:'Des projecteurs côte à côte, à la même distance et dans les mêmes conditions.\nÉclairement, F-stop, angle de faisceau, puissance, poids, IP et pilotage d\'un seul coup d\'oeil.\nLe signe d\'alerte veut dire hors du tableau publié ; le signe d\'approximation, qu\'une température voisine a servi.', guideAmbient:'Fait entrer dans le calcul le niveau de base mesuré sur place.\nSaisissez-le par F-stop ou par éclairement. L\'interrupteur décide s\'il compte.\nIl fonctionne aussi à l\'envers pour donner la distance du projecteur, et se pose sur le plan comme source.',
+    uiZoomTitle:'Taille d\'affichage', uiZoomHint:'Agrandit tout l\'écran, texte compris.',
     orderTitle:'Disposition', orderBar:'Onglets du bas', orderMenu:'Ordre du menu', orderMenuSub:'L\'ordre dans lequel ils apparaissent dans le menu',
     langLabel:'Langue',
     arErrNoSupport:'Cet appareil ne prend pas en charge la mesure à la caméra', arErrBusy:'Une mesure est déjà en cours', arErrOpen:'Impossible d\'ouvrir l\'écran', arSegHere:'D\'ici', arSegTwo:'2 points', arSegTri:'2 endroits', arBtnFix:'Valider ici', arBtnRedo:'Recommencer', arBtnUse:'Utiliser cette distance', arBtnPlace:'Poser un point', arBtnAimHere:'Viser d\'ici', arBtnAimAgain:'Viser à nouveau', arHintFromMe:'Mesure depuis où vous êtes. Placez la croix sur la cible et appuyez sur Valider ici.', arHintTwoA:'Mesure entre deux endroits distants. Placez la croix sur une extrémité et appuyez sur Poser un point.', arHintTwoB:'Placez la croix sur l\'autre extrémité et appuyez de nouveau sur Poser un point.', arHintTriA:'Pour la précision à longue distance. Placez la croix sur la cible et appuyez sur Viser d\'ici.', arHintTriB:'Gardez la croix sur le même point, marchez quelques mètres de côté, puis appuyez sur Viser à nouveau.', arHintDone:'Si la valeur vous convient, appuyez sur Utiliser cette distance.', arWarnExtended:'Mesure sur un plan prolongé, hors de portée du LiDAR. Plus c\'est loin, moins c\'est fiable. 2 endroits est plus précis.', arWarnNoPlane:'Aucune surface mesurable trouvée. Bougez un peu l\'appareil.', arTriProgress:'Vous avez marché {d}m de côté. Les visées se manquent de {g}m. {tail}', arTriWalkMore:'Marchez encore un peu de côté pour gagner en précision.', arTriReady:'Si vous visez le même point, appuyez sur Viser à nouveau.', arTriNoCross:'Vous avez marché {d}m de côté. Toujours pas de point d\'intersection. Marchez encore un peu de côté.', arTriFail:'Pas d\'intersection. Continuez de viser le même point et marchez encore un peu de côté.', arTriNoMove:'Vous n\'avez presque pas bougé. Marchez quelques mètres de côté avant de viser.', arTriFixed:'Base {b}m, écart entre les visées {g}m. Si la valeur vous convient, appuyez sur Utiliser cette distance.', arTrackInit:'Bougez l\'appareil lentement pour qu\'il reconnaisse les lieux.', arTrackLowFeature:'La surface est sombre ou peu texturée. Visez un endroit plus clair, ou une surface avec du motif.', arTrackFast:'Mouvement trop rapide. Tenez l\'appareil calmement.',
@@ -3577,9 +3590,9 @@ var LANGS = {
     help4T:'📋 Choisir le nom du Factor dans une liste',
     help4W:'Le bouton Liste à côté du champ de nom du Factor',
     help4B:'Sur iPhone, seules deux suggestions apparaissaient, donc on ne pouvait presque rien choisir. La liste en donne les 134, avec un champ de recherche. La marque des références LEE est passée du japonais à transmission. Les plans enregistrés s\'ouvrent comme avant.',
-    help5T:'⌀ Diamètre du faisceau',
-    help5W:'À côté des pastilles dans Calc, la ligne de la comparaison, et l\'écran d\'ambiante',
-    help5B:'Indique le diamètre en mètres du cercle de lumière à cette distance. Les angles de faisceau ont été revus d\'après les valeurs publiées par les fabricants. Pour les modèles sans valeur publiée, aucun chiffre n\'est donné : « angle non vérifié » s\'affiche.',
+    help5T:'🔎 Vous pouvez changer la taille d\'affichage',
+    help5W:'Réglages, puis Taille d\'affichage',
+    help5B:'Sur les grands écrans d\'iPad et de Mac, la mise en page s\'élargit maintenant d\'elle-même. Si c\'est encore petit, mettez la taille à 115, 130 ou 150 pour cent et tout grandit, le texte compris. C\'est retenu par appareil.',
     help6T:'🎞 Gélatines de diffusion',
     help6W:'Le bouton « 📋 Liste » à côté du champ de nom du Factor (Calc, Mix ou le plan)',
     help6B:'« 📋 Liste » ouvre les 134 références avec un champ de recherche ; les plus courantes sont aussi sur les pastilles. 34 références LEE et 48 entrées Rosco. LEE publie la transmission ; Rosco publie la perte en stops dans Filter Facts. Ce ne sont pas des chiffres de même nature : les entrées LEE portent donc un suffixe pour ne pas les confondre.',
@@ -3889,6 +3902,7 @@ var LANGS = {
   },
   de: {
     settingsTitle:'Einstellungen', settingsDisplay:'Anzeige', settingsHowTo:'Bedienung', guideTitle:'Über die einzelnen Tabs', guideSub:'Wofür jeder Bildschirm da ist und wie man ihn benutzt', guideCalc:'Leuchte, Zubehör, Entfernung und Farbtemperatur wählen, und du bekommst Beleuchtungsstärke und F-stop.\nDeine Kameraeinstellungen (ISO, fps, Verschluss) gehen unverändert ein.\nDer Durchmesser auf dem Chip sagt, wie breit der Lichtkreis auf diese Entfernung ist.', guideCamera:'Hier gibst du ISO, fps, Verschlusswinkel und T-stop ein.\nDigital, Film und Foto haben je ihre eigene Eingabe.\nÄnderst du es hier, rechnen alle Tabs auf einmal neu.', guideMix:'Leuchten einzeln hinzufügen und die Gesamtbelichtung sowie die gemischte Farbtemperatur ablesen.\nStückzahlen lassen sich erhöhen. Mit Einzelentfernungen stellst du jede Leuchte getrennt ein.\nUmgebungslicht an, und die Summe enthält das Grundlicht am Drehort.', guideFinder:'Ziel-F-stop und Entfernung eingeben, und die Leuchten, die es schaffen, werden sortiert.\nMit Vom Umgebungslicht gibst du das Ziel in Stops darüber an.\nÄnderst du die Entfernung, ändert sich die Reihenfolge. Die kleinste, die es schafft, steht oben.', guideAlt:'Findet einen Ersatz für die Leuchte, die du nicht bekommen hast.\nGibt die nötige Stückzahl für dasselbe Niveau und einen Match Score.\nVerglichen bei gleicher Entfernung und Farbtemperatur, passt also zur Verleihliste.', guideDraft:'Personen, Leuchten, Bounce, DIFF, Flags und die Kamera platzieren und daraus einen Plan bauen.\nEin PDF oder Foto unterlegen und auf die echte Größe bringen.\nExposure öffnen für den Wert in jeder Messrichtung und das Verhältnis zur Hauptleuchte.', guideSun:'Der Tagesweg von Sonne und Mond aus Breite, Länge und Datum.\nSonnenaufgang, Sonnenuntergang, magische Stunde, Dämmerung und Mondphase.\nUnter iOS lässt sich das über die Kamera legen, und mit dem Drehtag vergleichen.', guideMired:'Behandelt Farbtemperaturabstände in Mired. Über das Kelvin-Verhältnis passt es optisch nicht.\nBaut das Verhältnis von Haupt- und Aufhelllicht einer Vorlage auf einer anderen Hauptfarbtemperatur neu auf.\nNennt auch die nötige Folie und welche Leuchten diese Temperatur erreichen.', guideAr:'Kamera draufhalten, Entfernung messen und direkt in die Berechnung übernehmen.\nDrei Wege: von deinem Standort, zwischen zwei Punkten, oder von zwei Stellen angepeilt.\nAuf die Lupe tippen, dann kannst du den Punkt genau setzen.', guideCompare:'Leuchten nebeneinander, bei gleicher Entfernung und gleichen Bedingungen.\nBeleuchtungsstärke, F-stop, Beam angle, Leistung, Gewicht, IP und Steuerung auf einen Blick.\nDas Warnzeichen heißt außerhalb der veröffentlichten Tabelle, das Ungefähr-Zeichen, dass eine nahe Farbtemperatur genommen wurde.', guideAmbient:'Bringt das am Drehort gemessene Grundlicht in die Rechnung.\nEingabe per F-stop oder Beleuchtungsstärke. Der Schalter entscheidet, ob es zählt.\nEs geht auch rückwärts und nennt die Entfernung für die Leuchte, und lässt sich als Quelle in den Plan setzen.',
+    uiZoomTitle:'Anzeigegröße', uiZoomHint:'Skaliert den ganzen Bildschirm, den Text eingeschlossen.',
     orderTitle:'Anordnung', orderBar:'Untere Tabs', orderMenu:'Reihenfolge im Menü', orderMenuSub:'Die Reihenfolge im Menü',
     langLabel:'Sprache',
     arErrNoSupport:'Dieses Gerät unterstützt das Messen mit der Kamera nicht', arErrBusy:'Eine Messung läuft bereits', arErrOpen:'Der Bildschirm konnte nicht geöffnet werden', arSegHere:'Von hier', arSegTwo:'2 Punkte', arSegTri:'2 Stellen', arBtnFix:'Hier festlegen', arBtnRedo:'Neu anfangen', arBtnUse:'Diese Entfernung nehmen', arBtnPlace:'Punkt setzen', arBtnAimHere:'Von hier peilen', arBtnAimAgain:'Noch einmal peilen', arHintFromMe:'Misst von deinem Standort. Das Kreuz auf das Ziel setzen und Hier festlegen antippen.', arHintTwoA:'Misst zwischen zwei entfernten Stellen. Das Kreuz auf ein Ende setzen und Punkt setzen antippen.', arHintTwoB:'Das Kreuz auf das andere Ende setzen und noch einmal Punkt setzen antippen.', arHintTriA:'Für Genauigkeit auf große Entfernung. Das Kreuz auf das Ziel setzen und Von hier peilen antippen.', arHintTriB:'Das Kreuz auf derselben Stelle halten, einige Meter seitwärts gehen, dann Noch einmal peilen antippen.', arHintDone:'Wenn der Wert passt, Diese Entfernung nehmen antippen.', arWarnExtended:'Gemessen auf einer verlängerten Fläche, außerhalb der LiDAR-Reichweite. Je weiter, desto unzuverlässiger. 2 Stellen ist genauer.', arWarnNoPlane:'Keine messbare Fläche gefunden. Das Gerät ein wenig bewegen.', arTriProgress:'{d}m seitwärts gegangen. Die Peilungen verfehlen sich um {g}m. {tail}', arTriWalkMore:'Noch etwas weiter seitwärts gehen, dann wird es genauer.', arTriReady:'Wenn du dieselbe Stelle anpeilst, Noch einmal peilen antippen.', arTriNoCross:'{d}m seitwärts gegangen. Noch kein Schnittpunkt. Noch etwas weiter seitwärts gehen.', arTriFail:'Kein Schnittpunkt. Weiter dieselbe Stelle anpeilen und noch etwas weiter seitwärts gehen.', arTriNoMove:'Du hast dich kaum bewegt. Erst einige Meter seitwärts gehen, dann peilen.', arTriFixed:'Basis {b}m, Peilungen verfehlen sich um {g}m. Wenn der Wert passt, Diese Entfernung nehmen antippen.', arTrackInit:'Das Gerät langsam bewegen, damit es die Umgebung erfasst.', arTrackLowFeature:'Die Fläche ist dunkel oder wenig strukturiert. Auf eine hellere Stelle oder eine Fläche mit Muster zielen.', arTrackFast:'Zu schnelle Bewegung. Ruhig halten.',
@@ -4221,9 +4235,9 @@ var LANGS = {
     help4T:'📋 Factor-Namen aus einer Liste wählen',
     help4W:'Die Schaltfläche Liste neben dem Factor-Namensfeld',
     help4B:'Auf dem iPhone kamen nur zwei Vorschläge, man konnte also kaum etwas auswählen. Die Liste gibt alle 134, mit Suchfeld. Die Kennzeichnung der LEE-Produkte ist von Japanisch auf transmission umgestellt. Gespeicherte Pläne öffnen sich wie bisher.',
-    help5T:'⌀ Beam diameter',
-    help5W:'Neben den Chips in Calc, in der Vergleichszeile und im Umgebungslicht-Fenster',
-    help5B:'Zeigt, wie groß der Lichtkreis in Metern auf diese Entfernung wird. Die Beam angles wurden gegen die veröffentlichten Herstellerangaben durchgesehen. Für Modelle ohne veröffentlichten Wert steht keine Zahl, sondern „Winkel nicht bestätigt“.',
+    help5T:'🔎 Die Anzeigegröße ist einstellbar',
+    help5W:'Einstellungen, dann Anzeigegröße',
+    help5B:'Auf den breiten Bildschirmen von iPad und Mac wird das Layout jetzt von selbst breiter. Ist es noch zu klein, stelle die Anzeigegröße auf 115, 130 oder 150 Prozent; dann wird alles größer, der Text eingeschlossen. Pro Gerät gespeichert.',
     help6T:'🎞 Diffusion nach Produktnummer',
     help6W:'Die Taste „📋 Liste“ neben dem Factor-Namensfeld (Calc, Mix oder im Plan)',
     help6B:'„📋 Liste“ öffnet alle 134 Einträge samt Suchfeld; die gängigsten stehen zusätzlich auf den Chips. Enthalten sind 34 LEE-Produkte und 48 Rosco-Einträge. LEE veröffentlicht die Transmission, Rosco den stop-Verlust aus den Filter Facts — das sind unterschiedliche Arten von Zahlen, deshalb tragen die LEE-Einträge einen Zusatz im Namen.',
@@ -4533,6 +4547,7 @@ var LANGS = {
   },
   pt: {
     settingsTitle:'Ajustes', settingsDisplay:'Exibição', settingsHowTo:'Como usar', guideTitle:'Sobre cada aba', guideSub:'Para que serve cada tela e como usá-la', guideCalc:'Escolha o refletor, o acessório, a distância e a temperatura de cor para obter a iluminância e o F-stop.\nSeus ajustes de câmera (ISO, fps, obturador) entram como estão.\nO diâmetro no chip diz qual o tamanho do círculo de luz naquela distância.', guideCamera:'Aqui você informa ISO, fps, ângulo do obturador e T-stop.\nDigital, película e foto têm cada um sua forma de entrada.\nMude aqui e todas as abas recalculam de uma vez.', guideMix:'Adicione refletores um a um para a exposição total e a temperatura da mistura.\nO número de unidades pode subir. Ligue distâncias individuais para ajustar cada uma.\nLigue a luz ambiente e o total inclui o nível base da locação.', guideFinder:'Informe um F-stop desejado e uma distância, e os refletores que alcançam são classificados.\nCom A partir da luz ambiente, o alvo é dado em stops acima do ambiente.\nMude a distância e a ordem muda. O menor refletor que alcança vem primeiro.', guideAlt:'Encontra um substituto para o refletor que você não conseguiu.\nDá o número de unidades necessárias para igualar o nível e uma pontuação de correspondência.\nComparado na mesma distância e temperatura, então casa com a lista da locadora.', guideDraft:'Posicione pessoas, refletores, Bounce, DIFF, bandeiras e a câmera para montar a planta.\nColoque um PDF ou foto ao fundo e ajuste ao tamanho real.\nAbra Exposição para a leitura em cada direção do fotômetro e a relação com a principal.', guideSun:'O caminho diário do sol e da lua a partir de latitude, longitude e data.\nNascer, poente, hora mágica, crepúsculo e fase da lua.\nNo iOS dá para sobrepor à câmera, e comparar com o dia de filmagem.', guideMired:'Trata as diferenças de temperatura em mired. Escalar por kelvin não bate visualmente.\nRefaz a relação entre principal e preenchimento de uma placa em outra temperatura principal.\nTambém dá a gelatina necessária e quais refletores alcançam aquela temperatura.', guideAr:'Aponte a câmera para medir uma distância e leve direto para o cálculo.\nTrês modos: de onde você está, entre dois pontos, ou visado de dois lugares.\nToque na lupa para ampliar e marcar o ponto com precisão.', guideCompare:'Refletores lado a lado, na mesma distância e nas mesmas condições.\nIluminância, F-stop, ângulo de facho, potência, peso, IP e controle de uma só vez.\nA marca de aviso significa fora da tabela publicada; a de aproximação, que se usou uma temperatura próxima.', guideAmbient:'Traz para o cálculo o nível base que você mediu na locação.\nInforme por F-stop ou por iluminância. A chave decide se ele conta.\nTambém funciona ao contrário e dá a distância do refletor, e pode ser posto na planta como fonte.',
+    uiZoomTitle:'Tamanho de exibição', uiZoomHint:'Amplia a tela inteira, incluindo o texto.',
     orderTitle:'Disposição', orderBar:'Abas de baixo', orderMenu:'Ordem do menu', orderMenuSub:'A ordem em que aparecem no menu',
     langLabel:'Idioma',
     arErrNoSupport:'Este aparelho não suporta medição pela câmera', arErrBusy:'Já existe uma medição em andamento', arErrOpen:'Não foi possível abrir a tela', arSegHere:'Daqui', arSegTwo:'2 pontos', arSegTri:'2 lugares', arBtnFix:'Fixar aqui', arBtnRedo:'Começar de novo', arBtnUse:'Usar esta distância', arBtnPlace:'Marcar um ponto', arBtnAimHere:'Visar daqui', arBtnAimAgain:'Visar de novo', arHintFromMe:'Mede de onde você está. Ponha a cruz no alvo e toque em Fixar aqui.', arHintTwoA:'Mede entre dois lugares separados. Ponha a cruz em uma ponta e toque em Marcar um ponto.', arHintTwoB:'Ponha a cruz na outra ponta e toque em Marcar um ponto de novo.', arHintTriA:'Para precisão a longa distância. Ponha a cruz no alvo e toque em Visar daqui.', arHintTriB:'Mantenha a cruz no mesmo ponto, ande alguns metros para o lado e toque em Visar de novo.', arHintDone:'Se o valor estiver bom, toque em Usar esta distância.', arWarnExtended:'Medindo em um plano estendido, fora do alcance do LiDAR. Quanto mais longe, menos confiável. 2 lugares é mais preciso.', arWarnNoPlane:'Nenhuma superfície mensurável encontrada. Mova um pouco o aparelho.', arTriProgress:'Você andou {d}m para o lado. As visadas erram por {g}m. {tail}', arTriWalkMore:'Ande um pouco mais para o lado para ganhar precisão.', arTriReady:'Se estiver no mesmo ponto, toque em Visar de novo.', arTriNoCross:'Você andou {d}m para o lado. Ainda sem ponto de cruzamento. Ande um pouco mais para o lado.', arTriFail:'Sem ponto de cruzamento. Continue visando o mesmo ponto e ande um pouco mais para o lado.', arTriNoMove:'Você quase não se moveu. Ande alguns metros para o lado antes de visar.', arTriFixed:'Base {b}m, visadas erram por {g}m. Se o valor estiver bom, toque em Usar esta distância.', arTrackInit:'Mova o aparelho devagar para ele reconhecer o ambiente.', arTrackLowFeature:'A superfície está escura ou tem pouca textura. Aponte para um lugar mais claro, ou com padrão.', arTrackFast:'Movimento rápido demais. Segure com calma.',
@@ -4865,9 +4880,9 @@ var LANGS = {
     help4T:'📋 Escolha o nome do Factor em uma lista',
     help4W:'O botão Lista ao lado do campo de nome do Factor',
     help4B:'No iPhone apareciam apenas duas sugestões, então quase não dava para escolher. A lista traz todas as 134, com busca. A marca dos produtos LEE passou do japonês para transmission. As plantas salvas abrem como antes.',
-    help5T:'⌀ Beam diameter',
-    help5W:'Ao lado dos chips em Calc, na linha da comparação e na tela de luz ambiente',
-    help5B:'Mostra o diâmetro em metros do círculo de luz naquela distância. Os Beam angles foram revisados contra os valores publicados pelos fabricantes. Nos modelos sem valor publicado não mostramos número, e sim “ângulo não verificado”.',
+    help5T:'🔎 Você pode mudar o tamanho de exibição',
+    help5W:'Ajustes, depois Tamanho de exibição',
+    help5B:'Nas telas largas do iPad e do Mac o layout agora se alarga sozinho. Se ainda estiver pequeno, coloque o tamanho em 115, 130 ou 150 por cento e tudo cresce, incluindo o texto. Fica guardado em cada aparelho.',
     help6T:'🎞 Difusores por código',
     help6W:'O botão “📋 Lista” ao lado do campo de nome do Factor (Calc, Mix ou na planta)',
     help6B:'“📋 Lista” abre as 134 entradas com campo de busca; as mais usadas também aparecem nos chips. São 34 produtos LEE e 48 entradas Rosco. A LEE publica a transmitância; a Rosco publica a perda em stops no Filter Facts. Não são o mesmo tipo de número, por isso as entradas LEE levam um sufixo no nome.',
@@ -5177,6 +5192,7 @@ var LANGS = {
   },
   fi: {
     settingsTitle:'Asetukset', settingsDisplay:'Näyttö', settingsHowTo:'Käyttöohje', guideTitle:'Tietoa välilehdistä', guideSub:'Mihin kukin näkymä on ja miten sitä käytetään', guideCalc:'Valitse valaisin, lisävaruste, etäisyys ja värilämpötila, niin saat valaistusvoimakkuuden ja F-stopin.\nKameran asetukset (ISO, fps, suljin) otetaan sellaisina kuin ne ovat.\nHalkaisija merkinnässä kertoo, kuinka leveä valokeila on sillä etäisyydellä.', guideCamera:'Tässä syötetään ISO, fps, sulkimen kulma ja T-stop.\nDigitaalinen, filmi ja valokuva syötetään kukin omalla tavallaan.\nKun muutat tätä, kaikki välilehdet laskevat uudelleen kerralla.', guideMix:'Lisää valaisimia yksi kerrallaan, niin saat kokonaisvalotuksen ja sekoituksen värilämpötilan.\nMäärää voi nostaa. Kytke erilliset etäisyydet, niin voit säätää jokaisen erikseen.\nKytke vallitseva valo, niin summa sisältää kuvauspaikan pohjatason.', guideFinder:'Syötä tavoiteltu F-stop ja etäisyys, niin riittävät valaisimet järjestyvät.\nValitse Vallitsevasta valosta, niin tavoite annetaan aukkoina sen yli.\nMuuta etäisyyttä ja järjestys muuttuu. Pienin riittävä valaisin on ensimmäisenä.', guideAlt:'Etsii korvaajan valaisimelle, jota et saanut.\nAntaa tarvittavan määrän saman tason saavuttamiseksi sekä osumapisteet.\nVerrataan samalla etäisyydellä ja värilämpötilalla, joten se sopii vuokralistan rinnalle.', guideDraft:'Aseta henkilöt, valaisimet, Bounce, DIFF, liput ja kamera, niin saat pohjan.\nAseta PDF tai valokuva pohjalle ja skaalaa se oikeaan kokoon.\nAvaa Exposure, niin näet lukeman jokaiseen mittaussuuntaan ja suhteen päävaloon.', guideSun:'Auringon ja kuun päivän reitti leveys- ja pituusasteesta sekä päivämäärästä.\nAuringonnousu, lasku, taikahetki, hämärä ja kuun vaihe.\niOS:ssa voit asettaa sen kameran päälle ja verrata kuvauspäivään.', guideMired:'Käsittelee värilämpötilaeroja mireinä. Kelvinien suhde ei vastaa silmän näkemää.\nRakentaa pohjakuvan pää- ja tasoitusvalon suhteen uudelleen toisella päävalon lämpötilalla.\nAntaa myös tarvittavan kalvon ja sen, mitkä valaisimet siihen lämpötilaan pääsevät.', guideAr:'Osoita kameralla, mittaa etäisyys ja vie se suoraan laskentaan.\nKolme tapaa: paikaltasi, kahden pisteen välillä tai tähdättynä kahdesta paikasta.\nNapauta suurennuslasia, niin saat luupin ja voit asettaa pisteen tarkasti.', guideCompare:'Valaisimet rinnakkain, samalla etäisyydellä ja samoissa oloissa.\nValaistusvoimakkuus, F-stop, Beam angle, teho, paino, IP ja ohjaus yhdellä silmäyksellä.\nVaroitusmerkki tarkoittaa julkaistun taulukon ulkopuolta, likimäärämerkki sitä, että käytettiin lähintä värilämpötilaa.', guideAmbient:'Tuo laskentaan kuvauspaikalla mitatun pohjatason.\nSyötä se F-stopina tai valaistusvoimakkuutena. Kytkin ratkaisee, otetaanko se mukaan.\nToimii myös toisin päin ja antaa valaisimen etäisyyden, ja sen voi asettaa pohjaan lähteeksi.',
+    uiZoomTitle:'Näytön koko', uiZoomHint:'Suurentaa koko näkymän, myös tekstin.',
     orderTitle:'Järjestys', orderBar:'Alapalkin välilehdet', orderMenu:'Valikon järjestys', orderMenuSub:'Järjestys, jossa ne näkyvät valikossa',
     langLabel:'Kieli',
     arErrNoSupport:'Tämä laite ei tue kameralla mittaamista', arErrBusy:'Mittaus on jo käynnissä', arErrOpen:'Näkymää ei voitu avata', arSegHere:'Täältä', arSegTwo:'2 pistettä', arSegTri:'2 paikkaa', arBtnFix:'Lukitse tähän', arBtnRedo:'Aloita alusta', arBtnUse:'Käytä tätä etäisyyttä', arBtnPlace:'Aseta piste', arBtnAimHere:'Tähtää täältä', arBtnAimAgain:'Tähtää uudelleen', arHintFromMe:'Mittaa siitä, missä seisot. Aseta risti kohteeseen ja napauta Lukitse tähän.', arHintTwoA:'Mittaa kahden erillisen paikan väliä. Aseta risti toiseen päähän ja napauta Aseta piste.', arHintTwoB:'Aseta risti toiseen päähän ja napauta Aseta piste uudelleen.', arHintTriA:'Tarkkuutta pitkälle matkalle. Aseta risti kohteeseen ja napauta Tähtää täältä.', arHintTriB:'Pidä risti samassa kohdassa, kävele muutama metri sivusuunnassa ja napauta Tähtää uudelleen.', arHintDone:'Jos arvo näyttää oikealta, napauta Käytä tätä etäisyyttä.', arWarnExtended:'Mitataan jatketulla tasolla, LiDARin kantaman ulkopuolella. Mitä kauempana, sitä epävarmempi. 2 paikkaa on tarkempi.', arWarnNoPlane:'Mitattavaa pintaa ei löydy. Liikuta laitetta vähän.', arTriProgress:'Kävelty {d}m sivusuunnassa. Tähtäykset ohittavat {g}m. {tail}', arTriWalkMore:'Kävele vielä vähän sivusuunnassa, niin tarkkuus paranee.', arTriReady:'Jos tähtäät samaan kohtaan, napauta Tähtää uudelleen.', arTriNoCross:'Kävelty {d}m sivusuunnassa. Leikkauspistettä ei vielä ole. Kävele vielä vähän sivusuunnassa.', arTriFail:'Ei leikkauspistettä. Pidä tähtäys samassa kohdassa ja kävele vielä vähän sivusuunnassa.', arTriNoMove:'Et ole liikkunut juuri lainkaan. Kävele muutama metri sivusuunnassa ennen tähtäämistä.', arTriFixed:'Perusviiva {b}m, tähtäykset ohittavat {g}m. Jos arvo näyttää oikealta, napauta Käytä tätä etäisyyttä.', arTrackInit:'Liikuta laitetta hitaasti, jotta se tunnistaa ympäristön.', arTrackLowFeature:'Pinta on tumma tai vähäkuvioinen. Tähtää valoisampaan paikkaan tai kuvioituun pintaan.', arTrackFast:'Liike on liian nopeaa. Pidä laite rauhallisesti.',
@@ -5509,9 +5525,9 @@ var LANGS = {
     help4T:'📋 Valitse Factorin nimi listalta',
     help4W:'Lista-painike nimikentän vieressä',
     help4B:'iPhonessa näkyi vain kaksi ehdotusta, joten valita ei juuri voinut. Lista antaa kaikki 134 ja siinä on haku. LEE-tuotteiden merkintä muuttui japanista muotoon transmission. Tallennetut pohjat avautuvat kuten ennenkin.',
-    help5T:'⌀ Beam diameter',
-    help5W:'Calcin painikkeiden vieressä, vertailun rivillä ja vallitsevan valon näkymässä',
-    help5B:'Näyttää, kuinka monen metrin ympyrä valosta tulee sillä etäisyydellä. Beam anglet on käyty läpi valmistajien julkaisemien arvojen mukaan. Malleille, joille arvoa ei ole julkaistu, ei näytetä lukua vaan „kulmaa ei vahvistettu“.',
+    help5T:'🔎 Näytön kokoa voi muuttaa',
+    help5W:'Asetukset, sitten Näytön koko',
+    help5B:'iPadin ja Macin leveillä näytöillä asettelu levenee nyt itsestään. Jos se on vielä pieni, aseta koko 115, 130 tai 150 prosenttiin, niin kaikki suurenee, myös teksti. Muistetaan laitekohtaisesti.',
     help6T:'🎞 Diffusion-kalvot tuotenumeroin',
     help6W:'„📋 Lista“ -painike Factorin nimikentän vieressä (Calc, Mix tai pohjakuva)',
     help6B:'„📋 Lista“ avaa kaikki 134 tuotetta hakukentän kanssa; yleisimmät ovat myös painikkeina. Mukana on 34 LEE-tuotetta ja 48 Rosco-riviä. LEE julkaisee läpäisyn, Rosco Filter Facts -taulukon stop-häviön. Nämä eivät ole samanlaisia lukuja, siksi LEE-riveissä on nimessä lisämerkintä.',
@@ -5821,6 +5837,7 @@ var LANGS = {
   },
   ko: {
     settingsTitle:'설정', settingsDisplay:'표시', settingsHowTo:'사용법', guideTitle:'각 탭 설명', guideSub:'어떤 화면이고 어떻게 쓰는지', guideCalc:'기종, 액세서리, 거리, 색온도를 고르면 조도와 F-stop이 나옵니다.\n카메라 설정(ISO, fps, 셔터)이 그대로 반영됩니다.\n칩에 나오는 지름은 그 거리에서 빛이 몇 미터의 원이 되는지입니다.', guideCamera:'ISO, fps, 셔터 앵글, T-stop을 넣는 화면입니다.\n디지털, 필름, 사진마다 넣는 방식이 다릅니다.\n여기를 바꾸면 모든 탭의 계산이 한꺼번에 움직입니다.', guideMix:'조명기를 한 대씩 더해서 합계 노출과 섞인 색온도를 냅니다.\n대수를 늘릴 수 있습니다. 개별 거리를 켜면 한 대씩 거리를 바꿀 수 있습니다.\n주변광을 켜면 현장의 기본 밝기를 포함한 합계가 됩니다.', guideFinder:'목표 F-stop과 거리를 넣으면 도달하는 조명기가 순위로 나옵니다.\n「주변광에서」를 고르면 목표를 몇 stop 올릴지로 넣을 수 있습니다.\n거리를 바꾸면 순위가 바뀝니다. 그 거리에서 도달하는 가장 작은 조명기가 위로 옵니다.', guideAlt:'확보하지 못한 조명기의 대체품을 찾습니다.\n같은 밝기를 만드는 데 필요한 대수와 일치도를 냅니다.\n거리와 색온도를 맞춰 비교하므로 렌탈 목록과 대조할 수 있습니다.', guideDraft:'인물, 조명기, Bounce, DIFF, 플래그, 카메라를 놓아 도면을 만듭니다.\nPDF나 사진을 밑에 깔고 실제 치수에 맞출 수 있습니다.\nExposure를 열면 노출계 방향별 읽음과 주광비가 나옵니다.', guideSun:'위도, 경도, 날짜에서 해와 달의 하루 궤적을 냅니다.\n일출, 일몰, Magic hour, 박명, 달의 위상을 알 수 있습니다.\niOS에서는 카메라에 겹쳐 볼 수 있고, 촬영일과 비교할 수도 있습니다.', guideMired:'색온도 차이를 mired로 다룹니다. K의 비로는 눈에 맞지 않습니다.\n소재의 Key와 Fill 관계를 다른 Key 색온도로 다시 짤 수 있습니다.\n필요한 필터와 그 색온도를 낼 수 있는 조명기도 나옵니다.', guideAr:'카메라를 향해 거리를 재고 그대로 계산에 넣을 수 있습니다.\n서 있는 곳에서, 두 점 사이, 두 지점에서 겨냥 의 세 가지가 있습니다.\n돋보기를 누르면 루페가 나와 겨냥할 점을 정밀하게 정할 수 있습니다.', guideCompare:'여러 조명기를 같은 거리, 같은 조건으로 나란히 놓습니다.\n조도, F-stop, Beam angle, 소비전력, 무게, IP, 제어를 한눈에 봅니다.\n경고 표시는 공개된 표의 밖, 근사 표시는 가까운 색온도로 대신한 값입니다.', guideAmbient:'노출계로 측정한 현장의 기본 밝기를 계산에 넣습니다.\nF-stop으로도 조도로도 넣을 수 있습니다. 토글로 반영 여부를 바꿉니다.\n조명기를 놓을 거리도 역산할 수 있고, 도면에는 광원으로 놓을 수 있습니다.',
+    uiZoomTitle:'표시 크기', uiZoomHint:'화면 전체를 확대합니다. 글자도 같이 커집니다.',
     orderTitle:'배치 설정', orderBar:'하단 탭', orderMenu:'메뉴 순서', orderMenuSub:'메뉴에 나오는 순서입니다',
     langLabel:'언어',
     arErrNoSupport:'이 기기는 카메라 측정을 지원하지 않습니다', arErrBusy:'이미 측정 중입니다', arErrOpen:'화면을 열 수 없습니다', arSegHere:'여기서', arSegTwo:'두 점', arSegTri:'두 지점', arBtnFix:'여기로 확정', arBtnRedo:'다시 시작', arBtnUse:'이 거리 사용', arBtnPlace:'점 놓기', arBtnAimHere:'여기서 겨냥', arBtnAimAgain:'다시 겨냥', arHintFromMe:'지금 서 있는 곳에서 측정합니다. 십자를 대상에 맞추고 「여기로 확정」을 누르세요.', arHintTwoA:'떨어진 두 곳 사이를 측정합니다. 십자를 한쪽 끝에 맞추고 「점 놓기」를 누르세요.', arHintTwoB:'십자를 반대쪽 끝에 맞추고 「점 놓기」를 다시 누르세요.', arHintTriA:'먼 거리를 정확히 측정합니다. 십자를 대상에 맞추고 「여기서 겨냥」을 누르세요.', arHintTriB:'십자를 같은 곳에 유지한 채 옆으로 몇 미터 걸은 다음 「다시 겨냥」을 누르세요.', arHintDone:'값이 맞으면 「이 거리 사용」을 누르세요.', arWarnExtended:'면을 연장해 측정하고 있습니다(LiDAR 범위 밖). 멀어질수록 신뢰도가 떨어집니다. 「두 지점」이 더 정확합니다.', arWarnNoPlane:'측정할 수 있는 면이 없습니다. 기기를 조금 움직이세요.', arTriProgress:'옆으로 {d}m 이동했습니다. 겨냥선이 {g}m 어긋납니다. {tail}', arTriWalkMore:'옆으로 조금 더 걸으면 정확해집니다.', arTriReady:'같은 곳을 겨냥하고 있다면 「다시 겨냥」을 누르세요.', arTriNoCross:'옆으로 {d}m 이동했습니다. 아직 교점이 나오지 않습니다. 옆으로 조금 더 걸으세요.', arTriFail:'교점을 구할 수 없습니다. 같은 곳을 겨냥한 채 옆으로 조금 더 걸으세요.', arTriNoMove:'거의 움직이지 않았습니다. 옆으로 몇 미터 걸은 다음 겨냥하세요.', arTriFixed:'기선 {b}m, 겨냥선 어긋남 {g}m. 값이 맞으면 「이 거리 사용」을 누르세요.', arTrackInit:'기기를 천천히 움직여 주변을 인식시키세요.', arTrackLowFeature:'어둡거나 무늬가 적은 면입니다. 밝은 곳이나 무늬가 있는 면을 겨냥하세요.', arTrackFast:'너무 빠르게 움직입니다. 천천히 잡으세요.',
@@ -6153,9 +6170,9 @@ var LANGS = {
     help4T:'📋 Factor 이름을 목록에서 고를 수 있습니다',
     help4W:'Factor 이름 칸 옆의 「목록」 버튼',
     help4B:'iPhone에서는 후보가 두 개만 나와 거의 고를 수 없었습니다. 목록에서 134개를 모두 고를 수 있고 검색도 됩니다. LEE 제품의 표기는 일본어에서 transmission으로 바꿨습니다. 저장한 도면은 그대로 열립니다.',
-    help5T:'⌀ Beam diameter',
-    help5W:'Calc의 칩 옆, 조명기 비교의 행, 주변광 화면',
-    help5B:'그 거리에서 빛이 몇 미터 원이 되는지 나옵니다. Beam angle은 제조사 공표값으로 전부 다시 확인했습니다. 공표되지 않은 기종은 수치를 내지 않고 「각도 미확인」으로 표시합니다.',
+    help5T:'🔎 표시 크기를 바꿀 수 있습니다',
+    help5W:'설정 → 표시 크기',
+    help5B:'iPad와 Mac의 넓은 화면에서는 배치가 저절로 넓어지도록 했습니다. 그래도 작으면 표시 크기를 115%, 130%, 150%로 하면 글자까지 함께 커집니다. 기기별로 기억합니다.',
     help6T:'🎞 품번으로 고르는 Diffusion',
     help6W:'Factor 이름 칸 옆의 「📋 목록」 (Calc·Mix·도면 어디서든)',
     help6B:'「📋 목록」을 누르면 134건 전체가 검색과 함께 나옵니다. 자주 쓰는 품번은 칩으로도 놓여 있습니다. LEE 34품번과 Rosco 48건이 들어 있습니다. LEE는 투과율에서 나온 값, Rosco는 Filter Facts의 stop 손실 공표값으로 수치의 성질이 다릅니다. 섞이지 않도록 LEE는 이름에 표시가 붙습니다.',
@@ -6465,6 +6482,7 @@ var LANGS = {
   },
   th: {
     settingsTitle:'ตั้งค่า', settingsDisplay:'การแสดงผล', settingsHowTo:'วิธีใช้', guideTitle:'เกี่ยวกับแต่ละแท็บ', guideSub:'แต่ละหน้าจอมีไว้ทำอะไร และใช้อย่างไร', guideCalc:'เลือกรุ่น อุปกรณ์เสริม ระยะ และอุณหภูมิสี แล้วจะได้ความสว่างและ F-stop\nการตั้งค่ากล้อง (ISO, fps, ชัตเตอร์) ถูกนำมาใช้ตามที่ตั้งไว้\nเส้นผ่านศูนย์กลางบนป้ายบอกว่าวงแสงกว้างกี่เมตรที่ระยะนั้น', guideCamera:'หน้าจอสำหรับใส่ ISO, fps, องศาชัตเตอร์ และ T-stop\nดิจิทัล ฟิล์ม และภาพนิ่ง ใส่ค่าคนละแบบ\nเปลี่ยนที่นี่แล้วทุกแท็บจะคำนวณใหม่พร้อมกัน', guideMix:'เพิ่มโคมไฟทีละดวงเพื่อดูค่าแสงรวมและอุณหภูมิสีที่ผสมกัน\nเพิ่มจำนวนดวงได้ เปิดระยะแยกดวงเพื่อตั้งระยะของแต่ละดวง\nเปิดแสงโดยรอบแล้วผลรวมจะรวมแสงพื้นของสถานที่ด้วย', guideFinder:'ใส่ F-stop เป้าหมายและระยะ แล้วโคมที่ส่องถึงจะเรียงลำดับให้\nเลือก จากแสงโดยรอบ เพื่อกำหนดเป้าหมายเป็นจำนวน stop ที่สูงกว่าแสงโดยรอบ\nเปลี่ยนระยะแล้วลำดับจะเปลี่ยน โคมที่เล็กที่สุดที่ส่องถึงจะอยู่บนสุด', guideAlt:'หาตัวแทนของโคมที่จองไม่ได้\nบอกจำนวนดวงที่ต้องใช้เพื่อให้ได้ความสว่างเท่ากัน พร้อมคะแนนความใกล้เคียง\nเทียบที่ระยะและอุณหภูมิสีเดียวกัน จึงใช้คู่กับรายการเช่าได้', guideDraft:'วางตัวแบบ โคมไฟ Bounce DIFF ธง และกล้อง เพื่อสร้างผังไฟ\nวาง PDF หรือรูปเป็นพื้นหลังแล้วปรับให้ตรงขนาดจริงได้\nเปิด Exposure เพื่อดูค่าที่อ่านได้ในแต่ละทิศของมิเตอร์ และอัตราส่วนกับไฟหลัก', guideSun:'เส้นทางของดวงอาทิตย์และดวงจันทร์ในหนึ่งวัน จากพิกัดและวันที่\nพระอาทิตย์ขึ้น ตก Magic hour แสงสลัว และเฟสของดวงจันทร์\nบน iOS ซ้อนทับภาพจากกล้องได้ และเทียบกับวันถ่ายได้', guideMired:'จัดการผลต่างของอุณหภูมิสีด้วย mired การใช้อัตราส่วนเคลวินจะไม่ตรงกับที่ตาเห็น\nจัดความสัมพันธ์ของ Key และ Fill ของภาพต้นทางใหม่ ที่อุณหภูมิ Key อื่น\nบอกฟิลเตอร์ที่ต้องใช้ และโคมที่ทำอุณหภูมิสีนั้นได้', guideAr:'หันกล้องไปวัดระยะ แล้วส่งเข้าการคำนวณได้ทันที\nมีสามแบบ จากที่คุณยืน ระหว่างสองจุด และเล็งจากสองตำแหน่ง\nกดแว่นขยายเพื่อเปิดลูป จะกำหนดจุดที่เล็งได้ละเอียดขึ้น', guideCompare:'วางโคมหลายดวงเทียบกันที่ระยะและเงื่อนไขเดียวกัน\nดูความสว่าง F-stop Beam angle กำลังไฟ น้ำหนัก IP และการควบคุมได้ในหน้าเดียว\nเครื่องหมายเตือนหมายถึงอยู่นอกตารางที่ประกาศ เครื่องหมายประมาณหมายถึงใช้อุณหภูมิสีที่ใกล้เคียงแทน', guideAmbient:'นำแสงพื้นที่วัดได้ที่สถานที่จริงเข้าสู่การคำนวณ\nใส่เป็น F-stop หรือความสว่างก็ได้ สวิตช์เป็นตัวกำหนดว่าจะนับหรือไม่\nคำนวณย้อนกลับเพื่อหาระยะวางโคมได้ และวางเป็นแหล่งกำเนิดแสงบนผังได้',
+    uiZoomTitle:'ขนาดการแสดงผล', uiZoomHint:'ขยายทั้งหน้าจอ รวมทั้งตัวอักษรด้วย',
     orderTitle:'การจัดเรียง', orderBar:'แท็บด้านล่าง', orderMenu:'ลำดับในเมนู', orderMenuSub:'ลำดับที่แสดงในเมนู',
     langLabel:'ภาษา',
     arErrNoSupport:'อุปกรณ์นี้ไม่รองรับการวัดด้วยกล้อง', arErrBusy:'กำลังวัดอยู่แล้ว', arErrOpen:'ไม่สามารถเปิดหน้าจอได้', arSegHere:'จากที่นี่', arSegTwo:'2 จุด', arSegTri:'2 ตำแหน่ง', arBtnFix:'กำหนดที่นี่', arBtnRedo:'เริ่มใหม่', arBtnUse:'ใช้ระยะนี้', arBtnPlace:'วางจุด', arBtnAimHere:'เล็งจากที่นี่', arBtnAimAgain:'เล็งอีกครั้ง', arHintFromMe:'วัดจากตำแหน่งที่คุณยืน วางกากบาทบนเป้าหมายแล้วกด กำหนดที่นี่', arHintTwoA:'วัดระยะระหว่างสองตำแหน่งที่ห่างกัน วางกากบาทที่ปลายด้านหนึ่งแล้วกด วางจุด', arHintTwoB:'วางกากบาทที่ปลายอีกด้านแล้วกด วางจุด อีกครั้ง', arHintTriA:'สำหรับความแม่นยำในระยะไกล วางกากบาทบนเป้าหมายแล้วกด เล็งจากที่นี่', arHintTriB:'คงกากบาทไว้ที่จุดเดิม เดินไปด้านข้างสองสามเมตร แล้วกด เล็งอีกครั้ง', arHintDone:'ถ้าค่าดูถูกต้อง กด ใช้ระยะนี้', arWarnExtended:'กำลังวัดบนระนาบที่ขยายออกไป เกินระยะของ LiDAR ยิ่งไกลยิ่งเชื่อถือได้น้อย ใช้ 2 ตำแหน่ง จะแม่นกว่า', arWarnNoPlane:'ไม่พบพื้นผิวที่วัดได้ ขยับอุปกรณ์เล็กน้อย', arTriProgress:'เดินไปด้านข้าง {d} เมตร เส้นเล็งคลาดกัน {g} เมตร {tail}', arTriWalkMore:'เดินไปด้านข้างอีกหน่อยจะแม่นขึ้น', arTriReady:'ถ้าเล็งจุดเดิมอยู่ กด เล็งอีกครั้ง', arTriNoCross:'เดินไปด้านข้าง {d} เมตร ยังไม่ได้จุดตัด เดินไปด้านข้างอีกหน่อย', arTriFail:'หาจุดตัดไม่ได้ เล็งจุดเดิมไว้แล้วเดินไปด้านข้างอีกหน่อย', arTriNoMove:'แทบไม่ได้ขยับ เดินไปด้านข้างสองสามเมตรก่อนเล็ง', arTriFixed:'เส้นฐาน {b} เมตร เส้นเล็งคลาดกัน {g} เมตร ถ้าค่าดูถูกต้อง กด ใช้ระยะนี้', arTrackInit:'ขยับอุปกรณ์ช้า ๆ ให้รู้จักสภาพแวดล้อม', arTrackLowFeature:'พื้นผิวมืดหรือมีลายน้อย เล็งไปที่สว่างกว่า หรือพื้นผิวที่มีลาย', arTrackFast:'ขยับเร็วเกินไป จับให้นิ่ง',
@@ -6797,9 +6815,9 @@ var LANGS = {
     help4T:'📋 เลือกชื่อ Factor จากรายการได้',
     help4W:'ปุ่มรายการข้างช่องชื่อ Factor',
     help4B:'บน iPhone ขึ้นตัวเลือกแค่สองรายการ จึงแทบเลือกไม่ได้ ในรายการมีทั้ง 134 รายการและค้นหาได้ เครื่องหมายของสินค้า LEE เปลี่ยนจากภาษาญี่ปุ่นเป็น transmission ผังที่บันทึกไว้ยังเปิดได้เหมือนเดิม',
-    help5T:'⌀ Beam diameter',
-    help5W:'ข้างป้ายกำกับใน Calc, บรรทัดของหน้าเปรียบเทียบ และหน้าแสงโดยรอบ',
-    help5B:'แสดงว่าที่ระยะนั้นแสงเป็นวงกลมกว้างกี่เมตร Beam angle ได้ตรวจทานใหม่ทั้งหมดตามค่าที่ผู้ผลิตเผยแพร่ รุ่นที่ผู้ผลิตไม่ได้เผยแพร่จะไม่แสดงตัวเลข แต่แสดงว่า “ยังไม่ยืนยันมุม”',
+    help5T:'🔎 เปลี่ยนขนาดการแสดงผลได้',
+    help5W:'ตั้งค่า → ขนาดการแสดงผล',
+    help5B:'บนหน้าจอกว้างของ iPad และ Mac ผังจะกว้างขึ้นเองแล้ว ถ้ายังเล็ก ตั้งขนาดการแสดงผลเป็น 115% 130% หรือ 150% ทุกอย่างจะใหญ่ขึ้นรวมทั้งตัวอักษร จำแยกตามเครื่อง',
     help6T:'🎞 แผ่น Diffusion ตามรหัสรุ่น',
     help6W:'ปุ่ม “📋 รายการ” ข้างช่องชื่อของ Factor (ใช้ได้ทั้งใน Calc, Mix และผังไฟ)',
     help6B:'กด “📋 รายการ” จะแสดงทั้ง 134 รายการพร้อมช่องค้นหา รุ่นที่ใช้บ่อยก็มีอยู่ในป้ายกำกับด้วย ในนี้มี LEE 34 รหัสและ Rosco 48 รายการ LEE เผยแพร่ค่าการส่องผ่าน ส่วน Rosco เผยแพร่ค่าการสูญเสียเป็น stop ใน Filter Facts ตัวเลขทั้งสองมีลักษณะต่างกัน จึงเติมคำต่อท้ายชื่อของ LEE ไว้เพื่อไม่ให้สับสน',
@@ -7109,6 +7127,7 @@ var LANGS = {
   },
   ptPT: {
     settingsTitle:'Definições', settingsDisplay:'Apresentação', settingsHowTo:'Como usar', guideTitle:'Sobre cada separador', guideSub:'Para que serve cada ecrã e como usá-lo', guideCalc:'Escolha o projetor, o acessório, a distância e a temperatura de cor para obter a iluminância e o F-stop.\nAs suas definições de câmara (ISO, fps, obturador) entram tal como estão.\nO diâmetro no chip diz qual o tamanho do círculo de luz àquela distância.', guideCamera:'Aqui introduz ISO, fps, ângulo do obturador e T-stop.\nDigital, película e foto têm cada um a sua forma de introdução.\nAltere aqui e todos os separadores recalculam de uma vez.', guideMix:'Adicione projetores um a um para a exposição total e a temperatura da mistura.\nO número de unidades pode subir. Ligue distâncias individuais para ajustar cada uma.\nLigue a luz ambiente e o total inclui o nível base do local.', guideFinder:'Introduza um F-stop pretendido e uma distância, e os projetores que alcançam são ordenados.\nCom A partir da luz ambiente, o alvo é dado em stops acima do ambiente.\nAltere a distância e a ordem muda. O projetor mais pequeno que alcança vem primeiro.', guideAlt:'Encontra um substituto para o projetor que não conseguiu.\nDá o número de unidades necessárias para igualar o nível e uma pontuação de correspondência.\nComparado à mesma distância e temperatura, por isso encaixa na lista do aluguer.', guideDraft:'Coloque pessoas, projetores, Bounce, DIFF, bandeiras e a câmara para montar a planta.\nPonha um PDF ou foto ao fundo e ajuste ao tamanho real.\nAbra Exposição para a leitura em cada direção do fotómetro e a relação com a principal.', guideSun:'O percurso diário do sol e da lua a partir de latitude, longitude e data.\nNascer, poente, hora mágica, crepúsculo e fase da lua.\nNo iOS pode sobrepor à câmara, e comparar com o dia de rodagem.', guideMired:'Trata as diferenças de temperatura em mired. Escalar por kelvin não corresponde visualmente.\nRefaz a relação entre principal e preenchimento de um plano de fundo noutra temperatura principal.\nTambém dá a gelatina necessária e quais projetores alcançam aquela temperatura.', guideAr:'Aponte a câmara para medir uma distância e leve-a diretamente para o cálculo.\nTrês modos: de onde se encontra, entre dois pontos, ou visado de dois sítios.\nToque na lupa para ampliar e marcar o ponto com precisão.', guideCompare:'Projetores lado a lado, à mesma distância e nas mesmas condições.\nIluminância, F-stop, ângulo de feixe, potência, peso, IP e controlo de uma só vez.\nA marca de aviso significa fora da tabela publicada; a de aproximação, que se usou uma temperatura próxima.', guideAmbient:'Traz para o cálculo o nível base que mediu no local.\nIntroduza por F-stop ou por iluminância. O interruptor decide se conta.\nTambém funciona ao contrário e dá a distância do projetor, e pode ser colocado na planta como fonte.',
+    uiZoomTitle:'Tamanho de exibição', uiZoomHint:'Amplia o ecrã inteiro, incluindo o texto.',
     orderTitle:'Disposição', orderBar:'Separadores de baixo', orderMenu:'Ordem do menu', orderMenuSub:'A ordem em que aparecem no menu',
     langLabel:'Idioma',
     arErrNoSupport:'Este dispositivo não suporta medição pela câmara', arErrBusy:'Já existe uma medição em curso', arErrOpen:'Não foi possível abrir o ecrã', arSegHere:'Daqui', arSegTwo:'2 pontos', arSegTri:'2 sítios', arBtnFix:'Fixar aqui', arBtnRedo:'Começar de novo', arBtnUse:'Usar esta distância', arBtnPlace:'Marcar um ponto', arBtnAimHere:'Visar daqui', arBtnAimAgain:'Visar de novo', arHintFromMe:'Mede de onde se encontra. Ponha a cruz no alvo e toque em Fixar aqui.', arHintTwoA:'Mede entre dois sítios separados. Ponha a cruz numa ponta e toque em Marcar um ponto.', arHintTwoB:'Ponha a cruz na outra ponta e toque em Marcar um ponto de novo.', arHintTriA:'Para precisão a longa distância. Ponha a cruz no alvo e toque em Visar daqui.', arHintTriB:'Mantenha a cruz no mesmo ponto, ande alguns metros para o lado e toque em Visar de novo.', arHintDone:'Se o valor estiver bom, toque em Usar esta distância.', arWarnExtended:'A medir num plano estendido, fora do alcance do LiDAR. Quanto mais longe, menos fiável. 2 sítios é mais preciso.', arWarnNoPlane:'Não foi encontrada uma superfície mensurável. Mova um pouco o dispositivo.', arTriProgress:'Andou {d}m para o lado. As visadas falham por {g}m. {tail}', arTriWalkMore:'Ande um pouco mais para o lado para ganhar precisão.', arTriReady:'Se estiver no mesmo ponto, toque em Visar de novo.', arTriNoCross:'Andou {d}m para o lado. Ainda sem ponto de cruzamento. Ande um pouco mais para o lado.', arTriFail:'Sem ponto de cruzamento. Continue a visar o mesmo ponto e ande um pouco mais para o lado.', arTriNoMove:'Quase não se moveu. Ande alguns metros para o lado antes de visar.', arTriFixed:'Base {b}m, visadas falham por {g}m. Se o valor estiver bom, toque em Usar esta distância.', arTrackInit:'Mova o dispositivo devagar para reconhecer o ambiente.', arTrackLowFeature:'A superfície está escura ou tem pouca textura. Aponte para um sítio mais claro, ou com padrão.', arTrackFast:'Movimento demasiado rápido. Segure com calma.',
@@ -7441,9 +7460,9 @@ var LANGS = {
     help4T:'📋 Escolha o nome do Factor numa lista',
     help4W:'O botão Lista ao lado do campo de nome do Factor',
     help4B:'No iPhone apareciam apenas duas sugestões, pelo que quase não era possível escolher. A lista traz todas as 134, com pesquisa. A marca dos produtos LEE passou do japonês para transmission. As plantas guardadas abrem como antes.',
-    help5T:'⌀ Beam diameter',
-    help5W:'Ao lado dos chips em Calc, na linha da comparação e no ecrã de luz ambiente',
-    help5B:'Mostra o diâmetro em metros do círculo de luz naquela distância. Os Beam angles foram revisados contra os valores publicados pelos fabricantes. Nos modelos sem valor publicado não mostramos número, e sim “ângulo não verificado”.',
+    help5T:'🔎 Pode mudar o tamanho de exibição',
+    help5W:'Definições, depois Tamanho de exibição',
+    help5B:'Nos ecrãs largos do iPad e do Mac a disposição alarga agora sozinha. Se ainda estiver pequeno, ponha o tamanho em 115, 130 ou 150 por cento e tudo cresce, incluindo o texto. Fica guardado em cada aparelho.',
     help6T:'🎞 Difusores por código',
     help6W:'O botão “📋 Lista” ao lado do campo de nome do Factor (Calc, Mix ou na planta)',
     help6B:'“📋 Lista” abre as 134 entradas com campo de busca; as mais usadas também aparecem nos chips. São 34 produtos LEE e 48 entradas Rosco. A LEE publica a transmitância; a Rosco publica a perda em stops no Filter Facts. Não são o mesmo tipo de número, por isso as entradas LEE levam um sufixo no nome.',
@@ -7753,6 +7772,7 @@ var LANGS = {
   },
   zhTW: {
     settingsTitle:'設定', settingsDisplay:'顯示', settingsHowTo:'使用方法', guideTitle:'各標籤的說明', guideSub:'每個畫面是做什麼的，怎麼用', guideCalc:'選擇型號、配件、距離和色溫，就會得出照度和 F-stop。\n相機設定（ISO、fps、快門）會直接生效。\n標籤上的直徑是指在該距離下光斑有多少公尺。', guideCamera:'輸入 ISO、fps、快門角度和 T-stop 的畫面。\n數位、膠片、照片各有各的輸入方式。\n在這裡一改，所有標籤的計算都會同時更新。', guideMix:'一台一台地加燈具，得出合計曝光和混合後的色溫。\n可以增加台數。開啟單獨距離後，可以逐台改距離。\n開啟環境光，合計就會包含現場的底子亮度。', guideFinder:'輸入目標 F-stop 和距離，能達到的燈具會按順序排列。\n選「從環境光起算」，就能用高出幾 stop 來指定目標。\n改變距離，順序也會變。在該距離能達到的最小燈具排在最前。', guideAlt:'為沒訂到的燈具找替代。\n給出達到同樣亮度所需的台數，以及匹配度。\n按同一距離和色溫比較，因此能與租賃清單對照。', guideDraft:'放置人物、燈具、Bounce、DIFF、遮光旗和相機，做出圖面。\n可以把 PDF 或照片墊在底下，對齊實際尺寸。\n開啟 Exposure，會顯示測光表各方向的讀數和主光比。', guideSun:'根據經緯度和日期，給出太陽與月亮一天的軌跡。\n可以知道日出、日落、Magic hour、暮光和月相。\niOS 上可以疊在相機畫面上看，也能與拍攝日比較。', guideMired:'用 mired 處理色溫的差距。按 K 的比例算，看起來並不一致。\n可以把素材中 Key 與 Fill 的關係，用另一個 Key 色溫重新組建。\n還會給出需要的濾色片，以及能做出該色溫的燈具。', guideAr:'把相機對準目標測距，並直接帶入計算。\n有三種方式：從所在位置、兩點之間、從兩個地點瞄準。\n點放大鏡會出現放大窗，可以更精細地定下瞄準點。', guideCompare:'把多台燈具在同一距離、同一條件下並排比較。\n照度、F-stop、Beam angle、功率、重量、防護等級、控制一目了然。\n警告標記表示超出公布表格，近似標記表示用了相近的色溫代替。', guideAmbient:'把用測光表測到的現場底子亮度納入計算。\n可以按 F-stop 輸入，也可以按照度輸入。開關決定是否生效。\n也能反過來算出燈具的擺放距離，並且可以作為光源放在圖面上。',
+    uiZoomTitle:'顯示大小', uiZoomHint:'整個畫面一起放大，文字也會跟著變大。',
     orderTitle:'排列設定', orderBar:'底部標籤', orderMenu:'選單的排列', orderMenuSub:'在三條線選單中出現的順序',
     langLabel:'語言',
     arErrNoSupport:'此裝置不支援相機測量', arErrBusy:'已經在測量中', arErrOpen:'無法開啟介面', arSegHere:'從這裡', arSegTwo:'兩點間', arSegTri:'兩地點', arBtnFix:'在此確定', arBtnRedo:'重新開始', arBtnUse:'使用此距離', arBtnPlace:'放置點', arBtnAimHere:'從這裡瞄準', arBtnAimAgain:'再次瞄準', arHintFromMe:'從您所在的位置測量。把十字對準目標，然後點「在此確定」。', arHintTwoA:'測量相隔兩處之間的距離。把十字對準一端，然後點「放置點」。', arHintTwoB:'把十字對準另一端，再點一次「放置點」。', arHintTriA:'用於遠距離的精確測量。把十字對準目標，然後點「從這裡瞄準」。', arHintTriB:'保持十字對準同一處，向側面走幾公尺，然後點「再次瞄準」。', arHintDone:'如果數值合適，點「使用此距離」。', arWarnExtended:'正在按延長的平面測量（超出 LiDAR 範圍）。越遠越不可靠。「兩地點」更準確。', arWarnNoPlane:'找不到可測量的面。請稍微移動裝置。', arTriProgress:'已向側面走了 {d} 公尺。瞄準線相差 {g} 公尺。{tail}', arTriWalkMore:'再向側面走一點會更準確。', arTriReady:'如果瞄準的是同一處，請點「再次瞄準」。', arTriNoCross:'已向側面走了 {d} 公尺。仍算不出交點。請再向側面走一點。', arTriFail:'算不出交點。保持瞄準同一處，再向側面走一點。', arTriNoMove:'幾乎沒有移動。請先向側面走幾公尺再瞄準。', arTriFixed:'基線 {b} 公尺，瞄準線相差 {g} 公尺。如果數值合適，點「使用此距離」。', arTrackInit:'請慢慢移動裝置，讓它辨識周圍環境。', arTrackLowFeature:'這個面偏暗或紋理很少。請瞄準較亮的地方，或有紋理的面。', arTrackFast:'移動太快。請拿穩一些。',
@@ -8085,9 +8105,9 @@ var LANGS = {
     help4T:'📋 Factor 的名稱可以從清單裡選',
     help4W:'Factor 名稱欄旁邊的「清單」按鈕',
     help4B:'在 iPhone 上候選只出現兩條，幾乎沒法選。現在可以從清單裡選全部 134 條，還能搜尋。LEE 產品的標記從日文改成了 transmission。已儲存的圖面照舊能開啟。',
-    help5T:'⌀ Beam diameter',
-    help5W:'Calc 的標籤旁、燈具比較的行、環境光畫面',
-    help5B:'顯示在該距離下光斑是多少米的圓。Beam angle 已按廠商公布值全面核對。廠商未公布的型號不給出數值，顯示為「角度未確認」。',
+    help5T:'🔎 可以改顯示大小',
+    help5W:'設定 → 顯示大小',
+    help5B:'在 iPad 和 Mac 的寬螢幕上，版面現在會自動加寬。如果還是覺得小，把顯示大小設成 115%、130% 或 150%，整個畫面連文字一起變大。每台裝置各自記住。',
     help6T:'🎞 Diffusion',
     help6W:'Factor 名稱欄旁邊的「📋 全部」按鈕（Calc、Mix 或圖面均可）',
     help6B:'點「📋 全部」會列出全部 134 條並可搜索，常用型號也排在標籤裡。收錄 LEE 34 個型號和 Rosco 48 條。LEE 是由透過率換算的值，Rosco 是 Filter Facts 的公布值，兩者數字的性質不同。為避免混用，LEE 的名稱帶有「（透過值）」後綴。',
@@ -14373,7 +14393,7 @@ function openSunTool(){
   if (_SUN.hhmm == null) { var n2 = new Date(); _SUN.hhmm = n2.getHours()*60 + n2.getMinutes(); }
   var html =
   '<div id="_sun" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_sun\').remove()">' +
-  '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:92vh;max-height:92dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+  '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(92vh / var(--ui-zoom));max-height:calc(92dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
     '<div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid #eee;">' +
       '<div style="flex:1;min-width:0;">' +
         '<div style="font-size:15px;font-weight:900;letter-spacing:.02em;">☀️ SUN SCOUT</div>' +
@@ -15606,7 +15626,7 @@ function openAmbientTool() {
   var ex = document.getElementById('_amb'); if (ex) ex.remove();
   document.body.insertAdjacentHTML('beforeend',
   '<div id="_amb" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_amb\').remove()">' +
-  '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:92vh;max-height:92dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+  '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(92vh / var(--ui-zoom));max-height:calc(92dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
     '<div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid #eee;">' +
       '<div style="flex:1;min-width:0;">' +
         '<div style="font-size:15px;font-weight:900;">🌗 ' + t('ambTitle') + '</div>' +
@@ -15727,7 +15747,7 @@ function openMiredTool() {
   var ex = document.getElementById('_mrd'); if (ex) ex.remove();
   var html =
     '<div id="_mrd" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_mrd\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:88vh;max-height:88dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
       '<div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid #eee;">' +
         '<div style="flex:1;min-width:0;">' +
           '<div style="font-size:15px;font-weight:900;">🎨 ' + t('mrdTitle') + '</div>' +
@@ -17321,7 +17341,7 @@ function _arShowResult(r) {
 
   var html =
     '<div id="_ar_res" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_ar_res\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:88vh;max-height:88dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
       '<div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid #eee;">' +
         '<div style="flex:1;min-width:0;">' +
           '<div style="font-size:15px;font-weight:900;">📷 ' + t('arResultTitle') + '</div>' +
@@ -18514,7 +18534,7 @@ function openCompare() {
   // 画面いっぱいに広げるが、iPhone の上のノッチ・下のホームバーを避ける。
   // 以前は避けていなかったので、✕ がステータスバーの下に潜って押せず、
   // この画面に入ると戻れなくなっていた。
-  ov.style.cssText = 'position:fixed;left:0;right:0;top:0;bottom:0;height:100vh;height:100dvh;' +
+  ov.style.cssText = 'position:fixed;left:0;right:0;top:0;bottom:0;height:calc(100vh / var(--ui-zoom));height:calc(100dvh / var(--ui-zoom));' +
     'background:var(--white,#fff);z-index:9998;display:flex;flex-direction:column;';
   ov.innerHTML =
     '<div style="flex-shrink:0;display:flex;align-items:center;gap:10px;' +
@@ -18994,7 +19014,7 @@ function _cmpPick(i) {
   m.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:flex-end;';
   m.setAttribute('onclick', "if(event.target===this)this.remove()");
   m.innerHTML =
-    '<div style="background:var(--white,#fff);border-radius:20px 20px 0 0;width:100%;max-height:82vh;max-height:82dvh;display:flex;flex-direction:column;">' +
+    '<div style="background:var(--white,#fff);border-radius:20px 20px 0 0;width:100%;max-height:calc(82vh / var(--ui-zoom));max-height:calc(82dvh / var(--ui-zoom));display:flex;flex-direction:column;">' +
       '<div style="padding:14px 16px 8px;flex-shrink:0;">' +
         '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">' +
           '<button id="_cmp_back" onclick="_cmpBackMaker()" style="display:none;border:none;background:var(--bg,#eee);color:var(--text,#333);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:800;cursor:pointer;">‹ ' + t('makerTitle') + '</button>' +
@@ -19105,7 +19125,10 @@ try {
 function syncHeaderHeight() {
   var h = document.querySelector('header');
   if (!h) return;
-  var hh = Math.ceil(h.getBoundingClientRect().height);
+  // rect は zoom を掛けた後の見た目の大きさで返る。--header-h は
+  // zoom の中で使う値なので、倍率で割り戻さないと余白が二重に効く。
+  var z = (typeof uiZoomNow === 'function') ? uiZoomNow() : 1;
+  var hh = Math.ceil(h.getBoundingClientRect().height / z);
   document.documentElement.style.setProperty('--header-h', (hh + 8) + 'px');
 }
 window.addEventListener('resize', syncHeaderHeight);
@@ -19537,7 +19560,7 @@ function openPrivacy() {
   var lang = (typeof LANG !== 'undefined' && PRIVACY_POLICY[LANG]) ? LANG : 'en';
   var html =
     '<div id="_privacy_ov" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)document.getElementById(\'_privacy_ov\').remove()">' +
-    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);max-height:88vh;max-height:88dvh;overflow-y:auto;padding:20px 18px 40px;-webkit-overflow-scrolling:touch;">' +
+    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));overflow-y:auto;padding:20px 18px 40px;-webkit-overflow-scrolling:touch;">' +
     '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
       '<div style="font-size:16px;font-weight:900;">🔒 ' + t('navPrivacy') + '</div>' +
       '<button onclick="document.getElementById(\'_privacy_ov\').remove()" style="border:none;background:var(--bg,#eee);width:30px;height:30px;border-radius:50%;font-size:14px;cursor:pointer;color:var(--text,#111);">✕</button>' +
@@ -19553,7 +19576,7 @@ function openPrivacy() {
  * 初回説明と同じで、バージョンが上がった最初の起動に一度だけ出し、あとは
  * ドロワーの「新機能の使いかた」からいつでも開けるようにする。
  * 出したかどうかは表示したバージョンを持っておく（同じ版で二度出さない）。 */
-var HELP_TOPICS = ['1','2','3','4'];   // 1.1.10 の内容。5と6は 1.1.9 のもので今は使わない
+var HELP_TOPICS = ['1','2','3','4','5'];   // 1.1.10 の内容。6は 1.1.9 のもので今は使わない
 var HELP_SEEN_KEY = 'calm_help_seen_ver';
 /* 「更新するたびに一度出す」ので、版数とビルド番号の組で覚える。
  * APP_VER / APP_BUILD はこのファイルの後ろで定義しているが、
@@ -19579,7 +19602,7 @@ function openHelp() {
     '<div style="height:1px;background:var(--line,#e5e5ea);margin:0 0 18px;"></div>');
   var html =
     '<div id="_help_ov" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)closeHelp()">' +
-    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);max-height:88vh;max-height:88dvh;overflow-y:auto;padding:20px 18px 40px;-webkit-overflow-scrolling:touch;">' +
+    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));overflow-y:auto;padding:20px 18px 40px;-webkit-overflow-scrolling:touch;">' +
     '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px;">' +
       '<div><div style="font-size:16px;font-weight:900;">✨ ' + t('helpTitle') +
         ' <span style="font-size:11px;font-weight:800;color:var(--text-dim,#999);">v' + helpSeenToken() + '</span></div>' +
@@ -19624,7 +19647,7 @@ function _sheetShell(id, icon, title, sub, bodyHTML) {
   return '<div id="' + id + '" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;' +
     'display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)this.remove()">' +
     '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;' +
-      'max-width:var(--app-w);max-height:88vh;max-height:88dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+      'max-width:var(--app-w);max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
       '<div style="flex:0 0 auto;display:flex;align-items:flex-start;gap:10px;padding:18px 18px 12px;border-bottom:1px solid var(--line,#eee);">' +
         '<div style="flex:1;min-width:0;">' +
           '<div style="font-size:16px;font-weight:900;">' + icon + ' ' + title + '</div>' +
@@ -19638,6 +19661,48 @@ function _sheetShell(id, icon, title, sub, bodyHTML) {
       '</div>' +
     '</div></div>';
 }
+
+/* ── 表示サイズ ────────────────────────────────────────────
+ * px で組んである画面なので、文字だけ大きくする手がない。
+ * ルート要素の zoom で全体を拡大する。Mac のブラウザなら ⌘+ で
+ * 同じことができるが、iPad や iPhone のアプリには手段がないので
+ * アプリの中に持たせる。
+ * zoom を掛けても vh と getBoundingClientRect は拡大されたままなので、
+ *   ・シートの高さ  → CSS 側で calc(NNvh / var(--ui-zoom))
+ *   ・--header-h    → syncHeaderHeight() で割り戻す
+ * の2か所で戻している。1 倍のときはどちらも素通りする。 */
+var UI_ZOOM_KEY  = 'calm_ui_zoom';
+var UI_ZOOM_LIST = [1, 1.15, 1.3, 1.5];
+
+function uiZoomGet() {
+  var v = NaN;
+  try { v = parseFloat(localStorage.getItem(UI_ZOOM_KEY)); } catch(e) {}
+  for (var i = 0; i < UI_ZOOM_LIST.length; i++) {
+    if (Math.abs(UI_ZOOM_LIST[i] - v) < 0.001) return UI_ZOOM_LIST[i];
+  }
+  return 1;   // 未設定や知らない値は等倍
+}
+/* いま画面に掛かっている倍率。保存値ではなく適用値を見る。
+   座標の割り戻しはこちらを使う（保存を挟まずに変えても合うように）。 */
+var _uiZoomCur = 1;
+function uiZoomNow() { return _uiZoomCur; }
+function uiZoomApply(z) {
+  var d = document.documentElement;
+  _uiZoomCur = z;
+  d.style.setProperty('--ui-zoom', z);
+  d.style.zoom = (z === 1) ? '' : z;
+}
+function uiZoomSet(z) {
+  try { localStorage.setItem(UI_ZOOM_KEY, z); } catch(e) {}
+  uiZoomApply(z);
+  // 倍率が変わると中身の px 寸法が変わる。ヘッダー実高の測り直しや
+  // 図面のキャンバスの作り直しは resize に繋いであるので、それを叩く。
+  try { window.dispatchEvent(new Event('resize')); }
+  catch(e) { if (typeof syncHeaderHeight === 'function') syncHeaderHeight(); }
+  var s = document.getElementById('_settings');
+  if (s) { s.remove(); openSettings(); }   // 選んだ倍率を反映して開き直す
+}
+uiZoomApply(uiZoomGet());
 
 function openSettings() {
   var ex = document.getElementById('_settings'); if (ex) ex.remove();
@@ -19654,8 +19719,31 @@ function openSettings() {
     return '<div style="font-size:10.5px;font-weight:900;color:var(--text-dim,#999);letter-spacing:.08em;' +
       'margin:6px 0 4px;">' + txt + '</div>';
   }
+  function zoomRow() {
+    var cur = uiZoomNow();
+    var btns = UI_ZOOM_LIST.map(function(z) {
+      var on = (Math.abs(z - cur) < 0.001);
+      return '<button onclick="uiZoomSet(' + z + ')" style="flex:1;padding:9px 0;cursor:pointer;' +
+        'font-family:var(--sans);font-size:12px;font-weight:900;border-radius:9px;' +
+        'border:1.5px solid ' + (on ? 'var(--accent,#e65100)' : 'var(--border,#e0e0e0)') + ';' +
+        'background:' + (on ? 'var(--accent,#e65100)' : 'var(--white,#fff)') + ';' +
+        'color:' + (on ? '#fff' : 'var(--text-dim,#999)') + ';">' +
+        Math.round(z * 100) + '%</button>';
+    }).join('');
+    return '<div style="padding:12px 12px 14px;border-bottom:1px solid var(--line,#eee);">' +
+      '<div style="display:flex;align-items:center;gap:12px;">' +
+        '<span style="font-size:19px;width:26px;text-align:center;">🔎</span>' +
+        '<span style="flex:1;min-width:0;font-size:13.5px;font-weight:800;color:var(--text,#111);">' +
+          t('uiZoomTitle') + '</span>' +
+      '</div>' +
+      '<div style="display:flex;gap:6px;margin-top:9px;">' + btns + '</div>' +
+      '<div style="font-size:10.5px;color:var(--text-dim,#999);margin-top:8px;line-height:1.5;">' +
+        t('uiZoomHint') + '</div>' +
+    '</div>';
+  }
   var body =
     head(t('settingsDisplay')) +
+    zoomRow() +
     row('🧩', t('orderTitle'), 'openNavEditor()') +
     '<div style="height:14px;"></div>' +
     head(t('settingsHowTo')) +
@@ -19841,7 +19929,7 @@ function openNavEditor(){
   i18nOn('_navedit', openNavEditor);
   document.body.insertAdjacentHTML('beforeend',
   '<div id="_navedit" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_navedit\').remove()">' +
-  '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:88vh;max-height:88dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+  '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
     '<div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid #eee;">' +
       '<div style="flex:1;min-width:0;">' +
         '<div style="font-size:15px;font-weight:900;">🧩 ' + t('orderTitle') + '</div>' +
@@ -23194,7 +23282,7 @@ function mixAddLight() {
     }
 
     modal.innerHTML =
-      '<div style="background:#111;border-radius:20px 20px 0 0;width:100%;max-width:540px;height:85vh;height:85dvh;display:flex;flex-direction:column;">' +
+      '<div style="background:#111;border-radius:20px 20px 0 0;width:100%;max-width:540px;height:calc(85vh / var(--ui-zoom));height:calc(85dvh / var(--ui-zoom));display:flex;flex-direction:column;">' +
         // Header
         '<div style="padding:14px 14px 10px;border-bottom:1px solid #222;flex-shrink:0;">' +
           // Title + close
@@ -27053,11 +27141,17 @@ function dftZoomFromSlider(val) {
   dftRender();
 }
 
+// 表示サイズ（zoom）が掛かっていると、rect も clientX も見た目の px で
+// 返る。canvas の中身は zoom の中の px なので、倍率で割り戻さないと
+// 置いた物が指の位置からずれる。1倍のときは割っても変わらない。
+function _dftZ() { return (typeof uiZoomNow === 'function') ? uiZoomNow() : 1; }
+
 // ── MOUSE ──────────────────────────────────────────────────
 function _dftMD(e) {
   e.preventDefault();
   var r  = _dft.canvas.getBoundingClientRect();
-  var mx = e.clientX - r.left, my = e.clientY - r.top;
+  var _z = _dftZ();
+  var mx = (e.clientX - r.left) / _z, my = (e.clientY - r.top) / _z;
 
   // Double-tap on distance label → edit distance
   var _now = Date.now();
@@ -27330,7 +27424,8 @@ function _dftOpenSettings(o) {
 
 function _dftMM(e) {
   var r  = _dft.canvas.getBoundingClientRect();
-  var mx = e.clientX - r.left, my = e.clientY - r.top;
+  var _z = _dftZ();
+  var mx = (e.clientX - r.left) / _z, my = (e.clientY - r.top) / _z;
   // 置く場所を探している最中は、指の下に置いたときの形を見せる
   if (_dft.mode === 'placerect' && _dft._pendRect) {
     _dft._pendAt = {x:mx, y:my};
@@ -27508,7 +27603,8 @@ function _dftMU() {
 function _dftWheel(e) {
   e.preventDefault();
   var r  = _dft.canvas.getBoundingClientRect();
-  var mx = e.clientX - r.left, my = e.clientY - r.top;
+  var _z = _dftZ();
+  var mx = (e.clientX - r.left) / _z, my = (e.clientY - r.top) / _z;
   var f  = e.deltaY > 0 ? 0.84 : 1.19;
   _dft.ox   = mx - (mx - _dft.ox) * f;
   _dft.oy   = my - (my - _dft.oy) * f;
@@ -27518,7 +27614,8 @@ function _dftWheel(e) {
 
 function _dftDbl(e) {
   var r  = _dft.canvas.getBoundingClientRect();
-  var mx = e.clientX - r.left, my = e.clientY - r.top;
+  var _z = _dftZ();
+  var mx = (e.clientX - r.left) / _z, my = (e.clientY - r.top) / _z;
   var hit = _dftObjAt(mx, my);
   if (!hit) return;
   // Diffusion/Bounce はダブルクリックで設定画面（透明度・立て/寝かせ・Factor）を再表示
@@ -27551,9 +27648,10 @@ function _dftTS(e) {
     _dft.panActive=false; _dft.pointerDown=false; _dft.dragObj=null;
     _dft.pinchActive = true;
     var t0=e.touches[0], t1=e.touches[1];
-    _dft.lastPinchDist = Math.hypot(t0.clientX-t1.clientX, t0.clientY-t1.clientY);
-    _dft.lastPinchMx   = (t0.clientX+t1.clientX)/2 - r.left;
-    _dft.lastPinchMy   = (t0.clientY+t1.clientY)/2 - r.top;
+    var _z = _dftZ();
+    _dft.lastPinchDist = Math.hypot(t0.clientX-t1.clientX, t0.clientY-t1.clientY) / _z;
+    _dft.lastPinchMx   = ((t0.clientX+t1.clientX)/2 - r.left) / _z;
+    _dft.lastPinchMy   = ((t0.clientY+t1.clientY)/2 - r.top)  / _z;
   }
 }
 
@@ -27565,9 +27663,10 @@ function _dftTM(e) {
     _dftMM({clientX:t.clientX, clientY:t.clientY});
   } else if (e.touches.length === 2) {
     var t0=e.touches[0], t1=e.touches[1];
-    var dist = Math.hypot(t0.clientX-t1.clientX, t0.clientY-t1.clientY);
-    var mx   = (t0.clientX+t1.clientX)/2 - r.left;
-    var my   = (t0.clientY+t1.clientY)/2 - r.top;
+    var _z   = _dftZ();
+    var dist = Math.hypot(t0.clientX-t1.clientX, t0.clientY-t1.clientY) / _z;
+    var mx   = ((t0.clientX+t1.clientX)/2 - r.left) / _z;
+    var my   = ((t0.clientY+t1.clientY)/2 - r.top)  / _z;
     _dft.ox += mx - _dft.lastPinchMx;
     _dft.oy += my - _dft.lastPinchMy;
     if (_dft.lastPinchDist > 0) {
@@ -27690,7 +27789,7 @@ function dftCameraEdit(oid) {
 
   var html =
     '<div id="_dft_cam" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_dft_cam\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:82vh;max-height:82dvh;overflow-y:auto;" onclick="event.stopPropagation()">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:calc(82vh / var(--ui-zoom));max-height:calc(82dvh / var(--ui-zoom));overflow-y:auto;" onclick="event.stopPropagation()">' +
     '<div style="font-size:14px;font-weight:800;margin-bottom:12px;">🎥 ' + (o.label || 'Camera') + '</div>' +
 
     '<div style="font-size:11px;font-weight:800;color:#555;margin-bottom:6px;">' + t('camFocal') + '</div>' +
@@ -27796,7 +27895,7 @@ function dftLightSettings(oid) {
 
   var html =
     '<div id="_dft_ls" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_dft_ls\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:80vh;max-height:80dvh;overflow-y:auto;">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:calc(80vh / var(--ui-zoom));max-height:calc(80dvh / var(--ui-zoom));overflow-y:auto;">' +
     '<div style="font-size:14px;font-weight:800;margin-bottom:2px;">'+(lt?lt.name:o.label||'Light')+'</div>' +
     (accs.length ? '<div style="font-size:11px;color:#888;margin-bottom:12px;">Accessory</div><div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">'+accBtns+'</div>' : '') +
     _dftCctFieldHTML(o, lt) +
@@ -28363,7 +28462,7 @@ function openFactorNamePicker(type, apply) {
   var color = (type === 'bounce') ? '#0288d1' : (type === 'diffuse') ? '#43a047' : '#f57c00';
   document.body.insertAdjacentHTML('beforeend',
     '<div id="_fpick" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:10000;display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)closeFactorNamePicker()">' +
-    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);height:82vh;height:82dvh;display:flex;flex-direction:column;">' +
+    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);height:calc(82vh / var(--ui-zoom));height:calc(82dvh / var(--ui-zoom));display:flex;flex-direction:column;">' +
       '<div style="display:flex;align-items:center;gap:8px;padding:16px 16px 10px;">' +
         '<div style="font-size:15px;font-weight:900;color:' + color + ';">' + t('fpickTitle') + '</div>' +
         '<div id="_fpick_cnt" style="font-size:11px;color:var(--text-dim,#888);"></div>' +
@@ -28730,7 +28829,7 @@ function dftRectStart(type) {
   }).join('');
   var html =
     '<div id="_dft_rs" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_dft_rs\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:82vh;max-height:82dvh;overflow-y:auto;">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:calc(82vh / var(--ui-zoom));max-height:calc(82dvh / var(--ui-zoom));overflow-y:auto;">' +
     '<div style="font-size:14px;font-weight:800;margin-bottom:14px;">' + typeLabel + ' · ' + t('rectSizeTitle') + '</div>' +
     '<div style="font-size:11px;font-weight:800;color:#888;margin-bottom:8px;">' + t('rectPreset') + '</div>' +
     '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px;">' + presetBtns + '</div>' +
@@ -28843,7 +28942,7 @@ function dftBounceSettings(oid) {
   var typeLabel = o.type === 'bounce' ? 'Bounce' : 'Diffusion';
   var html =
     '<div id="_dft_bs" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_dft_bs\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:80vh;max-height:80dvh;overflow-y:auto;">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:calc(80vh / var(--ui-zoom));max-height:calc(80dvh / var(--ui-zoom));overflow-y:auto;">' +
     '<div style="font-size:14px;font-weight:800;margin-bottom:12px;">' + typeLabel + ' &nbsp;<span style="font-size:11px;color:#888;font-weight:600;">' + (o.label||'') + '</span></div>' +
     _dftSizeFieldHTML(o) +
     _dftOrientFieldHTML(o) +
@@ -28965,7 +29064,7 @@ function dftAmbientSettings(oid) {
   }
   var html =
     '<div id="_dft_amb" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)this.remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:88vh;max-height:88dvh;overflow-y:auto;" onclick="event.stopPropagation()">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));overflow-y:auto;" onclick="event.stopPropagation()">' +
       '<div style="display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid #eee;">' +
         '<div style="flex:1;min-width:0;font-size:15px;font-weight:800;">\uD83C\uDF17 ' + t('dftAmbTitle') + '</div>' +
         langChipHTML() +
@@ -29178,7 +29277,7 @@ function dftExposureTool() {
       // 角度ごとの表
       '<div style="font-size:11px;color:#888;margin:12px 0 4px;">' +
         t('expTableNote') + ' ' + (d.elev ? _dftElevLabel(d.elev) : t('expElevFlat')) + '</div>' +
-      '<div style="max-height:34vh;max-height:34dvh;overflow-y:auto;border:1px solid #eee;border-radius:10px;">' +
+      '<div style="max-height:calc(34vh / var(--ui-zoom));max-height:calc(34dvh / var(--ui-zoom));overflow-y:auto;border:1px solid #eee;border-radius:10px;">' +
       '<table style="width:100%;border-collapse:collapse;font-size:11px;">' +
       '<thead><tr style="background:#f5f5f7;">' +
         '<th style="padding:6px 8px;text-align:left;font-weight:800;">'+t('expAngle')+'</th>' +
@@ -29224,7 +29323,7 @@ function dftExposureTool() {
   var html =
     '<div id="_dft_exp" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_dft_exp\').remove()">' +
     '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;' +
-      'max-height:88vh;max-height:88dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+      'max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
     '<div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid #eee;">' +
       '<div style="flex:1;min-width:0;font-size:15px;font-weight:800;">📊 ' + t('expTitle') + '</div>' +
       langChipHTML() +
@@ -30098,7 +30197,7 @@ function dftObjSettings(oid) {
   var icon = o.type === 'flag' ? '▬' : o.type === 'form' ? (_dftIsCloth(o) ? '🎬' : '■') : o.type === 'people' ? '🧍' : '🖼';
   var html =
     '<div id="_dft_os" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_dft_os\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:82vh;max-height:82dvh;overflow-y:auto;" onclick="event.stopPropagation()">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;padding:20px 16px 36px;max-height:calc(82vh / var(--ui-zoom));max-height:calc(82dvh / var(--ui-zoom));overflow-y:auto;" onclick="event.stopPropagation()">' +
     '<div style="font-size:14px;font-weight:800;margin-bottom:14px;">' + icon + ' ' + (o.label || o.type) + '</div>' +
     (isRect
       ? _dftSizeFieldHTML(o) + _dftOrientFieldHTML(o)
@@ -30434,7 +30533,7 @@ function _dftShowLightPicker(wx, wy) {
       (active ? 'background:#fff;color:#111;' : 'background:#2a2a2a;color:#888;');
   };
   var html = '<div id="_dft_lp" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.65);z-index:9999;display:flex;align-items:flex-end;">' +
-    '<div style="background:#111;border-radius:20px 20px 0 0;width:100%;max-height:78vh;max-height:78dvh;overflow:hidden;display:flex;flex-direction:column;">' +
+    '<div style="background:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(78vh / var(--ui-zoom));max-height:calc(78dvh / var(--ui-zoom));overflow:hidden;display:flex;flex-direction:column;">' +
     '<div style="padding:14px 16px 8px;flex-shrink:0;">' +
     '<div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:10px;">'+t('dftSelectLight')+'</div>' +
     '<div style="display:flex;gap:6px;margin-bottom:8px;">' +
@@ -30749,7 +30848,7 @@ function dftSetScaleUI() {
   });
 
   var html = '<div id="_dft_sc" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;" onclick="if(event.target===this)document.getElementById(\'_dft_sc\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:16px;padding:18px;width:90%;max-width:330px;max-height:88vh;max-height:88dvh;overflow-y:auto;" onclick="event.stopPropagation()">' +
+    '<div style="background:#fff;color:#111;border-radius:16px;padding:18px;width:90%;max-width:330px;max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));overflow-y:auto;" onclick="event.stopPropagation()">' +
     '<div style="font-weight:800;font-size:15px;margin-bottom:4px;">'+t('dftScaleTitle')+'</div>' +
 
     // ① 1マスの大きさ — これが一番聞かれること
@@ -31067,7 +31166,7 @@ function _dftWriteDrafts() {
 function dftLoadMenu() {
   if (!_dft.drafts.length && !_calmCloud()) { alert(t('dftNoSavedDrafts')); return; }
   var html = '<div id="_dft_lm" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;" onclick="if(event.target===this)document.getElementById(\'_dft_lm\').remove()">' +
-    '<div style="background:var(--bg,#fff);border-radius:16px;padding:18px;width:88%;max-width:360px;max-height:75vh;max-height:75dvh;overflow-y:auto;" onclick="event.stopPropagation()">' +
+    '<div style="background:var(--bg,#fff);border-radius:16px;padding:18px;width:88%;max-width:360px;max-height:calc(75vh / var(--ui-zoom));max-height:calc(75dvh / var(--ui-zoom));overflow-y:auto;" onclick="event.stopPropagation()">' +
     '<div style="font-weight:800;font-size:15px;margin-bottom:12px;">'+t('dftDraftsList')+'</div>' +
     // iOS アプリのときだけ。他の端末で作った図面を取りに行く
     (_calmCloud()
@@ -31889,7 +31988,7 @@ function dftDistVisMenu() {
   // 以前は全部が1つの長いスクロールに入っていて、
   // 下まで送らないと閉じられなかった。
   var html = '<div id="_dft_dv" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_dft_dv\').remove()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:86vh;max-height:86dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(86vh / var(--ui-zoom));max-height:calc(86dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
 
     // ── 見出し（固定）
     '<div style="flex:0 0 auto;padding:16px 12px 10px;border-bottom:1px solid #eee;">' +
@@ -32169,7 +32268,7 @@ function dftLayerSheet(id, focusName) {
     '<div style="padding:22px 16px;text-align:center;font-size:11px;color:#bbb;font-weight:700;">' + t('lyrEmpty') + '</div>';
 
   var html = '<div id="_dft_ly" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)window._dftLySheetClose()">' +
-    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:82vh;max-height:82dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+    '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-height:calc(82vh / var(--ui-zoom));max-height:calc(82dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
     '<div style="padding:16px 16px 10px;border-bottom:1px solid #eee;flex:0 0 auto;">' +
       '<div style="display:flex;align-items:center;gap:8px;">' +
         '<span style="font-size:14px;font-weight:800;">🗂 ' + t('lyrTitle') + '</span>' +
