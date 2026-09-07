@@ -12657,8 +12657,54 @@ var LIGHTS = {
         }
       }
     },
+    luxed_pro_12: {
+      url:'https://www.lightstarusa.com/product/lightstar-luxed-pro-12-bi-color-led-ip65/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"50\" y=\"4\" width=\"59\" height=\"72\" rx=\"4\"/><circle cx=\"64\" cy=\"18\" r=\"6\"/><circle cx=\"64\" cy=\"18\" r=\"3\"/><circle cx=\"80\" cy=\"18\" r=\"6\"/><circle cx=\"80\" cy=\"18\" r=\"3\"/><circle cx=\"96\" cy=\"18\" r=\"6\"/><circle cx=\"96\" cy=\"18\" r=\"3\"/><circle cx=\"64\" cy=\"33\" r=\"6\"/><circle cx=\"64\" cy=\"33\" r=\"3\"/><circle cx=\"80\" cy=\"33\" r=\"6\"/><circle cx=\"80\" cy=\"33\" r=\"3\"/><circle cx=\"96\" cy=\"33\" r=\"6\"/><circle cx=\"96\" cy=\"33\" r=\"3\"/><circle cx=\"64\" cy=\"47\" r=\"6\"/><circle cx=\"64\" cy=\"47\" r=\"3\"/><circle cx=\"80\" cy=\"47\" r=\"6\"/><circle cx=\"80\" cy=\"47\" r=\"3\"/><circle cx=\"96\" cy=\"47\" r=\"6\"/><circle cx=\"96\" cy=\"47\" r=\"3\"/><circle cx=\"64\" cy=\"62\" r=\"6\"/><circle cx=\"64\" cy=\"62\" r=\"3\"/><circle cx=\"80\" cy=\"62\" r=\"6\"/><circle cx=\"80\" cy=\"62\" r=\"3\"/><circle cx=\"96\" cy=\"62\" r=\"6\"/><circle cx=\"96\" cy=\"62\" r=\"3\"/><circle cx=\"50\" cy=\"40\" r=\"4\"/><circle cx=\"110\" cy=\"40\" r=\"4\"/><line x1=\"44\" y1=\"40\" x2=\"44\" y2=\"90\"/><line x1=\"116\" y1=\"40\" x2=\"116\" y2=\"90\"/><line x1=\"44\" y1=\"90\" x2=\"116\" y2=\"90\"/></g></svg>', name:'LUXED PRO 12', desc:'2160W IP65 Bi-Color LED Spacelite (4×3)', emoji:'💡', watts:2160,
+      weight:'40 kg', weightExtra:'ヨーク 7.9 kg / 安定器 7.9 kg', size:'1266×1540×258 mm', ccts:[3200,5600],
+      accessories:['deg25','deg60'], accAngles:{deg25:25, deg60:60},
+      dmx:{led:'Bi-Color',power:'2160W',cct:'2800K–6500K',cri:'≥95',tlci:'>90',r9:'≥95',ip:'IP65',control:'DMX / CRMX / LumenRadio / App'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // IP65 の Bi-Color。IP20 の LUXED-12 と W・色温度・灯数（3×4）が同じで、
+      // 外装だけが違う（LUXED-12 は 1256×1526×216 mm / IP20）。
+      // メーカーは PRO の配光表を出していないので、照度は LUXED-12 の
+      // 公式ブローシュアの表をそのまま入れている。防水の前面ガラスのぶん、
+      // 実際はこれより数%落ちる可能性がある。
+      refData: {
+        'deg25':{
+          3200:{4:16000, 5:11000, 6:8200},
+          5600:{4:16000, 5:11000, 6:8200}
+        },
+        'deg60':{
+          3200:{4:4950, 5:3450, 6:2550},
+          5600:{4:4950, 5:3450, 6:2550}
+        }
+      }
+    },
+    luxed_pro_9: {
+      url:'https://www.lightstarusa.com/product/luxed-pro-p9-ip65/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"43\" y=\"4\" width=\"73\" height=\"72\" rx=\"4\"/><circle cx=\"60\" cy=\"21\" r=\"8\"/><circle cx=\"60\" cy=\"21\" r=\"3\"/><circle cx=\"80\" cy=\"21\" r=\"8\"/><circle cx=\"80\" cy=\"21\" r=\"3\"/><circle cx=\"100\" cy=\"21\" r=\"8\"/><circle cx=\"100\" cy=\"21\" r=\"3\"/><circle cx=\"60\" cy=\"40\" r=\"8\"/><circle cx=\"60\" cy=\"40\" r=\"3\"/><circle cx=\"80\" cy=\"40\" r=\"8\"/><circle cx=\"80\" cy=\"40\" r=\"3\"/><circle cx=\"100\" cy=\"40\" r=\"8\"/><circle cx=\"100\" cy=\"40\" r=\"3\"/><circle cx=\"60\" cy=\"59\" r=\"8\"/><circle cx=\"60\" cy=\"59\" r=\"3\"/><circle cx=\"80\" cy=\"59\" r=\"8\"/><circle cx=\"80\" cy=\"59\" r=\"3\"/><circle cx=\"100\" cy=\"59\" r=\"8\"/><circle cx=\"100\" cy=\"59\" r=\"3\"/><circle cx=\"43\" cy=\"40\" r=\"4\"/><circle cx=\"117\" cy=\"40\" r=\"4\"/><line x1=\"37\" y1=\"40\" x2=\"37\" y2=\"90\"/><line x1=\"123\" y1=\"40\" x2=\"123\" y2=\"90\"/><line x1=\"37\" y1=\"90\" x2=\"123\" y2=\"90\"/></g></svg>', name:'LUXED PRO 9', desc:'1620W IP65 Bi-Color LED Spacelite (3×3)', emoji:'💡', watts:1620,
+      weight:'32.6 kg', weightExtra:'ヨーク 7.3 kg / 安定器 7.9 kg', size:'1256×1232×258 mm', ccts:[3200,5600],
+      accessories:['deg25','deg60'], accAngles:{deg25:25, deg60:60},
+      dmx:{led:'Bi-Color',power:'1620W',cct:'2800K–6500K',cri:'≥95',tlci:'>90',r9:'≥95',ip:'IP65',control:'DMX / CRMX / LumenRadio / App'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/luxed/',
+      // IP65 の Bi-Color。IP20 の LUXED-9 と W・色温度・灯数（3×3）が同じで、
+      // 外装だけが違う（LUXED-9 は 1256×1218×216 mm / IP20）。
+      // メーカーは PRO の配光表を出していないので、照度は LUXED-9 の
+      // 公式ブローシュアの表をそのまま入れている。防水の前面ガラスのぶん、
+      // 実際はこれより数%落ちる可能性がある。
+      refData: {
+        'deg25':{
+          3200:{4:13200, 5:9200, 6:6600},
+          5600:{4:13200, 5:9200, 6:6600}
+        },
+        'deg60':{
+          3200:{4:4100, 5:2850, 6:2000},
+          5600:{4:4100, 5:2850, 6:2000}
+        }
+      }
+    },
     luxed12: {
-      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"50\" y=\"4\" width=\"59\" height=\"72\" rx=\"4\"/><circle cx=\"64\" cy=\"18\" r=\"6\"/><circle cx=\"64\" cy=\"18\" r=\"3\"/><circle cx=\"80\" cy=\"18\" r=\"6\"/><circle cx=\"80\" cy=\"18\" r=\"3\"/><circle cx=\"96\" cy=\"18\" r=\"6\"/><circle cx=\"96\" cy=\"18\" r=\"3\"/><circle cx=\"64\" cy=\"33\" r=\"6\"/><circle cx=\"64\" cy=\"33\" r=\"3\"/><circle cx=\"80\" cy=\"33\" r=\"6\"/><circle cx=\"80\" cy=\"33\" r=\"3\"/><circle cx=\"96\" cy=\"33\" r=\"6\"/><circle cx=\"96\" cy=\"33\" r=\"3\"/><circle cx=\"64\" cy=\"47\" r=\"6\"/><circle cx=\"64\" cy=\"47\" r=\"3\"/><circle cx=\"80\" cy=\"47\" r=\"6\"/><circle cx=\"80\" cy=\"47\" r=\"3\"/><circle cx=\"96\" cy=\"47\" r=\"6\"/><circle cx=\"96\" cy=\"47\" r=\"3\"/><circle cx=\"64\" cy=\"62\" r=\"6\"/><circle cx=\"64\" cy=\"62\" r=\"3\"/><circle cx=\"80\" cy=\"62\" r=\"6\"/><circle cx=\"80\" cy=\"62\" r=\"3\"/><circle cx=\"96\" cy=\"62\" r=\"6\"/><circle cx=\"96\" cy=\"62\" r=\"3\"/><circle cx=\"50\" cy=\"40\" r=\"4\"/><circle cx=\"110\" cy=\"40\" r=\"4\"/><line x1=\"44\" y1=\"40\" x2=\"44\" y2=\"90\"/><line x1=\"116\" y1=\"40\" x2=\"116\" y2=\"90\"/><line x1=\"44\" y1=\"90\" x2=\"116\" y2=\"90\"/></g></svg>', weight:'40 kg', name:'LUXED PRO-P12', desc:'2160W RGB LED Panel', emoji:'💡', watts:2160,
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"50\" y=\"4\" width=\"59\" height=\"72\" rx=\"4\"/><circle cx=\"64\" cy=\"18\" r=\"6\"/><circle cx=\"64\" cy=\"18\" r=\"3\"/><circle cx=\"80\" cy=\"18\" r=\"6\"/><circle cx=\"80\" cy=\"18\" r=\"3\"/><circle cx=\"96\" cy=\"18\" r=\"6\"/><circle cx=\"96\" cy=\"18\" r=\"3\"/><circle cx=\"64\" cy=\"33\" r=\"6\"/><circle cx=\"64\" cy=\"33\" r=\"3\"/><circle cx=\"80\" cy=\"33\" r=\"6\"/><circle cx=\"80\" cy=\"33\" r=\"3\"/><circle cx=\"96\" cy=\"33\" r=\"6\"/><circle cx=\"96\" cy=\"33\" r=\"3\"/><circle cx=\"64\" cy=\"47\" r=\"6\"/><circle cx=\"64\" cy=\"47\" r=\"3\"/><circle cx=\"80\" cy=\"47\" r=\"6\"/><circle cx=\"80\" cy=\"47\" r=\"3\"/><circle cx=\"96\" cy=\"47\" r=\"6\"/><circle cx=\"96\" cy=\"47\" r=\"3\"/><circle cx=\"64\" cy=\"62\" r=\"6\"/><circle cx=\"64\" cy=\"62\" r=\"3\"/><circle cx=\"80\" cy=\"62\" r=\"6\"/><circle cx=\"80\" cy=\"62\" r=\"3\"/><circle cx=\"96\" cy=\"62\" r=\"6\"/><circle cx=\"96\" cy=\"62\" r=\"3\"/><circle cx=\"50\" cy=\"40\" r=\"4\"/><circle cx=\"110\" cy=\"40\" r=\"4\"/><line x1=\"44\" y1=\"40\" x2=\"44\" y2=\"90\"/><line x1=\"116\" y1=\"40\" x2=\"116\" y2=\"90\"/><line x1=\"44\" y1=\"90\" x2=\"116\" y2=\"90\"/></g></svg>', weight:'40 kg', weightExtra:'ヨーク 7.9 kg / 安定器 7.9 kg', name:'LUXED PRO-P12', desc:'2160W IP65 RGBWW LED Spacelite (4×3)', emoji:'💡', watts:2160,
       ccts:[3200,5600],
       accessories:['flood'],
       dmx:{led:'RGBWW',power:'2160W',cct:'2700K–10000K',cri:'≥95',tlci:'≥97',ip:'IP65',control:'DMX / LumenRadio CRMX / App'},
@@ -12679,17 +12725,18 @@ var LIGHTS = {
       }
     },
     luxed_pro_p9: {
-      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"43\" y=\"4\" width=\"73\" height=\"72\" rx=\"4\"/><circle cx=\"60\" cy=\"21\" r=\"8\"/><circle cx=\"60\" cy=\"21\" r=\"3\"/><circle cx=\"80\" cy=\"21\" r=\"8\"/><circle cx=\"80\" cy=\"21\" r=\"3\"/><circle cx=\"100\" cy=\"21\" r=\"8\"/><circle cx=\"100\" cy=\"21\" r=\"3\"/><circle cx=\"60\" cy=\"40\" r=\"8\"/><circle cx=\"60\" cy=\"40\" r=\"3\"/><circle cx=\"80\" cy=\"40\" r=\"8\"/><circle cx=\"80\" cy=\"40\" r=\"3\"/><circle cx=\"100\" cy=\"40\" r=\"8\"/><circle cx=\"100\" cy=\"40\" r=\"3\"/><circle cx=\"60\" cy=\"59\" r=\"8\"/><circle cx=\"60\" cy=\"59\" r=\"3\"/><circle cx=\"80\" cy=\"59\" r=\"8\"/><circle cx=\"80\" cy=\"59\" r=\"3\"/><circle cx=\"100\" cy=\"59\" r=\"8\"/><circle cx=\"100\" cy=\"59\" r=\"3\"/><circle cx=\"43\" cy=\"40\" r=\"4\"/><circle cx=\"117\" cy=\"40\" r=\"4\"/><line x1=\"37\" y1=\"40\" x2=\"37\" y2=\"90\"/><line x1=\"123\" y1=\"40\" x2=\"123\" y2=\"90\"/><line x1=\"37\" y1=\"90\" x2=\"123\" y2=\"90\"/></g></svg>', weight:'39 kg', name:'LUXED PRO-P9', desc:'1620W RGB LED Panel (3×3)', emoji:'💡', watts:1620,
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"43\" y=\"4\" width=\"73\" height=\"72\" rx=\"4\"/><circle cx=\"60\" cy=\"21\" r=\"8\"/><circle cx=\"60\" cy=\"21\" r=\"3\"/><circle cx=\"80\" cy=\"21\" r=\"8\"/><circle cx=\"80\" cy=\"21\" r=\"3\"/><circle cx=\"100\" cy=\"21\" r=\"8\"/><circle cx=\"100\" cy=\"21\" r=\"3\"/><circle cx=\"60\" cy=\"40\" r=\"8\"/><circle cx=\"60\" cy=\"40\" r=\"3\"/><circle cx=\"80\" cy=\"40\" r=\"8\"/><circle cx=\"80\" cy=\"40\" r=\"3\"/><circle cx=\"100\" cy=\"40\" r=\"8\"/><circle cx=\"100\" cy=\"40\" r=\"3\"/><circle cx=\"60\" cy=\"59\" r=\"8\"/><circle cx=\"60\" cy=\"59\" r=\"3\"/><circle cx=\"80\" cy=\"59\" r=\"8\"/><circle cx=\"80\" cy=\"59\" r=\"3\"/><circle cx=\"100\" cy=\"59\" r=\"8\"/><circle cx=\"100\" cy=\"59\" r=\"3\"/><circle cx=\"43\" cy=\"40\" r=\"4\"/><circle cx=\"117\" cy=\"40\" r=\"4\"/><line x1=\"37\" y1=\"40\" x2=\"37\" y2=\"90\"/><line x1=\"123\" y1=\"40\" x2=\"123\" y2=\"90\"/><line x1=\"37\" y1=\"90\" x2=\"123\" y2=\"90\"/></g></svg>', weight:'37.5 kg', name:'LUXED PRO-P9', desc:'1620W IP65 RGBWW LED Spacelite (3×3)', emoji:'💡', watts:1620,
       ccts:[3200,5600],
       accessories:['flood'],
-      dmx:{led:'RGBWW',power:'1620W',cct:'2700K–10000K',cri:'≥95',tlci:'≥97',ip:'IP20',control:'DMX / LumenRadio CRMX'},
-      url:'https://www.lightstarusa.com/product/luxed-pro-p9-ip65/',
-      // Lightstar 公式カタログ（LUXED PRO-P9, RGB版）。Bi-Color の LUXED-9 とは別機種。
-      // レンズの記載が無い表なので、角度は未確認にしている（LUXED-9 で同じ
-      // 書き方をしていた表が実際には Spot の列だった）。
-      // なお上の url のページは「LUXED PRO 9 Bi-Color 1620W / 2800-6500K /
-      // IP65」を指している。RGBWW の PRO P9 とは別の出品で、どちらの機種と
-      // して持つかは未確定。
+      size:'1256×1218×216 mm', weightExtra:'安定器 4.4 kg',
+      dmx:{led:'RGBWW',power:'1620W',cct:'2700K–10000K',cri:'≥95',tlci:'≥97',ip:'IP65',control:'DMX / LumenRadio CRMX / App'},
+      url:'https://www.lightstarusa.com/product/lightstar-luxed-pro-p9-full-color-led-ip65/',
+      // LUXED PRO の系統は IP65（IP20 の LUXED-P9 とは別機種で、W も違う。
+      // PRO P9 が 1620W、LUXED-P9 が 1440W）。IP20 と入れていたのを直した。
+      // 照度は出どころ不明の公式カタログの表。レンズの記載が無く、
+      // ブローシュアの LUXED-P9（Spot 28°, 5600K 3m 12500）に対して
+      // 3m 19500 と 1.56倍あり、W 比 1.125倍では説明が付かない。
+      // 別のレンズの表と思われるので角度は出さない。
       accUnknown:['flood'],
       refData: {
         'flood':{
