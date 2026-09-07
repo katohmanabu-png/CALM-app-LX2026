@@ -44,6 +44,11 @@
    calc(NNvh / var(--ui-zoom)) で割り戻してある。1 のときは
    calc(88vh / 1) = 88vh で、何も変わらない。 */
 :root { --ui-zoom: 1; }
+
+/* 下の3行は JS が動く前の保険。実際の値は applyAppWidth() が入れる。
+   メディアクエリは zoom を掛ける前の実寸しか見えないので、表示サイズを
+   上げると柱まで一緒に広がり、1行の文字数が変わらない＝文字が相対的に
+   小さいままになる。 */
 @media (min-width: 820px)  { :root { --app-w: 620px; } }
 @media (min-width: 1100px) { :root { --app-w: 760px; } }
 @media (min-width: 1500px) { :root { --app-w: 880px; } }
@@ -884,15 +889,16 @@ html.dark .tab-btn { background:var(--input-bg); color:var(--text-dim); border-c
 html.dark .tab-btn.active { background:var(--accent); color:#fff; }
 /* ── 広い画面での列数 ─────────────────────────────── */
 /* 柱を広げただけだと、列数の決まった並びが横に伸びて間延びする。
-   広い画面では列数を幅なりに増やす。最小幅は上の既定（スマホの
-   4列・3列・2列）を割らない値にしてあるので、狭い画面には効かない。 */
-@media (min-width: 820px) {
-  .maker-grid     { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-  .model-scroll   { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-  .acc-grid       { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-  .mix-maker-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-  .dmx-grid       { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-}
+   柱が広いときは列数を幅なりに増やす。最小幅は既定（スマホの
+   4列・3列・2列）を割らない値にしてあるので、狭い柱では効かない。
+   条件はメディアクエリではなく data-wide で持つ。メディアクエリは
+   zoom を掛ける前の実寸しか見えず、柱の幅と列数の判断が食い違う
+   ため（applyAppWidth() が付け外しする）。 */
+:root[data-wide="1"] .maker-grid     { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+:root[data-wide="1"] .model-scroll   { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+:root[data-wide="1"] .acc-grid       { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+:root[data-wide="1"] .mix-maker-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+:root[data-wide="1"] .dmx-grid       { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
 </style>
 </head>
 <body>
@@ -19708,7 +19714,7 @@ function _sheetShell(id, icon, title, sub, bodyHTML) {
  *   ・--header-h    → syncHeaderHeight() で割り戻す
  * の2か所で戻している。1 倍のときはどちらも素通りする。 */
 var UI_ZOOM_KEY  = 'calm_ui_zoom';
-var UI_ZOOM_LIST = [1, 1.15, 1.3, 1.5];
+var UI_ZOOM_LIST = [1, 1.25, 1.5, 1.75, 2];
 
 function uiZoomGet() {
   var v = NaN;
@@ -19722,12 +19728,48 @@ function uiZoomGet() {
    座標の割り戻しはこちらを使う（保存を挟まずに変えても合うように）。 */
 var _uiZoomCur = 1;
 function uiZoomNow() { return _uiZoomCur; }
+
+/* 柱の幅と列数は、zoom を掛けたあとに画面へ何 px 入るか（レイアウト上の
+   画面幅）で決める。CSS のメディアクエリは zoom を無視した実寸しか
+   見えないので、表示サイズを上げると柱まで一緒に広がり、1行の文字数が
+   変わらないまま＝文字が相対的に小さいままだった。 */
+var APP_W_TIERS = [[1500, 880], [1100, 760], [820, 620], [0, 480]];
+function applyAppWidth() {
+  var d  = document.documentElement;
+  var vw = (window.innerWidth || 480) / (_uiZoomCur || 1);
+  var w  = 480;
+  for (var i = 0; i < APP_W_TIERS.length; i++) {
+    if (vw >= APP_W_TIERS[i][0]) { w = APP_W_TIERS[i][1]; break; }
+  }
+  d.style.setProperty('--app-w', w + 'px');
+  if (vw >= 820) d.setAttribute('data-wide', '1');
+  else           d.removeAttribute('data-wide');
+}
+window.addEventListener('resize', applyAppWidth);
+
+/* 画面ごとの上限。倍率を上げるほど、レイアウト上の画面幅は狭くなる。
+   360px を下回ると、この画面は元々そういう幅で組んでいないので崩れる
+   （お気に入りのパネルが right:-100% でも隠れきらず、はみ出す）。
+   下回らない範囲でいちばん大きい段階までに抑える。 */
+var UI_ZOOM_MIN_VW = 360;
+function uiZoomMax() {
+  var w = window.innerWidth || 480, m = UI_ZOOM_LIST[0];
+  for (var i = 0; i < UI_ZOOM_LIST.length; i++) {
+    if (w / UI_ZOOM_LIST[i] >= UI_ZOOM_MIN_VW) m = UI_ZOOM_LIST[i];
+  }
+  return m;
+}
 function uiZoomApply(z) {
   var d = document.documentElement;
+  var mx = uiZoomMax();
+  if (z > mx) z = mx;               // 端末を回した先で狭くなった場合も含めて抑える
   _uiZoomCur = z;
   d.style.setProperty('--ui-zoom', z);
   d.style.zoom = (z === 1) ? '' : z;
+  applyAppWidth();
 }
+// 回転や分割表示で幅が変わったら、保存した設定のまま上限だけ掛け直す
+window.addEventListener('resize', function(){ uiZoomApply(uiZoomGet()); });
 function uiZoomSet(z) {
   try { localStorage.setItem(UI_ZOOM_KEY, z); } catch(e) {}
   uiZoomApply(z);
@@ -19757,7 +19799,8 @@ function openSettings() {
   }
   function zoomRow() {
     var cur = uiZoomNow();
-    var btns = UI_ZOOM_LIST.map(function(z) {
+    var mx  = uiZoomMax();
+    var btns = UI_ZOOM_LIST.filter(function(z){ return z <= mx; }).map(function(z) {
       var on = (Math.abs(z - cur) < 0.001);
       return '<button onclick="uiZoomSet(' + z + ')" style="flex:1;padding:9px 0;cursor:pointer;' +
         'font-family:var(--sans);font-size:12px;font-weight:900;border-radius:9px;' +
