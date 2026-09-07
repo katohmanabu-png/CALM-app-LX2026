@@ -243,7 +243,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .dmx-wide{grid-column:1/-1;}
 .dmx-fx{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;}
 .dmx-chip{padding:2px 7px;border-radius:50px;background:white;font-size:10.5px;font-weight:700;}
-.fav-panel{position:fixed;top:env(safe-area-inset-top,0px);right:-100%;width:min(320px,100vw);height:100%;background:white;box-shadow:-4px 0 20px rgba(0,0,0,0.15);z-index:500;transition:right .3s ease;display:flex;flex-direction:column;}
+/* 閉じているときは自分の幅ぶん外へ出す。-100% だと、表示サイズを上げて
+   レイアウト上の画面幅が 320px を下回ったとき、はみ出したぶんが右端から
+   覗いていた。vw は zoom を見ないので、幅も倍率で割ってから決める。 */
+.fav-panel{position:fixed;top:env(safe-area-inset-top,0px);right:-320px;width:min(320px, calc(100vw / var(--ui-zoom, 1)));height:100%;background:white;box-shadow:-4px 0 20px rgba(0,0,0,0.15);z-index:500;transition:right .3s ease;display:flex;flex-direction:column;}
 .fav-panel.open{right:0;}
 .fav-hdr{padding:16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;}
 .fav-hdr h3{font-size:14px;font-weight:800;}
@@ -20530,7 +20533,11 @@ window.addEventListener('resize', syncBottomBars);
 /* Mac では iPad の寸法のまま描かれるので、iPad 用の大きさだと小さく見える。
    200% でも足りないことがあるため 250% と 300% まで用意した。
    下の上限（レイアウト幅 360px）で、画面に入らない段階は出さない。 */
-var UI_ZOOM_MIN_VW = 360;
+/* 360 にしていたので、いちばん大きい iPhone でも 375/1.25 = 300 で
+   下回り、iPhone では 100% しか出ていなかった（押しても何も起きない
+   ボタンが1つ並ぶだけ）。300 まで下げて、どの iPhone でも 125% を
+   出す。お気に入りのパネルのはみ出しは right を自分の幅ぶんに直した。 */
+var UI_ZOOM_MIN_VW = 300;
 function uiZoomMax() {
   var w = window.innerWidth || 480, m = UI_ZOOM_LIST[0];
   for (var i = 0; i < UI_ZOOM_LIST.length; i++) {
@@ -20580,7 +20587,11 @@ function openSettings() {
   function zoomRow() {
     var cur = uiZoomNow();
     var mx  = uiZoomMax();
-    var btns = UI_ZOOM_LIST.filter(function(z){ return z <= mx; }).map(function(z) {
+    var steps = UI_ZOOM_LIST.filter(function(z){ return z <= mx; });
+    /* 画面が狭くて 100% しか出せない端末では、押しても何も起きない
+       ボタンが1つ並ぶだけになる。その端末では行ごと出さない。 */
+    if (steps.length < 2) return '';
+    var btns = steps.map(function(z) {
       var on = (Math.abs(z - cur) < 0.001);
       return '<button onclick="uiZoomSet(' + z + ')" style="flex:1;padding:9px 0;cursor:pointer;' +
         'font-family:var(--sans);font-size:12px;font-weight:900;border-radius:9px;' +
