@@ -11320,7 +11320,10 @@ var LIGHTS = {
       dmx:{led:'Bi-Color',power:'1400W',cct:'2800K–6500K',cri:'≥96',tlci:'≥96',tm30:'Rf≥92 / Rg 97–103',cqs:'>94',r9:'≥90 (3200K) / ≥85 (5600K・6500K)',ip:'IP54',
         control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
         effects:['11 FX modes']},
-      dmxUrl:'https://www.godox.com/static/upload/file/20230522/1684737267677840.pdf',
+      // Godox の DMX チャート PDF は Illustrator の書き出しで、PDF としての
+      // 内容（文字も画像も）を持っていない。開いても何も出ないので
+      // チャートの行は出さない。MG2400Bi も同じ。
+      // 参照：https://godox.com/user-guides-knowled/
       url:'https://godox.com/user-guides-knowled/',
       // Godox 公式取説の日本語版（KNOWLED_MG1200Bi_Japanese.pdf）p33-36 の照度データ。
       // 英語版は表が画像でテキストが取れないため日本語版から読んだ。
@@ -11346,7 +11349,7 @@ var LIGHTS = {
       dmx:{led:'RGBWW',power:'1600W',cct:'1800K–10000K + RGBWW',cri:'≥96',tlci:'≥95',ip:'IP54',
         control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
         effects:['14 FX modes']},
-      dmxUrl:'https://godox.com/user-guides-knowled/',
+      dmxUrl:'https://www.godox.com/Downloads/MG1200R_DMX.pdf',
       url:'https://godox.com/user-guides-knowled/',
       // Godox 公式取説（KNOWLED_MG1200R.pdf）の Illuminance Data（Normal Mode）。
       // 7系統 × 色温度8水準 × 3m/5m/7m/9m。取説に併記の fc 値と全値を突き合わせてある。
@@ -11371,7 +11374,7 @@ var LIGHTS = {
       dmx:{led:'RGBWW',power:'2650W',cct:'1800K–10000K + RGBWW',cri:'≈96',tlci:'≈95',ip:'IP54',
         control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
         effects:['14 FX modes']},
-      dmxUrl:'https://godox.com/user-guides-knowled/',
+      dmxUrl:'https://www.godox.com/Downloads/KNOWLED_MG2400R_DMX.pdf',
       url:'https://godox.com/user-guides-knowled/',
       // Godox 公式取説（KNOWLED_MG2400R.pdf）の Illuminance Data（Normal Mode）。
       // 7系統 × 色温度8水準 × 3m/5m/10m。取説に併記の fc 値と全値を突き合わせてある。
@@ -11396,7 +11399,7 @@ var LIGHTS = {
       dmx:{led:'RGBWW',power:'3250W',cct:'1800K–10000K + RGBWW',cri:'≈97',tlci:'≈96',ip:'IP65',
         control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
         effects:['14 FX modes']},
-      dmxUrl:'https://godox.com/user-guides-knowled/',
+      dmxUrl:'https://www.godox.com/Downloads/KNOWLED_MG4KR_DMX.pdf',
       url:'https://godox.com/user-guides-knowled/',
       // Godox 公式取説（KNOWLED_MG4KR.pdf）の Illuminance Data（Normal Mode）。
       // 6系統 × 色温度8水準 × 3m/5m/10m。取説に併記の fc 値と全値を突き合わせてある。
@@ -11421,7 +11424,7 @@ var LIGHTS = {
       dmx:{led:'Bi-Color',power:'2300W',cct:'2800K–10000K',cri:'≈97',tlci:'≈98',ip:'IP65',
         control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
         effects:['11 FX modes']},
-      dmxUrl:'https://godox.com/user-guides-knowled/',
+      dmxUrl:'https://www.godox.com/Downloads/KNOWLED_MG4K_DMX.pdf',
       url:'https://godox.com/user-guides-knowled/',
       // Godox 公式取説（KNOWLED_MG4K.pdf）の Illuminance Data（Normal Mode）。
       // 6系統 × 色温度6水準 × 3m/5m/10m。取説に併記の fc 値と全値を突き合わせてある。
@@ -11444,7 +11447,7 @@ var LIGHTS = {
       dmx:{led:'Bi-Color',power:'4300W',cct:'2800K–10000K',cri:'≈97',tlci:'≈97',ip:'IP54',
         control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
         effects:['11 FX modes']},
-      dmxUrl:'https://godox.com/user-guides-knowled/',
+      dmxUrl:'https://www.godox.com/Downloads/KNOWLED_MG6K_DMX.pdf',
       url:'https://godox.com/user-guides-knowled/',
       // Godox 公式取説（KNOWLED_MG6K.pdf）の Illuminance Data（Normal Mode）。
       // 3系統 × 色温度7水準 × 3m/5m/10m。取説に併記の fc 値と全値を突き合わせてある。
@@ -11466,7 +11469,10 @@ var LIGHTS = {
       dmx:{led:'Bi-Color',power:'≈2900W',cct:'2800K–6500K',cri:'≥96',tlci:'≥96',ip:'IP54',
         control:'DMX512 / RDM / CRMX / Bluetooth / Art-Net / sACN',dimming:'0%–100%',
         effects:['11 FX modes']},
-      dmxUrl:'https://www.godox.com/static/upload/file/20240131/1706669911432152.pdf',
+      // Godox の DMX チャート PDF は Illustrator の書き出しで、PDF としての
+      // 内容（文字も画像も）を持っていない。開いても何も出ないので
+      // チャートの行は出さない。MG2400Bi も同じ。
+      // 参照：https://godox.com/user-guides-knowled/
       url:'https://godox.com/user-guides-knowled/',
       // Godox 公式取説（KNOWLED_MG2400Bi.pdf）の Illuminance Data。
       // 裸灯と標準リフレクター45°の2系統、色温度5水準、3/5/7/9/10m。
