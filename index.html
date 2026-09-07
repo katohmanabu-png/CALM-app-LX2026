@@ -12332,28 +12332,95 @@ var LIGHTS = {
   },
 
   lightstar: {
+    airlite_500: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite 500', desc:'500W IP20 Bi-Color LED Airlite Balloon', emoji:'🎈', watts:500,
+      weight:'6.2 kg', weightExtra:'安定器 2.2 kg', size:'φ1180×730 mm',
+      ccts:[3200,5600], accessories:['none'], accUnknown:['none'],  // バルーンなのでビーム角の公表が無い
+      dmx:{led:'Bi-Color',power:'500W',cct:'2800K–6500K',ip:'IP20',control:'On-board / DMX / CRMX',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
+      // Lightstar 公式ブローシュア 2022（p23）。5m 吊りの真下の照度。
+      // 図は床の横方向の分布で距離の系列ではないため、真下の1点だけ。
+      refData:{
+        3200:{5:{'none':430}},
+        5600:{5:{'none':420}}
+      }
+    },
+    airlite_1000: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite 1000', desc:'1000W IP20 Bi-Color LED Airlite Balloon', emoji:'🎈', watts:1000,
+      weight:'8 kg', weightExtra:'安定器 3.5 kg', size:'φ1800×1300 mm',
+      ccts:[3200,5600], accessories:['none'], accUnknown:['none'],  // バルーンなのでビーム角の公表が無い
+      dmx:{led:'Bi-Color',power:'1000W',cct:'2800K–6500K',ip:'IP20',control:'On-board / DMX / CRMX',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
+      // Lightstar 公式ブローシュア 2022（p23）。5m 吊りの真下の照度。
+      // 図は床の横方向の分布で距離の系列ではないため、真下の1点だけ。
+      refData:{
+        3200:{5:{'none':1050}},
+        5600:{5:{'none':1030}}
+      }
+    },
+    airlite_1000t: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V16\"/><path d=\"M58 16 H102\"/><rect x=\"14\" y=\"22\" width=\"132\" height=\"52\" rx=\"26\"/><path d=\"M14 56 C40 68 120 68 146 56\"/><path d=\"M44 26 C38 38 38 50 44 62 M116 26 C122 38 122 50 116 62\"/></g></svg>', name:'Airlite Tube 1000', desc:'1000W IP20 Bi-Color LED Airlite Tube', emoji:'🎈', watts:1000,
+      weight:'11 kg', weightExtra:'安定器 3.5 kg', size:'φ900×2400 mm',
+      ccts:[3200,5600], accessories:['none'], accUnknown:['none'],  // バルーンなのでビーム角の公表が無い
+      dmx:{led:'Bi-Color',power:'1000W',cct:'2800K–6500K',ip:'IP20',control:'On-board / DMX / CRMX',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
+      // Lightstar 公式ブローシュア 2022（p24）。5m 吊りの真下の照度。
+      // 図は床の横方向の分布で距離の系列ではないため、真下の1点だけ。
+      refData:{
+        3200:{5:{'none':700}},
+        5600:{5:{'none':670}}
+      }
+    },
+    airlite_p500: {
+      url:'https://www.lightstarusa.com/product-category/luxed/',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite P500', desc:'500W IP20 Full-Color LED Airlite Balloon', emoji:'🎈', watts:500,
+      weight:'6.2 kg', weightExtra:'安定器 2.3 kg', size:'φ1180×730 mm',
+      ccts:[2700,3200,5600,10000], accessories:['none'], accUnknown:['none'],  // バルーンなのでビーム角の公表が無い
+      dmx:{led:'RGBWW',power:'500W',cct:'2400K–10000K + RGBWW',ip:'IP20',control:'On-board / DMX / CRMX',dimming:'0%–100%'},
+      dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
+      // Lightstar 公式ブローシュア 2022（p28）。5m 吊りの真下の照度。
+      // 図は床の横方向の分布で距離の系列ではないため、真下の1点だけ。
+      refData:{
+        3200:{5:{'none':350}},
+        5600:{5:{'none':380}}
+      }
+    },
     airlite_tube_1000: {
       url:'https://www.lightstarusa.com/product/airlite-tube-1000w/',
-      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite Tube 1000', desc:'1000W LED Tube Balloon', emoji:'🎈', watts:1000,
-      weight:'11 kg', size:'900×2000 mm',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V16\"/><path d=\"M58 16 H102\"/><rect x=\"14\" y=\"22\" width=\"132\" height=\"52\" rx=\"26\"/><path d=\"M14 56 C40 68 120 68 146 56\"/><path d=\"M44 26 C38 38 38 50 44 62 M116 26 C122 38 122 50 116 62\"/></g></svg>', name:'Airlite Tube P1000', desc:'1000W IP20 Full-Color LED Airlite Tube', emoji:'🎈', watts:1000,
+      weight:'11 kg', weightExtra:'安定器 3.9 kg', size:'φ900×2400 mm',
       ccts:[2700, 3200, 5600, 10000], accessories:['none'], accUnknown:['none'],  // Lightstar の仕様表にビーム角の行が無い（色温度・調光・CRI・入力・制御・重量・寸法・IP のみ）
       dmx:{led:'RGBWW',power:'1000W',cct:'2700K–10000K + RGBWW',cri:'>95',ip:'IP20',
         control:'On-board / DMX / CRMX',dimming:'0%–100%',effects:['Chase', 'Pulse']},
       dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
+      // Lightstar 公式ブローシュア 2022 の p29。5m 吊りの真下の照度。
+      // 図は床の横方向の分布を示すもので距離の系列ではないため、
+      // 真下（＝距離 5m）の1点だけを入れている。
+      // 以前は 1/2/3/5m の4点（5m で 346 lx）が入っていたが出どころが
+      // 不明で、同じブローシュアの6機種（Bi-Color と Full-Color が
+      // どのサイズでも 0.90 倍で揃う）と桁が合わなかった。
       refData:{
-        5600:{1:{'none':2774}, 2:{'none':1009}, 3:{'none':477}, 5:{'none':346}}
+        3200:{5:{'none':540}},
+        5600:{5:{'none':600}}
       }
     },
     airlite_balloon_1000: {
       url:'https://www.lightstarusa.com/product/airlite-bi-color-balloon-1000w/',
-      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite Balloon 1000', desc:'1000W LED Balloon Light', emoji:'🎈', watts:1000,
-      weight:'8 kg', size:'1800×1330 mm',
+      group:'LED', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 6 V18\"/><path d=\"M60 18 H100\"/><path d=\"M80 18 C42 18 26 44 26 60 C26 74 50 84 80 84 C110 84 134 74 134 60 C134 44 118 18 80 18Z\"/><path d=\"M46 66 C58 76 102 76 114 66\"/><path d=\"M56 30 C50 44 50 58 56 72 M104 30 C110 44 110 58 104 72\"/></g></svg>', name:'Airlite P1000', desc:'1000W IP20 Full-Color LED Airlite Balloon', emoji:'🎈', watts:1000,
+      weight:'8 kg', weightExtra:'安定器 3.5 kg', size:'φ1800×1300 mm',
       ccts:[2700, 3200, 5600, 10000], accessories:['none'], accUnknown:['none'],  // Lightstar の仕様表にビーム角の行が無い（バルーン型の全方向ソフト光源）
       dmx:{led:'RGBWW',power:'1000W',cct:'2700K–10000K + RGBWW',cri:'>95',ip:'IP20',
         control:'On-board / DMX / CRMX',dimming:'0%–100%',effects:['Chase', 'Pulse']},
       dmxUrl:'https://www.lightstarusa.com/product-category/lights/',
+      // Lightstar 公式ブローシュア 2022 の p28。5m 吊りの真下の照度。
+      // 以前入っていた 5m 173 lx は、500W の Airlite P500（380 lx）を
+      // 下回っていて説明が付かなかった。
       refData:{
-        5600:{1:{'none':2734}, 2:{'none':1084}, 3:{'none':481}, 5:{'none':173}}
+        3200:{5:{'none':810}},
+        5600:{5:{'none':920}}
       }
     },
     luxed_ps: {
