@@ -30,6 +30,16 @@
   --sar: env(safe-area-inset-right, 0px);
 }
 
+/* ── アプリの柱の幅 ──────────────────────────────────
+   スマホでは 480px の1本柱。iPad や Mac の広い画面では
+   同じ柱のままだと細すぎて画面が余るので、段階的に広げる。
+   ヘッダー・中身・下部タブ・結果バーはすべてこの値で揃える。
+   （揃えないと幅が食い違う。#page-draft だけは全画面なので外す） */
+:root { --app-w: 480px; }
+@media (min-width: 820px)  { :root { --app-w: 620px; } }
+@media (min-width: 1100px) { :root { --app-w: 760px; } }
+@media (min-width: 1500px) { :root { --app-w: 880px; } }
+
 .app-header {
   padding-top: env(safe-area-inset-top, 0px);
   position: sticky;
@@ -60,7 +70,7 @@ html,body{font-family:var(--sans);}
 /* ボタンや入力欄はフォントを受け継がないので明示する */
 button,input,select,textarea,optgroup{font-family:var(--sans);}
 
-header{background:var(--white);padding:1px 8px 1px;padding-top:calc(1px + env(safe-area-inset-top, 0px));box-shadow:var(--shadow);position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;overflow:hidden;width:100%;max-width:480px;margin:0 auto;gap:4px;flex-wrap:nowrap;}
+header{background:var(--white);padding:1px 8px 1px;padding-top:calc(1px + env(safe-area-inset-top, 0px));box-shadow:var(--shadow);position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;overflow:hidden;width:100%;max-width:var(--app-w);margin:0 auto;gap:4px;flex-wrap:nowrap;}
 .hdr-icon{width:18px;height:18px;background:transparent;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;transition:background .4s;flex-shrink:0;}
 .hdr-text{flex:1;min-width:0;overflow:hidden;}
 .hdr-text h1{font-size:10.5px;font-weight:900;white-space:nowrap;}
@@ -475,7 +485,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 300;
-  max-width: 480px;
+  max-width: var(--app-w);
   margin: 0 auto;
   box-shadow: 0 -1px 12px rgba(0,0,0,0.10);
 }
@@ -593,7 +603,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   /* ヘッダーと下のタブは 480px で中央に置いているので、中身も揃える。
      揃えないと iPad や Mac で、中身だけが画面いっぱいに広がって
      上のヘッダーと幅が食い違う。 */
-  max-width: 480px;
+  max-width: var(--app-w);
   margin: 0 auto;
 }
 .page-content.active {
@@ -864,6 +874,17 @@ html.dark label,
 html.dark .label { color:var(--text) !important; }
 html.dark .tab-btn { background:var(--input-bg); color:var(--text-dim); border-color:var(--border); }
 html.dark .tab-btn.active { background:var(--accent); color:#fff; }
+/* ── 広い画面での列数 ─────────────────────────────── */
+/* 柱を広げただけだと、列数の決まった並びが横に伸びて間延びする。
+   広い画面では列数を幅なりに増やす。最小幅は上の既定（スマホの
+   4列・3列・2列）を割らない値にしてあるので、狭い画面には効かない。 */
+@media (min-width: 820px) {
+  .maker-grid     { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  .model-scroll   { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .acc-grid       { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .mix-maker-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .dmx-grid       { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
 </style>
 </head>
 <body>
@@ -2094,7 +2115,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
 
 
 <!-- Units Fixed -->
-<div id="units-fixed-wrap" style="position:fixed;bottom:calc(126px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:480px;margin:0 auto;z-index:200;display:none;">
+<div id="units-fixed-wrap" style="position:fixed;bottom:calc(126px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:200;display:none;">
   <div style="padding:4px 12px;background:var(--white);box-shadow:0 -1px 8px rgba(0,0,0,0.08);">
     <div class="sl-field">
       <div class="sl-top">
@@ -2112,7 +2133,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
 </div>
 
 <!-- Sticky Result -->
-<div id="sticky-result" style="position:fixed;bottom:calc(49px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:480px;margin:0 auto;z-index:250;display:none;">
+<div id="sticky-result" style="position:fixed;bottom:calc(49px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:250;display:none;">
   <div style="padding:5px 12px 6px;background:rgba(10,12,22,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
     <!-- RESULT ラベル行 -->
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
@@ -2125,7 +2146,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
 </div>
 
 <!-- MIX 用 固定RESULTバー（スクロールしても常に表示） -->
-<div id="mix-sticky-result" style="position:fixed;bottom:calc(49px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:480px;margin:0 auto;z-index:250;display:none;">
+<div id="mix-sticky-result" style="position:fixed;bottom:calc(49px + env(safe-area-inset-bottom,0px));left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:250;display:none;">
   <div style="padding:5px 12px 6px;background:rgba(10,12,22,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
       <div style="font-size:10.5px;font-weight:900;color:var(--accent,#f96);letter-spacing:.18em;text-transform:uppercase;line-height:1;">RESULT</div>
@@ -19516,7 +19537,7 @@ function openPrivacy() {
   var lang = (typeof LANG !== 'undefined' && PRIVACY_POLICY[LANG]) ? LANG : 'en';
   var html =
     '<div id="_privacy_ov" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)document.getElementById(\'_privacy_ov\').remove()">' +
-    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:480px;max-height:88vh;max-height:88dvh;overflow-y:auto;padding:20px 18px 40px;-webkit-overflow-scrolling:touch;">' +
+    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);max-height:88vh;max-height:88dvh;overflow-y:auto;padding:20px 18px 40px;-webkit-overflow-scrolling:touch;">' +
     '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">' +
       '<div style="font-size:16px;font-weight:900;">🔒 ' + t('navPrivacy') + '</div>' +
       '<button onclick="document.getElementById(\'_privacy_ov\').remove()" style="border:none;background:var(--bg,#eee);width:30px;height:30px;border-radius:50%;font-size:14px;cursor:pointer;color:var(--text,#111);">✕</button>' +
@@ -19558,7 +19579,7 @@ function openHelp() {
     '<div style="height:1px;background:var(--line,#e5e5ea);margin:0 0 18px;"></div>');
   var html =
     '<div id="_help_ov" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)closeHelp()">' +
-    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:480px;max-height:88vh;max-height:88dvh;overflow-y:auto;padding:20px 18px 40px;-webkit-overflow-scrolling:touch;">' +
+    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);max-height:88vh;max-height:88dvh;overflow-y:auto;padding:20px 18px 40px;-webkit-overflow-scrolling:touch;">' +
     '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px;">' +
       '<div><div style="font-size:16px;font-weight:900;">✨ ' + t('helpTitle') +
         ' <span style="font-size:11px;font-weight:800;color:var(--text-dim,#999);">v' + helpSeenToken() + '</span></div>' +
@@ -19603,7 +19624,7 @@ function _sheetShell(id, icon, title, sub, bodyHTML) {
   return '<div id="' + id + '" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;' +
     'display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)this.remove()">' +
     '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;' +
-      'max-width:480px;max-height:88vh;max-height:88dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+      'max-width:var(--app-w);max-height:88vh;max-height:88dvh;display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
       '<div style="flex:0 0 auto;display:flex;align-items:flex-start;gap:10px;padding:18px 18px 12px;border-bottom:1px solid var(--line,#eee);">' +
         '<div style="flex:1;min-width:0;">' +
           '<div style="font-size:16px;font-weight:900;">' + icon + ' ' + title + '</div>' +
@@ -28342,7 +28363,7 @@ function openFactorNamePicker(type, apply) {
   var color = (type === 'bounce') ? '#0288d1' : (type === 'diffuse') ? '#43a047' : '#f57c00';
   document.body.insertAdjacentHTML('beforeend',
     '<div id="_fpick" style="position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:10000;display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)closeFactorNamePicker()">' +
-    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:480px;height:82vh;height:82dvh;display:flex;flex-direction:column;">' +
+    '<div style="background:var(--white,#fff);color:var(--text,#111);border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);height:82vh;height:82dvh;display:flex;flex-direction:column;">' +
       '<div style="display:flex;align-items:center;gap:8px;padding:16px 16px 10px;">' +
         '<div style="font-size:15px;font-weight:900;color:' + color + ';">' + t('fpickTitle') + '</div>' +
         '<div id="_fpick_cnt" style="font-size:11px;color:var(--text-dim,#888);"></div>' +
@@ -32291,7 +32312,7 @@ function dftResetView() {
  * APP_VER を上げたら APP_BUILD は 1 に戻す。同じ APP_VER の中では
  * アップロードごとに必ず増やす（App Store Connect の要件）。 */
 var APP_VER   = '1.1.10';
-var APP_BUILD = 7;
+var APP_BUILD = 8;
 var ver = 'v' + APP_VER + ' (' + APP_BUILD + ')';
 function _applyVersionLabels(){
   var el = document.getElementById('hdr-ver');
