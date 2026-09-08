@@ -19624,10 +19624,10 @@ function renderCompare() {
       '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
         '<span style="font-size:11px;font-weight:800;color:var(--text-dim,#666);">' + t('cmpDist') + '</span>' +
         '<button onclick="_cmpSetDist(-0.5)" style="width:28px;height:28px;border:none;border-radius:7px;background:var(--bg,#eee);color:var(--text,#333);font-size:16px;font-weight:800;cursor:pointer;">−</button>' +
-        '<span id="_cmp_dist_val" style="font-size:14px;font-weight:900;color:var(--accent,#1976d2);min-width:52px;text-align:center;">' + dv.toFixed(1) + 'm</span>' +
+        '<span id="_cmp_dist_val" style="font-size:14px;font-weight:900;color:var(--accent,#1976d2);min-width:62px;text-align:center;">' + _cmpDistLabel(dv) + '</span>' +
         '<button onclick="_cmpSetDist(0.5)" style="width:28px;height:28px;border:none;border-radius:7px;background:var(--bg,#eee);color:var(--text,#333);font-size:16px;font-weight:800;cursor:pointer;">+</button>' +
       '</div>' +
-      '<input type="range" min="0.5" max="30" step="0.5" value="' + dv + '" oninput="_cmpSetDistAbs(this.value)" style="width:100%;margin-top:6px;accent-color:var(--accent,#1976d2);" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()">' +
+      '<input type="range" min="0.5" max="100" step="0.5" value="' + dv + '" oninput="_cmpSetDistAbs(this.value)" style="width:100%;margin-top:6px;accent-color:var(--accent,#1976d2);" ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()">' +
       '<div style="font-size:11px;font-weight:700;color:var(--text-dim,#888);margin-top:6px;">' + _cmpCamSummary() +
         ' <span style="color:var(--accent,#1976d2);">→ ' + t('cmpFstop') + '</span>' + camGotoChipHTML(false) + '</div>';
   }
@@ -19813,15 +19813,17 @@ function _cmpRenderRows() {
   host.innerHTML = rows;
 }
 
+// 距離の上限は他のスライダー（Calc / Mix / Finder / Alt）と同じ 100m。
+var _CMP_DIST_MAX = 100;
 function _cmpSetDist(delta) {
-  _cmp.dist = Math.max(0.5, Math.min(30, +(_cmp.dist + delta).toFixed(1)));
-  var dvl = document.getElementById('_cmp_dist_val'); if (dvl) dvl.textContent = _cmp.dist.toFixed(1) + 'm';
+  _cmp.dist = Math.max(0.5, Math.min(_CMP_DIST_MAX, +(_cmp.dist + delta).toFixed(1)));
+  var dvl = document.getElementById('_cmp_dist_val'); if (dvl) dvl.textContent = _cmpDistLabel(_cmp.dist);
   var sl = document.querySelector('#_cmp_ctl input[type=range]'); if (sl) sl.value = _cmp.dist;
   _cmpRenderRows();
 }
 function _cmpSetDistAbs(v) {
-  _cmp.dist = Math.max(0.5, Math.min(30, parseFloat(v) || 3));
-  var dvl = document.getElementById('_cmp_dist_val'); if (dvl) dvl.textContent = _cmp.dist.toFixed(1) + 'm';
+  _cmp.dist = Math.max(0.5, Math.min(_CMP_DIST_MAX, parseFloat(v) || 3));
+  var dvl = document.getElementById('_cmp_dist_val'); if (dvl) dvl.textContent = _cmpDistLabel(_cmp.dist);
   _cmpRenderRows();
 }
 function _cmpClear(i) { _cmp.slots[i] = null; renderCompare(); }
