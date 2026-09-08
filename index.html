@@ -10600,13 +10600,12 @@ var LIGHTS = {
       name:'ARRI 18kW HMI', group:'HMI', desc:'18000W HMI Fresnel', emoji:'⚫', watts:18000, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       weight:'73 kg', size:'1236×1040×825 mm', ccts:[5600], accessories:['flat','spot'],
       dmx:{led:'HMI',power:'18000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {flat:76000},
-        5: {flat:19000},
-        8: {flat:14000},
-        12:{flat:6800, spot:54000},
-        15:{flat:4800, spot:38000}
-      }}
+      // ARRI 公表の配光ファイル（IES）から出した。中心の candela を距離の
+      // 2乗で割ったもの。ARRI Daylight 18/12 / 18000W。
+      // spot 10.9° で 6,424,980 cd、flood(flat) 55.9° で 675,580 cd。
+      // flood 側は中心の値を採る（フラッドにすると光の輪が中心より外で
+      // 少し強くなるが、露出計が読むのは中心）。
+      refData:{5600:{3:{flat:75064,spot:713887},5:{flat:27023,spot:256999},8:{flat:10556,spot:100390},12:{flat:4692,spot:44618},15:{flat:3003,spot:28555}}}
     },
     hmi_18k_mame: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/arri-daylight-18-12',
@@ -10847,14 +10846,14 @@ var LIGHTS = {
     },
     arri_6k: {
       group:'HMI', weight:'34 kg', name:'ARRI 6kW Compact HMI', emoji:'💡', watts:6000, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
-      ccts:[5600], accessories:['flat','spot'], accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      refData:{5600:{
-        3: {flat:27000},
-        5: {flat:14000, spot:76000},
-        8: {flat:3400, spot:27000},
-        12:{flat:1700, spot:14000},
-        15:{flat:1200, spot:9600}
-      }}
+      ccts:[5600], accessories:['flat','spot'], // ARRI 公表の配光ファイルの角度
+      accAngles:{flat:58.2,spot:5.2}, accLabels:{flat:'FLOOD',spot:'SPOT'},
+      // ARRI 公表の配光ファイル（IES）から出した。中心の candela を距離の
+      // 2乗で割ったもの。ARRI Compact 6000 Plus / 6000W。
+      // spot 5.2° で 4,749,660 cd、flood(flat) 58.2° で 285,780 cd。
+      // flood 側は中心の値を採る（フラッドにすると光の輪が中心より外で
+      // 少し強くなるが、露出計が読むのは中心）。
+      refData:{5600:{3:{flat:31753,spot:527740},5:{flat:11431,spot:189986},8:{flat:4465,spot:74213},12:{flat:1985,spot:32984},15:{flat:1270,spot:21110}}}
     },
     arri_x_1200: {
       group:'HMI Open', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"16\" y=\"10\" width=\"52\" height=\"60\" rx=\"3\"/><path d=\"M68 20 H96 V60 H68\"/><circle cx=\"42\" cy=\"40\" r=\"21\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 19 V61\"/><path d=\"M21 40 H63\"/><path d=\"M27 25 L57 55\"/><path d=\"M57 25 L27 55\"/><path d=\"M42 70 V76\"/><path d=\"M58 70 V76\"/><path d=\"M42 76 H58\"/><path d=\"M96 40 H108\"/></g></svg>', weight:'16 kg', name:'ARRI X 1.2kW HMI', emoji:'💡', watts:1200,
@@ -14428,7 +14427,7 @@ var HMI_BEAM = {
   'Pocket Par 400W':[9,50],
   'Pocket Par 200W':[15,50],
   'Pocket Par 125W':[15,50],
-  'ARRI 18kW HMI':[15,60],
+  'ARRI 18kW HMI':[10.9,55.9],
   'ARRI 24kW Tungsten Fresnel':[10,60],
   'ARRI Studio T12':[12,55],
   'Alpha 12kW HMI':[12,60],
