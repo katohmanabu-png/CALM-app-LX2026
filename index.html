@@ -11715,38 +11715,33 @@ var LIGHTS = {
       // 重量 10.5kg は DLH1200 ヘッド単体（公式 23 lbs）。
       // 配光資料の「HMI dedo 1200 spot」は 92×106×62cm・IP63 の防水一体型で
       // 49.8kg だが、それはバラスト込みの別製品なのでここでは採らない。
-      refData:{5600:{
-        1:  {spot:783000, med:366183, flood:62100},
-        2:  {spot:195750, med:91546,  flood:15525},
-        3:  {spot:87000,  med:40687,  flood:6900},
-        5:  {spot:31320,  med:14647,  flood:2484},
-        10: {spot:7830,   med:3662,   flood:621},
-        15: {spot:3480,   med:1627,   flood:276}
-      }}
+      // spot は ARC SYSTEM カタログ 2026 の「HMI Dedo 1200 Spot」の紙面から。
+      // F値（ISO800 / 30FPS）を lux に換算。3m F90 / 5m F64 1/2 / 8m F45 1/2 /
+      // 12m F32 2/3 / 15m F32。投影光学系なので落ち方が逆二乗よりかなり緩い
+      // （3→15m で指数 -1.28）。med / flood は元の値のまま。
+      refData:{5600:{1:{'flood':62100,'med':366183},2:{'flood':15525,'med':91546},3:{'flood':6900,'med':40687,'spot':151875},5:{'flood':2484,'med':14647,'spot':108612},8:{'spot':53696},10:{'flood':621,'med':3662},12:{'spot':30478},15:{'flood':276,'med':1627,'spot':19200}}}
     },
     dedo_200: {
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'1.6 kg', name:'Dedolight 200W HMI', emoji:'🟤', watts:200,
       ccts:[5600], accessories:["flat", "spot"],
       // 配光資料（dedolight 200w）
-      refData:{5600:{
-        2:   {flat:6800},
-        3:   {flat:1700, spot:38000},
-        5:   {flat:840, spot:19000},
-        8:   {flat:300, spot:6800},
-        12:  {flat:150, spot:2400}
-      }}
+      // ARC SYSTEM カタログ 2026 p22 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算。2/3/5/8/12m。
+      //   フラット F16 1/2 / F8 1/2 / F5.6 1/2 / F4 / F2.8
+      //   スポット F64 1/2 / F45 / F32 / F16 1/2 / F11
+      // 元の値も ARC 由来だったが丸められており、スポットの 2m が抜けていた。
+      refData:{5600:{2:{'flat':6788,'spot':108612},3:{'flat':1697,'spot':37969},5:{'flat':832,'spot':19200},8:{'flat':300,'spot':6788},12:{'flat':147,'spot':2269}}}
     },
     dedo_400: {
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'4.6 kg', name:'Dedolight 400W HMI', emoji:'🟤', watts:400,
       ccts:[5600], accessories:["flat", "spot"],
       // 配光資料（dedolight 400w）。旧データの spot 列は 200W の値だった。
-      refData:{5600:{
-        2:   {flat:6800},
-        3:   {flat:2400, spot:54000},
-        5:   {flat:840, spot:27000},
-        8:   {flat:420, spot:6800},
-        12:  {flat:210, spot:2400}
-      }}
+      // ARC SYSTEM カタログ 2026 p22 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算。2/3/5/8/12m。
+      //   フラット F16 1/2 / F11 / F5.6 1/2 / F4 1/2 / F2.8 1/2
+      //   スポット F90 / F45 1/2 / F32 1/2 / F16 1/2 / F11
+      // 元の値も ARC 由来だったが丸められており、スポットの 2m が抜けていた。
+      refData:{5600:{2:{'flat':6788,'spot':151875},3:{'flat':2269,'spot':53696},5:{'flat':832,'spot':27153},8:{'flat':424,'spot':6788},12:{'flat':208,'spot':2269}}}
     },
   
   
@@ -11949,14 +11944,15 @@ var LIGHTS = {
   desisti: {
     cizarno_200: {
       group:'Tungsten', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'2.8 kg', name:'Cizarno 200W', desc:'200W HMI Fresnel', emoji:'✨', watts:200,
-      ccts:[3200], accessories:['flat','spot'],
-      refData:{3200:{
-        2:  {flat:9600, spot:19000},
-        3:  {flat:2400, spot:3400},
-        5:  {flat:840,  spot:1700},
-        8:  {flat:300,  spot:840},
-        12: {flat:110,  spot:210}
-      }}
+      ccts:[5600], accessories:['flat','spot'],
+      // ARC SYSTEM カタログ 2026 p22（DESISTI チザーノ 200W）の紙面から。
+      // F値（ISO800 / 30FPS）を lux に換算（lux = f² × 18.75）。2/3/5/8/12m。
+      //   フラット F22 / F11 / F5.6 1/2 / F4 / F2 1/2
+      //   スポット F32 / F11 1/2 / F8 1/2 / F5.6 1/2 / F2.8 1/2
+      // 元の値も ARC 由来だったが丸められており、さらに HMI なのに 3200K の
+      // 枠に入っていた。紙面どおり 5600K に直した。
+      // スポットの 2→3m が 2.5段落ちるのは紙面にそう印字されている。
+      refData:{5600:{2:{'flat':9075,'spot':19200},3:{'flat':2269,'spot':3208},5:{'flat':832,'spot':1697},8:{'flat':300,'spot':832},12:{'flat':106,'spot':208}}}
     }
   },
 
