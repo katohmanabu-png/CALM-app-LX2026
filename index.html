@@ -10357,83 +10357,94 @@ var LIGHTS = {
       name:'ARRI SUN 12kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'12000W HMI PAR — lens interchange', emoji:'⚫', watts:12000,
       weight:'48 kg', size:'765×1055×827 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
       dmx:{led:'HMI',power:'12000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {sun_white:76000},
-        5: {sun_green:76000, sun_orange:38000, sun_white:27000},
-        8: {sun_black:54000, sun_green:27000, sun_orange:14000, sun_white:14000},
-        12:{sun_blue:76000, sun_black:27000, sun_green:14000, sun_orange:6800, sun_white:4800},
-        15:{spot:76000, sun_blue:38000, sun_black:19000, sun_green:9600, sun_orange:4800, sun_white:3400}
-      }}
+      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
+      // 5 Frost）が sun_blue / black / green / orange / white にそのまま
+      // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
+      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // あった。紙面どおりに入れ直した。
+      refData:{5600:{3:{'sun_black':434446,'sun_blue':607500,'sun_green':214784,'sun_orange':108612,'sun_white':76800},5:{'spot':859135,'sun_black':151875,'sun_blue':307200,'sun_green':76800,'sun_orange':37969,'sun_white':27153},8:{'spot':307200,'sun_black':53696,'sun_blue':151875,'sun_green':27153,'sun_orange':12834,'sun_white':12834},12:{'spot':108612,'sun_black':27153,'sun_blue':76800,'sun_green':12834,'sun_orange':6788,'sun_white':4800},15:{'spot':76800,'sun_black':19200,'sun_blue':37969,'sun_green':9075,'sun_orange':4800,'sun_white':3208}}}
     },
     arrisun_6k: {
       name:'ARRI SUN 6kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'6000W HMI PAR — lens interchange', emoji:'⚫', watts:6000,
       weight:'43 kg', size:'590×915×640 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
       dmx:{led:'HMI',power:'6000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {sun_black:76000, sun_green:38000, sun_orange:19000, sun_white:9600},
-        5: {sun_blue:76000, sun_black:38000, sun_green:14000, sun_orange:6800, sun_white:3400},
-        8: {sun_blue:27000, sun_black:9600, sun_green:6800, sun_orange:3400, sun_white:1200},
-        12:{spot:54000, sun_blue:19000, sun_black:6800, sun_green:3400, sun_orange:1700, sun_white:600},
-        15:{spot:27000, sun_blue:9600, sun_black:3400, sun_green:2400, sun_orange:1200, sun_white:210}
-      }}
+      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
+      // 5 Frost）が sun_blue / black / green / orange / white にそのまま
+      // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
+      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // あった。紙面どおりに入れ直した。
+      refData:{5600:{3:{'spot':434446,'sun_black':76800,'sun_blue':151875,'sun_green':37969,'sun_orange':19200,'sun_white':9075},5:{'spot':214784,'sun_black':37969,'sun_blue':76800,'sun_green':12834,'sun_orange':6788,'sun_white':3208},8:{'spot':108612,'sun_black':9075,'sun_blue':27153,'sun_green':6788,'sun_orange':3208,'sun_white':1200},12:{'spot':53696,'sun_black':6788,'sun_blue':19200,'sun_green':3208,'sun_orange':1697,'sun_white':588},15:{'spot':27153,'sun_black':3208,'sun_blue':9075,'sun_green':2269,'sun_orange':1200,'sun_white':208}}}
     },
     arrisun_4k: {
       name:'ARRI SUN 4kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'4000W HMI PAR — lens interchange', emoji:'⚫', watts:4000,
       weight:'21 kg', size:'530×650×580 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
       dmx:{led:'HMI',power:'4000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {sun_green:38000, sun_orange:27000, sun_white:14000},
-        5: {sun_blue:76000, sun_black:54000, sun_green:14000, sun_orange:6800, sun_white:4800},
-        8: {spot:54000, sun_blue:38000, sun_black:19000, sun_green:6800, sun_orange:3400, sun_white:1700},
-        12:{spot:27000, sun_blue:14000, sun_black:6800, sun_green:3400, sun_orange:1700, sun_white:840},
-        15:{spot:14000, sun_blue:6800, sun_black:4800, sun_green:1700, sun_orange:840, sun_white:600}
-      }}
+      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
+      // 5 Frost）が sun_blue / black / green / orange / white にそのまま
+      // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
+      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // あった。紙面どおりに入れ直した。
+      refData:{5600:{3:{'spot':307200,'sun_black':151875,'sun_blue':214784,'sun_green':37969,'sun_orange':27153,'sun_white':12834},5:{'spot':108612,'sun_black':53696,'sun_blue':76800,'sun_green':12834,'sun_orange':6788,'sun_white':4800},8:{'spot':53696,'sun_black':19200,'sun_blue':37969,'sun_green':6788,'sun_orange':3208,'sun_white':1697},12:{'spot':27153,'sun_black':6788,'sun_blue':12834,'sun_green':3208,'sun_orange':1697,'sun_white':832},15:{'spot':12834,'sun_black':4800,'sun_blue':6788,'sun_green':1697,'sun_orange':832,'sun_white':588}}}
     },
     arrisun_2500: {
       name:'ARRI SUN 2.5kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'2500W HMI PAR — lens interchange', emoji:'⚫', watts:2500,
       weight:'21 kg', size:'530×650×580 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
       dmx:{led:'HMI',power:'2500W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {sun_black:76000, sun_green:27000, sun_orange:14000, sun_white:4800},
-        5: {spot:54000, sun_blue:54000, sun_black:27000, sun_green:9600, sun_orange:4800, sun_white:3400},
-        8: {spot:27000, sun_blue:19000, sun_black:9600, sun_green:3400, sun_orange:1700, sun_white:1200},
-        12:{spot:14000, sun_blue:14000, sun_black:4800, sun_green:1700, sun_orange:840, sun_white:600},
-        15:{spot:6800, sun_blue:6800, sun_black:3400, sun_green:1200, sun_orange:600, sun_white:420}
-      }}
+      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
+      // 5 Frost）が sun_blue / black / green / orange / white にそのまま
+      // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
+      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // あった。紙面どおりに入れ直した。
+      refData:{5600:{3:{'spot':108612,'sun_black':76800,'sun_blue':108612,'sun_green':27153,'sun_orange':12834,'sun_white':6788},5:{'spot':53696,'sun_black':27153,'sun_blue':53696,'sun_green':9075,'sun_orange':4800,'sun_white':3208},8:{'spot':27153,'sun_black':9075,'sun_blue':19200,'sun_green':3208,'sun_orange':1697,'sun_white':1200},12:{'spot':12834,'sun_black':4800,'sun_blue':12834,'sun_green':1697,'sun_orange':832,'sun_white':588},15:{'spot':6788,'sun_black':3208,'sun_blue':6788,'sun_green':1200,'sun_orange':588,'sun_white':424}}}
     },
     arrisun_1200: {
       name:'ARRI SUN 1.2kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'1200W HMI PAR — lens interchange', emoji:'⚫', watts:1200,
       weight:'12 kg', size:'420×540×460 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
       dmx:{led:'HMI',power:'1200W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {sun_blue:76000, sun_black:27000, sun_green:14000, sun_orange:9600, sun_white:3400},
-        5: {spot:54000, sun_blue:27000, sun_black:14000, sun_green:4800, sun_orange:2400, sun_white:1200},
-        8: {spot:19000, sun_blue:14000, sun_black:4800, sun_green:1700, sun_orange:1200, sun_white:420},
-        12:{spot:9600, sun_blue:6800, sun_black:1700, sun_green:840, sun_orange:420, sun_white:210},
-        15:{spot:6800, sun_blue:3400, sun_black:1200, sun_green:600, sun_orange:300, sun_white:150}
-      }}
+      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
+      // 5 Frost）が sun_blue / black / green / orange / white にそのまま
+      // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
+      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // あった。紙面どおりに入れ直した。
+      refData:{5600:{3:{'spot':108612,'sun_black':27153,'sun_blue':76800,'sun_green':12834,'sun_orange':9075,'sun_white':3208},5:{'spot':53696,'sun_black':12834,'sun_blue':27153,'sun_green':4800,'sun_orange':2269,'sun_white':1200},8:{'spot':19200,'sun_black':4800,'sun_blue':12834,'sun_green':1697,'sun_orange':1200,'sun_white':424},12:{'spot':9075,'sun_black':1697,'sun_blue':6788,'sun_green':832,'sun_orange':424,'sun_white':208},15:{'spot':6788,'sun_black':1200,'sun_blue':3208,'sun_green':588,'sun_orange':300,'sun_white':147}}}
     },
     arrisun_575: {
       name:'ARRI SUN 575W', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'575W HMI PAR — lens interchange', emoji:'⚫', watts:575,
       weight:'4.5 kg', size:'270×340×320 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
       dmx:{led:'HMI',power:'575W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-                2: {spot:152000, sun_blue:108000, sun_black:38000, sun_green:19000, sun_orange:14000, sun_white:3400},
-3: {spot:76000, sun_blue:54000, sun_black:19000, sun_green:9600, sun_orange:4800, sun_white:1700},
-        5: {spot:27000, sun_blue:19000, sun_black:6800, sun_green:3400, sun_orange:2400, sun_white:600},
-        8: {spot:14000, sun_blue:6800, sun_black:3400, sun_green:1200, sun_orange:840, sun_white:210},
-        12:{spot:4800, sun_blue:3400, sun_black:1200, sun_green:420, sun_orange:300, sun_white:110}
-      }}
+      // ARC SYSTEM カタログ 2026 p16 の紙面 から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
+      // 5 Frost）が sun_blue / black / green / orange / white にそのまま
+      // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
+      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // あった。紙面どおりに入れ直した。
+      refData:{5600:{2:{'spot':151875,'sun_black':37969,'sun_blue':108612,'sun_green':19200,'sun_orange':12834,'sun_white':3208},3:{'spot':76800,'sun_black':19200,'sun_blue':53696,'sun_green':9075,'sun_orange':4800,'sun_white':1697},5:{'spot':27153,'sun_black':6788,'sun_blue':19200,'sun_green':3208,'sun_orange':2269,'sun_white':588},8:{'spot':12834,'sun_black':3208,'sun_blue':6788,'sun_green':1200,'sun_orange':832,'sun_white':208},12:{'spot':4800,'sun_black':1200,'sun_blue':3208,'sun_green':424,'sun_orange':300,'sun_white':106}}}
     },
     arrisun_200: {
       name:'ARRI SUN 200W', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'200W HMI PAR — lens interchange', emoji:'⚫', watts:200,
       weight:'2 kg', size:'210×270×270 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
       dmx:{led:'HMI',power:'200W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {spot:27000, sun_blue:19000, sun_black:9600, sun_green:3400, sun_orange:2400, sun_white:840},
-        5: {spot:14000, sun_blue:6800, sun_black:3400, sun_green:1200, sun_orange:840, sun_white:300},
-        8: {spot:4800, sun_blue:3400, sun_black:1200, sun_green:600, sun_orange:300, sun_white:210}
-      }}
+      // ARC SYSTEM カタログ 2026 p16 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。1/2/3/5/8m。
+      //   スポットモード  F90 1/2 / F64 / F32 1/2 / F22 1/2 / F16
+      //   1.ベリーナロー  F90 / F45 1/2 / F32 / F16 1/2 / F11 1/2
+      //   2.ナロー        F64 / F32 / F22 / F11 1/2 / F8
+      //   3.ミディアム    F45 / F16 1/2 / F11 1/2 / F8 / F5.6
+      //   4.ワイド        F32 / F16 / F11 / F5.6 1/2 / F4
+      //   5.フロスト      F22 / F8 1/2 / F5.6 1/2 / F4 / F2.8 1/2
+      // 元は 3/5/8m の3点だけで値も丸められていた。
+      refData:{5600:{1:{'spot':214784,'sun_black':76800,'sun_blue':151875,'sun_green':37969,'sun_orange':19200,'sun_white':9075},2:{'spot':76800,'sun_black':19200,'sun_blue':53696,'sun_green':6788,'sun_orange':4800,'sun_white':1697},3:{'spot':27153,'sun_black':9075,'sun_blue':19200,'sun_green':3208,'sun_orange':2269,'sun_white':832},5:{'spot':12834,'sun_black':3208,'sun_blue':6788,'sun_green':1200,'sun_orange':832,'sun_white':300},8:{'spot':4800,'sun_black':1200,'sun_blue':3208,'sun_green':588,'sun_orange':300,'sun_white':208}}}
     },
     hmi_18k: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/arri-daylight-18-12',
