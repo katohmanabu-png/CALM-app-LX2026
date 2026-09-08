@@ -10752,7 +10752,8 @@ var LIGHTS = {
     },
     arri_6k: {
       group:'HMI', weight:'34 kg', name:'ARRI 6kW Compact HMI', emoji:'💡', watts:6000, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
-      ccts:[5600], accessories:['flat','spot'], accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
+      ccts:[5600], accessories:['flat','spot'], // ARRI Compact 6000 Plus の IES の角度
+      accAngles:{flat:58.2,spot:5.2}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       refData:{5600:{
         3: {flat:27000},
         5: {flat:14000, spot:76000},
@@ -14338,16 +14339,19 @@ var HMI_BEAM = {
   'Pocket Par 400W':[9,50],
   'Pocket Par 200W':[15,50],
   'Pocket Par 125W':[15,50],
-  'ARRI 18kW HMI':[15,60],
+  'ARRI 18kW HMI':[10.9,55.9],   // ARRI Daylight 18/12 の IES
   'ARRI 24kW Tungsten Fresnel':[10,60],
   'ARRI Studio T12':[12,55],
   'Alpha 12kW HMI':[12,60],
-  'ARRI M40':[10,55],
-  'ARRI M18':[10,55],
-  'ARRI M8':[10,55],
-  'ARRIMAX 18kW':[10,55],
-  'ARRIMAX 12kW':[10,55],
-  'ARRI M90':[10,55],
+  // M シリーズ・ARRIMAX の角度は ARRI 公表の配光ファイル（IES）に
+  // 書かれている値。それまでは全機種 10〜55° の決め打ちだった。
+  // 照度は ARC SYSTEM の実測のまま。角度だけ差し替えている。
+  'ARRI M40':[17.9,54.4],
+  'ARRI M18':[15.5,62.8],
+  'ARRI M8':[14.9,59.9],
+  'ARRIMAX 18kW':[16.0,44.6],
+  'ARRIMAX 12kW':[16.2,45.0],
+  'ARRI M90':[14.7,42.4],
   'ARRIMAX 6kW':[10,55],
   'ARRI HMI 1200':[12,55],
   'ARRI HMI 2500':[12,55],
