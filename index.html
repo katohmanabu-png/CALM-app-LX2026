@@ -10515,39 +10515,39 @@ var LIGHTS = {
     },
     arrisun_12k: {
       name:'ARRI SUN 12kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'12000W HMI PAR — lens interchange', emoji:'⚫', watts:12000,
-      weight:'48 kg', size:'765×1055×827 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
+      weight:'48 kg', size:'765×1055×827 mm', ccts:[5600], accessories:['as_bare','as_sl_spot','as_sl_mid','as_sl_flood','as_sfl_spot','as_sfl_mid','as_sfl_flood','as_fsfl_spot','as_fsfl_mid','as_fsfl_flood'],
+      accAngles:{as_bare:5.2,as_sl_spot:9.5,as_sl_mid:12.7,as_sl_flood:15.9,as_sfl_spot:49.8,as_sfl_mid:57.0,as_sfl_flood:65.0,as_fsfl_spot:43.1,as_fsfl_mid:50.2,as_fsfl_flood:57.5},
       dmx:{led:'HMI',power:'12000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {sun_white:76000},
-        5: {sun_green:76000, sun_orange:38000, sun_white:27000},
-        8: {sun_black:54000, sun_green:27000, sun_orange:14000, sun_white:14000},
-        12:{sun_blue:76000, sun_black:27000, sun_green:14000, sun_orange:6800, sun_white:4800},
-        15:{spot:76000, sun_blue:38000, sun_black:19000, sun_green:9600, sun_orange:4800, sun_white:3400}
-      }}
+      // ARRI 公表の配光ファイル（IES）から出した。中心の candela を距離の
+      // 2乗で割ったもの。ARRISUN 120 / 12000W。レンズは ARRI の区分そのまま
+      // （レンズ無し / SL / SFL / FSFL）で、それぞれ spot・middle・flood の
+      // ズーム位置。角度も IES に書かれている値。
+      // 色名5種（青・黒・緑・橙・白）は ARRI の公表と対応が取れないので外した。
+      refData:{5600:{3:{as_bare:1089996,as_sl_spot:953465,as_sl_mid:953465,as_sl_flood:638659,as_sfl_spot:108649,as_sfl_mid:73741,as_sfl_flood:57564,as_fsfl_spot:80066,as_fsfl_mid:61103,as_fsfl_flood:57564},5:{as_bare:392398,as_sl_spot:343247,as_sl_mid:343247,as_sl_flood:229917,as_sfl_spot:39114,as_sfl_mid:26547,as_sfl_flood:20723,as_fsfl_spot:28824,as_fsfl_mid:21997,as_fsfl_flood:20723},8:{as_bare:153281,as_sl_spot:134081,as_sl_mid:134081,as_sl_flood:89811,as_sfl_spot:15279,as_sfl_mid:10370,as_sfl_flood:8095,as_fsfl_spot:11259,as_fsfl_mid:8593,as_fsfl_flood:8095},12:{as_bare:68125,as_sl_spot:59592,as_sl_mid:59592,as_sl_flood:39916,as_sfl_spot:6791,as_sfl_mid:4609,as_sfl_flood:3598,as_fsfl_spot:5004,as_fsfl_mid:3819,as_fsfl_flood:3598},15:{as_bare:43600,as_sl_spot:38139,as_sl_mid:38139,as_sl_flood:25546,as_sfl_spot:4346,as_sfl_mid:2950,as_sfl_flood:2303,as_fsfl_spot:3203,as_fsfl_mid:2444,as_fsfl_flood:2303}}}
     },
     arrisun_6k: {
       name:'ARRI SUN 6kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'6000W HMI PAR — lens interchange', emoji:'⚫', watts:6000,
-      weight:'43 kg', size:'590×915×640 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
+      weight:'43 kg', size:'590×915×640 mm', ccts:[5600], accessories:['as_bare','as_sl_spot','as_sl_mid','as_sl_flood','as_sfl_spot','as_sfl_mid','as_sfl_flood','as_fsfl_spot','as_fsfl_mid','as_fsfl_flood'],
+      accAngles:{as_bare:4.1,as_sl_spot:8.7,as_sl_mid:12.9,as_sl_flood:16.8,as_sfl_spot:36.0,as_sfl_mid:43.8,as_sfl_flood:51.7,as_fsfl_spot:37.5,as_fsfl_mid:45.3,as_fsfl_flood:53.4},
       dmx:{led:'HMI',power:'6000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {sun_black:76000, sun_green:38000, sun_orange:19000, sun_white:9600},
-        5: {sun_blue:76000, sun_black:38000, sun_green:14000, sun_orange:6800, sun_white:3400},
-        8: {sun_blue:27000, sun_black:9600, sun_green:6800, sun_orange:3400, sun_white:1200},
-        12:{spot:54000, sun_blue:19000, sun_black:6800, sun_green:3400, sun_orange:1700, sun_white:600},
-        15:{spot:27000, sun_blue:9600, sun_black:3400, sun_green:2400, sun_orange:1200, sun_white:210}
-      }}
+      // ARRI 公表の配光ファイル（IES）から出した。中心の candela を距離の
+      // 2乗で割ったもの。ARRISUN 60 / 6000W。レンズは ARRI の区分そのまま
+      // （レンズ無し / SL / SFL / FSFL）で、それぞれ spot・middle・flood の
+      // ズーム位置。角度も IES に書かれている値。
+      // 色名5種（青・黒・緑・橙・白）は ARRI の公表と対応が取れないので外した。
+      refData:{5600:{3:{as_bare:936167,as_sl_spot:975407,as_sl_mid:447087,as_sl_flood:320773,as_sfl_spot:86447,as_sfl_mid:67040,as_sfl_flood:47293,as_fsfl_spot:52393,as_fsfl_mid:39100,as_fsfl_flood:30667},5:{as_bare:337020,as_sl_spot:351146,as_sl_mid:160951,as_sl_flood:115478,as_sfl_spot:31121,as_sfl_mid:24134,as_sfl_flood:17026,as_fsfl_spot:18862,as_fsfl_mid:14076,as_fsfl_flood:11040},8:{as_bare:131648,as_sl_spot:137167,as_sl_mid:62872,as_sl_flood:45109,as_sfl_spot:12157,as_sfl_mid:9428,as_sfl_flood:6651,as_fsfl_spot:7368,as_fsfl_mid:5498,as_fsfl_flood:4312},12:{as_bare:58510,as_sl_spot:60963,as_sl_mid:27943,as_sl_flood:20048,as_sfl_spot:5403,as_sfl_mid:4190,as_sfl_flood:2956,as_fsfl_spot:3275,as_fsfl_mid:2444,as_fsfl_flood:1917},15:{as_bare:37447,as_sl_spot:39016,as_sl_mid:17883,as_sl_flood:12831,as_sfl_spot:3458,as_sfl_mid:2682,as_sfl_flood:1892,as_fsfl_spot:2096,as_fsfl_mid:1564,as_fsfl_flood:1227}}}
     },
     arrisun_4k: {
       name:'ARRI SUN 4kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'4000W HMI PAR — lens interchange', emoji:'⚫', watts:4000,
-      weight:'21 kg', size:'530×650×580 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
+      weight:'21 kg', size:'530×650×580 mm', ccts:[5600], accessories:['as_bare','as_sl_spot','as_sl_mid','as_sl_flood','as_sfl_spot','as_sfl_mid','as_sfl_flood','as_fsfl_spot','as_fsfl_mid','as_fsfl_flood'],
+      accAngles:{as_bare:6.7,as_sl_spot:8.6,as_sl_mid:10.6,as_sl_flood:13.2,as_sfl_spot:42.9,as_sfl_mid:49.1,as_sfl_flood:54.8,as_fsfl_spot:42.7,as_fsfl_mid:50.0,as_fsfl_flood:57.4},
       dmx:{led:'HMI',power:'4000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        3: {sun_green:38000, sun_orange:27000, sun_white:14000},
-        5: {sun_blue:76000, sun_black:54000, sun_green:14000, sun_orange:6800, sun_white:4800},
-        8: {spot:54000, sun_blue:38000, sun_black:19000, sun_green:6800, sun_orange:3400, sun_white:1700},
-        12:{spot:27000, sun_blue:14000, sun_black:6800, sun_green:3400, sun_orange:1700, sun_white:840},
-        15:{spot:14000, sun_blue:6800, sun_black:4800, sun_green:1700, sun_orange:840, sun_white:600}
-      }}
+      // ARRI 公表の配光ファイル（IES）から出した。中心の candela を距離の
+      // 2乗で割ったもの。ARRISUN 40/25 / 4000W。レンズは ARRI の区分そのまま
+      // （レンズ無し / SL / SFL / FSFL）で、それぞれ spot・middle・flood の
+      // ズーム位置。角度も IES に書かれている値。
+      // 色名5種（青・黒・緑・橙・白）は ARRI の公表と対応が取れないので外した。
+      refData:{5600:{3:{as_bare:852011,as_sl_spot:504408,as_sl_mid:257898,as_sl_flood:210246,as_sfl_spot:38156,as_sfl_mid:33782,as_sfl_flood:27943,as_fsfl_spot:24354,as_fsfl_mid:20596,as_fsfl_flood:16990},5:{as_bare:306724,as_sl_spot:181587,as_sl_mid:92843,as_sl_flood:75688,as_sfl_spot:13736,as_sfl_mid:12162,as_sfl_flood:10059,as_fsfl_spot:8767,as_fsfl_mid:7415,as_fsfl_flood:6116},8:{as_bare:119814,as_sl_spot:70932,as_sl_mid:36267,as_sl_flood:29566,as_sfl_spot:5366,as_sfl_mid:4751,as_sfl_flood:3929,as_fsfl_spot:3425,as_fsfl_mid:2896,as_fsfl_flood:2389},12:{as_bare:53251,as_sl_spot:31525,as_sl_mid:16119,as_sl_flood:13140,as_sfl_spot:2385,as_sfl_mid:2111,as_sfl_flood:1746,as_fsfl_spot:1522,as_fsfl_mid:1287,as_fsfl_flood:1062},15:{as_bare:34080,as_sl_spot:20176,as_sl_mid:10316,as_sl_flood:8410,as_sfl_spot:1526,as_sfl_mid:1351,as_sfl_flood:1118,as_fsfl_spot:974,as_fsfl_mid:824,as_fsfl_flood:680}}}
     },
     arrisun_2500: {
       name:'ARRI SUN 2.5kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'2500W HMI PAR — lens interchange', emoji:'⚫', watts:2500,
@@ -10575,15 +10575,15 @@ var LIGHTS = {
     },
     arrisun_575: {
       name:'ARRI SUN 575W', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'575W HMI PAR — lens interchange', emoji:'⚫', watts:575,
-      weight:'4.5 kg', size:'270×340×320 mm', ccts:[5600], accessories:['spot','sun_blue','sun_black','sun_green','sun_orange','sun_white'],
+      weight:'4.5 kg', size:'270×340×320 mm', ccts:[5600], accessories:['as_bare','as_sl_spot','as_sl_mid','as_sl_flood','as_sfl_spot','as_sfl_mid','as_sfl_flood','as_fsfl_spot','as_fsfl_mid','as_fsfl_flood'],
+      accAngles:{as_bare:4.7,as_sl_spot:9.0,as_sl_mid:11.5,as_sl_flood:14.4,as_sfl_spot:37.3,as_sfl_mid:50.0,as_sfl_flood:62.3,as_fsfl_spot:33.6,as_fsfl_mid:52.5,as_fsfl_flood:71.4},
       dmx:{led:'HMI',power:'575W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-                2: {spot:152000, sun_blue:108000, sun_black:38000, sun_green:19000, sun_orange:14000, sun_white:3400},
-3: {spot:76000, sun_blue:54000, sun_black:19000, sun_green:9600, sun_orange:4800, sun_white:1700},
-        5: {spot:27000, sun_blue:19000, sun_black:6800, sun_green:3400, sun_orange:2400, sun_white:600},
-        8: {spot:14000, sun_blue:6800, sun_black:3400, sun_green:1200, sun_orange:840, sun_white:210},
-        12:{spot:4800, sun_blue:3400, sun_black:1200, sun_green:420, sun_orange:300, sun_white:110}
-      }}
+      // ARRI 公表の配光ファイル（IES）から出した。中心の candela を距離の
+      // 2乗で割ったもの。ARRISUN 5 / 575W。レンズは ARRI の区分そのまま
+      // （レンズ無し / SL / SFL / FSFL）で、それぞれ spot・middle・flood の
+      // ズーム位置。角度も IES に書かれている値。
+      // 色名5種（青・黒・緑・橙・白）は ARRI の公表と対応が取れないので外した。
+      refData:{5600:{2:{as_bare:350856,as_sl_spot:154692,as_sl_mid:98166,as_sl_flood:73862,as_sfl_spot:16661,as_sfl_mid:10384,as_sfl_flood:7245,as_fsfl_spot:10488,as_fsfl_mid:6154,as_fsfl_flood:3886},3:{as_bare:155936,as_sl_spot:68752,as_sl_mid:43629,as_sl_flood:32828,as_sfl_spot:7405,as_sfl_mid:4615,as_sfl_flood:3220,as_fsfl_spot:4662,as_fsfl_mid:2735,as_fsfl_flood:1727},5:{as_bare:56137,as_sl_spot:24751,as_sl_mid:15706,as_sl_flood:11818,as_sfl_spot:2666,as_sfl_mid:1661,as_sfl_flood:1159,as_fsfl_spot:1678,as_fsfl_mid:985,as_fsfl_flood:622},8:{as_bare:21928,as_sl_spot:9668,as_sl_mid:6135,as_sl_flood:4616,as_sfl_spot:1041,as_sfl_mid:649,as_sfl_flood:453,as_fsfl_spot:656,as_fsfl_mid:385,as_fsfl_flood:243},12:{as_bare:9746,as_sl_spot:4297,as_sl_mid:2727,as_sl_flood:2052,as_sfl_spot:463,as_sfl_mid:288,as_sfl_flood:201,as_fsfl_spot:291,as_fsfl_mid:171,as_fsfl_flood:108}}}
     },
     arrisun_200: {
       name:'ARRI SUN 200W', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'200W HMI PAR — lens interchange', emoji:'⚫', watts:200,
@@ -14064,6 +14064,19 @@ var ACC_INFO = {
   // Fresnel 2X。Aputure は Flood / Spot の呼び名だけで角度を公表していない
   f2x_flood:{ label:'Fresnel 2X (Flood)',  beam:'Flood',         emoji:'🔆' },
   f2x_spot: { label:'Fresnel 2X (Spot)',   beam:'Spot',          emoji:'🔦' },
+  // ARRISUN の PAR レンズ。ARRI 公表の配光ファイルの区分（レンズ無し・
+  // SL・SFL・FSFL）と、それぞれのズーム位置（spot / middle / flood）。
+  // 角度は同じレンズでもヘッドごとに違うので、機種側の accAngles で持つ。
+  as_bare:     { label:'No Lens',          beam:'Super Spot', emoji:'🔦' },
+  as_sl_spot:  { label:'SL — Spot',        beam:'Spot Lens',  emoji:'🔦' },
+  as_sl_mid:   { label:'SL — Middle',      beam:'Spot Lens',  emoji:'🔦' },
+  as_sl_flood: { label:'SL — Flood',       beam:'Spot Lens',  emoji:'🔆' },
+  as_sfl_spot: { label:'SFL — Spot',       beam:'Super Flood',emoji:'🔆' },
+  as_sfl_mid:  { label:'SFL — Middle',     beam:'Super Flood',emoji:'🔆' },
+  as_sfl_flood:{ label:'SFL — Flood',      beam:'Super Flood',emoji:'🔆' },
+  as_fsfl_spot:{ label:'FSFL — Spot',      beam:'Full Super Flood',emoji:'🔆' },
+  as_fsfl_mid: { label:'FSFL — Middle',    beam:'Full Super Flood',emoji:'🔆' },
+  as_fsfl_flood:{label:'FSFL — Flood',     beam:'Full Super Flood',emoji:'🔆' },
   // Storm 80c
   cf4_15:   { label:'CF4 Fresnel (15°)',   beam:'Fresnel Spot',  emoji:'🔬', angle:15 },
   cf4_40:   { label:'CF4 Fresnel (40°)',   beam:'Fresnel Flood', emoji:'🔬', angle:40 },
