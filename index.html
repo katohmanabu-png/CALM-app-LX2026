@@ -9462,11 +9462,21 @@ var LIGHTS = {
       url:'https://www.aputure.com/products/ls-1200d-pro/',
       group:'LED COB', name:'LS 1200d Pro', desc:'1600W Daylight LED Fresnel', emoji:'💡', watts:1600, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'8.9 kg', size:'330×490×330 mm', ccts:[5600],
-      accessories:['none','r15','r30','r45'], accAngles:{none:66},  // Aputure 公表 66°（bare bulb）
+      // 公表の配光表にある付属品に合わせた。r15/r30/r45 という汎用の
+      // リフレクターは Aputure の製品に無く、実物は BM12 シリーズ。
+      accessories:['none','bm1215','bm1230','bm1245','f10_flood','f10_spot'],
+      accAngles:{none:66},  // Aputure 公表 66°（bare bulb）
       dmx:{led:'5600K fixed',power:'1440W',cct:'5600K',cri:'≤96',ip:'IP54',control:'On-board / App / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','TV','Paparazzi','Fire']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%201200d%20Pro/All%20Files/LS1200D-Pro-DMX-Profile-Specification-V1.0-.pdf',
       dmxVer:'v1.0',
-      refData:{5600:{2:{none:19200,r15:96762,r30:27153,r45:12834},3:{none:7620,r15:47838,r30:11434,r45:6788},5:{none:2858,r15:12834,r30:3601,r45:2858},8:{none:1512,r15:6048,r30:1697,r45:1200},12:{none:741,r15:2858,r30:832,r45:588}}}
+      // Aputure 公表の配光表（3m / 5m / 7m / 9m、5600K）。
+      // それまでの値は半段刻みの決まった並びで、公表値と合っていなかった。
+      refData:{5600:{
+        3:{none:6380,bm1215:83100,bm1230:22400,bm1245:13010,f10_flood:14470,f10_spot:32410},
+        5:{none:2802,bm1215:28340,bm1230:8200, bm1245:4800, f10_flood:5590, f10_spot:12090},
+        7:{none:1538,bm1215:15200,bm1230:4660, bm1245:2706, f10_flood:2840, f10_spot:6160},
+        9:{none:964, bm1215:8580, bm1230:2880, bm1245:1775, f10_flood:1920, f10_spot:3940}
+      }}
     },
     storm_80c: {
       url:'https://www.aputure.com/products/storm-80c/',
@@ -9481,17 +9491,46 @@ var LIGHTS = {
     ls_c300d_ii: {
       group:'LED COB', name:'LS C300d II', desc:'350W Daylight LED Spot', emoji:'💡', watts:350, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'3.2 kg', size:'190×340×310 mm', ccts:[5600],
-      accessories:['none','r30','r15'], accUnknown:['none'],  // Aputure のヘルプセンター（LS 300d II）にビーム角の記載が無い
+      // 公表の配光表にある付属品に合わせた
+      accessories:['none','hyper','f2x_flood','f2x_spot'],
+      // bare・Hyper Reflector・Fresnel 2X のビーム角は Aputure が公表していない
+      accUnknown:['none','f2x_flood','f2x_spot'],
       dmx:{led:'Daylight COB',power:'350W',cct:'5600K',cri:'≤96',ip:'IP54',control:'On-board / App / DMX',dimming:'0%–100%',effects:['Flash','Pulse','TV']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20300d%20II/All%20files/LS-600d-Pro-LS-300d-II-common-DMX-Profile-Specification-V1.0.pdf',
       dmxVer:'v1.0',
-      refData:{5600:{2:{none:6048,r30:7620,r15:14406},3:{none:1905,r30:3208,r15:6788},5:{none:832,r30:1512,r15:2858},8:{none:378,r30:588,r15:933},12:{none:147,r30:300,r15:476}}}
+      // Aputure 公表の配光表（1m / 3m / 5m、5600K）。
+      refData:{5600:{
+        1:{none:11000,hyper:45000,f2x_flood:38000,f2x_spot:80000},
+        3:{none:1300, hyper:3500, f2x_flood:5000, f2x_spot:9500},
+        5:{none:550,  hyper:1200, f2x_flood:1900, f2x_spot:3500}
+      }}
     },
     ls600c_ii: {
       url:'https://www.aputure.com/products/ls-600c-pro-ii/',
       group:'LED COB', weight:'5.9 kg', name:'LS 600c Pro II', emoji:'💡', watts:720, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
-      ccts:[3200, 5600], accessories:["hyper"],
-      refData:{hyper:{5600:{2:29102,3:9075,4:4800,5:3208,8:1200,12:522},3200:{2:15808,3:7280,4:3440,5:2269,8:831,12:396}}}
+      // Aputure 公表の配光表の測定点
+      ccts:[2300,3200,4300,5600,6500,7500,9000,10000],
+      accessories:['none','hyper','f10_flood','f10_spot'],
+      // bare と Hyper Reflector のビーム角は Aputure が公表していない
+      accUnknown:['none'],
+      // 公表の配光表から 1m の列だけを採った。3m・5m の列も載っているが、
+      // どのセルも 1m の 1/9・1/25 とぴったり逆二乗になっており、測った値
+      // ではなく 1m から計算した値だった（他機種の公表表はこうならない。
+      // 例: LS 600c Pro は 1m 16,450 → 3m 1,937 で 1/8.49）。測っていない値を
+      // 載せないため 1m だけにしてある。ほかの距離は逆二乗で伸ばした扱いに
+      // なり、アプリ上は ⚠ が付く。
+      // 10000K の F10 Spot だけ 41,700 で、9000K の 95,100 から急に半分以下に
+      // なる。前後の並びから外れており誤記と考えられるので採っていない。
+      refData:{
+        2300:{1:{none:17130,hyper:70900,f10_flood:35100,f10_spot:73300}},
+        3200:{1:{none:18950,hyper:78700,f10_flood:40000,f10_spot:82800}},
+        4300:{1:{none:20190,hyper:84600,f10_flood:44000,f10_spot:89900}},
+        5600:{1:{none:21610,hyper:91500,f10_flood:48400,f10_spot:97600}},
+        6500:{1:{none:21600,hyper:91100,f10_flood:48100,f10_spot:97100}},
+        7500:{1:{none:21680,hyper:91800,f10_flood:47800,f10_spot:97500}},
+        9000:{1:{none:20720,hyper:88100,f10_flood:47600,f10_spot:95100}},
+        10000:{1:{none:19930,hyper:84800,f10_flood:46000}},
+      }
     },
     ls600x: {
       url:'https://www.aputure.com/products/ls-600x-pro/',
@@ -14019,6 +14058,14 @@ var ACC_INFO = {
   // （Flood 45° / Spot 15°）。
   f10_flood:{ label:'F10 Fresnel (Flood)', beam:'45°',           emoji:'🔆', angle:45 },
   f10_spot: { label:'F10 Fresnel (Spot)',  beam:'15°',           emoji:'🔦', angle:15 },
+  // Aputure BM12 シリーズのリフレクター。角度は品番そのもの（15/30/45）で、
+  // 配光表の見出しも Narrow / Medium / Wide と対応している。
+  bm1215:   { label:'BM1215 Narrow',       beam:'15°',           emoji:'🔦', angle:15 },
+  bm1230:   { label:'BM1230 Medium',       beam:'30°',           emoji:'🔆', angle:30 },
+  bm1245:   { label:'BM1245 Wide',         beam:'45°',           emoji:'🔆', angle:45 },
+  // Fresnel 2X。Aputure は Flood / Spot の呼び名だけで角度を公表していない
+  f2x_flood:{ label:'Fresnel 2X (Flood)',  beam:'Flood',         emoji:'🔆' },
+  f2x_spot: { label:'Fresnel 2X (Spot)',   beam:'Spot',          emoji:'🔦' },
   // Storm 80c
   cf4_15:   { label:'CF4 Fresnel (15°)',   beam:'Fresnel Spot',  emoji:'🔬', angle:15 },
   cf4_40:   { label:'CF4 Fresnel (40°)',   beam:'Fresnel Flood', emoji:'🔬', angle:40 },
