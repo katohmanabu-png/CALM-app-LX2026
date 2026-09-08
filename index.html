@@ -20368,7 +20368,8 @@ var PRIVACY_POLICY = {
 
 // ===== BETA 期限（TestFlight ベータ） =====
 // 初回起動から BETA_DAYS 日で使用不可。必要に応じ BETA_HARD_END に絶対終了日を設定可。
-var BETA_ENABLED  = false;   // 製品版。true に戻すとベータの関門と期限が復活し、課金は全開になる
+var BETA_ENABLED  = false;   // 製品版。true にすると 21日の期限が復活し、課金は全開になる
+                             // （合言葉の関門は WEB_PASSCODE 側。こことは別）
 var BETA_DAYS     = 21;          // 初回起動から3週間
 var BETA_HARD_END = null;        // 例: '2026-12-31'（全員一斉に終了させたい場合）
 var CALM_CONTACT  = 'katohmanabu@protonmail.com';  // プライバシーポリシー用の連絡先
@@ -20419,17 +20420,37 @@ function _betaLockScreen() {
 // ===== ベータ用パスコード =====
 // Web版はURLを知られると誰でも開けてしまうため、テスターにのみ配布する合言葉で保護する。
 // 静的サイトなのでソースを読めば回避可能な簡易ゲート（不特定多数の閲覧を防ぐ用途）。
-var BETA_PASSCODE = '';   // 製品版では空。合言葉を入れるとベータの関門が復活する
+/* ── 合言葉の関門 ────────────────────────────────────────────────
+ * このファイルは GitHub Pages でそのまま配信されているので、素の状態だと
+ * ブラウザで全機能が無料で使えてしまう。有料アプリとして売るので、
+ * **Web で開いたときだけ**合言葉を求める。
+ *
+ * iOS アプリ（Capacitor）では関門を出さない。買った人が合言葉を知らないのに
+ * 締め出されるのを防ぐため。アプリ側の開け閉めは課金（calmHas）が見る。
+ *
+ * 空にすると Web も素通しになる。将来ブラウザ版を無料で公開すると決めたら
+ * そのときに空にする。
+ * ────────────────────────────────────────────────────────────── */
+var WEB_PASSCODE = 'CALM2026';
+
+/** iOS アプリ（ネイティブ）で動いているか。Web と区別する */
+function _calmNative() {
+  try {
+    return !!(window.Capacitor && typeof Capacitor.isNativePlatform === 'function'
+              && Capacitor.isNativePlatform());
+  } catch(e) { return false; }
+}
 
 function _passOK() {
-  if (!BETA_PASSCODE) return true;
-  try { return localStorage.getItem('calm_pass_ok') === BETA_PASSCODE; } catch(e) { return false; }
+  if (_calmNative()) return true;        // アプリでは関門を出さない
+  if (!WEB_PASSCODE) return true;
+  try { return localStorage.getItem('calm_pass_ok') === WEB_PASSCODE; } catch(e) { return false; }
 }
 function _passSubmit() {
   var inp = document.getElementById('_pass_input');
   var err = document.getElementById('_pass_err');
   var v = (inp && inp.value || '').trim();
-  if (v === BETA_PASSCODE) {
+  if (v === WEB_PASSCODE) {
     try { localStorage.setItem('calm_pass_ok', v); } catch(e) {}
     location.reload();
   } else {
