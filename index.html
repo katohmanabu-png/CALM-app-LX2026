@@ -9079,8 +9079,8 @@ var LIGHTS = {
       url:'https://www.aputure.com/products/ls-600c-pro/',
       group:'LED COB', name:'LS 600c Pro', desc:'720W RGBWW LED Fresnel', emoji:'💡', watts:720, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'7.5 kg', size:'306×245×355 mm',
-      ccts:[2500,5600,10000],
-      accessories:['none','r30','r15'], accUnknown:['none'],  // Aputure は bare の角度を公表していない
+      ccts:[2300,3200,5600,10000],
+      accessories:['hyper','f10_flood','f10_spot'],  // Aputure は bare の角度を公表していない
       dmx:{led:'RGBWW',power:'600W',cct:'2500K–10000K + Full RGBWW',cri:'≥96',tlci:'≥97',ip:'IP54',
         control:'On-board / App / DMX / RDM',dimming:'0%–100%',
         effects:['Flash','Pulse','Storm','Lightning','TV','Paparazzi','Fire','Fireworks']},
@@ -9090,10 +9090,17 @@ var LIGHTS = {
       // 出どころの違う2系統が混ざっている。'none' を宣言していなかったため 5600K で
       // 値がまったく返らなくなっていた。宣言を足して読めるようにしてある。
       // 同じ光学条件で揃ったデータが手に入ったら差し替えたい。
-      refData:{
-        5600:{2:{none:9075},3:{none:3208},5:{none:1200},8:{none:476},12:{none:208}},
-        3200:{2:{r30:3208,r15:9075},3:{r30:1697,r15:3601},5:{r30:741,r15:1697},8:{r30:300,r15:741},12:{r30:147,r15:378}},
-      }
+      // ARC SYSTEM カタログ 2026 p67 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      //   Hyper Reflector を 'none'、フレネル Spot / Flat を 'r15' / 'r30' と
+      //   していたので名前を直した。値は元から ARC のものだった。
+      //   5600K のフレネル2行は入っていなかったので足した。
+      //   3200K f10_flood  3208 1697 741 300 147
+      //   3200K f10_spot   9075 3601 1697 741 378
+      //   5600K f10_flood  4800 1905 933 378 185
+      //   5600K f10_spot   11434 6048 1905 832 424
+      //   5600K hyper      9075 3208 1200 476 208
+      refData:{3200:{2:{f10_flood:3208,f10_spot:9075},3:{f10_flood:1697,f10_spot:3601},5:{f10_flood:741,f10_spot:1697},8:{f10_flood:300,f10_spot:741},12:{f10_flood:147,f10_spot:378}},5600:{2:{f10_flood:4800,f10_spot:11434,hyper:9075},3:{f10_flood:1905,f10_spot:6048,hyper:3208},5:{f10_flood:933,f10_spot:1905,hyper:1200},8:{f10_flood:378,f10_spot:832,hyper:476},12:{f10_flood:185,f10_spot:424,hyper:208}}}
     },
     ls300x: {
       dmxUrl:'https://open-fixture-library.org/aputure/ls-300x',
@@ -9456,25 +9463,50 @@ var LIGHTS = {
     ls_c300d_ii: {
       group:'LED COB', name:'LS C300d II', desc:'350W Daylight LED Spot', emoji:'💡', watts:350, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'3.2 kg', size:'190×340×310 mm', ccts:[5600],
-      accessories:['none','r30','r15'], accUnknown:['none'],  // Aputure のヘルプセンター（LS 300d II）にビーム角の記載が無い
+      accessories:['hyper','f10_flood','f10_spot'],  // Aputure のヘルプセンター（LS 300d II）にビーム角の記載が無い
       dmx:{led:'Daylight COB',power:'350W',cct:'5600K',cri:'≤96',ip:'IP54',control:'On-board / App / DMX',dimming:'0%–100%',effects:['Flash','Pulse','TV']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20300d%20II/All%20files/LS-600d-Pro-LS-300d-II-common-DMX-Profile-Specification-V1.0.pdf',
       dmxVer:'v1.0',
-      refData:{5600:{2:{none:6048,r30:7620,r15:14406},3:{none:1905,r30:3208,r15:6788},5:{none:832,r30:1512,r15:2858},8:{none:378,r30:588,r15:933},12:{none:147,r30:300,r15:476}}}
+      // ARC SYSTEM カタログ 2026 p67 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      //   'none' / 'r15' / 'r30' としていた名前を直した。値は元から ARC のもの。
+      //   5600K f10_flood  7620 3208 1512 588 300
+      //   5600K f10_spot   14406 6788 2858 933 476
+      //   5600K hyper      6048 1905 832 378 147
+      refData:{5600:{2:{f10_flood:7620,f10_spot:14406,hyper:6048},3:{f10_flood:3208,f10_spot:6788,hyper:1905},5:{f10_flood:1512,f10_spot:2858,hyper:832},8:{f10_flood:588,f10_spot:933,hyper:378},12:{f10_flood:300,f10_spot:476,hyper:147}}}
     },
     ls600c_ii: {
       url:'https://www.aputure.com/products/ls-600c-pro-ii/',
       group:'LED COB', weight:'5.9 kg', name:'LS 600c Pro II', emoji:'💡', watts:720, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
-      ccts:[3200, 5600], accessories:["hyper"],
-      refData:{hyper:{5600:{2:29102,3:9075,4:4800,5:3208,8:1200,12:522},3200:{2:15808,3:7280,4:3440,5:2269,8:831,12:396}}}
+      ccts:[2300,3200,5600,10000], accessories:['hyper','f10_flood','f10_spot'],
+      // ARC SYSTEM カタログ 2026 p67 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      //   3200K f10_flood  10424 5514 2606 1819 675 345
+      //   3200K f10_spot   33429 10424 7275 3950 1697 776
+      //   3200K hyper      15800 7275 3439 2269 832 396
+      //   5600K f10_flood  19200 6788 3439 2269 1024 455
+      //   5600K f10_spot   37969 19200 9075 5514 2089 1024
+      //   5600K hyper      29102 9075 4800 3208 1200 522
+      refData:{3200:{2:{f10_flood:10424,f10_spot:33429,hyper:15800},3:{f10_flood:5514,f10_spot:10424,hyper:7275},4:{f10_flood:2606,f10_spot:7275,hyper:3439},5:{f10_flood:1819,f10_spot:3950,hyper:2269},8:{f10_flood:675,f10_spot:1697,hyper:832},12:{f10_flood:345,f10_spot:776,hyper:396}},5600:{2:{f10_flood:19200,f10_spot:37969,hyper:29102},3:{f10_flood:6788,f10_spot:19200,hyper:9075},4:{f10_flood:3439,f10_spot:9075,hyper:4800},5:{f10_flood:2269,f10_spot:5514,hyper:3208},8:{f10_flood:1024,f10_spot:2089,hyper:1200},12:{f10_flood:455,f10_spot:1024,hyper:522}}}
     },
     ls600x: {
       url:'https://www.aputure.com/products/ls-600x-pro/',
       group:'LED COB', weight:'5.9 kg', name:'LS 600X Pro', emoji:'💡', watts:720, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
-      ccts:[3200, 5600], accessories:["hyper"],
+      ccts:[2700,3200,5600,6500], accessories:['hyper','f10_flood','f10_spot'],
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20600x%20Pro/All%20Files/LS600X-Pro-DMX-Profile-Specification-V1.0-.pdf',
       dmxVer:'v1.0',
-      refData:{hyper:{5600:{2:7620,3:3208,4:1512,5:588,8:233},3200:{2:6048,3:2269,4:832,5:424,8:185}}}
+      // ARC SYSTEM カタログ 2026 p67 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      //   距離は 2/3/5/8/12m。紙面の定規には 4m もあるが、この灯体の行は
+      //   4m 列が空で値が5つ。アプリは 2,3,4,5,8m と読み違えていた
+      //   （4m とすると 3→4m が指数 -3.02 で成立しない。5m なら -1.70）。
+      //   3200K f10_flood  6048 2858 1200 476 233
+      //   3200K f10_spot   14406 6788 2858 1200 588
+      //   3200K hyper      6048 2269 832 424 185
+      //   5600K f10_flood  9075 3601 1697 741 424
+      //   5600K f10_spot   24190 11434 3601 1697 832
+      //   5600K hyper      7620 3208 1512 588 233
+      refData:{3200:{2:{f10_flood:6048,f10_spot:14406,hyper:6048},3:{f10_flood:2858,f10_spot:6788,hyper:2269},5:{f10_flood:1200,f10_spot:2858,hyper:832},8:{f10_flood:476,f10_spot:1200,hyper:424},12:{f10_flood:233,f10_spot:588,hyper:185}},5600:{2:{f10_flood:9075,f10_spot:24190,hyper:7620},3:{f10_flood:3601,f10_spot:11434,hyper:3208},5:{f10_flood:1697,f10_spot:3601,hyper:1512},8:{f10_flood:741,f10_spot:1697,hyper:588},12:{f10_flood:424,f10_spot:832,hyper:233}}}
     }
   },
 
