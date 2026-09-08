@@ -10546,7 +10546,12 @@ var LIGHTS = {
       //   flood は ARC に該当が無いか採れないので元の値のまま。
       //   flood は CSV の 18k Flat Mode が 3m F64 → 5m F22 と3段落ちで順序が
       //   崩れているため入れていない。元の値のまま。カタログ原本での確認待ち。
-      refData:{5600:{3:{flood:142500,spot:607500},5:{flood:51300,spot:214784},8:{flood:20039,spot:108612},12:{flood:8906,spot:53696},15:{flood:5700,spot:37969},20:{flood:3206,spot:19200},30:{flood:1425}}}
+      //   flood（18k フラットモード）はカタログ紙面（p14）どおり。
+      //   3m F64 → 5m F22 と3段落ちるが、紙面にそう印字されている。
+      //   逆二乗なら1.5段なので、紙面側の誤植の可能性は残る。
+      //   カタログは 20m までなので、別の出どころだった 30m は落とした
+      //   （20m の F8 より明るい値が残り、遠いほうが明るくなっていた）。
+      refData:{5600:{3:{flood:76800,spot:607500},5:{flood:9075,spot:214784},8:{flood:4800,spot:108612},12:{flood:2269,spot:53696},15:{flood:1697,spot:37969},20:{flood:1200,spot:19200}}}
     },
     arrimax_12k: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/arri-daylight-18-12',
@@ -10574,7 +10579,9 @@ var LIGHTS = {
       //   spot        3m F180, 5m F90, 8m F64, 12m F32, 20m F22 1/2
       //   spot の 15m は CSV が F32 1/2 で 12m の F32 より明るく、順序が崩れて
       //   いるため入れていない。カタログ原本での確認待ち。
-      refData:{5600:{3:{flood:151875,spot:607500},5:{flood:27153,spot:151875},8:{flood:12834,spot:76800},12:{flood:6788,spot:19200},15:{flood:3208},20:{flood:2269,spot:12834}}}
+      //   spot の 12m / 15m はカタログ紙面（p14）で確認。CSV はこの2点が
+      //   入れ替わっていた（紙面は 12m F32 1/2、15m F32）。
+      refData:{5600:{3:{flood:151875,spot:607500},5:{flood:27153,spot:151875},8:{flood:12834,spot:76800},12:{flood:6788,spot:27153},15:{flood:3208,spot:19200},20:{flood:2269,spot:12834}}}
     },
     arrimax_6k: {
       name:'ARRIMAX 6kW', group:'HMI Open', desc:'6000W HMI Open Face (AD100A) — max reflector', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:6000,
@@ -10735,14 +10742,16 @@ var LIGHTS = {
     arri_12k_de: {
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', name:'ARRI 12kW Double End', emoji:'💡', watts:12000,
       weight:'62 kg',
-      ccts:[5600], accessories:['flat','spot'], accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
+      ccts:[5600], accessories:['flat','spot','clear'], accUnknown:['clear'], accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       // spot の 3m / 5m / 8m が抜けていた。同じくカタログの F 値から補った。
       // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
       // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
       //   flat        3m F45 1/2, 5m F32, 8m F16 1/2, 12m F11 1/2, 15m F11
       //   spot        3m F180, 5m F128, 8m F64 1/2, 12m F45 1/2, 15m F45
-      refData:{5600:{3:{flat:53696,spot:607500},5:{flat:19200,spot:307200},8:{flat:6788,spot:108612},12:{flat:3208,spot:53696},15:{flat:2269,spot:37969}}}
+      //   クリアレンズはカタログ紙面（p8）から。CSV は 6kW コンパクトの行として
+      //   記録されていたが、紙面ではこちらの灯体の行だった。
+      refData:{5600:{3:{flat:53696,spot:607500,clear:11434},5:{flat:19200,spot:307200,clear:4800},8:{flat:6788,spot:108612,clear:1905},12:{flat:3208,spot:53696,clear:832},15:{flat:2269,spot:37969,clear:588}}}
     },
     arri_200: {
       group:'HMI', weight:'3 kg', name:'ARRI 200W Compact HMI', emoji:'💡', watts:200, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
@@ -10756,7 +10765,7 @@ var LIGHTS = {
     },
     arri_6k: {
       group:'HMI', weight:'34 kg', name:'ARRI 6kW Compact HMI', emoji:'💡', watts:6000, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
-      ccts:[5600], accessories:['flat','spot'], // ARRI Compact 6000 Plus の IES の角度
+      ccts:[5600], accessories:['flat','spot','clear'], accUnknown:['clear'], // ARRI Compact 6000 Plus の IES の角度
       accAngles:{flat:58.2,spot:5.2}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
@@ -10765,7 +10774,8 @@ var LIGHTS = {
       //   spot        3m F90, 5m F64, 8m F32 1/2, 12m F22 1/2, 15m F22
       //   クリアレンズの2行は、カタログの同じページに 12kW と 6kW が並んでいて
       //   どちらの行か判別できないため入れていない。
-      refData:{5600:{3:{flat:27153,spot:151875},5:{flat:12834,spot:76800},8:{flat:3208,spot:27153},12:{flat:1697,spot:12834},15:{flat:1200,spot:9075}}}
+      //   クリアレンズはカタログ紙面（p8）から。
+      refData:{5600:{3:{flat:27153,spot:151875,clear:6788},5:{flat:12834,spot:76800,clear:2858},8:{flat:3208,spot:27153,clear:933},12:{flat:1697,spot:12834,clear:476},15:{flat:1200,spot:9075,clear:300}}}
     },
     arri_x_1200: {
       group:'HMI Open', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"16\" y=\"10\" width=\"52\" height=\"60\" rx=\"3\"/><path d=\"M68 20 H96 V60 H68\"/><circle cx=\"42\" cy=\"40\" r=\"21\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 19 V61\"/><path d=\"M21 40 H63\"/><path d=\"M27 25 L57 55\"/><path d=\"M57 25 L27 55\"/><path d=\"M42 70 V76\"/><path d=\"M58 70 V76\"/><path d=\"M42 76 H58\"/><path d=\"M96 40 H108\"/></g></svg>', weight:'16 kg', name:'ARRI X 1.2kW HMI', emoji:'💡', watts:1200,
