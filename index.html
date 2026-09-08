@@ -1167,11 +1167,11 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
                         <span style="font-size:15px;font-weight:900;color:var(--accent);font-family:var(--mono);" id="tri-height-disp">4.0 m</span>
                       </div>
                       <div style="display:flex;align-items:center;gap:5px;">
-                        <button class="step-btn" onclick="triStep('tri-height',-.5,.5,20,'h','calcTriangle')">‹</button>
-                        <input type="range" id="tri-height" min="0.5" max="20" step="0.1" value="4"
+                        <button class="step-btn" onclick="triStep('tri-height',-.5,.5,50,'h','calcTriangle')">‹</button>
+                        <input type="range" id="tri-height" min="0.5" max="50" step="0.1" value="4"
                           oninput="triDisp('tri-height','tri-height-disp','tri-unit-h');calcTriangle('h')"
                           style="flex:1;height:4px;">
-                        <button class="step-btn" onclick="triStep('tri-height',.5,.5,20,'h','calcTriangle')">›</button>
+                        <button class="step-btn" onclick="triStep('tri-height',.5,.5,50,'h','calcTriangle')">›</button>
                         <button class="tri-lock-btn" id="lock-tri-height" data-tip="triLockTitle" onmousedown="triLockPress('tri-height','lock-tri-height')" onmouseup="triLockRelease('tri-height')" ontouchstart="triLockPress('tri-height','lock-tri-height')" ontouchend="triLockRelease('tri-height')">🔓</button>
                       </div>
                       <div style="display:flex;justify-content:space-between;padding:0 2px;"><span style="font-size:10.5px;color:#888;">0.5 <span id="tri-unit-h">m</span></span><span style="font-size:10.5px;color:#888;">20 <span class="tri-unit-h-r">m</span></span></div>
@@ -1731,11 +1731,11 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
               <span style="font-size:15px;font-weight:900;color:var(--accent);font-family:var(--mono);" id="mix-tri-h-disp">4.0 m</span>
             </div>
             <div style="display:flex;align-items:center;gap:5px;">
-              <button class="step-btn" onclick="triStep('mix-tri-h',-.5,.5,20,'h','calcMixTri')">‹</button>
-              <input type="range" id="mix-tri-h" min="0.5" max="20" step="0.1" value="4"
+              <button class="step-btn" onclick="triStep('mix-tri-h',-.5,.5,50,'h','calcMixTri')">‹</button>
+              <input type="range" id="mix-tri-h" min="0.5" max="50" step="0.1" value="4"
                 oninput="triDisp('mix-tri-h','mix-tri-h-disp','mix-tri-unit-h');calcMixTri('h')"
                 style="flex:1;height:4px;">
-              <button class="step-btn" onclick="triStep('mix-tri-h',.5,.5,20,'h','calcMixTri')">›</button>
+              <button class="step-btn" onclick="triStep('mix-tri-h',.5,.5,50,'h','calcMixTri')">›</button>
               <button class="tri-lock-btn" id="lock-mix-tri-h" data-tip="triLockTitle" onmousedown="triLockPress('mix-tri-h','lock-mix-tri-h')" onmouseup="triLockRelease('mix-tri-h')" ontouchstart="triLockPress('mix-tri-h','lock-mix-tri-h')" ontouchend="triLockRelease('mix-tri-h')">🔓</button>
             </div>
             <div style="display:flex;justify-content:space-between;padding:0 2px;"><span style="font-size:10.5px;color:#888;">0.5m</span><span style="font-size:10.5px;color:#888;">20m</span></div>
@@ -14546,8 +14546,18 @@ function _setImperial(val) {
   if (dm) { dm.placeholder = val ? '25' : '7.5'; dm.value = ''; }
   S.manualDist = null;
   // ── Triangle inputs ───────────────────────────────────────
-  var triH = document.getElementById('tri-height');  if (triH)  triH.value = '';
-  var triHz = document.getElementById('tri-horiz');  if (triHz) triHz.value = '';
+  // 以前は value='' で消していたが、range 入力に '' を入れると空にはならず
+  // min/max の真ん中に飛ぶ（高さの上限を 50 にしたので 25m に飛んでいた）。
+  // 単位を変えただけで置き位置が変わってしまうので、いまの値を新しい単位に
+  // 換算して持ち越す。max は calcTriangle → triSyncRange が張り替える。
+  var _triK = val ? 3.28084 : 1 / 3.28084;
+  ['tri-height', 'tri-horiz'].forEach(function(id) {
+    var e2 = document.getElementById(id); if (!e2) return;
+    var v = parseFloat(e2.value); if (!isFinite(v)) return;
+    e2.max = (id === 'tri-height') ? (val ? TRI_RANGE.hFt : TRI_RANGE.hM)
+                                   : (val ? TRI_RANGE.dFt : TRI_RANGE.dM);
+    e2.value = Math.round(v * _triK * 10) / 10;
+  });
   var mth = document.getElementById('mix-tri-unit-h'); if (mth) mth.textContent = unit;
   var mtl = document.getElementById('mix-tri-unit-l'); if (mtl) mtl.textContent = unit;
   // ── Slider + display ──────────────────────────────────────
@@ -17899,10 +17909,29 @@ function triDisp(slId, dispId, unitId, suffix) {
 }
 function triStep(slId, delta, min, max, field, calcFn) {
   var sl = el(slId); if (!sl) return;
-  var v = Math.min(max, Math.max(min, parseFloat(sl.value) + delta));
+  // 上限・下限はスライダー自身の min/max を見る。呼び出し側に書いてある数字は
+  // 予備。単位（m / ft）で max を張り替えるので、引数のままだと ft のときに
+  // ‹ › ボタンだけ手前で止まってしまう。
+  var mn = parseFloat(sl.min); if (!isFinite(mn)) mn = min;
+  var mx = parseFloat(sl.max); if (!isFinite(mx)) mx = max;
+  var v = Math.min(mx, Math.max(mn, parseFloat(sl.value) + delta));
   v = Math.round(v * 100) / 100;
   sl.value = v;
   sl.dispatchEvent(new Event('input'));
+}
+
+// 三角の入力は「いま選んでいる単位の生の数字」を持つ（m のときは m、
+// ft のときは ft）。上限を m のまま固定していたので、ft にすると高さ 20ft
+// ＝約6m、水平 100ft ＝約30m しか動かせず、距離スライダー（328ft まで）に
+// 届かなかった。単位に合わせて max を張り替える。
+// Finder と Alt は S.imperial ではなく自分の単位フラグを持っているので、
+// 画面ごとにそのフラグを渡す。
+var TRI_RANGE = { hM:50, hFt:164, dM:100, dFt:328 };
+function triSyncRange(ids, imp) {
+  if (!ids) return;
+  var hEl = el(ids.h), dEl = el(ids.d);
+  if (hEl) hEl.max = imp ? TRI_RANGE.hFt : TRI_RANGE.hM;
+  if (dEl) dEl.max = imp ? TRI_RANGE.dFt : TRI_RANGE.dM;
 }
 
 // ダブルタップで数値直接入力
@@ -17992,6 +18021,7 @@ function calcTriangle(changed) {
   var uh = el('tri-unit-h'), uhz = el('tri-unit-hz');
   if (uh)  uh.textContent  = unit;
   if (uhz) uhz.textContent = unit;
+  triSyncRange(TRI_IDS.calc, !!S.imperial);
 
   var r = triSolve(TRI_IDS.calc, changed === 'di' ? 'd' : changed);
   if (!r) return;
@@ -18524,6 +18554,7 @@ function calcAltTriangle(changed) {
   var hEl = el('alt-tri-height'), dEl = el('alt-tri-horiz'), aEl = el('alt-tri-angle');
   var resEl = el('alt-tri-result'), useBtn = el('alt-tri-use-btn');
   if (!hEl || !dEl) return;
+  triSyncRange(TRI_IDS.alt, !!S_altImperial);
   var r = triSolve(TRI_IDS.alt, changed === 'di' ? 'd' : changed);
   if (!r) return;
   var hyp = r.hyp, a = r.a;
@@ -21879,6 +21910,7 @@ function calcFinderTriangle(changed) {
   var hEl = el('finder-tri-height'), dEl = el('finder-tri-horiz'), aEl = el('finder-tri-angle');
   var resEl = el('finder-tri-result'), useBtn = el('finder-tri-use-btn');
   if (!hEl || !dEl) return;
+  triSyncRange(TRI_IDS.finder, !!S_finderImperial);
   var r = triSolve(TRI_IDS.finder, changed === 'di' ? 'd' : changed);
   if (!r) return;
   var hyp = r.hyp, a = r.a;
@@ -25118,6 +25150,7 @@ function calcMixTri(changed) {
   var resEl = el('mix-tri-val'), angEl = el('mix-tri-angle-disp');
   var unit = S.imperial ? 'ft' : 'm';
   ['mix-tri-unit-h','mix-tri-unit-hz'].forEach(function(id){ var e2=el(id); if(e2) e2.textContent=unit; });
+  triSyncRange(TRI_IDS.mix, !!S.imperial);
   var r = triSolve(TRI_IDS.mix, changed);
   if (!r) return;
   var hyp = r.hyp, ang = r.a;
@@ -33565,11 +33598,11 @@ document.addEventListener('DOMContentLoaded', _applyVersionLabels);
                       <span style="font-size:15px;font-weight:900;color:var(--accent);font-family:var(--mono);" id="alt-tri-height-disp">4.0 m</span>
                     </div>
                     <div style="display:flex;align-items:center;gap:5px;">
-                      <button class="step-btn" onclick="triStep('alt-tri-height',-.5,.5,20,'h','calcAltTriangle')">‹</button>
-                      <input type="range" id="alt-tri-height" min="0.5" max="20" step="0.1" value="4"
+                      <button class="step-btn" onclick="triStep('alt-tri-height',-.5,.5,50,'h','calcAltTriangle')">‹</button>
+                      <input type="range" id="alt-tri-height" min="0.5" max="50" step="0.1" value="4"
                         oninput="triDisp('alt-tri-height','alt-tri-height-disp','alt-tri-unit-h');calcAltTriangle('h')"
                         style="flex:1;height:4px;">
-                      <button class="step-btn" onclick="triStep('alt-tri-height',.5,.5,20,'h','calcAltTriangle')">›</button>
+                      <button class="step-btn" onclick="triStep('alt-tri-height',.5,.5,50,'h','calcAltTriangle')">›</button>
                       <button class="tri-lock-btn" id="lock-alt-tri-height" data-tip="triLockTitle" onmousedown="triLockPress('alt-tri-height','lock-alt-tri-height')" onmouseup="triLockRelease('alt-tri-height')" ontouchstart="triLockPress('alt-tri-height','lock-alt-tri-height')" ontouchend="triLockRelease('alt-tri-height')">🔓</button>
                     </div>
                     <div style="display:flex;justify-content:space-between;padding:0 2px;"><span style="font-size:10.5px;color:#888;">0.5 <span id="alt-tri-unit-h">m</span></span><span style="font-size:10.5px;color:#888;">20m</span></div>
