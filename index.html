@@ -14548,16 +14548,8 @@ function _setImperial(val) {
   // ── Triangle inputs ───────────────────────────────────────
   // 以前は value='' で消していたが、range 入力に '' を入れると空にはならず
   // min/max の真ん中に飛ぶ（高さの上限を 50 にしたので 25m に飛んでいた）。
-  // 単位を変えただけで置き位置が変わってしまうので、いまの値を新しい単位に
-  // 換算して持ち越す。max は calcTriangle → triSyncRange が張り替える。
-  var _triK = val ? 3.28084 : 1 / 3.28084;
-  ['tri-height', 'tri-horiz'].forEach(function(id) {
-    var e2 = document.getElementById(id); if (!e2) return;
-    var v = parseFloat(e2.value); if (!isFinite(v)) return;
-    e2.max = (id === 'tri-height') ? (val ? TRI_RANGE.hFt : TRI_RANGE.hM)
-                                   : (val ? TRI_RANGE.dFt : TRI_RANGE.dM);
-    e2.value = Math.round(v * _triK * 10) / 10;
-  });
+  // 単位を変えただけで置き位置が変わってしまうので、値を換算して持ち越す。
+  try { triConvertUnit(TRI_IDS.calc, !!val); } catch(e) {}
   var mth = document.getElementById('mix-tri-unit-h'); if (mth) mth.textContent = unit;
   var mtl = document.getElementById('mix-tri-unit-l'); if (mtl) mtl.textContent = unit;
   // ── Slider + display ──────────────────────────────────────
@@ -14565,8 +14557,16 @@ function _setImperial(val) {
   try { populateAltMakers(); } catch(e) {}
   try { updateDistDisplay();   } catch(e) {}
   try { updateDistSlider();    } catch(e) {}
-  try { calcTriangle();        } catch(e) {}
+  // 'd' を渡して「高さと水平から角度を出す」向きで解かせる。引数なしだと
+  // 「高さと角度から水平を出す」向きになり、換算したばかりの水平距離を
+  // 上書きしてしまう（40m → 131.2ft のはずが 58.4ft になっていた）。
+  // 高さと水平を同じ係数で換算しているので、角度は変わらない。
+  try { calcTriangle('d');     } catch(e) {}
   try { calculate();           } catch(e) {}
+  // Mix の三角は calcMixTri でしか max を張り替えないが、それは Mix に灯体が
+  // 入っているときしか走らない。灯体を入れる前に単位を変えていると ft でも
+  // m の上限のままになるので、ここで直接そろえる（Mix は S.imperial を使う）。
+  try { triConvertUnit(TRI_IDS.mix, !!val); } catch(e) {}
   try { if (mixLights && mixLights.length) calcMix(); } catch(e) {}
   try { updateMixUnitBtns(); } catch(e) {}
   var mdu = document.getElementById('mix-dist-direct-unit');
@@ -17933,6 +17933,19 @@ function triSyncRange(ids, imp) {
   if (hEl) hEl.max = imp ? TRI_RANGE.hFt : TRI_RANGE.hM;
   if (dEl) dEl.max = imp ? TRI_RANGE.dFt : TRI_RANGE.dM;
 }
+// 単位を切り替えたときに、三角の入力をそのまま新しい単位に持ち越す。
+// 上限を先に張り替えてから値を入れる（先に値を入れると古い上限で切られる）。
+// toImp: 切り替えた先が ft なら true。
+function triConvertUnit(ids, toImp) {
+  if (!ids) return;
+  var hEl = el(ids.h), dEl = el(ids.d);
+  var hv = hEl ? parseFloat(hEl.value) : NaN;
+  var dv = dEl ? parseFloat(dEl.value) : NaN;
+  triSyncRange(ids, toImp);
+  var k = toImp ? 3.28084 : 1 / 3.28084;
+  if (hEl && isFinite(hv)) hEl.value = Math.round(hv * k * 10) / 10;
+  if (dEl && isFinite(dv)) dEl.value = Math.round(dv * k * 10) / 10;
+}
 
 // ダブルタップで数値直接入力
 // dispId: 表示span/divのID
@@ -18472,6 +18485,10 @@ function setAltUnit(unit) {
   var uh = el('alt-tri-unit-h'), uhz = el('alt-tri-unit-hz');
   if (uh)  uh.textContent  = S_altImperial ? 'ft' : 'm';
   if (uhz) uhz.textContent = S_altImperial ? 'ft' : 'm';
+  // 単位の文字だけ変えて、三角の上限と値はそのままだった。
+  if (wasImp !== S_altImperial) {
+    try { triConvertUnit(TRI_IDS.alt, S_altImperial); } catch(e) {}
+  }
   updateAltDistDisplay();
 }
 
@@ -21584,6 +21601,10 @@ function setFinderUnit(unit) {
   var uh = el('finder-tri-unit-h'), uhz = el('finder-tri-unit-hz');
   if (uh)  uh.textContent  = S_finderImperial ? 'ft' : 'm';
   if (uhz) uhz.textContent = S_finderImperial ? 'ft' : 'm';
+  // 単位の文字だけ変えて、三角の上限と値はそのままだった。
+  if (wasImp !== S_finderImperial) {
+    try { triConvertUnit(TRI_IDS.finder, S_finderImperial); } catch(e) {}
+  }
   updateFinderDistDisplay();
 }
 
