@@ -11182,26 +11182,44 @@ var LIGHTS = {
       refData:{5600:{3:{spot:76000, flat:14000, clear_spot:6800, clear_flat:6800}, 5:{spot:38000, flat:6800, clear_spot:2400, clear_flat:2400}, 8:{spot:19000, flat:3400, clear_spot:1200, clear_flat:1200}, 12:{spot:4800, flat:1700, clear_spot:600, clear_flat:600}, 15:{spot:2400, flat:840, clear_spot:300, clear_flat:300}}}
     },
     alpha_12k: {
-      group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'60.5 kg', name:'Alpha 12kW HMI', emoji:'💡', watts:12000,
-      ccts:[5600], accessories:["spot", "flat", "clear_spot", "clear_flat"],
-      refData:{5600:{
-        3: {flat:54000, clear_spot:14000, clear_flat:9600},
-        5: {spot:38000, flat:19000, clear_spot:4800, clear_flat:4800},
-        8: {spot:19000, flat:6800, clear_spot:2400, clear_flat:1700},
-        12:{spot:9600, flat:3400, clear_spot:840, clear_flat:840},
-        15:{spot:4800, flat:1700, clear_spot:600, clear_flat:600}
-      }}
+      group:'HMI Fresnel', weight:'60.5 kg', size:'970×1200×500 mm',
+      name:'Alpha 12kW HMI', desc:'12kW HMI, Fresnel / Clear lens', emoji:'💡', watts:12000,
+      ccts:[5600],
+      accessories:['spot','flat','clear_spot','clear_flat'],
+      accLabels:{spot:'FRESNEL (S)',flat:'FRESNEL (F)',clear_spot:'CLEAR (S)',clear_flat:'CLEAR (F)'},
+      // 角度は ARC SYSTEM も K5600 も公表していない
+      accUnknown:['spot','flat','clear_spot','clear_flat'],
+      dmx:{led:'HMI',power:'12000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
+        control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
+      // ARC SYSTEM カタログ 2026 p7。ISO800 / 30FPS の F値を lux に換算
+      // （lux = f² × 18.75）。3 / 5 / 8 / 12 / 15m。
+      // フレネル（S） F64 1/2, F45, F32, F22, F16
+      // フレネル（F） F45 1/2, F32, F16 1/2, F11 1/2, F8 1/2
+      // クリア（S）   F22 1/2, F16, F11, F5.6 1/2, F4
+      // クリア（F）   F22, F11 1/2, F8 1/2, F5.6, F2.8 1/2
+      // カタログの注記: フレネルは色温度 5800K・CC 2M、クリアは 5620K・CC 3M。
+      // アプリの色温度は 5600K の枠に入れている（HMI の球のばらつきの範囲内）。
+      refData:{5600:{3:{spot:108612,flat:53696,clear_spot:12834,clear_flat:9075},5:{spot:37969,flat:19200,clear_spot:4800,clear_flat:3208},8:{spot:19200,flat:6788,clear_spot:2269,clear_flat:1697},12:{spot:9075,flat:3208,clear_spot:832,clear_flat:588},15:{spot:4800,flat:1697,clear_spot:300,clear_flat:208}}}
     },
     alpha_4k: {
       url:'https://k5600.com/collections/4k/Alpha',
-      group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'21 kg', name:'Alpha 4kW HMI', emoji:'💡', watts:4000,
-      ccts:[5600], accessories:['flat'], accAngles:{flat:60}, accLabels:{flat:'FLOOD'},
-      refData:{5600:{
-        3: {flat:4800},
-        5: {flat:2400},
-        8: {flat:840},
-        12:{flat:420}
-      }}
+      group:'HMI Fresnel', weight:'21 kg', size:'550×840×340 mm',
+      name:'Alpha 4kW HMI', desc:'4kW HMI, Clear / two Fresnel lenses', emoji:'💡', watts:4000,
+      ccts:[5600],
+      accessories:['clear','fres_s_spot','fres_s_flat','fres_f_spot','fres_f_flat'],
+      // 角度は ARC SYSTEM も K5600 も公表していない
+      accUnknown:['clear','fres_s_spot','fres_s_flat','fres_f_spot','fres_f_flat'],
+      dmx:{led:'HMI',power:'4000W / 2500W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
+        control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
+      // ARC SYSTEM カタログ 2026 p9。ISO800 / 30FPS の F値を lux に換算。
+      // 2 / 3 / 5 / 8 / 12m。フレネルレンズは SPOT 用と FLAT 用の2種があり、
+      // それぞれ灯体側のフラット／スポットで測られている。
+      // クリアレンズ         F22 1/2, F16 1/2, F11, F5.6 1/2, F4 1/2
+      // フレネルSPOT スポット F90, F64 1/2, F45, F22 1/2, F16 1/2
+      // フレネルSPOT フラット F45, F32, F22, F11 1/2, F8 1/2
+      // フレネルFLAT スポット F45 1/2, F32 1/2, F22 1/2, F16, F11
+      // フレネルFLAT フラット F32 1/2, F22 1/2, F16, F11, F8
+      refData:{5600:{2:{clear:12834,fres_s_spot:151875,fres_s_flat:37969,fres_f_spot:53696,fres_f_flat:27153},3:{clear:6788,fres_s_spot:108612,fres_s_flat:19200,fres_f_spot:27153,fres_f_flat:12834},5:{clear:2269,fres_s_spot:37969,fres_s_flat:9075,fres_f_spot:12834,fres_f_flat:4800},8:{clear:832,fres_s_spot:12834,fres_s_flat:3208,fres_f_spot:4800,fres_f_flat:2269},12:{clear:424,fres_s_spot:6788,fres_s_flat:1697,fres_f_spot:2269,fres_f_flat:1200}}}
     },
     joker_1600: {
       url:'https://k5600.com/collections/1600/Joker',
@@ -13961,6 +13979,14 @@ var ACC_INFO = {
   // （Flood 45° / Spot 15°）。
   f10_flood:{ label:'F10 Fresnel (Flood)', beam:'45°',           emoji:'🔆', angle:45 },
   f10_spot: { label:'F10 Fresnel (Spot)',  beam:'15°',           emoji:'🔦', angle:15 },
+  // K5600 Alpha のレンズ。ALPHA 4/2.5kW はフレネルレンズが2種（SPOT用・
+  // FLAT用）あり、それぞれ灯体側のフラット／スポットで測られている。
+  // 角度は ARC SYSTEM も K5600 も公表していないので入れない（角度未確認）。
+  clear:       { label:'Clear Lens',            beam:'Clear',       emoji:'🔆' },
+  fres_s_spot: { label:'Fresnel SPOT — Spot',    beam:'Fresnel',     emoji:'🔦' },
+  fres_s_flat: { label:'Fresnel SPOT — Flat',    beam:'Fresnel',     emoji:'🔆' },
+  fres_f_spot: { label:'Fresnel FLAT — Spot',    beam:'Fresnel',     emoji:'🔦' },
+  fres_f_flat: { label:'Fresnel FLAT — Flat',    beam:'Fresnel',     emoji:'🔆' },
   // Storm 80c
   cf4_15:   { label:'CF4 Fresnel (15°)',   beam:'Fresnel Spot',  emoji:'🔬', angle:15 },
   cf4_40:   { label:'CF4 Fresnel (40°)',   beam:'Fresnel Flood', emoji:'🔬', angle:40 },
