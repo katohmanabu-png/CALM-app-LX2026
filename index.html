@@ -10609,56 +10609,59 @@ var LIGHTS = {
     },
     pp_125: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'1 kg', name:'Pocket Par 125W', emoji:'💡', watts:125,
-      ccts:[5600], accessories:['spot', 'pp_narrow', 'pp_medium', 'pp_wide', 'pp_frost'],
+      ccts:[5600], accessories:['spot','pp_tconv','pp_narrow','pp_medium','pp_wide','pp_frost'], accUnknown:['pp_tconv'],
       // 配光資料 lux.pdf（ポケットパー 125W スポットモード + レンズセット）。
       // web カタログ p18 の 1m/2m は「125W エリレンズキット」という別製品のため取り込まない。
-      refData:{5600:{
-        3: {spot:27000, pp_narrow:6800, pp_medium:2400, pp_wide:600, pp_frost:420},
-        5: {spot:14000, pp_narrow:2400, pp_medium:1200, pp_wide:210, pp_frost:150},
-        8: {spot:4800,  pp_narrow:1200, pp_medium:420,  pp_wide:75}
-      }}
+      // ARC SYSTEM カタログ 2026 p17 の紙面から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。1/2/3/5/8m。
+      // 125W のレンズセットは「1.T変換3600K / 2.ナロー / 3.ミディアム /
+      // 4.ワイド / 5.フロスト」の5種。ベリーナローは無い。
+      // フロストの 8m は紙面が F- で値なし。
+      // 元の値も ARC 由来だったが丸められており 3/5/8m の3点だけだった。
+      refData:{5600:{1:{'pp_frost':4800,'pp_medium':27153,'pp_narrow':37969,'pp_tconv':19200,'pp_wide':6788,'spot':214784},2:{'pp_frost':832,'pp_medium':4800,'pp_narrow':12834,'pp_tconv':6788,'pp_wide':1200,'spot':76800},3:{'pp_frost':424,'pp_medium':2269,'pp_narrow':6788,'pp_tconv':3208,'pp_wide':588,'spot':27153},5:{'pp_frost':147,'pp_medium':1200,'pp_narrow':2269,'pp_tconv':1200,'pp_wide':208,'spot':12834},8:{'pp_medium':424,'pp_narrow':1200,'pp_tconv':588,'pp_wide':75,'spot':4800}}}
     },
     pp_125_cyl: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'2.5 kg', name:'Pocket Par 125W Cyl', emoji:'💡', watts:125,
-      ccts:[5600], accessories:["flat"],
-      refData:{5600:{
-        3: {flat:2400},
-        5: {flat:1200}
-      }}
+      ccts:[5600], accessories:['flat'],
+      // ARC SYSTEM カタログ 2026 p17「125W パーキットシリンダー」の紙面から。
+      // 0.5/1/2m（3m は紙面が F- で値なし）。フラットとスポットは同値。
+      // 元の値（3m 2400 / 5m 1200）は出どころ不明で、ディフューザー筒として
+      // 明るすぎた（ARC の 0.5m から逆二乗で伸ばすと 3m は 47 程度）。
+      refData:{5600:{0.5:{'flat':1697},1:{'flat':588},2:{'flat':106}}}
     },
     pp_200: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'1.9 kg', name:'Pocket Par 200W', emoji:'💡', watts:200,
       // HMI なので色温度は変わらない。ランプ固定の 5600K のみ。
-      ccts:[5600], accessories:['spot', 'pp_narrow', 'pp_medium', 'pp_wide', 'pp_frost'],
-      refData:{5600:{
-        1: {spot:305000, pp_narrow:152000, pp_medium:54000, pp_wide:14000, pp_frost:14000},
-        2: {spot:76000, pp_narrow:38000, pp_medium:14000, pp_wide:3400, pp_frost:3400},
-        3: {spot:38000, pp_narrow:19000, pp_medium:6800, pp_wide:1700, pp_frost:1200},
-        5: {spot:9600, pp_narrow:4800, pp_medium:2400, pp_wide:600, pp_frost:420},
-        8: {spot:4800, pp_narrow:2400, pp_medium:840, pp_wide:300, pp_frost:210}
-      }}
+      ccts:[5600], accessories:['spot','pp_tconv','pp_narrow','pp_medium','pp_wide','pp_frost'], accUnknown:['pp_tconv'],
+      // ARC SYSTEM カタログ 2026 p17 の紙面から。1/2/3/5/8m。
+      // 200W のレンズセットは「1.T変換 / 2.ナロー / 3.ミディアム / 4.ワイド /
+      // 5.フロスト」。T変換とナローは紙面で同値（F90 / F45 / F32 / F16 / F11）
+      // なので、T変換はナローに変換コーティングを掛けたものと思われる。
+      refData:{5600:{1:{'pp_frost':12834,'pp_medium':53696,'pp_narrow':151875,'pp_tconv':151875,'pp_wide':12834,'spot':307200},2:{'pp_frost':3208,'pp_medium':12834,'pp_narrow':37969,'pp_tconv':37969,'pp_wide':3208,'spot':76800},3:{'pp_frost':1200,'pp_medium':6788,'pp_narrow':19200,'pp_tconv':19200,'pp_wide':1697,'spot':37969},5:{'pp_frost':424,'pp_medium':2269,'pp_narrow':4800,'pp_tconv':4800,'pp_wide':588,'spot':9075},8:{'pp_frost':208,'pp_medium':832,'pp_narrow':2269,'pp_tconv':2269,'pp_wide':300,'spot':4800}}}
     },
     pp_200_cyl: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'2 kg', name:'Pocket Par 200W Cyl', emoji:'💡', watts:200,
-      ccts:[5600], accessories:["flat"],
-      refData:{flat:{5600:{0.5:2269,1:1176,2:294,3:150}}}
+      ccts:[5600], accessories:['flat'],
+      // ARC SYSTEM カタログ 2026 p17「200W パーキットシリンダー」の紙面から。
+      // 0.5/1/2/3m。元は 0.5m だけが ARC と一致していた。
+      refData:{5600:{0.5:{'flat':2269},1:{'flat':832},2:{'flat':208},3:{'flat':106}}}
     },
     pp_400: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'2.8 kg', name:'Pocket Par 400W', emoji:'💡', watts:400,
       // HMI なので色温度は変わらない。ランプ固定の 5600K のみ。
-      ccts:[5600], accessories:['spot', 'pp_vnarrow', 'pp_narrow', 'pp_medium', 'pp_wide', 'pp_frost'],
-      refData:{5600:{
-        1: {pp_vnarrow:216000, pp_narrow:108000, pp_medium:54000, pp_wide:27000, pp_frost:19000},
-        2: {spot:152000, pp_vnarrow:54000, pp_narrow:27000, pp_medium:14000, pp_wide:6800, pp_frost:4800},
-        3: {spot:76000, pp_vnarrow:27000, pp_narrow:14000, pp_medium:6800, pp_wide:3400, pp_frost:2400},
-        5: {spot:27000, pp_vnarrow:4800, pp_narrow:3400, pp_medium:1700, pp_wide:1200, pp_frost:600},
-        8: {spot:4800, pp_vnarrow:1700, pp_narrow:1700, pp_medium:600, pp_wide:600, pp_frost:420}
-      }}
+      ccts:[5600], accessories:['spot','pp_tconv','pp_vnarrow','pp_narrow','pp_medium','pp_wide','pp_frost'], accUnknown:['pp_tconv'],
+      // ARC SYSTEM カタログ 2026 p16 の紙面から。1/2/3/5/8m。
+      // 400W のレンズセットは「1.ベリーナロー / 2.ナロー / 3.ミディアム /
+      // 4.ワイド / 5.フロスト / 6.T変換(3600k)」の6種。
+      // スポットモードは 1m 列が空で 2m から（元のアプリの並びが正しかった）。
+      refData:{5600:{1:{'pp_frost':19200,'pp_medium':53696,'pp_narrow':108612,'pp_tconv':151875,'pp_vnarrow':214784,'pp_wide':27153},2:{'pp_frost':4800,'pp_medium':12834,'pp_narrow':27153,'pp_tconv':53696,'pp_vnarrow':53696,'pp_wide':6788,'spot':151875},3:{'pp_frost':2269,'pp_medium':6788,'pp_narrow':12834,'pp_tconv':12834,'pp_vnarrow':27153,'pp_wide':3208,'spot':76800},5:{'pp_frost':588,'pp_medium':1697,'pp_narrow':3208,'pp_tconv':4800,'pp_vnarrow':4800,'pp_wide':1200,'spot':27153},8:{'pp_frost':424,'pp_medium':588,'pp_narrow':1697,'pp_tconv':1200,'pp_vnarrow':1697,'pp_wide':588,'spot':4800}}}
     },
     pp_400_cyl: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'2 kg', name:'Pocket Par 400W Cyl', emoji:'💡', watts:400,
-      ccts:[5600], accessories:["flat"],
-      refData:{flat:{5600:{0.5:2400,1:1176,2:294,3:75}}}
+      ccts:[5600], accessories:['flat'],
+      // ARC SYSTEM カタログ 2026 p16「400W パーキットシリンダー」の紙面から。
+      // 0.5/1/2/3m。元は 3m だけが ARC と一致していた。
+      refData:{5600:{0.5:{'flat':1697},1:{'flat':832},2:{'flat':208},3:{'flat':75}}}
     },
     true_blue_d40: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/true-blue-d/d40',
@@ -13887,6 +13890,9 @@ var ACC_INFO = {
   pp_medium: { label:'Lens 3 Medium',       beam:'Medium',        emoji:'🔦', angle:25 },
   pp_wide:   { label:'Lens 4 Wide',         beam:'Wide',          emoji:'🔦', angle:40 },
   pp_frost:  { label:'Lens 5 Frost',        beam:'Soft',          emoji:'❄️', angle:50 },
+  // ポケットパーの T 変換レンズ（タングステン変換 3600K）。ARC も ARRI も
+  // 角度を公表していないので入れない。
+  pp_tconv:  { label:'Lens T Conversion',   beam:'T Conv 3600K',  emoji:'🟠' },
   r30:      { label:'30° Reflector',       beam:'Spot 30°',      emoji:'🔆', angle:30 },
   fres16:   { label:'Fresnel 16°',         beam:'Spot 16°',      emoji:'🔬', angle:16 },
   fres48:   { label:'Fresnel 48°',         beam:'Flood 48°',     emoji:'🔆', angle:48 },
