@@ -11093,15 +11093,11 @@ var LIGHTS = {
       url:'https://k5600.com/collections/800/Joker',
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'4.2 kg', name:'Joker2 800', desc:'800W HMI Fresnel Lens', emoji:'💛', watts:800,
       ccts:[5600], accessories:['sf_lens'],
-      refData:{
-        // カタログ p23「800W ジョーカー2 ソースフォー」の値のみ採用。
-        // レンズ／フロスト系10種は出典を確認できず、100°が10°より明るいなど
-        // 物理的に成立しない並びだった。レンズ角 10/19/26/40° も K5600 の実機構成
-        // （Medium / Wide / Super Wide / Fresnel）ではなく Source Four の規格値。
-        // joker_open は 2m/3m が 1600W と完全同値で、出力が2倍違う灯体が
-        // 同じ値になることはないため採用できない。
-        sf_lens:{5600:{1:152000, 2:53700, 3:24200, 5:7620, 8:3210}}
-      }
+      // ARC SYSTEM カタログ 2026 p23「800W ジョーカー2 ソースフォー」の紙面から。
+      // 標準レンズ 26°。1/2/3/5/8m。元の値も ARC 由来だったが3桁に丸めて
+      // いた。紙面では 1600W バグビームと完全に同値（どちらもソースフォーの
+      // 筒に 26° 標準レンズ）。
+      refData:{'sf_lens':{5600:{1:151875,2:53696,3:24190,5:7620,8:3208}}}
     },
     joker_400: {
       url:'https://k5600.com/collections/400/Joker',
@@ -11111,13 +11107,9 @@ var LIGHTS = {
       accessories:['joker_open'],
       dmx:{led:'HMI',power:'400W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        1: {joker_open:861000},
-        2: {joker_open:305000},
-        3: {joker_open:152000},
-        5: {joker_open:76000},
-        8: {joker_open:27000}
-      }}
+      // ARC SYSTEM カタログ 2026 p21「400W ジョーカー2」レンズ無しの紙面から。
+      // 1/2/3/5/8m。元の値も ARC 由来だったが3桁に丸められていた。
+      refData:{'joker_open':{5600:{1:859135,2:307200,3:151875,5:76800,8:27153}}}
     },
     joker_200: {
       url:'https://k5600.com/collections/200/Joker',
@@ -11127,13 +11119,10 @@ var LIGHTS = {
       accessories:['joker_open'],
       dmx:{led:'HMI',power:'200W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      refData:{5600:{
-        1: {joker_open:431000},
-        2: {joker_open:108000},
-        3: {joker_open:38000},
-        5: {joker_open:19000},
-        8: {joker_open:6800}
-      }}
+      // ARC SYSTEM カタログ 2026 p21「200W ジョーカー2」レンズ無しの紙面から。
+      // F値（ISO800 / 30FPS）を lux に換算（lux = f² × 18.75）。1/2/3/5/8m。
+      // 元の値も ARC 由来だったが3桁に丸められていた。
+      refData:{'joker_open':{5600:{1:434446,2:108612,3:37969,5:19200,8:6788}}}
     },
     alpha_6k: {
       group:'HMI Fresnel', name:'Alpha 6kW HMI', desc:'6kW HMI, Fresnel / Clear lens', emoji:'💡', watts:6000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
@@ -11200,10 +11189,10 @@ var LIGHTS = {
       url:'https://k5600.com/collections/1600/Joker',
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'7.4 kg', name:'Joker2 1600', desc:'1600W HMI Fresnel Lens', emoji:'💛', watts:1600,
       ccts:[5600], accessories:['bugbeam'],
-      refData:{
-        // カタログ p23「1600W バグビーム」の値のみ採用。除外の理由は joker_800 と同じ。
-        bugbeam:{5600:{1:152000, 2:53700, 3:24200, 5:7620, 8:3210}}
-      }
+      // ARC SYSTEM カタログ 2026 p23「1600W バグビーム」の紙面から。
+      // 標準レンズ 26°。1/2/3/5/8m。紙面では 800W ジョーカー2 ソースフォーと
+      // 完全に同値。元の値も ARC 由来だったが3桁に丸められていた。
+      refData:{'bugbeam':{5600:{1:151875,2:53696,3:24190,5:7620,8:3208}}}
     },
   
   
@@ -12338,13 +12327,13 @@ var LIGHTS = {
     etc_sf26: {
       group:'Tungsten', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"46\" cy=\"46\" rx=\"30\" ry=\"34\"/><path d=\"M70 26 H104 V66 H70\"/><path d=\"M104 22 H140 V70 H104\"/><circle cx=\"122\" cy=\"46\" r=\"13\"/><path d=\"M84 22 V16 M92 70 V76 M96 22 V16 M80 70 V76\"/><circle cx=\"40\" cy=\"46\" r=\"6\"/><path d=\"M60 84 V92 H96 V84\"/><path d=\"M140 46 H152\"/></g></svg>', weight:'7 kg', name:'ETC Source Four 26°', desc:'750W Tungsten Ellipsoidal 26°', emoji:'🎭', watts:750,
       ccts:[3200], accessories:['spot'], accAngles:{spot:26}, accLabels:{spot:'26° Lens'},
-      refData:{3200:{
-        1:   {spot:54000},
-        2:   {spot:14000},
-        3:   {spot:4800},
-        5:   {spot:1700},
-        8:   {spot:840}
-      }}
+      // ARC SYSTEM カタログ 2026 p23「SOURCE FOUR 400W」フラットの紙面から。
+      // 1/2/3/5/8m。元の値の 1〜5m は ARC と一致していたが 8m だけ 840 で
+      // 紙面の F5.6（588）と 0.5段ずれていた。
+      // なお ARC は「SOURCE FOUR 400W」と表記している。アプリの
+      // 「ETC Source Four 26° 750W」という名前・電力とは食い違うが、
+      // 名前は変えずに値だけ合わせた。
+      refData:{3200:{1:{'spot':53696},2:{'spot':12834},3:{'spot':4800},5:{'spot':1697},8:{'spot':588}}}
     },
     etc_sf_zoom_25_50: {
       group:'Tungsten', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"46\" cy=\"46\" rx=\"30\" ry=\"34\"/><path d=\"M70 26 H104 V66 H70\"/><path d=\"M104 22 H140 V70 H104\"/><circle cx=\"122\" cy=\"46\" r=\"13\"/><path d=\"M84 22 V16 M92 70 V76 M96 22 V16 M80 70 V76\"/><circle cx=\"40\" cy=\"46\" r=\"6\"/><path d=\"M60 84 V92 H96 V84\"/><path d=\"M140 46 H152\"/></g></svg>', weight:'9 kg', name:'ETC Source Four Zoom 25-50°', desc:'750W Tungsten Zoom Ellipsoidal', emoji:'🎭', watts:750,
@@ -13162,13 +13151,10 @@ var LIGHTS = {
     etc_warp575: {
       group:'HMI', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"46\" cy=\"46\" rx=\"30\" ry=\"34\"/><path d=\"M70 26 H104 V66 H70\"/><path d=\"M104 22 H140 V70 H104\"/><circle cx=\"122\" cy=\"46\" r=\"13\"/><path d=\"M84 22 V16 M92 70 V76 M96 22 V16 M80 70 V76\"/><circle cx=\"40\" cy=\"46\" r=\"6\"/><path d=\"M60 84 V92 H96 V84\"/><path d=\"M140 46 H152\"/></g></svg>', weight:'15 kg', name:'ETC WarpZoom 575W', emoji:'💡', watts:575,
       ccts:[5600], accessories:["flat"],
-      refData:{5600:{
-        1:   {flat:76000},
-        2:   {flat:27000},
-        3:   {flat:14000},
-        5:   {flat:4800},
-        8:   {flat:2400}
-      }}
+      // ARC SYSTEM カタログ 2026 p23「ETC WarpZoom 575W」フラットの紙面から。
+      // F値（ISO800 / 30FPS）を lux に換算。1/2/3/5/8m。
+      // 元の値も ARC 由来だったが丸められていた（3m は 14000 と 0.13段ずれ）。
+      refData:{5600:{1:{'flat':76800},2:{'flat':27153},3:{'flat':12834},5:{'flat':4800},8:{'flat':2269}}}
     },
     etc_s4led_s2_lustr: {
       dmxUrl:'https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737510448',
@@ -13207,22 +13193,16 @@ var LIGHTS = {
     optex_1200: {
       group:'HMI', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M30 14 H130 L142 34 V62 L130 82 H30 L18 62 V34 Z\"/><rect x=\"34\" y=\"26\" width=\"92\" height=\"44\" rx=\"4\"/><path d=\"M34 40 H126 M34 56 H126\"/><path d=\"M62 82 V92 H98 V82\"/></g></svg>', weight:'28 kg', name:'OPTEX Aura Soft 1.2kW', emoji:'💡', watts:1200,
       ccts:[5600], accessories:["flat"],
-      refData:{5600:{
-        2:   {flat:2400},
-        3:   {flat:1200},
-        5:   {flat:420},
-        8:   {flat:210}
-      }}
+      // ARC SYSTEM カタログ 2026 p21「OPTEX Aura Soft 1.2kW」フラットの紙面から。
+      // 2/3/5/8m。元の値も ARC 由来だったが丸められていた。
+      refData:{5600:{2:{'flat':2269},3:{'flat':1200},5:{'flat':424},8:{'flat':208}}}
     },
     optex_2500: {
       group:'HMI', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M30 14 H130 L142 34 V62 L130 82 H30 L18 62 V34 Z\"/><rect x=\"34\" y=\"26\" width=\"92\" height=\"44\" rx=\"4\"/><path d=\"M34 40 H126 M34 56 H126\"/><path d=\"M62 82 V92 H98 V82\"/></g></svg>', weight:'37.8 kg', name:'OPTEX Aura Soft 2.5kW', emoji:'💡', watts:2500,
       ccts:[5600], accessories:["flat"],
-      refData:{5600:{
-        2:   {flat:4800},
-        3:   {flat:2400},
-        5:   {flat:840},
-        8:   {flat:300}
-      }}
+      // ARC SYSTEM カタログ 2026 p21「OPTEX Aura Soft 2.5kW」フラットの紙面から。
+      // 2/3/5/8m。元の値も ARC 由来だったが丸められていた（3m は 0.08段ずれ）。
+      refData:{5600:{2:{'flat':4800},3:{'flat':2269},5:{'flat':832},8:{'flat':300}}}
     }
   },
   ltm: {
