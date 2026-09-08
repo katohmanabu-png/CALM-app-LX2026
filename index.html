@@ -2182,6 +2182,7 @@ window.onerror = function(m,s,l,c,e){ console.log('[LMP]',m,l,e&&e.stack); retur
 // ===== i18n =====
 var LANGS = {
   ja: {
+    storeTitle:'追加機能', storeSub:'買い切りです。月額はありません。', storeLocked:'{f} はまだ開いていません', storePremium:'Premium（全部入り）', storePremiumSub:'下の5つがすべて開きます', storeSingles:'ひとつずつ買う', storeOwned:'購入済み', storeAllOwned:'すべて購入済みです。ありがとうございます。', storeRestore:'購入を復元', storeRestored:'購入を復元しました', storeNothing:'復元するものがありませんでした', storeThanks:'ありがとうございます。開きました。', storeFailed:'購入を完了できませんでした', storeNoPlugin:'この環境では購入できません。App Store 版をお使いください。', storeNote:'買い切りで、同じ Apple アカウントの端末で使えます。あとから足す機能は別売りです。', storeDesc_mix:'複数灯の合成。灯体ごとの距離と台数。', storeDesc_finder:'目標の F値から灯体を探す。', storeDesc_alt:'環境光を起点に、灯体で足す分を出す。', storeDesc_draft:'平面図。被写体まわりの角度ごとの光量。', storeDesc_sun:'太陽と月の軌跡。カメラに重ねる AR。',
     settingsTitle:'設定', settingsDisplay:'表示', settingsHowTo:'使いかた', guideTitle:'各タブの説明', guideSub:'何のための画面か、どう使うか', guideCalc:'機種・アクセサリー・距離・色温度を選ぶと、照度と F値が出ます。\nカメラ設定（ISO・fps・シャッター）がそのまま効きます。\nチップの ⌀ は、その距離で光が何メートルの円になるかです。', guideCamera:'ISO・fps・シャッター角度・T値を入れる画面です。\nデジタル／フィルム／写真で入れ方が変わります。\nここを変えると、全タブの計算が一斉に動きます。', guideMix:'灯体を1台ずつ足して、合計の露出と混ざった色温度を出します。\n台数を増やせます。個別距離を ON にすると1台ずつ距離を変えられます。\n環境光のトグルを入れると、地明かりを含んだ合計になります。', guideFinder:'目標 F値と距離を入れると、届く機材が順位で並びます。\n「環境光から」を選べば、何段上げるかで目標を入れられます。\n距離を変えると順位が入れ替わります。その距離で届く最小の機材が上位です。', guideAlt:'押さえられなかった機材の代わりを探します。\n同じ明るさを作るのに必要な台数と、マッチ率が出ます。\n距離と色温度をそろえて比べるので、レンタル表と突き合わせられます。', guideDraft:'人物・灯体・反射板・DIFF・フラッグ・カメラを置いて図面を作ります。\nPDF や写真を下敷きにして、実寸を合わせられます。\nExposure を開くと、露出計の向きごとの読みとキー比が出ます。', guideSun:'緯度経度と日付から、太陽と月の一日の軌跡を出します。\n日の出・日の入り・マジックアワー・薄明・月相が分かります。\niOS ではカメラに重ねて見られます。撮影日との比較もできます。', guideMired:'色温度の隔たりをミレッドで扱います。K の比では見た目が合いません。\n素材の主光と補助光の関係を、別の主光の色温度で組み直せます。\n必要なフィルターと、その色温度を出せる灯体も出ます。', guideAr:'カメラを向けて距離を測り、そのまま計算に入れられます。\nいる場所から／2点間／2地点から狙って の3通りで測れます。\n虫めがねを押すとルーペが出て、狙う点を細かく決められます。', guideCompare:'複数の灯体を、同じ距離・同じ条件で横に並べます。\n照度・F値・ビーム角・消費電力・重量・IP・制御を一覧できます。\n⚠ は公表表の外、≈ は近い色温度で代用した値です。', guideAmbient:'露出計で測った地明かりを、計算に組み込みます。\n入力は F値でも照度でもできます。トグルで効かせるかを切り替えます。\n灯体を置く距離も逆算できます。図面には光源として置けます。',
     uiZoomTitle:'表示サイズ', uiZoomHint:'画面全体の大きさを変えます。文字も一緒に大きくなります。',
     orderTitle:'並びの設定', orderBar:'下部タブ', orderMenu:'メニューの並び', orderMenuSub:'三本線のメニューに出る順です',
@@ -2334,6 +2335,7 @@ var LANGS = {
     dftAddLayer:'レイヤーを追加', dftNoSavedDrafts:'保存済みドラフトがありません。'
   },
   en: {
+    storeTitle:'Add-ons', storeSub:'One-time purchases. No subscription.', storeLocked:'{f} is not unlocked yet', storePremium:'Premium (everything)', storePremiumSub:'Unlocks all five below', storeSingles:'Buy individually', storeOwned:'Owned', storeAllOwned:'You have everything. Thank you.', storeRestore:'Restore purchases', storeRestored:'Purchases restored', storeNothing:'Nothing to restore', storeThanks:'Thank you. Unlocked.', storeFailed:'Could not complete the purchase', storeNoPlugin:'Purchases are not available here. Please use the App Store version.', storeNote:'One-time purchase, usable on your devices with the same Apple Account. Features added later are sold separately.', storeDesc_mix:'Combine several fixtures, each at its own distance and count.', storeDesc_finder:'Find fixtures that hit a target f-stop.', storeDesc_alt:'Start from the existing light and get what the fixture must add.', storeDesc_draft:'Plan view, with the output at each angle around the subject.', storeDesc_sun:'Sun and moon paths, laid over the camera view.',
     settingsTitle:'Settings', settingsDisplay:'Display', settingsHowTo:'How to use', guideTitle:'About each tab', guideSub:'What each screen is for, and how to use it', guideCalc:'Pick the fixture, accessory, distance and colour temperature to get illuminance and f-stop.\nYour camera settings (ISO, fps, shutter) are used as they are.\nThe diameter on the chip is how wide the circle of light is at that distance.', guideCamera:'Where you enter ISO, fps, shutter angle and T-stop.\nDigital, film and stills each have their own way of entering it.\nChange it here and every tab recalculates at once.', guideMix:'Add fixtures one at a time for the total exposure and the mixed colour temperature.\nUnit counts can be raised. Switch on per-light distances to set each one separately.\nTurn the ambient on and the total includes the base level on location.', guideFinder:'Enter a target f-stop and a distance, and the fixtures that reach are ranked.\nChoose From ambient to set the target in stops above the ambient.\nChange the distance and the order changes. The smallest fixture that reaches comes first.', guideAlt:'Find a replacement for a fixture you could not get.\nIt gives the number of units needed to match the level, and a match score.\nCompared at the same distance and colour temperature, so it lines up with a rental list.', guideDraft:'Place subjects, fixtures, bounce, DIFF, flags and the camera to build a plan.\nPut a PDF or photo underneath and scale it to real size.\nOpen Exposure for the reading in each meter direction, and the key ratio.', guideSun:'The day\'s path of the sun and moon from a latitude, longitude and date.\nSunrise, sunset, magic hour, twilight and the moon phase.\nOn iOS you can lay it over the camera. You can also compare with the shoot date.', guideMired:'Handles colour temperature differences in mired. Scaling by kelvin does not match visually.\nRebuild a plate\'s key and fill relationship at a different key temperature.\nIt also gives the gel you need, and which fixtures can reach that temperature.', guideAr:'Point the camera to measure a distance and drop it straight into the calculation.\nThree ways: from where you stand, between two points, or sighted from two spots.\nTap the magnifier for a loupe, so you can place the point precisely.', guideCompare:'Fixtures side by side at the same distance and the same conditions.\nIlluminance, f-stop, beam angle, power, weight, IP and control in one view.\nThe warning mark means outside the published table; the approximate mark means a nearby colour temperature was used.', guideAmbient:'Brings the base level you metered on location into the calculation.\nEnter it by f-stop or by illuminance. The toggle decides whether it counts.\nIt also works backwards to give the distance for the fixture, and can be placed on the plan as a source.',
     uiZoomTitle:'Display size', uiZoomHint:'Scales the whole screen, text included.',
     orderTitle:'Layout', orderBar:'Bottom tabs', orderMenu:'Menu order', orderMenuSub:'The order they appear in the menu',
@@ -2480,6 +2482,7 @@ var LANGS = {
     dftAddLayer:'Add layer', dftNoSavedDrafts:'No saved drafts yet.'
   },
   es: {
+    storeTitle:'Complementos', storeSub:'Compra unica. Sin suscripcion.', storeLocked:'{f} aun no esta desbloqueado', storePremium:'Premium (todo)', storePremiumSub:'Desbloquea los cinco de abajo', storeSingles:'Comprar por separado', storeOwned:'Comprado', storeAllOwned:'Ya tienes todo. Gracias.', storeRestore:'Restaurar compras', storeRestored:'Compras restauradas', storeNothing:'No hay nada que restaurar', storeThanks:'Gracias. Desbloqueado.', storeFailed:'No se pudo completar la compra', storeNoPlugin:'Aqui no se puede comprar. Usa la version de la App Store.', storeNote:'Compra unica, valida en tus dispositivos con la misma cuenta de Apple. Las funciones que se anadan mas adelante se venden por separado.', storeDesc_mix:'Combina varios focos, cada uno a su distancia y numero.', storeDesc_finder:'Encuentra focos que den el f-stop objetivo.', storeDesc_alt:'Parte de la luz existente y calcula lo que debe aportar el foco.', storeDesc_draft:'Planta, con la salida en cada angulo alrededor del sujeto.', storeDesc_sun:'Trayectoria del sol y la luna, sobre la imagen de la camara.',
     settingsTitle:'Ajustes', settingsDisplay:'Presentación', settingsHowTo:'Cómo se usa', guideTitle:'Sobre cada pestaña', guideSub:'Para qué sirve cada pantalla y cómo usarla', guideCalc:'Elige el equipo, el accesorio, la distancia y la temperatura de color para obtener la iluminancia y el F-stop.\nSe usan tus ajustes de cámara actuales (ISO, fps, obturador).\nEl diámetro del chip indica el tamaño del círculo de luz a esa distancia.', guideCamera:'Aquí se introducen ISO, fps, ángulo de obturación y T-stop.\nDigital, película y foto tienen cada uno su forma de introducirlo.\nAl cambiarlo aquí, todas las pestañas recalculan a la vez.', guideMix:'Añade equipos uno a uno para la exposición total y la temperatura de la mezcla.\nPuedes subir el número de unidades. Activa distancias individuales para ajustar cada una.\nActiva la luz ambiente y el total incluye el nivel base de la localización.', guideFinder:'Introduce un F-stop objetivo y una distancia, y los equipos que llegan se ordenan.\nCon Desde el ambiente indicas el objetivo en pasos por encima del ambiente.\nAl cambiar la distancia cambia el orden. El equipo más pequeño que llega va primero.', guideAlt:'Encuentra un sustituto para el equipo que no conseguiste.\nDa el número de unidades necesarias para igualar el nivel y una puntuación de coincidencia.\nSe compara a la misma distancia y temperatura, así que encaja con la lista de alquiler.', guideDraft:'Coloca sujetos, focos, rebotes, DIFF, banderas y la cámara para armar el plano.\nPon un PDF o una foto de fondo y ajústalo al tamaño real.\nAbre Exposición para la lectura en cada dirección del fotómetro y la relación con la principal.', guideSun:'La trayectoria diaria del sol y la luna a partir de latitud, longitud y fecha.\nAmanecer, atardecer, hora mágica, crepúsculo y fase lunar.\nEn iOS puedes superponerlo a la cámara. También comparar con el día de rodaje.', guideMired:'Trata las diferencias de temperatura en mired. Escalar por kelvin no coincide visualmente.\nReconstruye la relación principal y relleno de una placa a otra temperatura principal.\nTambién da la gelatina necesaria y qué equipos alcanzan esa temperatura.', guideAr:'Apunta la cámara para medir una distancia y pásala directamente al cálculo.\nTres formas: desde donde estás, entre dos puntos, o visado desde dos sitios.\nPulsa la lupa para ampliar y colocar el punto con precisión.', guideCompare:'Equipos en paralelo, a la misma distancia y en las mismas condiciones.\nIluminancia, F-stop, ángulo de haz, potencia, peso, IP y control en una vista.\nLa marca de aviso indica fuera de la tabla publicada; la de aproximación, que se usó una temperatura cercana.', guideAmbient:'Incorpora al cálculo el nivel base que mediste en la localización.\nIntrodúcelo por F-stop o por iluminancia. El interruptor decide si cuenta.\nTambién funciona al revés para dar la distancia del foco, y puede colocarse en el plano como fuente.',
     uiZoomTitle:'Tamaño de pantalla', uiZoomHint:'Escala toda la pantalla, incluido el texto.',
     orderTitle:'Disposición', orderBar:'Pestañas inferiores', orderMenu:'Orden del menú', orderMenuSub:'El orden en que aparecen en el menú',
@@ -2623,6 +2626,7 @@ var LANGS = {
     dftAddLayer:'Agregar capa', dftNoSavedDrafts:'No hay planos guardados.'
   },
   zh: {
+    storeTitle:'附加功能', storeSub:'一次性买断，没有月费。', storeLocked:'{f} 尚未解锁', storePremium:'Premium（全部）', storePremiumSub:'下面五项全部解锁', storeSingles:'单项购买', storeOwned:'已购买', storeAllOwned:'您已拥有全部内容，谢谢。', storeRestore:'恢复购买', storeRestored:'已恢复购买', storeNothing:'没有可恢复的项目', storeThanks:'谢谢，已解锁。', storeFailed:'购买未能完成', storeNoPlugin:'此环境无法购买，请使用 App Store 版本。', storeNote:'一次性买断，可在使用同一 Apple 账户的设备上使用。日后新增的功能另行销售。', storeDesc_mix:'多灯合成，可分别设定各灯的距离与数量。', storeDesc_finder:'按目标 F值 反查灯具。', storeDesc_alt:'以现场环境光为起点，算出灯具需要补的量。', storeDesc_draft:'平面图，显示被摄体周围各角度的照度。', storeDesc_sun:'日月轨迹，并可叠加在相机画面上。',
     settingsTitle:'设置', settingsDisplay:'显示', settingsHowTo:'使用方法', guideTitle:'各标签的说明', guideSub:'每个画面是做什么的，怎么用', guideCalc:'选择型号、配件、距离和色温，就会得出照度和 F-stop。\n相机设定（ISO、fps、快门）会直接生效。\n标签上的直径是指在该距离下光斑有多少米。', guideCamera:'输入 ISO、fps、快门角度和 T-stop 的画面。\n数字、胶片、照片各有各的输入方式。\n在这里一改，所有标签的计算都会同时更新。', guideMix:'一台一台地加灯具，得出合计曝光和混合后的色温。\n可以增加台数。打开单独距离后，可以逐台改距离。\n打开环境光，合计就会包含现场的底子亮度。', guideFinder:'输入目标 F-stop 和距离，能达到的灯具会按顺序排列。\n选「从环境光起算」，就能用高出几 stop 来指定目标。\n改变距离，顺序也会变。在该距离能达到的最小灯具排在最前。', guideAlt:'为没订到的灯具找替代。\n给出达到同样亮度所需的台数，以及匹配度。\n按同一距离和色温比较，因此能与租赁清单对照。', guideDraft:'放置人物、灯具、Bounce、DIFF、遮光旗和相机，做出图纸。\n可以把 PDF 或照片垫在底下，对齐实际尺寸。\n打开 Exposure，会显示测光表各方向的读数和主光比。', guideSun:'根据经纬度和日期，给出太阳与月亮一天的轨迹。\n可以知道日出、日落、Magic hour、暮光和月相。\niOS 上可以叠在相机画面上看，也能与拍摄日比较。', guideMired:'用 mired 处理色温的差距。按 K 的比例算，看起来并不一致。\n可以把素材中 Key 与 Fill 的关系，用另一个 Key 色温重新组建。\n还会给出需要的滤色片，以及能做出该色温的灯具。', guideAr:'把相机对准目标测距，并直接带入计算。\n有三种方式：从所在位置、两点之间、从两个地点瞄准。\n点放大镜会出现放大窗，可以更精细地定下瞄准点。', guideCompare:'把多台灯具在同一距离、同一条件下并排比较。\n照度、F-stop、Beam angle、功率、重量、防护等级、控制一目了然。\n警告标记表示超出公布表格，近似标记表示用了相近的色温代替。', guideAmbient:'把用测光表测到的现场底子亮度纳入计算。\n可以按 F-stop 输入，也可以按照度输入。开关决定是否生效。\n也能反过来算出灯具的摆放距离，并且可以作为光源放在图纸上。',
     uiZoomTitle:'显示大小', uiZoomHint:'整个画面一起放大，文字也会跟着变大。',
     orderTitle:'排列设置', orderBar:'底部标签', orderMenu:'菜单的排列', orderMenuSub:'在三条线菜单中出现的顺序',
@@ -3269,6 +3273,7 @@ var LANGS = {
     dftNoSavedDrafts:'还没有保存的图纸。',
   },
   fr: {
+    storeTitle:'Modules', storeSub:'Achat unique. Pas d\'abonnement.', storeLocked:'{f} n\'est pas encore debloque', storePremium:'Premium (tout)', storePremiumSub:'Debloque les cinq ci-dessous', storeSingles:'Acheter separement', storeOwned:'Achete', storeAllOwned:'Vous avez tout. Merci.', storeRestore:'Restaurer les achats', storeRestored:'Achats restaures', storeNothing:'Rien a restaurer', storeThanks:'Merci. Debloque.', storeFailed:'L\'achat n\'a pas pu aboutir', storeNoPlugin:'Achat impossible ici. Utilisez la version de l\'App Store.', storeNote:'Achat unique, valable sur vos appareils avec le meme compte Apple. Les fonctions ajoutees plus tard sont vendues separement.', storeDesc_mix:'Combiner plusieurs projecteurs, chacun a sa distance et son nombre.', storeDesc_finder:'Trouver les projecteurs qui donnent le f-stop visee.', storeDesc_alt:'Partir de la lumiere existante et obtenir ce que le projecteur doit ajouter.', storeDesc_draft:'Plan au sol, avec le niveau a chaque angle autour du sujet.', storeDesc_sun:'Trajectoires du soleil et de la lune, superposees a l\'image.',
     settingsTitle:'Réglages', settingsDisplay:'Affichage', settingsHowTo:'Comment s\'en servir', guideTitle:'À propos de chaque onglet', guideSub:'À quoi sert chaque écran, et comment l\'utiliser', guideCalc:'Choisissez le projecteur, l\'accessoire, la distance et la température de couleur pour obtenir l\'éclairement et le F-stop.\nVos réglages caméra (ISO, fps, obturateur) sont utilisés tels quels.\nLe diamètre sur la pastille indique la largeur du cercle de lumière à cette distance.', guideCamera:'C\'est ici que vous saisissez ISO, fps, angle d\'obturation et T-stop.\nNumérique, pellicule et photo ont chacun leur mode de saisie.\nChangez-le ici et tous les onglets se recalculent d\'un coup.', guideMix:'Ajoutez les projecteurs un par un pour l\'exposition totale et la température du mélange.\nLe nombre d\'unités se règle. Activez les distances individuelles pour régler chacune.\nActivez l\'ambiante et le total inclut le niveau de base du décor.', guideFinder:'Saisissez un F-stop visé et une distance, et les projecteurs qui y parviennent sont classés.\nAvec À partir de l\'ambiante, la cible se donne en stops au-dessus de l\'ambiante.\nChangez la distance et le classement change. Le plus petit projecteur qui y parvient passe premier.', guideAlt:'Trouvez un remplacement pour le projecteur que vous n\'avez pas eu.\nIl donne le nombre d\'unités nécessaires pour égaler le niveau, et un score de correspondance.\nComparé à distance et température égales, donc utilisable avec une liste de location.', guideDraft:'Placez sujets, projecteurs, Bounce, DIFF, drapeaux et la caméra pour bâtir le plan.\nMettez un PDF ou une photo en fond et calez-le à la taille réelle.\nOuvrez Exposure pour la lecture dans chaque direction du posemètre et le rapport à la principale.', guideSun:'La trajectoire du jour du soleil et de la lune d\'après latitude, longitude et date.\nLever, coucher, heure magique, crépuscule et phase de la lune.\nSur iOS vous pouvez la superposer à la caméra, et comparer avec le jour de tournage.', guideMired:'Traite les écarts de température en mireds. Un rapport de kelvins ne correspond pas visuellement.\nReconstruit le rapport principale et déboucheuse d\'un plan à une autre température de principale.\nDonne aussi la gélatine nécessaire et les projecteurs capables d\'atteindre cette température.', guideAr:'Pointez la caméra pour mesurer une distance et l\'envoyer directement dans le calcul.\nTrois façons : depuis où vous êtes, entre deux points, ou visé depuis deux endroits.\nAppuyez sur la loupe pour agrandir et placer le point avec précision.', guideCompare:'Des projecteurs côte à côte, à la même distance et dans les mêmes conditions.\nÉclairement, F-stop, angle de faisceau, puissance, poids, IP et pilotage d\'un seul coup d\'oeil.\nLe signe d\'alerte veut dire hors du tableau publié ; le signe d\'approximation, qu\'une température voisine a servi.', guideAmbient:'Fait entrer dans le calcul le niveau de base mesuré sur place.\nSaisissez-le par F-stop ou par éclairement. L\'interrupteur décide s\'il compte.\nIl fonctionne aussi à l\'envers pour donner la distance du projecteur, et se pose sur le plan comme source.',
     uiZoomTitle:'Taille d\'affichage', uiZoomHint:'Agrandit tout l\'écran, texte compris.',
     orderTitle:'Disposition', orderBar:'Onglets du bas', orderMenu:'Ordre du menu', orderMenuSub:'L\'ordre dans lequel ils apparaissent dans le menu',
@@ -3915,6 +3920,7 @@ var LANGS = {
     dftNoSavedDrafts:'Aucun plan enregistré.',
   },
   de: {
+    storeTitle:'Zusatzmodule', storeSub:'Einmalkauf. Kein Abo.', storeLocked:'{f} ist noch nicht freigeschaltet', storePremium:'Premium (alles)', storePremiumSub:'Schaltet alle funf unten frei', storeSingles:'Einzeln kaufen', storeOwned:'Gekauft', storeAllOwned:'Sie haben alles. Vielen Dank.', storeRestore:'Kaufe wiederherstellen', storeRestored:'Kaufe wiederhergestellt', storeNothing:'Nichts wiederherzustellen', storeThanks:'Vielen Dank. Freigeschaltet.', storeFailed:'Der Kauf konnte nicht abgeschlossen werden', storeNoPlugin:'Hier ist kein Kauf moglich. Bitte die App-Store-Version verwenden.', storeNote:'Einmalkauf, nutzbar auf Ihren Geraten mit demselben Apple-Account. Spater erganzte Funktionen werden separat verkauft.', storeDesc_mix:'Mehrere Leuchten kombinieren, jede mit eigener Distanz und Anzahl.', storeDesc_finder:'Leuchten zu einer Ziel-Blende finden.', storeDesc_alt:'Vom vorhandenen Licht ausgehen und ermitteln, was die Leuchte beitragen muss.', storeDesc_draft:'Grundriss mit der Helligkeit in jedem Winkel um das Motiv.', storeDesc_sun:'Sonnen- und Mondbahn, uber das Kamerabild gelegt.',
     settingsTitle:'Einstellungen', settingsDisplay:'Anzeige', settingsHowTo:'Bedienung', guideTitle:'Über die einzelnen Tabs', guideSub:'Wofür jeder Bildschirm da ist und wie man ihn benutzt', guideCalc:'Leuchte, Zubehör, Entfernung und Farbtemperatur wählen, und du bekommst Beleuchtungsstärke und F-stop.\nDeine Kameraeinstellungen (ISO, fps, Verschluss) gehen unverändert ein.\nDer Durchmesser auf dem Chip sagt, wie breit der Lichtkreis auf diese Entfernung ist.', guideCamera:'Hier gibst du ISO, fps, Verschlusswinkel und T-stop ein.\nDigital, Film und Foto haben je ihre eigene Eingabe.\nÄnderst du es hier, rechnen alle Tabs auf einmal neu.', guideMix:'Leuchten einzeln hinzufügen und die Gesamtbelichtung sowie die gemischte Farbtemperatur ablesen.\nStückzahlen lassen sich erhöhen. Mit Einzelentfernungen stellst du jede Leuchte getrennt ein.\nUmgebungslicht an, und die Summe enthält das Grundlicht am Drehort.', guideFinder:'Ziel-F-stop und Entfernung eingeben, und die Leuchten, die es schaffen, werden sortiert.\nMit Vom Umgebungslicht gibst du das Ziel in Stops darüber an.\nÄnderst du die Entfernung, ändert sich die Reihenfolge. Die kleinste, die es schafft, steht oben.', guideAlt:'Findet einen Ersatz für die Leuchte, die du nicht bekommen hast.\nGibt die nötige Stückzahl für dasselbe Niveau und einen Match Score.\nVerglichen bei gleicher Entfernung und Farbtemperatur, passt also zur Verleihliste.', guideDraft:'Personen, Leuchten, Bounce, DIFF, Flags und die Kamera platzieren und daraus einen Plan bauen.\nEin PDF oder Foto unterlegen und auf die echte Größe bringen.\nExposure öffnen für den Wert in jeder Messrichtung und das Verhältnis zur Hauptleuchte.', guideSun:'Der Tagesweg von Sonne und Mond aus Breite, Länge und Datum.\nSonnenaufgang, Sonnenuntergang, magische Stunde, Dämmerung und Mondphase.\nUnter iOS lässt sich das über die Kamera legen, und mit dem Drehtag vergleichen.', guideMired:'Behandelt Farbtemperaturabstände in Mired. Über das Kelvin-Verhältnis passt es optisch nicht.\nBaut das Verhältnis von Haupt- und Aufhelllicht einer Vorlage auf einer anderen Hauptfarbtemperatur neu auf.\nNennt auch die nötige Folie und welche Leuchten diese Temperatur erreichen.', guideAr:'Kamera draufhalten, Entfernung messen und direkt in die Berechnung übernehmen.\nDrei Wege: von deinem Standort, zwischen zwei Punkten, oder von zwei Stellen angepeilt.\nAuf die Lupe tippen, dann kannst du den Punkt genau setzen.', guideCompare:'Leuchten nebeneinander, bei gleicher Entfernung und gleichen Bedingungen.\nBeleuchtungsstärke, F-stop, Beam angle, Leistung, Gewicht, IP und Steuerung auf einen Blick.\nDas Warnzeichen heißt außerhalb der veröffentlichten Tabelle, das Ungefähr-Zeichen, dass eine nahe Farbtemperatur genommen wurde.', guideAmbient:'Bringt das am Drehort gemessene Grundlicht in die Rechnung.\nEingabe per F-stop oder Beleuchtungsstärke. Der Schalter entscheidet, ob es zählt.\nEs geht auch rückwärts und nennt die Entfernung für die Leuchte, und lässt sich als Quelle in den Plan setzen.',
     uiZoomTitle:'Anzeigegröße', uiZoomHint:'Skaliert den ganzen Bildschirm, den Text eingeschlossen.',
     orderTitle:'Anordnung', orderBar:'Untere Tabs', orderMenu:'Reihenfolge im Menü', orderMenuSub:'Die Reihenfolge im Menü',
@@ -4561,6 +4567,7 @@ var LANGS = {
     dftNoSavedDrafts:'Noch keine gespeicherten Pläne.',
   },
   pt: {
+    storeTitle:'Complementos', storeSub:'Compra unica. Sem assinatura.', storeLocked:'{f} ainda nao esta liberado', storePremium:'Premium (tudo)', storePremiumSub:'Libera os cinco abaixo', storeSingles:'Comprar separadamente', storeOwned:'Comprado', storeAllOwned:'Voce tem tudo. Obrigado.', storeRestore:'Restaurar compras', storeRestored:'Compras restauradas', storeNothing:'Nada a restaurar', storeThanks:'Obrigado. Liberado.', storeFailed:'Nao foi possivel concluir a compra', storeNoPlugin:'Nao e possivel comprar aqui. Use a versao da App Store.', storeNote:'Compra unica, valida nos seus dispositivos com a mesma conta Apple. Recursos adicionados depois sao vendidos separadamente.', storeDesc_mix:'Combine varios refletores, cada um na sua distancia e quantidade.', storeDesc_finder:'Encontre refletores que atinjam o f-stop desejado.', storeDesc_alt:'Parta da luz existente e obtenha o que o refletor precisa somar.', storeDesc_draft:'Planta baixa, com o nivel em cada angulo ao redor do sujeito.', storeDesc_sun:'Trajetoria do sol e da lua, sobre a imagem da camera.',
     settingsTitle:'Ajustes', settingsDisplay:'Exibição', settingsHowTo:'Como usar', guideTitle:'Sobre cada aba', guideSub:'Para que serve cada tela e como usá-la', guideCalc:'Escolha o refletor, o acessório, a distância e a temperatura de cor para obter a iluminância e o F-stop.\nSeus ajustes de câmera (ISO, fps, obturador) entram como estão.\nO diâmetro no chip diz qual o tamanho do círculo de luz naquela distância.', guideCamera:'Aqui você informa ISO, fps, ângulo do obturador e T-stop.\nDigital, película e foto têm cada um sua forma de entrada.\nMude aqui e todas as abas recalculam de uma vez.', guideMix:'Adicione refletores um a um para a exposição total e a temperatura da mistura.\nO número de unidades pode subir. Ligue distâncias individuais para ajustar cada uma.\nLigue a luz ambiente e o total inclui o nível base da locação.', guideFinder:'Informe um F-stop desejado e uma distância, e os refletores que alcançam são classificados.\nCom A partir da luz ambiente, o alvo é dado em stops acima do ambiente.\nMude a distância e a ordem muda. O menor refletor que alcança vem primeiro.', guideAlt:'Encontra um substituto para o refletor que você não conseguiu.\nDá o número de unidades necessárias para igualar o nível e uma pontuação de correspondência.\nComparado na mesma distância e temperatura, então casa com a lista da locadora.', guideDraft:'Posicione pessoas, refletores, Bounce, DIFF, bandeiras e a câmera para montar a planta.\nColoque um PDF ou foto ao fundo e ajuste ao tamanho real.\nAbra Exposição para a leitura em cada direção do fotômetro e a relação com a principal.', guideSun:'O caminho diário do sol e da lua a partir de latitude, longitude e data.\nNascer, poente, hora mágica, crepúsculo e fase da lua.\nNo iOS dá para sobrepor à câmera, e comparar com o dia de filmagem.', guideMired:'Trata as diferenças de temperatura em mired. Escalar por kelvin não bate visualmente.\nRefaz a relação entre principal e preenchimento de uma placa em outra temperatura principal.\nTambém dá a gelatina necessária e quais refletores alcançam aquela temperatura.', guideAr:'Aponte a câmera para medir uma distância e leve direto para o cálculo.\nTrês modos: de onde você está, entre dois pontos, ou visado de dois lugares.\nToque na lupa para ampliar e marcar o ponto com precisão.', guideCompare:'Refletores lado a lado, na mesma distância e nas mesmas condições.\nIluminância, F-stop, ângulo de facho, potência, peso, IP e controle de uma só vez.\nA marca de aviso significa fora da tabela publicada; a de aproximação, que se usou uma temperatura próxima.', guideAmbient:'Traz para o cálculo o nível base que você mediu na locação.\nInforme por F-stop ou por iluminância. A chave decide se ele conta.\nTambém funciona ao contrário e dá a distância do refletor, e pode ser posto na planta como fonte.',
     uiZoomTitle:'Tamanho de exibição', uiZoomHint:'Amplia a tela inteira, incluindo o texto.',
     orderTitle:'Disposição', orderBar:'Abas de baixo', orderMenu:'Ordem do menu', orderMenuSub:'A ordem em que aparecem no menu',
@@ -5207,6 +5214,7 @@ var LANGS = {
     dftNoSavedDrafts:'Nenhuma planta salva ainda.',
   },
   fi: {
+    storeTitle:'Lisaosat', storeSub:'Kertaosto. Ei tilausta.', storeLocked:'{f} ei ole vielä avattu', storePremium:'Premium (kaikki)', storePremiumSub:'Avaa kaikki viisi alla', storeSingles:'Osta erikseen', storeOwned:'Ostettu', storeAllOwned:'Sinulla on kaikki. Kiitos.', storeRestore:'Palauta ostokset', storeRestored:'Ostokset palautettu', storeNothing:'Ei palautettavaa', storeThanks:'Kiitos. Avattu.', storeFailed:'Ostoa ei voitu viimeistella', storeNoPlugin:'Taalla ei voi ostaa. Kayta App Store -versiota.', storeNote:'Kertaosto, kaytettavissa laitteissasi samalla Apple-tilillä. Myohemmin lisattavat toiminnot myydaan erikseen.', storeDesc_mix:'Yhdista useita valaisimia, kukin omalla etaisyydellaan ja maarallaan.', storeDesc_finder:'Etsi valaisimet, jotka osuvat tavoiteaukkoon.', storeDesc_alt:'Lahde vallitsevasta valosta ja laske, mita valaisimen on lisattava.', storeDesc_draft:'Pohjakuva ja valon maara joka kulmassa kohteen ympärilla.', storeDesc_sun:'Auringon ja kuun radat kameran kuvan paalla.',
     settingsTitle:'Asetukset', settingsDisplay:'Näyttö', settingsHowTo:'Käyttöohje', guideTitle:'Tietoa välilehdistä', guideSub:'Mihin kukin näkymä on ja miten sitä käytetään', guideCalc:'Valitse valaisin, lisävaruste, etäisyys ja värilämpötila, niin saat valaistusvoimakkuuden ja F-stopin.\nKameran asetukset (ISO, fps, suljin) otetaan sellaisina kuin ne ovat.\nHalkaisija merkinnässä kertoo, kuinka leveä valokeila on sillä etäisyydellä.', guideCamera:'Tässä syötetään ISO, fps, sulkimen kulma ja T-stop.\nDigitaalinen, filmi ja valokuva syötetään kukin omalla tavallaan.\nKun muutat tätä, kaikki välilehdet laskevat uudelleen kerralla.', guideMix:'Lisää valaisimia yksi kerrallaan, niin saat kokonaisvalotuksen ja sekoituksen värilämpötilan.\nMäärää voi nostaa. Kytke erilliset etäisyydet, niin voit säätää jokaisen erikseen.\nKytke vallitseva valo, niin summa sisältää kuvauspaikan pohjatason.', guideFinder:'Syötä tavoiteltu F-stop ja etäisyys, niin riittävät valaisimet järjestyvät.\nValitse Vallitsevasta valosta, niin tavoite annetaan aukkoina sen yli.\nMuuta etäisyyttä ja järjestys muuttuu. Pienin riittävä valaisin on ensimmäisenä.', guideAlt:'Etsii korvaajan valaisimelle, jota et saanut.\nAntaa tarvittavan määrän saman tason saavuttamiseksi sekä osumapisteet.\nVerrataan samalla etäisyydellä ja värilämpötilalla, joten se sopii vuokralistan rinnalle.', guideDraft:'Aseta henkilöt, valaisimet, Bounce, DIFF, liput ja kamera, niin saat pohjan.\nAseta PDF tai valokuva pohjalle ja skaalaa se oikeaan kokoon.\nAvaa Exposure, niin näet lukeman jokaiseen mittaussuuntaan ja suhteen päävaloon.', guideSun:'Auringon ja kuun päivän reitti leveys- ja pituusasteesta sekä päivämäärästä.\nAuringonnousu, lasku, taikahetki, hämärä ja kuun vaihe.\niOS:ssa voit asettaa sen kameran päälle ja verrata kuvauspäivään.', guideMired:'Käsittelee värilämpötilaeroja mireinä. Kelvinien suhde ei vastaa silmän näkemää.\nRakentaa pohjakuvan pää- ja tasoitusvalon suhteen uudelleen toisella päävalon lämpötilalla.\nAntaa myös tarvittavan kalvon ja sen, mitkä valaisimet siihen lämpötilaan pääsevät.', guideAr:'Osoita kameralla, mittaa etäisyys ja vie se suoraan laskentaan.\nKolme tapaa: paikaltasi, kahden pisteen välillä tai tähdättynä kahdesta paikasta.\nNapauta suurennuslasia, niin saat luupin ja voit asettaa pisteen tarkasti.', guideCompare:'Valaisimet rinnakkain, samalla etäisyydellä ja samoissa oloissa.\nValaistusvoimakkuus, F-stop, Beam angle, teho, paino, IP ja ohjaus yhdellä silmäyksellä.\nVaroitusmerkki tarkoittaa julkaistun taulukon ulkopuolta, likimäärämerkki sitä, että käytettiin lähintä värilämpötilaa.', guideAmbient:'Tuo laskentaan kuvauspaikalla mitatun pohjatason.\nSyötä se F-stopina tai valaistusvoimakkuutena. Kytkin ratkaisee, otetaanko se mukaan.\nToimii myös toisin päin ja antaa valaisimen etäisyyden, ja sen voi asettaa pohjaan lähteeksi.',
     uiZoomTitle:'Näytön koko', uiZoomHint:'Suurentaa koko näkymän, myös tekstin.',
     orderTitle:'Järjestys', orderBar:'Alapalkin välilehdet', orderMenu:'Valikon järjestys', orderMenuSub:'Järjestys, jossa ne näkyvät valikossa',
@@ -5853,6 +5861,7 @@ var LANGS = {
     dftNoSavedDrafts:'Tallennettuja pohjia ei vielä ole.',
   },
   ko: {
+    storeTitle:'추가 기능', storeSub:'한 번만 구입하며 월 요금은 없습니다.', storeLocked:'{f} 은 아직 열리지 않았습니다', storePremium:'Premium(전부)', storePremiumSub:'아래 다섯 가지가 모두 열립니다', storeSingles:'하나씩 구입', storeOwned:'구입 완료', storeAllOwned:'모두 갖고 계십니다. 감사합니다.', storeRestore:'구입 복원', storeRestored:'구입을 복원했습니다', storeNothing:'복원할 항목이 없습니다', storeThanks:'감사합니다. 열렸습니다.', storeFailed:'구입을 완료할 수 없었습니다', storeNoPlugin:'이 환경에서는 구입할 수 없습니다. App Store 버전을 사용해 주세요.', storeNote:'한 번만 구입하면 같은 Apple 계정의 기기에서 쓸 수 있습니다. 나중에 추가되는 기능은 별도 판매입니다.', storeDesc_mix:'여러 조명을 합성. 조명별 거리와 대수.', storeDesc_finder:'목표 F값으로 조명기를 찾기.', storeDesc_alt:'현장 환경광을 기준으로 조명이 보탤 양을 계산.', storeDesc_draft:'평면도. 피사체 주위 각도별 조도.', storeDesc_sun:'태양과 달의 경로. 카메라 화면에 겹쳐 보기.',
     settingsTitle:'설정', settingsDisplay:'표시', settingsHowTo:'사용법', guideTitle:'각 탭 설명', guideSub:'어떤 화면이고 어떻게 쓰는지', guideCalc:'기종, 액세서리, 거리, 색온도를 고르면 조도와 F-stop이 나옵니다.\n카메라 설정(ISO, fps, 셔터)이 그대로 반영됩니다.\n칩에 나오는 지름은 그 거리에서 빛이 몇 미터의 원이 되는지입니다.', guideCamera:'ISO, fps, 셔터 앵글, T-stop을 넣는 화면입니다.\n디지털, 필름, 사진마다 넣는 방식이 다릅니다.\n여기를 바꾸면 모든 탭의 계산이 한꺼번에 움직입니다.', guideMix:'조명기를 한 대씩 더해서 합계 노출과 섞인 색온도를 냅니다.\n대수를 늘릴 수 있습니다. 개별 거리를 켜면 한 대씩 거리를 바꿀 수 있습니다.\n주변광을 켜면 현장의 기본 밝기를 포함한 합계가 됩니다.', guideFinder:'목표 F-stop과 거리를 넣으면 도달하는 조명기가 순위로 나옵니다.\n「주변광에서」를 고르면 목표를 몇 stop 올릴지로 넣을 수 있습니다.\n거리를 바꾸면 순위가 바뀝니다. 그 거리에서 도달하는 가장 작은 조명기가 위로 옵니다.', guideAlt:'확보하지 못한 조명기의 대체품을 찾습니다.\n같은 밝기를 만드는 데 필요한 대수와 일치도를 냅니다.\n거리와 색온도를 맞춰 비교하므로 렌탈 목록과 대조할 수 있습니다.', guideDraft:'인물, 조명기, Bounce, DIFF, 플래그, 카메라를 놓아 도면을 만듭니다.\nPDF나 사진을 밑에 깔고 실제 치수에 맞출 수 있습니다.\nExposure를 열면 노출계 방향별 읽음과 주광비가 나옵니다.', guideSun:'위도, 경도, 날짜에서 해와 달의 하루 궤적을 냅니다.\n일출, 일몰, Magic hour, 박명, 달의 위상을 알 수 있습니다.\niOS에서는 카메라에 겹쳐 볼 수 있고, 촬영일과 비교할 수도 있습니다.', guideMired:'색온도 차이를 mired로 다룹니다. K의 비로는 눈에 맞지 않습니다.\n소재의 Key와 Fill 관계를 다른 Key 색온도로 다시 짤 수 있습니다.\n필요한 필터와 그 색온도를 낼 수 있는 조명기도 나옵니다.', guideAr:'카메라를 향해 거리를 재고 그대로 계산에 넣을 수 있습니다.\n서 있는 곳에서, 두 점 사이, 두 지점에서 겨냥 의 세 가지가 있습니다.\n돋보기를 누르면 루페가 나와 겨냥할 점을 정밀하게 정할 수 있습니다.', guideCompare:'여러 조명기를 같은 거리, 같은 조건으로 나란히 놓습니다.\n조도, F-stop, Beam angle, 소비전력, 무게, IP, 제어를 한눈에 봅니다.\n경고 표시는 공개된 표의 밖, 근사 표시는 가까운 색온도로 대신한 값입니다.', guideAmbient:'노출계로 측정한 현장의 기본 밝기를 계산에 넣습니다.\nF-stop으로도 조도로도 넣을 수 있습니다. 토글로 반영 여부를 바꿉니다.\n조명기를 놓을 거리도 역산할 수 있고, 도면에는 광원으로 놓을 수 있습니다.',
     uiZoomTitle:'표시 크기', uiZoomHint:'화면 전체를 확대합니다. 글자도 같이 커집니다.',
     orderTitle:'배치 설정', orderBar:'하단 탭', orderMenu:'메뉴 순서', orderMenuSub:'메뉴에 나오는 순서입니다',
@@ -6499,6 +6508,7 @@ var LANGS = {
     dftNoSavedDrafts:'저장된 도면이 없습니다.',
   },
   th: {
+    storeTitle:'ฟังก์ชันเสริม', storeSub:'ซื้อครั้งเดียว ไม่มีค่ารายเดือน', storeLocked:'{f} ยังไม่ได้ปลดล็อก', storePremium:'Premium (ทั้งหมด)', storePremiumSub:'ปลดล็อกทั้งห้ารายการด้านล่าง', storeSingles:'ซื้อแยกรายการ', storeOwned:'ซื้อแล้ว', storeAllOwned:'คุณมีครบทั้งหมดแล้ว ขอบคุณครับ', storeRestore:'กู้คืนการซื้อ', storeRestored:'กู้คืนการซื้อแล้ว', storeNothing:'ไม่มีรายการให้กู้คืน', storeThanks:'ขอบคุณครับ ปลดล็อกแล้ว', storeFailed:'ไม่สามารถทำรายการซื้อให้เสร็จได้', storeNoPlugin:'ไม่สามารถซื้อได้ในสภาพแวดล้อมนี้ กรุณาใช้เวอร์ชัน App Store', storeNote:'ซื้อครั้งเดียว ใช้ได้บนเครื่องที่ใช้บัญชี Apple เดียวกัน ฟังก์ชันที่เพิ่มในภายหลังจะขายแยก', storeDesc_mix:'รวมหลายดวงไฟ กำหนดระยะและจำนวนของแต่ละดวงได้', storeDesc_finder:'ค้นหาดวงไฟจากค่า F ที่ต้องการ', storeDesc_alt:'เริ่มจากแสงที่มีอยู่ แล้วคำนวณส่วนที่ดวงไฟต้องเติม', storeDesc_draft:'ผังพื้น พร้อมค่าแสงในแต่ละมุมรอบตัวแบบ', storeDesc_sun:'เส้นทางดวงอาทิตย์และดวงจันทร์ ซ้อนบนภาพจากกล้อง',
     settingsTitle:'ตั้งค่า', settingsDisplay:'การแสดงผล', settingsHowTo:'วิธีใช้', guideTitle:'เกี่ยวกับแต่ละแท็บ', guideSub:'แต่ละหน้าจอมีไว้ทำอะไร และใช้อย่างไร', guideCalc:'เลือกรุ่น อุปกรณ์เสริม ระยะ และอุณหภูมิสี แล้วจะได้ความสว่างและ F-stop\nการตั้งค่ากล้อง (ISO, fps, ชัตเตอร์) ถูกนำมาใช้ตามที่ตั้งไว้\nเส้นผ่านศูนย์กลางบนป้ายบอกว่าวงแสงกว้างกี่เมตรที่ระยะนั้น', guideCamera:'หน้าจอสำหรับใส่ ISO, fps, องศาชัตเตอร์ และ T-stop\nดิจิทัล ฟิล์ม และภาพนิ่ง ใส่ค่าคนละแบบ\nเปลี่ยนที่นี่แล้วทุกแท็บจะคำนวณใหม่พร้อมกัน', guideMix:'เพิ่มโคมไฟทีละดวงเพื่อดูค่าแสงรวมและอุณหภูมิสีที่ผสมกัน\nเพิ่มจำนวนดวงได้ เปิดระยะแยกดวงเพื่อตั้งระยะของแต่ละดวง\nเปิดแสงโดยรอบแล้วผลรวมจะรวมแสงพื้นของสถานที่ด้วย', guideFinder:'ใส่ F-stop เป้าหมายและระยะ แล้วโคมที่ส่องถึงจะเรียงลำดับให้\nเลือก จากแสงโดยรอบ เพื่อกำหนดเป้าหมายเป็นจำนวน stop ที่สูงกว่าแสงโดยรอบ\nเปลี่ยนระยะแล้วลำดับจะเปลี่ยน โคมที่เล็กที่สุดที่ส่องถึงจะอยู่บนสุด', guideAlt:'หาตัวแทนของโคมที่จองไม่ได้\nบอกจำนวนดวงที่ต้องใช้เพื่อให้ได้ความสว่างเท่ากัน พร้อมคะแนนความใกล้เคียง\nเทียบที่ระยะและอุณหภูมิสีเดียวกัน จึงใช้คู่กับรายการเช่าได้', guideDraft:'วางตัวแบบ โคมไฟ Bounce DIFF ธง และกล้อง เพื่อสร้างผังไฟ\nวาง PDF หรือรูปเป็นพื้นหลังแล้วปรับให้ตรงขนาดจริงได้\nเปิด Exposure เพื่อดูค่าที่อ่านได้ในแต่ละทิศของมิเตอร์ และอัตราส่วนกับไฟหลัก', guideSun:'เส้นทางของดวงอาทิตย์และดวงจันทร์ในหนึ่งวัน จากพิกัดและวันที่\nพระอาทิตย์ขึ้น ตก Magic hour แสงสลัว และเฟสของดวงจันทร์\nบน iOS ซ้อนทับภาพจากกล้องได้ และเทียบกับวันถ่ายได้', guideMired:'จัดการผลต่างของอุณหภูมิสีด้วย mired การใช้อัตราส่วนเคลวินจะไม่ตรงกับที่ตาเห็น\nจัดความสัมพันธ์ของ Key และ Fill ของภาพต้นทางใหม่ ที่อุณหภูมิ Key อื่น\nบอกฟิลเตอร์ที่ต้องใช้ และโคมที่ทำอุณหภูมิสีนั้นได้', guideAr:'หันกล้องไปวัดระยะ แล้วส่งเข้าการคำนวณได้ทันที\nมีสามแบบ จากที่คุณยืน ระหว่างสองจุด และเล็งจากสองตำแหน่ง\nกดแว่นขยายเพื่อเปิดลูป จะกำหนดจุดที่เล็งได้ละเอียดขึ้น', guideCompare:'วางโคมหลายดวงเทียบกันที่ระยะและเงื่อนไขเดียวกัน\nดูความสว่าง F-stop Beam angle กำลังไฟ น้ำหนัก IP และการควบคุมได้ในหน้าเดียว\nเครื่องหมายเตือนหมายถึงอยู่นอกตารางที่ประกาศ เครื่องหมายประมาณหมายถึงใช้อุณหภูมิสีที่ใกล้เคียงแทน', guideAmbient:'นำแสงพื้นที่วัดได้ที่สถานที่จริงเข้าสู่การคำนวณ\nใส่เป็น F-stop หรือความสว่างก็ได้ สวิตช์เป็นตัวกำหนดว่าจะนับหรือไม่\nคำนวณย้อนกลับเพื่อหาระยะวางโคมได้ และวางเป็นแหล่งกำเนิดแสงบนผังได้',
     uiZoomTitle:'ขนาดการแสดงผล', uiZoomHint:'ขยายทั้งหน้าจอ รวมทั้งตัวอักษรด้วย',
     orderTitle:'การจัดเรียง', orderBar:'แท็บด้านล่าง', orderMenu:'ลำดับในเมนู', orderMenuSub:'ลำดับที่แสดงในเมนู',
@@ -7145,6 +7155,7 @@ var LANGS = {
     dftNoSavedDrafts:'ยังไม่มีผังไฟที่บันทึกไว้',
   },
   ptPT: {
+    storeTitle:'Complementos', storeSub:'Compra unica. Sem subscricao.', storeLocked:'{f} ainda nao esta desbloqueado', storePremium:'Premium (tudo)', storePremiumSub:'Desbloqueia os cinco abaixo', storeSingles:'Comprar separadamente', storeOwned:'Comprado', storeAllOwned:'Tem tudo. Obrigado.', storeRestore:'Restaurar compras', storeRestored:'Compras restauradas', storeNothing:'Nada a restaurar', storeThanks:'Obrigado. Desbloqueado.', storeFailed:'Nao foi possivel concluir a compra', storeNoPlugin:'Nao e possivel comprar aqui. Use a versao da App Store.', storeNote:'Compra unica, valida nos seus dispositivos com a mesma conta Apple. As funcionalidades acrescentadas mais tarde sao vendidas separadamente.', storeDesc_mix:'Combine varios projectores, cada um a sua distancia e quantidade.', storeDesc_finder:'Encontre projectores que atinjam o f-stop pretendido.', storeDesc_alt:'Parta da luz existente e obtenha o que o projector tem de somar.', storeDesc_draft:'Planta, com o nivel em cada angulo em torno do sujeito.', storeDesc_sun:'Trajectoria do sol e da lua, sobre a imagem da camara.',
     settingsTitle:'Definições', settingsDisplay:'Apresentação', settingsHowTo:'Como usar', guideTitle:'Sobre cada separador', guideSub:'Para que serve cada ecrã e como usá-lo', guideCalc:'Escolha o projetor, o acessório, a distância e a temperatura de cor para obter a iluminância e o F-stop.\nAs suas definições de câmara (ISO, fps, obturador) entram tal como estão.\nO diâmetro no chip diz qual o tamanho do círculo de luz àquela distância.', guideCamera:'Aqui introduz ISO, fps, ângulo do obturador e T-stop.\nDigital, película e foto têm cada um a sua forma de introdução.\nAltere aqui e todos os separadores recalculam de uma vez.', guideMix:'Adicione projetores um a um para a exposição total e a temperatura da mistura.\nO número de unidades pode subir. Ligue distâncias individuais para ajustar cada uma.\nLigue a luz ambiente e o total inclui o nível base do local.', guideFinder:'Introduza um F-stop pretendido e uma distância, e os projetores que alcançam são ordenados.\nCom A partir da luz ambiente, o alvo é dado em stops acima do ambiente.\nAltere a distância e a ordem muda. O projetor mais pequeno que alcança vem primeiro.', guideAlt:'Encontra um substituto para o projetor que não conseguiu.\nDá o número de unidades necessárias para igualar o nível e uma pontuação de correspondência.\nComparado à mesma distância e temperatura, por isso encaixa na lista do aluguer.', guideDraft:'Coloque pessoas, projetores, Bounce, DIFF, bandeiras e a câmara para montar a planta.\nPonha um PDF ou foto ao fundo e ajuste ao tamanho real.\nAbra Exposição para a leitura em cada direção do fotómetro e a relação com a principal.', guideSun:'O percurso diário do sol e da lua a partir de latitude, longitude e data.\nNascer, poente, hora mágica, crepúsculo e fase da lua.\nNo iOS pode sobrepor à câmara, e comparar com o dia de rodagem.', guideMired:'Trata as diferenças de temperatura em mired. Escalar por kelvin não corresponde visualmente.\nRefaz a relação entre principal e preenchimento de um plano de fundo noutra temperatura principal.\nTambém dá a gelatina necessária e quais projetores alcançam aquela temperatura.', guideAr:'Aponte a câmara para medir uma distância e leve-a diretamente para o cálculo.\nTrês modos: de onde se encontra, entre dois pontos, ou visado de dois sítios.\nToque na lupa para ampliar e marcar o ponto com precisão.', guideCompare:'Projetores lado a lado, à mesma distância e nas mesmas condições.\nIluminância, F-stop, ângulo de feixe, potência, peso, IP e controlo de uma só vez.\nA marca de aviso significa fora da tabela publicada; a de aproximação, que se usou uma temperatura próxima.', guideAmbient:'Traz para o cálculo o nível base que mediu no local.\nIntroduza por F-stop ou por iluminância. O interruptor decide se conta.\nTambém funciona ao contrário e dá a distância do projetor, e pode ser colocado na planta como fonte.',
     uiZoomTitle:'Tamanho de exibição', uiZoomHint:'Amplia o ecrã inteiro, incluindo o texto.',
     orderTitle:'Disposição', orderBar:'Separadores de baixo', orderMenu:'Ordem do menu', orderMenuSub:'A ordem em que aparecem no menu',
@@ -7791,6 +7802,7 @@ var LANGS = {
     dftNoSavedDrafts:'Nenhuma planta guardada ainda.',
   },
   zhTW: {
+    storeTitle:'附加功能', storeSub:'一次買斷，沒有月費。', storeLocked:'{f} 尚未解鎖', storePremium:'Premium（全部）', storePremiumSub:'下面五項全部解鎖', storeSingles:'單項購買', storeOwned:'已購買', storeAllOwned:'您已擁有全部內容，謝謝。', storeRestore:'恢復購買', storeRestored:'已恢復購買', storeNothing:'沒有可恢復的項目', storeThanks:'謝謝，已解鎖。', storeFailed:'購買未能完成', storeNoPlugin:'此環境無法購買，請使用 App Store 版本。', storeNote:'一次買斷，可在使用同一 Apple 帳戶的裝置上使用。日後新增的功能另行銷售。', storeDesc_mix:'多燈合成，可分別設定各燈的距離與數量。', storeDesc_finder:'依目標 F值 反查燈具。', storeDesc_alt:'以現場環境光為起點，算出燈具需要補的量。', storeDesc_draft:'平面圖，顯示被攝體周圍各角度的照度。', storeDesc_sun:'日月軌跡，並可疊加在相機畫面上。',
     settingsTitle:'設定', settingsDisplay:'顯示', settingsHowTo:'使用方法', guideTitle:'各標籤的說明', guideSub:'每個畫面是做什麼的，怎麼用', guideCalc:'選擇型號、配件、距離和色溫，就會得出照度和 F-stop。\n相機設定（ISO、fps、快門）會直接生效。\n標籤上的直徑是指在該距離下光斑有多少公尺。', guideCamera:'輸入 ISO、fps、快門角度和 T-stop 的畫面。\n數位、膠片、照片各有各的輸入方式。\n在這裡一改，所有標籤的計算都會同時更新。', guideMix:'一台一台地加燈具，得出合計曝光和混合後的色溫。\n可以增加台數。開啟單獨距離後，可以逐台改距離。\n開啟環境光，合計就會包含現場的底子亮度。', guideFinder:'輸入目標 F-stop 和距離，能達到的燈具會按順序排列。\n選「從環境光起算」，就能用高出幾 stop 來指定目標。\n改變距離，順序也會變。在該距離能達到的最小燈具排在最前。', guideAlt:'為沒訂到的燈具找替代。\n給出達到同樣亮度所需的台數，以及匹配度。\n按同一距離和色溫比較，因此能與租賃清單對照。', guideDraft:'放置人物、燈具、Bounce、DIFF、遮光旗和相機，做出圖面。\n可以把 PDF 或照片墊在底下，對齊實際尺寸。\n開啟 Exposure，會顯示測光表各方向的讀數和主光比。', guideSun:'根據經緯度和日期，給出太陽與月亮一天的軌跡。\n可以知道日出、日落、Magic hour、暮光和月相。\niOS 上可以疊在相機畫面上看，也能與拍攝日比較。', guideMired:'用 mired 處理色溫的差距。按 K 的比例算，看起來並不一致。\n可以把素材中 Key 與 Fill 的關係，用另一個 Key 色溫重新組建。\n還會給出需要的濾色片，以及能做出該色溫的燈具。', guideAr:'把相機對準目標測距，並直接帶入計算。\n有三種方式：從所在位置、兩點之間、從兩個地點瞄準。\n點放大鏡會出現放大窗，可以更精細地定下瞄準點。', guideCompare:'把多台燈具在同一距離、同一條件下並排比較。\n照度、F-stop、Beam angle、功率、重量、防護等級、控制一目了然。\n警告標記表示超出公布表格，近似標記表示用了相近的色溫代替。', guideAmbient:'把用測光表測到的現場底子亮度納入計算。\n可以按 F-stop 輸入，也可以按照度輸入。開關決定是否生效。\n也能反過來算出燈具的擺放距離，並且可以作為光源放在圖面上。',
     uiZoomTitle:'顯示大小', uiZoomHint:'整個畫面一起放大，文字也會跟著變大。',
     orderTitle:'排列設定', orderBar:'底部標籤', orderMenu:'選單的排列', orderMenuSub:'在三條線選單中出現的順序',
@@ -15218,6 +15230,7 @@ function _sunPhaseName(p){
 }
 
 function openSunTool(){
+  if (!calmGate('sun')) return;
   var ex = document.getElementById('_sun'); if (ex) ex.remove();
   if (!_SUN.tz) _sunAutoTz(true);
   if (!_SUN.date) { var n = new Date(); _SUN.date = { y:n.getFullYear(), m:n.getMonth()+1, d:n.getDate() }; }
@@ -20017,6 +20030,7 @@ window.addEventListener('DOMContentLoaded', function() {
   try { var _l = localStorage.getItem('lmp_lang'); if (_l && LANGS[_l]) LANG = _l; } catch(e) {}
   try { if (!_passOK()) { _passScreen(); return; } } catch(e) {}
   try { if (_betaExpired()) { _betaLockScreen(); return; } } catch(e) {}
+  try { calmStoreInit(); } catch(e) {}
   try { renderNavBar(); } catch(e) { console.error('renderNavBar', e); }
   try { _calmDeviceProbe(); } catch(e) {}
   try { syncHeaderHeight(); setTimeout(syncHeaderHeight, 200); } catch(e) {}
@@ -20433,6 +20447,234 @@ function _passScreen() {
   }
 }
 
+/* ═══ 課金と機能の開け閉め ══════════════════════════════════════════
+ * 売り方（2026-09-08 確定）
+ *   ・アプリ本体が有料 $14.99 ＝ Basic。無料枠は作らない
+ *     Basic に入るもの: Calc / Camera / AR メジャー / ミレッド（＋比較・設定）
+ *   ・追加5種は買い切り（非消費型）: Mix / Finder / ALT / Draft / SUN SCOUT
+ *   ・Basic → Premium のアップグレード $34.99 で残り全部が開く
+ *
+ * NAV_ITEMS の id がそのまま機能の単位になっているので、画面ごとに判定を
+ * 散らさず、ここ一か所で見る。
+ *
+ * ベータ配布中（BETA_ENABLED）は全部開ける。テスターの手元で機能が閉じると
+ * 試してもらえないため。発売時に BETA_ENABLED を false にすると課金が効く。
+ * ══════════════════════════════════════════════════════════════════ */
+
+// アプリ本体（$14.99）に含まれる機能
+var BASIC_FEATURES = ['calc', 'camera', 'mired', 'ar'];
+
+// 買える品目。key はアプリ内での呼び名、id は App Store Connect の Product ID
+var IAP_PRODUCTS = {
+  mix:     { id:'com.manabukatoh.calm.mix',     grants:['mix'],    nav:'mix'    },
+  finder:  { id:'com.manabukatoh.calm.finder',  grants:['finder'], nav:'finder' },
+  alt:     { id:'com.manabukatoh.calm.alt',     grants:['alt'],    nav:'alt'    },
+  draft:   { id:'com.manabukatoh.calm.draft',   grants:['draft'],  nav:'draft'  },
+  sun:     { id:'com.manabukatoh.calm.sun',     grants:['sun'],    nav:'sun'    },
+  // Premium は「発売時にある追加5種」を開けるもの。あとから足した機能は別売り
+  // なので、ここは '*' にせず並べて書いておく。新しい機能を作っても、この
+  // 配列に足さないかぎり Premium 保持者には開かない（意図した動き）。
+  premium: { id:'com.manabukatoh.calm.premium',
+             grants:['mix','finder','alt','draft','sun'], nav:null }
+};
+
+/** 持っている品目の key の配列。StoreKit から同期した結果をここに置く */
+function calmOwned() {
+  try {
+    var a = JSON.parse(localStorage.getItem('calm_owned') || '[]');
+    if (!Array.isArray(a)) return [];
+    return a.filter(function(k){ return !!IAP_PRODUCTS[k]; });
+  } catch(e) { return []; }
+}
+function calmOwnedSave(list) {
+  try { localStorage.setItem('calm_owned', JSON.stringify(list || [])); } catch(e) {}
+}
+/** StoreKit 側から呼ぶ。持っている品目をまるごと置き換える */
+function calmSetOwned(list) {
+  var clean = (list || []).map(function(x){
+    if (IAP_PRODUCTS[x]) return x;
+    for (var k in IAP_PRODUCTS) if (IAP_PRODUCTS[k].id === x) return k;   // Product ID でも受ける
+    return null;
+  }).filter(Boolean);
+  calmOwnedSave(clean);
+  try { renderNavBar(); } catch(e) {}
+  return clean;
+}
+
+/** その機能が使えるか */
+function calmHas(feature) {
+  if (!feature) return true;
+  if (BETA_ENABLED) return true;                          // ベータ中は全開
+  if (BASIC_FEATURES.indexOf(feature) >= 0) return true;  // アプリ本体に入っている
+  var owned = calmOwned();
+  for (var i = 0; i < owned.length; i++) {
+    if (IAP_PRODUCTS[owned[i]].grants.indexOf(feature) >= 0) return true;
+  }
+  return false;
+}
+/** Premium で開くものを全部持っているか（買う画面の出し方に使う） */
+function calmIsPremium() {
+  if (BETA_ENABLED) return true;
+  var all = IAP_PRODUCTS.premium.grants;
+  for (var i = 0; i < all.length; i++) if (!calmHas(all[i])) return false;
+  return true;
+}
+/** その機能を開けるために買う品目の key（Premium ではなく単品のほう） */
+function calmProductFor(feature) {
+  for (var k in IAP_PRODUCTS) {
+    if (k === 'premium') continue;
+    if (IAP_PRODUCTS[k].grants.indexOf(feature) >= 0) return k;
+  }
+  return null;
+}
+
+/**
+ * 機能の入口で呼ぶ関門。使えるなら true、使えないなら案内を出して false。
+ * 呼び出し側は false のときに何もしないだけでよい。
+ */
+function calmGate(feature) {
+  if (calmHas(feature)) return true;
+  try { calmOpenStore(feature); } catch(e) {}
+  return false;
+}
+
+/* ── 値段の表示 ───────────────────────────────────────────────────
+ * 実際に出すのは StoreKit から返ってきた表示価格（その国の通貨・書式）。
+ * プラグインが返す前や Web で開いたときの控えとして米ドルを持っておく。
+ * 控えを出すときは通貨が違う可能性があるので「約」を付けない。
+ * ────────────────────────────────────────────────────────────── */
+var CALM_PRICE_FALLBACK = {
+  mix:'$9.99', finder:'$9.99', alt:'$9.99', draft:'$14.99', sun:'$9.99', premium:'$34.99'
+};
+var calmPrices = {};                 // StoreKit から入る { key: '¥1,500' }
+function calmPrice(key) {
+  return calmPrices[key] || CALM_PRICE_FALLBACK[key] || '';
+}
+/** StoreKit 側から呼ぶ。表示価格を入れる */
+function calmSetPrices(map) {
+  for (var k in (map || {})) {
+    if (IAP_PRODUCTS[k]) calmPrices[k] = map[k];
+    else for (var p in IAP_PRODUCTS) if (IAP_PRODUCTS[p].id === k) calmPrices[p] = map[k];
+  }
+  var ov = document.getElementById('_store_ov');
+  if (ov) { var f = ov.getAttribute('data-feature'); ov.remove(); calmOpenStore(f || null); }
+}
+
+/** 機能名（下部タブと同じ呼び名を使う） */
+function calmFeatureLabel(feature) {
+  var it = _navItem(feature);
+  return it ? (it.icon + ' ' + it.lbl) : feature;
+}
+
+/**
+ * 買う画面。feature を渡すとその機能を先頭に出す。null なら一覧。
+ * 買い切りなので、Apple の求める「購入の復元」も必ず置く。
+ */
+function calmOpenStore(feature) {
+  var ex = document.getElementById('_store_ov'); if (ex) ex.remove();
+  i18nOn('_store_ov', function(){ calmOpenStore(feature); });
+
+  var prem = calmIsPremium();
+  function card(key, highlight) {
+    var p = IAP_PRODUCTS[key];
+    var owned = calmOwned().indexOf(key) >= 0 || (key !== 'premium' && calmHas(p.nav));
+    var name = (key === 'premium') ? t('storePremium') : calmFeatureLabel(p.nav);
+    var desc = (key === 'premium') ? t('storePremiumSub') : t('storeDesc_' + key);
+    return '<div style="border:' + (highlight ? '2px solid var(--accent,#1976d2)' : '1px solid #dfe6ee') +
+             ';border-radius:12px;padding:12px;margin-bottom:8px;background:' + (owned ? '#f4faf4' : '#fff') + ';">' +
+      '<div style="display:flex;align-items:center;gap:8px;">' +
+        '<div style="flex:1;min-width:0;">' +
+          '<div style="font-size:13.5px;font-weight:900;color:#111;">' + name + '</div>' +
+          '<div style="font-size:11px;font-weight:700;color:#888;margin-top:2px;line-height:1.5;">' + desc + '</div>' +
+        '</div>' +
+        (owned
+          ? '<span style="flex:0 0 auto;font-size:11.5px;font-weight:900;color:#2e7d32;">' + t('storeOwned') + '</span>'
+          : '<button onclick="calmBuy(\'' + key + '\')" style="flex:0 0 auto;padding:9px 13px;border:none;border-radius:10px;' +
+            'background:var(--accent,#1976d2);color:#fff;font-size:12.5px;font-weight:900;cursor:pointer;white-space:nowrap;">' +
+            calmPrice(key) + '</button>') +
+      '</div></div>';
+  }
+
+  var order = [];
+  if (feature) { var k0 = calmProductFor(feature); if (k0) order.push(k0); }
+  ['mix','finder','alt','draft','sun'].forEach(function(k){ if (order.indexOf(k) < 0) order.push(k); });
+
+  var html =
+  '<div id="_store_ov" data-feature="' + (feature || '') + '" style="position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10000;display:flex;align-items:flex-end;justify-content:center;" onclick="if(event.target===this)this.remove()">' +
+  '<div style="background:#fff;color:#111;border-radius:20px 20px 0 0;width:100%;max-width:var(--app-w);max-height:calc(88vh / var(--ui-zoom));max-height:calc(88dvh / var(--ui-zoom));display:flex;flex-direction:column;" onclick="event.stopPropagation()">' +
+    '<div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:16px 16px 12px;border-bottom:1px solid #eee;">' +
+      '<div style="flex:1;min-width:0;">' +
+        '<div style="font-size:15px;font-weight:900;">' + t('storeTitle') + '</div>' +
+        '<div style="font-size:10.5px;color:#999;font-weight:700;margin-top:2px;">' +
+          (feature ? t('storeLocked').replace('{f}', calmFeatureLabel(feature)) : t('storeSub')) + '</div>' +
+      '</div>' +
+      langChipHTML() +
+      '<button onclick="document.getElementById(\'_store_ov\').remove()" style="flex:0 0 auto;width:30px;height:30px;border:none;border-radius:50%;background:#eee;color:#333;font-size:16px;font-weight:800;cursor:pointer;line-height:1;">✕</button>' +
+    '</div>' +
+    '<div style="flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 16px 16px;">' +
+      (prem ? '<div style="border:1px solid #c8e6c9;background:#f1f8e9;border-radius:12px;padding:14px;text-align:center;font-size:12.5px;font-weight:800;color:#2e7d32;">' +
+                t('storeAllOwned') + '</div>'
+            : card('premium', true) +
+              '<div style="font-size:10.5px;font-weight:800;color:#aaa;margin:14px 0 8px;">' + t('storeSingles') + '</div>' +
+              order.map(function(k){ return card(k, false); }).join('')) +
+      '<div style="font-size:10.5px;line-height:1.7;color:#999;font-weight:700;margin-top:14px;">' + t('storeNote') + '</div>' +
+    '</div>' +
+    '<div style="flex:0 0 auto;padding:10px 16px calc(14px + env(safe-area-inset-bottom, 0px));border-top:1px solid #eee;display:flex;gap:8px;">' +
+      '<button onclick="calmRestore()" style="flex:1;padding:12px;background:#fff;border:1px solid #ddd;border-radius:12px;font-size:12px;font-weight:800;cursor:pointer;">' + t('storeRestore') + '</button>' +
+      '<button onclick="document.getElementById(\'_store_ov\').remove()" style="flex:1;padding:12px;background:#eee;border:none;border-radius:12px;font-size:12.5px;font-weight:800;cursor:pointer;">' + t('dftClose') + '</button>' +
+    '</div>' +
+  '</div></div>';
+  document.body.insertAdjacentHTML('beforeend', html);
+}
+
+/* ── 購入と復元 ───────────────────────────────────────────────────
+ * 実際のやりとりは StoreKit 2 の自作プラグイン（CalmStore）に任せる。
+ * プラグインが無い環境（Web で開いたときや、まだ組み込む前）は、その旨を
+ * 出して何もしない。ここで localStorage を書いて開けてしまうと、Web 版で
+ * 誰でも開けられることになるため。
+ * ────────────────────────────────────────────────────────────── */
+function _calmStorePlugin() {
+  try {
+    var p = window.Capacitor && Capacitor.Plugins && Capacitor.Plugins.CalmStore;
+    return p || null;
+  } catch(e) { return null; }
+}
+function calmBuy(key) {
+  var p = _calmStorePlugin();
+  if (!p) { showToast(t('storeNoPlugin')); return; }
+  var pid = IAP_PRODUCTS[key] && IAP_PRODUCTS[key].id;
+  if (!pid) return;
+  p.purchase({ productId: pid }).then(function(res){
+    if (res && res.owned) { calmSetOwned(res.owned); showToast(t('storeThanks')); }
+    var ov = document.getElementById('_store_ov'); if (ov) ov.remove();
+  }).catch(function(e){
+    if (e && (e.message === 'cancelled' || e.code === 'cancelled')) return;   // 自分でやめたときは黙る
+    showToast(t('storeFailed'));
+  });
+}
+function calmRestore() {
+  var p = _calmStorePlugin();
+  if (!p) { showToast(t('storeNoPlugin')); return; }
+  p.restore().then(function(res){
+    var list = calmSetOwned(res && res.owned);
+    showToast(list.length ? t('storeRestored') : t('storeNothing'));
+    var ov = document.getElementById('_store_ov');
+    if (ov) { var f = ov.getAttribute('data-feature'); ov.remove(); if (!calmHas(f)) calmOpenStore(f || null); }
+  }).catch(function(){ showToast(t('storeFailed')); });
+}
+/** メニューから開くとき（引数なしで一覧） */
+function openStore() { calmOpenStore(null); }
+
+/** 起動時に StoreKit の持ち物と表示価格を取り込む */
+function calmStoreInit() {
+  var p = _calmStorePlugin(); if (!p) return;
+  try {
+    p.products({ productIds: Object.keys(IAP_PRODUCTS).map(function(k){ return IAP_PRODUCTS[k].id; }) })
+      .then(function(res){ if (res && res.prices) calmSetPrices(res.prices); }).catch(function(){});
+    p.restore().then(function(res){ if (res && res.owned) calmSetOwned(res.owned); }).catch(function(){});
+  } catch(e) {}
+}
+
 function openPrivacy() {
   var _ex = document.getElementById('_privacy_ov'); if (_ex) _ex.remove();   // 二度押しで重ねない
   var lang = (typeof LANG !== 'undefined' && PRIVACY_POLICY[LANG]) ? LANG : 'en';
@@ -20772,6 +21014,7 @@ var DRAWER_ITEMS = [
   { id:'sun',      icon:'☀️',  key:'sunTitle',     open:'openSunTool'   },
   { id:'mired',    icon:'🎨',  key:'mrdTitle',      open:'openMiredTool' },
   { id:'settings', icon:'⚙️',  key:'settingsTitle', open:'openSettings'  },
+  { id:'store',    icon:'🧩',  key:'storeTitle',    open:'openStore'     },
   { id:'feedback', icon:'📝',  lbl:'Feedback', page:'feedback' },
   { id:'privacy',  icon:'🔒',  key:'navPrivacy',    open:'openPrivacy'   }
 ];
@@ -20907,7 +21150,12 @@ function renderNavBar(){
     var it = _navItem(id);
     var act = it.page && S.page === it.page ? ' active' : '';
     var fn  = it.page ? ("showPage('" + it.page + "')") : (it.open + '()');
-    return '<button class="page-nav-btn' + act + '" id="nav-' + it.id + '" onclick="' + fn + '">' +
+    // 買っていないものは並びから外さず、錠を付けて出す。何があるか見えないと
+    // 買ってもらえないため。押すと買う画面が出る（関門は各入口で見ている）。
+    var lock = calmHas(it.id) ? '' :
+      '<span style="position:absolute;top:2px;right:6px;font-size:9px;line-height:1;">🔒</span>';
+    return '<button class="page-nav-btn' + act + '" id="nav-' + it.id + '" onclick="' + fn + '"' +
+      (lock ? ' style="position:relative;opacity:.65;"' : '') + '>' + lock +
       '<span class="page-nav-icon">' + it.icon + '</span>' +
       '<span class="page-nav-lbl" id="nav-lbl-' + it.id + '">' + it.lbl + '</span></button>';
   }).join('');
@@ -21017,6 +21265,8 @@ window._navReset = function(){
 };
 
 function showPage(p) {
+  // 買っていない画面は開かず、買う画面を出す（feedback と設定は常に開く）
+  if (p && ['mix','finder','alt','draft'].indexOf(p) >= 0 && !calmGate(p)) return;
   var PAGES = ['calc','camera','mix','finder','alt','feedback','draft'];
   PAGES.forEach(function(pg) {
     var div = document.getElementById('page-' + pg);
@@ -24507,7 +24757,6 @@ function toggleDmxPanel() {
   if (arrow) arrow.style.transform = open ? '' : 'rotate(180deg)';
 }
 function stepMulti(id,dir,mn,mx,step){var inp=document.getElementById(id);if(!inp)return;inp.value=Math.min(mx,Math.max(mn,(parseFloat(inp.value)||0)+dir*step));inp.dispatchEvent(new Event('input'));}
-function tryUnlockPro(){showToast('Pro features coming soon');}
 function onCCTFinderChange(){try{renderFinderResults();}catch(e){}}
 // BEAKER_LIGHTS / BEAKER_ACC / BEAKER_DEFAULT_ACC はアクセサリ節（上方）で定義済み。
 // ここに同名の var が重複しており、後勝ちで上書きしていたため削除した。
@@ -33463,26 +33712,6 @@ document.addEventListener('DOMContentLoaded', _applyVersionLabels);
 <div class="app">
 <div id="alt-subtitle-bar" style="padding:6px 0 10px;border-bottom:1px solid var(--bg);margin-bottom:8px;"><div id="page-title-alt" style="font-size:15px;font-weight:800;color:var(--text);line-height:1.2;"></div><div id="page-sub-alt" style="font-size:11px;color:var(--text-dim);font-weight:600;margin-top:1px;"></div></div>
 
-  <div id="alt-pro-gate" style="display:none;">
-    <div class="card">
-      <div class="card-body" style="text-align:center;padding:36px 20px;">
-        <div style="font-size:52px;margin-bottom:12px;">🔒</div>
-        <div style="font-size:18px;font-weight:800;color:#555;margin-bottom:8px;">Alt Finder PRO</div>
-        <div style="font-size:13px;color:#888;margin-bottom:24px;line-height:1.6;">
-          Find the best alternative to any fixture<br>with Equivalent Factor &amp; Match Score.
-        </div>
-        <div style="display:flex;gap:8px;margin-bottom:12px;">
-          <input id="pro-code-input" type="text" placeholder="Enter PRO code"
-            style="flex:1;padding:10px;border-radius:8px;border:1.5px solid var(--accent);
-                   font-size:14px;font-weight:600;text-align:center;background:var(--white);color:var(--text);">
-        </div>
-        <button onclick="tryUnlockPro()"
-          style="width:100%;padding:12px;background:var(--accent);color:white;border:none;
-                 border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;">
-          🔓 Unlock PRO
-        </button>
-        <div id="pro-unlock-msg" style="margin-top:10px;font-size:12px;color:#888;min-height:16px;"></div>
-      </div>
     </div>
   </div>
 
