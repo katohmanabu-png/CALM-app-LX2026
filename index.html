@@ -13018,8 +13018,9 @@ var LIGHTS = {
     ms60r: {
       group:'LED', name:'KNOWLED MS60R', desc:'60W RGB Mini LED', emoji:'💡', watts:60,
       weight:'0.311 kg', size:'77×77×91 mm',
-      ccts:[5600], cctMin:1800, cctMax:10000,
-      accessories:['none','szl2_flood','szl2_spot','dl5c_zc','dl5c_ze','dl5e_zc','dl5e_ze'],
+      ccts:[3200,5600], cctMin:1800, cctMax:10000,
+      accessories:['none','szl2_flood','szl2_spot','dl5c_zc','dl5c_ze','dl5e_zc','dl5e_ze',
+                   'sp50k','sp36k'],
       // 素の角度は公表されていない。DL5 を伸ばして Zoom を縮めた状態だけ
       // Godox が 5° と公表している
       accUnknown:['none','szl2_flood','szl2_spot','dl5c_zc','dl5c_ze','dl5e_ze'],
@@ -13042,10 +13043,25 @@ var LIGHTS = {
       //
       // 色温度は 5600K の1点のみ（測定がその条件だけ）。ほかの色温度は
       // 5600K の代用になる。距離も 3m のみで、範囲の外は逆二乗で伸ばす。
+      // プロジェクター・マウント（SP50K / SP36K）は別の回の測定から。
+      // こちらは 1m と 3m、3200K と 5600K の両方がある。
+      //   50°  @1m 3200K 1,740 / 5600K 1,690   @3m 250 / 236
+      //   36°  @1m 3200K 2,860 / 5600K 2,610   @3m 395 / 356
+      // どちらのレンズも 3200K のほうが 5600K より明るい。距離もレンズも
+      // またいで一貫しているので、この組み合わせの性質とみられる。
+      //
+      // ほかの付属品は 5600K / 3m の測定しかないので、3200K ではその値が
+      // 代用になる。
       refData:{
+        3200:{
+          1:{sp50k:1740, sp36k:2860},
+          3:{sp50k:250,  sp36k:395}
+        },
         5600:{
+          1:{sp50k:1690, sp36k:2610},
           3:{none:180, szl2_flood:390, szl2_spot:1260,
-             dl5c_zc:1330, dl5c_ze:1610, dl5e_zc:6090, dl5e_ze:1730}
+             dl5c_zc:1330, dl5c_ze:1610, dl5e_zc:6090, dl5e_ze:1730,
+             sp50k:236, sp36k:356}
         }
       }
     },
@@ -15735,6 +15751,9 @@ var ACC_INFO = {
   dl5c_ze:    { label:'DL5 comp. + Zoom ext.',       beam:'DL5+Zoom', emoji:'🔦' },
   dl5e_zc:    { label:'DL5 ext. + Zoom comp. (5°)',  beam:'5° Beam',  emoji:'🎯', angle:5 },
   dl5e_ze:    { label:'DL5 + Zoom (both extended)',  beam:'DL5+Zoom', emoji:'🔦' },
+  // MS60R 用のプロジェクター・マウント。EF レンズを使う投影用アタッチメント。
+  sp50k:      { label:'SP50K Projector (50°)', beam:'Projector 50°', emoji:'🔬', angle:50 },
+  sp36k:      { label:'SP36K Projector (36°)', beam:'Projector 36°', emoji:'🔬', angle:36 },
   // Nanlux Evoke のレンズとリフレクター。ズームレンズは公式の配光表が
   // 端の2点（例 FL-22E は 15°と50°）だけを出しているので、その2点を
   // 別のアクセサリーとして持つ。BE55 / FE30 のパラレルビームと
