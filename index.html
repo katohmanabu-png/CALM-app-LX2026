@@ -10206,6 +10206,31 @@ var LIGHTS = {
       dmxUrl:'https://cdn-aliyun.nanlite.com/release/1713318978534-782112-1124121241519342-PavoSlim_60C_60CL_120C_240C_DMX_REFERENCE_GUIDE_EN.pdf',
       refData:{ 5600:{1:{none:7074},2:{none:1768},3:{none:786},5:{none:283},8:{none:111}}, 3200:{1:{none:6367},2:{none:1591},3:{none:707},5:{none:255},8:{none:100}} }
     },
+    pavotube_ii_6xr: {
+      group:'LED', name:'PavoTube II 6XR', desc:'16W RGBWW 10\" Pixel Tube', emoji:'💡', watts:16,
+      weight:'0.27 kg', size:'39×250 mm',
+      ccts:[2700,3200,5600], cctMin:2700, cctMax:12000,
+      accessories:['none'],
+      accUnknown:['none'],   // Nanlite はビーム角を公表していない
+      dmx:{led:'RGBWW',power:'16W',cct:'2700K–12000K + G/M ±150 / RGB',cri:'96',tlci:'97',
+        control:'On-board / Bluetooth（Nanlink）/ CRMX / DMX・RDM（別売アダプター）',dimming:'0%–100%',
+        effects:[]},
+      // 8ピクセル。内蔵バッテリー 3200mAh で全光量 53 分。
+      //
+      // 配光はメーカー公表と実測を合わせた。
+      //   公表   @1m 2700K 128 / 5600K 139 lux、@2m 2700K 33 lux
+      //   実測   @1m 3200K 125 / 5600K 130 lux
+      // 5600K の 1m で比が 0.935。3200K の実測 125 も、公表の 2700K（128）と
+      // 5600K（139）のあいだに収まるので噛み合っている。
+      //
+      // 3200K と 5600K は実測をそのまま、2700K は公表に倍率をかけた。
+      // 2m は公表が 2700K のみなので、その色温度だけ入れてある。
+      refData:{
+        2700:{1:{none:120}, 2:{none:31}},
+        3200:{1:{none:125}},
+        5600:{1:{none:130}}
+      }
+    },
     pavoslim_60cl: {
       group:'LED', weight:'0.98 kg', name:'PavoSlim 60CL', desc:'72W RGBWW Slim Panel', emoji:'💡', watts:72, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       ccts:[3200,5600], accessories:['none','ps_diff_full'],
