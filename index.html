@@ -11557,16 +11557,21 @@ var LIGHTS = {
       url:'https://www.arri.com/en/lighting/led-spotlights/discontinued/s60-c',
       name:'SkyPanel S-60-C', group:'LED', desc:'410W RGBWW Soft Light', emoji:'⚫', watts:410, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'15.5 kg', size:'899×499×150 mm',
-      ccts:[2800,3200,4300,5600,6500,10000],
-      accessories:['none'], accAngles:{none:105},  // ARRI 公表 105° Half Peak Angle（SkyPanel Classic のテクニカルデータ）
+      ccts:[3200, 5600],
+      accessories:['arri_std','arri_lite','arri_hvy','arri_int'],
+      accAngles:{arri_std:105, arri_lite:105, arri_hvy:105},   // ARRI 公表 105°（Half Peak Angle、拡散板込みの機体値）
+      accUnknown:['arri_int'],   // Intensifier は角度が絞られるが値は公表されていない
       dmx:{led:'RGBW',power:'410W',cct:'2800K–10000K + Full RGBWW',cri:'>95',tlci:'>96',ip:'IP20',
         control:'On-board / ARRI Stellar / DMX / RDM / Art-Net / sACN',dimming:'0%–100%',
         effects:['Flash','Pulse','Fire','Lightning','TV','Paparazzi','Cop Car','Strobe','Party']},
       dmxUrl:'https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf',
       dmxVer:'v4.4',
+      // ARRI 公式の配光表（3 / 5 / 7 / 9m、3200K と 5600K、拡散板4種）。
+      // 元は 3m 5600K が 9,800 lx で、公式の 1,535 lx の 6.4倍だった。
+      // 拡散板の区別も無く1種類しか無かった。
       refData:{
-        2800:{3:{none:8200},5:{none:3100},10:{none:780}},
-        5600:{3:{none:9800},5:{none:3700},10:{none:930}},
+        3200:{3:{'arri_std':1305, 'arri_lite':1328, 'arri_hvy':1031, 'arri_int':2011}, 5:{'arri_std':470, 'arri_lite':478, 'arri_hvy':371, 'arri_int':724}, 7:{'arri_std':240, 'arri_lite':244, 'arri_hvy':189, 'arri_int':369}, 9:{'arri_std':145, 'arri_lite':148, 'arri_hvy':115, 'arri_int':223}},
+        5600:{3:{'arri_std':1535, 'arri_lite':1561, 'arri_hvy':1213, 'arri_int':2431}, 5:{'arri_std':553, 'arri_lite':562, 'arri_hvy':437, 'arri_int':875}, 7:{'arri_std':282, 'arri_lite':287, 'arri_hvy':223, 'arri_int':447}, 9:{'arri_std':171, 'arri_lite':173, 'arri_hvy':135, 'arri_int':270}}
       }
     },
     skypanel_s30c: {
@@ -11574,31 +11579,22 @@ var LIGHTS = {
       name:'SkyPanel S-30-C', group:'LED', desc:'200W RGBWW Compact Soft Light', emoji:'⚫', watts:200, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'7.5 kg', size:'563×313×130 mm',
       ccts:[3200, 5600],
-      accessories:['none','arri_std','arri_int'],
-      accUnknown:['none','arri_std','arri_int'],   // ARRI は拡散板ごとの角度を公表していない accAngles:{none:105},  // ARRI 公表 105° Half Peak Angle（SkyPanel Classic のテクニカルデータ）
+      accessories:['none','arri_std','arri_lite','arri_hvy','arri_int'],
+      accAngles:{arri_std:105, arri_lite:105, arri_hvy:105},   // ARRI 公表 105°（Half Peak Angle、拡散板込みの機体値）
+      accUnknown:['none','arri_int'],   // 拡散なしと Intensifier は角度が公表されていない
       dmx:{led:'RGBW',power:'200W',cct:'2800K–10000K + Full RGBWW',cri:'>95',tlci:'>96',ip:'IP20',
         control:'On-board / DMX / RDM / Art-Net / sACN',dimming:'0%–100%',
         effects:['Flash','Pulse','Fire','TV','Cop Car','Strobe']},
       dmxUrl:'https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf',
       dmxVer:'v4.4',
-      // 露出計で測られた値に総入れ替えした。@3m で
-      //   標準拡散  3200K 661 / 5600K 709
-      //   拡散なし  5600K 742
-      //   Intensifier 5600K 1,050
-      // Intensifier が標準拡散の +48% で、ARRI が公表している増分（約 +50%）と
-      // 一致する。読み取りの裏づけになっている。
-      //
-      // 元は 3m 5600K が 4,900 lx で、実測の約7倍だった。S-360-C（1550W）が
-      // 3m で 6,444 lx なので、200W のこの機種が 4,900 lx は出力比で見て
-      // 成り立たない（比例させると 830 lx 程度）。実測とも桁が合う。
-      //
-      // 5m は 3m の実測から逆二乗で伸ばした。色温度は実測に合わせて
-      // 3200K と 5600K にした（元は 2800K と 5600K）。
+      // 標準拡散・拡散なし・Intensifier は露出計で測られた値（3m）。
+      // Lite と Heavy は測られていないので、ARRI 公式の拡散板どうしの関係を
+      // 使って標準拡散から出した（Lite +3%、Heavy -19%）。この関係は
+      // S60-C / S120-C / S360-C の3機種でほぼ同じで、Intensifier の +48% は
+      // 実測の比とも一致している。5m は 3m から逆二乗で伸ばした。
       refData:{
-        3200:{3:{'none':692, 'arri_std':661, 'arri_int':979},
-              5:{'none':249, 'arri_std':238, 'arri_int':352}},
-        5600:{3:{'none':742, 'arri_std':709, 'arri_int':1050},
-              5:{'none':267, 'arri_std':255, 'arri_int':378}}
+        3200:{3:{'none':692, 'arri_std':661, 'arri_lite':681, 'arri_hvy':535, 'arri_int':979}, 5:{'none':249, 'arri_std':238, 'arri_lite':245, 'arri_hvy':193, 'arri_int':352}},
+        5600:{3:{'none':742, 'arri_std':709, 'arri_lite':730, 'arri_hvy':574, 'arri_int':1050}, 5:{'none':267, 'arri_std':255, 'arri_lite':263, 'arri_hvy':207, 'arri_int':378}}
       }
     },
     orbiter: {
@@ -11621,27 +11617,42 @@ var LIGHTS = {
       url:'https://www.arri.com/en/lighting/led-panel-lights/skypanel-classic/s120-c',
       group:'LED', name:'SkyPanel S-120-C', desc:'420W RGBWW Large Soft Light', emoji:'⚫', watts:420, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'14 kg', size:'1394×473 mm',
-      ccts:[2800, 3200, 5600, 10000], accessories:['none'], accAngles:{none:105},  // ARRI 公表 105° Half Peak Angle（SkyPanel Classic のテクニカルデータ）
+      ccts:[3200, 5600],
+      accessories:['arri_std','arri_lite','arri_hvy','arri_int'],
+      accAngles:{arri_std:105, arri_lite:105, arri_hvy:105},   // ARRI 公表 105°（Half Peak Angle、拡散板込みの機体値）
+      accUnknown:['arri_int'],   // Intensifier は角度が絞られるが値は公表されていない
       dmx:{led:'RGBW',power:'420W',cct:'2800K–10000K + RGBWW',cri:'>95',ip:'IP20',
         control:'On-board / ARRI Stellar / DMX / CRMX',dimming:'0%–100%',effects:['Flash', 'Pulse', 'Fire', 'TV', 'Cop Car']},
       dmxUrl:'https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf',
       dmxVer:'v4.4',
+      // ARRI 公式の配光表（3 / 5 / 7 / 9m、3200K と 5600K、拡散板4種）。
+      // 元は 3m 5600K が 37,210 lx で、公式の 1,556 lx の 24倍だった。
+      // この機種は 3200K のほうが 5600K より明るい（公式でも 1,678 対 1,556）。
+      // 誤りではなく、面積の広い機種で低色温度側が強い作りになっているため。
       refData:{
-        5600:{2:{'none':75690}, 3:{'none':37210}, 5:{'none':17640}, 8:{'none':7840}, 10:{'none':4000}}
+        3200:{3:{'arri_std':1678, 'arri_lite':1767, 'arri_hvy':1372, 'arri_int':2631}, 5:{'arri_std':604, 'arri_lite':636, 'arri_hvy':494, 'arri_int':947}, 7:{'arri_std':308, 'arri_lite':325, 'arri_hvy':252, 'arri_int':483}, 9:{'arri_std':186, 'arri_lite':196, 'arri_hvy':152, 'arri_int':292}},
+        5600:{3:{'arri_std':1556, 'arri_lite':1628, 'arri_hvy':1272, 'arri_int':2425}, 5:{'arri_std':560, 'arri_lite':586, 'arri_hvy':458, 'arri_int':873}, 7:{'arri_std':286, 'arri_lite':299, 'arri_hvy':234, 'arri_int':445}, 9:{'arri_std':173, 'arri_lite':181, 'arri_hvy':141, 'arri_int':269}}
       }
     },
     skypanel_s360c: {
       url:'https://www.arri.com/en/lighting/led-panel-lights/skypanel-classic/s360-c',
       group:'LED', name:'SkyPanel S-360-C', desc:'1550W RGBWW Extra Large Soft Light', emoji:'⚫', watts:1550, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'43 kg', size:'1481×1122 mm',
-      ccts:[2800, 3200, 5600, 10000], accessories:['none'], accAngles:{none:105},  // ARRI 公表 105° Half Peak Angle（SkyPanel Classic のテクニカルデータ）
+      ccts:[3200, 5600],
+      accessories:['arri_std','arri_lite','arri_hvy','arri_int'],
+      accAngles:{arri_std:105, arri_lite:105, arri_hvy:105},   // ARRI 公表 105°（Half Peak Angle、拡散板込みの機体値）
+      accUnknown:['arri_int'],   // Intensifier は角度が絞られるが値は公表されていない
       dmx:{led:'RGBW',power:'1550W',cct:'2800K–10000K + RGBWW',cri:'>95',ip:'IP20',
         control:'On-board / ARRI Stellar / DMX / CRMX',dimming:'0%–100%',effects:['Flash', 'Pulse', 'Fire', 'TV', 'Cop Car']},
       dmxUrl:'https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf',
       dmxVer:'v4.4',
+      // ARRI 公式の配光表（3 / 5 / 7 / 9 / 12m、3200K と 5600K、拡散板4種）。
+      // 元は 3m 3200K 4,556 / 5600K 4,833 だったが、この 4,833 と 5m の 1,740 は
+      // 公式の Heavy Diffusion 3200K の列と完全に一致する。行と列を取り違えて
+      // 取り込まれ、標準拡散のつもりで Heavy の 3200K が入っていた。
       refData:{
-        3200:{1:{'none':41000}, 2:{'none':10250}, 3:{'none':4556}, 5:{'none':1640}, 8:{'none':641}, 10:{'none':410}},
-        5600:{1:{'none':43497}, 2:{'none':10874}, 3:{'none':4833}, 5:{'none':1740}, 8:{'none':680}, 10:{'none':435}}
+        3200:{3:{'arri_std':5878, 'arri_lite':6022, 'arri_hvy':4833, 'arri_int':8700}, 5:{'arri_std':2116, 'arri_lite':2168, 'arri_hvy':1740, 'arri_int':3132}, 7:{'arri_std':1080, 'arri_lite':1106, 'arri_hvy':888, 'arri_int':1598}, 9:{'arri_std':653, 'arri_lite':669, 'arri_hvy':537, 'arri_int':967}, 12:{'arri_std':367, 'arri_lite':376, 'arri_hvy':302, 'arri_int':544}},
+        5600:{3:{'arri_std':6444, 'arri_lite':6600, 'arri_hvy':5311, 'arri_int':9544}, 5:{'arri_std':2320, 'arri_lite':2376, 'arri_hvy':1912, 'arri_int':3436}, 7:{'arri_std':1184, 'arri_lite':1212, 'arri_hvy':975, 'arri_int':1753}, 9:{'arri_std':716, 'arri_lite':733, 'arri_hvy':590, 'arri_int':1060}, 12:{'arri_std':403, 'arri_lite':412, 'arri_hvy':332, 'arri_int':596}}
       }
     },
     skypanel_x: {
@@ -15650,7 +15661,9 @@ var ACC_INFO = {
   // Godox F400R に付属するソフトボックス。角度は公表されていない
   gdx_sbg:  { label:'Softbox + Grid',      beam:'Softbox + Grid', emoji:'🔲' },
   // SkyPanel の交換式拡散板。角度は ARRI が公表していない
-  arri_std: { label:'Standard Diffusion', beam:'Standard Diff', emoji:'⬜' },
+  arri_std: { label:'Standard Diffusion', beam:'Standard Diff', emoji:'⬜', angle:105 },
+  arri_lite:{ label:'Lite Diffusion',     beam:'Lite Diff',     emoji:'⬜', angle:105 },
+  arri_hvy: { label:'Heavy Diffusion',    beam:'Heavy Diff',    emoji:'⬛', angle:105 },
   arri_int: { label:'Intensifier',        beam:'Intensifier',   emoji:'🔺' },
   // LiteMat の付属ディフューザー。角度は公表されていない。
   lm_d14:   { label:'1/4 Diffuser',        beam:'1/4 Diff',   emoji:'⬜' },
