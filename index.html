@@ -10020,6 +10020,78 @@ var LIGHTS = {
         3200:{1:{native13:51800}, 2:{native13:16700}, 3:{native13:7650}, 4:{native13:4390}},
         5600:{1:{native13:55100}, 2:{native13:18200}, 3:{native13:8360}, 4:{native13:4720}}
       }
+    },
+    vortex2s: {
+      url:'https://creamsource.com/product/vortex2/',
+      group:'LED', name:'Vortex2S', desc:'160W RRGBBW LED Soft Panel', emoji:'🌸', watts:160,
+      weight:'5.5 kg', size:'390×207.6×183.6 mm',
+      ccts:[3200, 5600], cctMin:2200, cctMax:15000,
+      accessories:['cs_of','cs_xwide','cs_int'],
+      accUnknown:['cs_xwide','cs_int'],
+      dmx:{led:'RRGBBW',power:'160W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
+        control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON',dimming:'0%–100%',effects:[]},
+      dmxUrl:'https://creamsource.com/wp-content/downloads/dmx-tables/VortexSeries-DMX-Tables-1.2.1.pdf',
+      dmxVer:'v1.2.1',
+      // V2S_0721_cutsheet の配光表。素の 110° は half peak。
+      // Intensifier / Diffuser / Dome / XWIDE は角度が公表されていない。
+      refData:{
+        3200:{1:{cs_of:5850, cs_xwide:4110, cs_int:5970}, 2:{cs_of:1520, cs_xwide:1050, cs_int:1560}, 3:{cs_of:700, cs_xwide:477, cs_int:714}, 4:{cs_of:399, cs_xwide:271, cs_int:407}, 5:{cs_of:258, cs_xwide:175, cs_int:263}, 6:{cs_of:184, cs_xwide:125, cs_int:188}},
+        5600:{1:{cs_of:5520, cs_xwide:3930, cs_int:5700}, 2:{cs_of:1440, cs_xwide:1000, cs_int:1480}, 3:{cs_of:662, cs_xwide:457, cs_int:680}, 4:{cs_of:380, cs_xwide:258, cs_int:390}, 5:{cs_of:244, cs_xwide:167, cs_int:251}, 6:{cs_of:177, cs_xwide:119, cs_int:180}}
+      }
+    },
+    vortex4s: {
+      url:'https://creamsource.com/product/vortex4/',
+      group:'LED', name:'Vortex4S', desc:'325W RRGBBW LED Soft Panel', emoji:'🌸', watts:325,
+      weight:'8.9 kg', size:'380×380×121 mm',
+      ccts:[3200, 5600], cctMin:2200, cctMax:15000,
+      accessories:['cs_of','cs_int','cs_diff','cs_dome'],
+      accUnknown:['cs_int','cs_diff','cs_dome'],
+      dmx:{led:'RRGBBW',power:'325W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
+        control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON',dimming:'0%–100%',effects:[]},
+      dmxUrl:'https://creamsource.com/wp-content/downloads/dmx-tables/VortexSeries-DMX-Tables-1.2.1.pdf',
+      dmxVer:'v1.2.1',
+      // CS-vortex4s-cutsheet-02022024 の配光表。素の 110° は half peak。
+      // Intensifier / Diffuser / Dome / XWIDE は角度が公表されていない。
+      refData:{
+        3200:{1:{cs_of:9960, cs_int:10100, cs_diff:7800, cs_dome:6800}, 2:{cs_of:2630, cs_int:2705, cs_diff:2040, cs_dome:1765}, 3:{cs_of:1210, cs_int:1250, cs_diff:940, cs_dome:815}, 4:{cs_of:720, cs_int:730, cs_diff:550, cs_dome:475}, 5:{cs_of:460, cs_int:480, cs_diff:365, cs_dome:315}, 6:{cs_of:330, cs_int:345, cs_diff:260, cs_dome:225}, 10:{cs_of:140, cs_int:140, cs_diff:110, cs_dome:90}},
+        5600:{1:{cs_of:9770, cs_int:9900, cs_diff:7700, cs_dome:6700}, 2:{cs_of:2560, cs_int:2635, cs_diff:1990, cs_dome:1720}, 3:{cs_of:1180, cs_int:1220, cs_diff:915, cs_dome:795}, 4:{cs_of:700, cs_int:710, cs_diff:535, cs_dome:465}, 5:{cs_of:450, cs_int:470, cs_diff:355, cs_dome:305}, 6:{cs_of:320, cs_int:335, cs_diff:255, cs_dome:220}, 10:{cs_of:140, cs_int:135, cs_diff:105, cs_dome:90}}
+      }
+    },
+    vortex8s: {
+      url:'https://creamsource.com/product/vortex8/',
+      group:'LED', name:'Vortex8S', desc:'650W RRGBBW LED Soft Panel', emoji:'🌸', watts:650,
+      weight:'14 kg', size:'690×380×121 mm',
+      ccts:[3200, 5600], cctMin:2200, cctMax:15000,
+      accessories:['cs_of','cs_int','cs_diff','cs_dome'],
+      accUnknown:['cs_int','cs_diff','cs_dome'],
+      dmx:{led:'RRGBBW',power:'650W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
+        control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON',dimming:'0%–100%',effects:[]},
+      dmxUrl:'https://creamsource.com/wp-content/downloads/dmx-tables/VortexSeries-DMX-Tables-1.2.1.pdf',
+      dmxVer:'v1.2.1',
+      // CS-vortex8s-cutsheet-02022024 の配光表。素の 110° は half peak。
+      // Intensifier / Diffuser / Dome / XWIDE は角度が公表されていない。
+      refData:{
+        3200:{1:{cs_of:19500, cs_int:20200, cs_diff:15600, cs_dome:13600}, 2:{cs_of:5140, cs_int:5410, cs_diff:4080, cs_dome:3530}, 3:{cs_of:2400, cs_int:2500, cs_diff:1880, cs_dome:1630}, 4:{cs_of:1410, cs_int:1460, cs_diff:1100, cs_dome:950}, 5:{cs_of:920, cs_int:960, cs_diff:730, cs_dome:630}, 6:{cs_of:670, cs_int:690, cs_diff:520, cs_dome:450}, 10:{cs_of:280, cs_int:280, cs_diff:220, cs_dome:180}},
+        5600:{1:{cs_of:19100, cs_int:19800, cs_diff:15400, cs_dome:13400}, 2:{cs_of:5010, cs_int:5270, cs_diff:3980, cs_dome:3440}, 3:{cs_of:2340, cs_int:2440, cs_diff:1830, cs_dome:1590}, 4:{cs_of:1370, cs_int:1420, cs_diff:1070, cs_dome:930}, 5:{cs_of:900, cs_int:940, cs_diff:710, cs_dome:610}, 6:{cs_of:650, cs_int:670, cs_diff:510, cs_dome:440}, 10:{cs_of:270, cs_int:270, cs_diff:210, cs_dome:180}}
+      }
+    },
+    vortex24s: {
+      url:'https://creamsource.com/product/vortex24/',
+      group:'LED', name:'Vortex24S', desc:'1950W RRGBBW LED Soft Panel', emoji:'🌸', watts:1950,
+      weight:'42 kg', size:'971×686×258 mm',
+      ccts:[3200, 5600], cctMin:2200, cctMax:15000,
+      accessories:['cs_naked','cs_xwide'],
+      accUnknown:['cs_xwide'],
+      dmx:{led:'RRGBBW',power:'1950W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
+        control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON',dimming:'0%–100%',effects:[]},
+      dmxUrl:'https://creamsource.com/wp-content/downloads/dmx-tables/VortexSeries-DMX-Tables-1.2.1.pdf',
+      dmxVer:'v1.2.1',
+      // CS-vortex24s-cutsheet-06092025 の配光表。素の 110° は half peak。
+      // Intensifier / Diffuser / Dome / XWIDE は角度が公表されていない。
+      refData:{
+        3200:{1:{cs_naked:70395, cs_xwide:54912}, 2:{cs_naked:17599, cs_xwide:13728}, 3:{cs_naked:7822, cs_xwide:6101}, 4:{cs_naked:4400, cs_xwide:3432}, 5:{cs_naked:2816, cs_xwide:2196}, 6:{cs_naked:1955, cs_xwide:1525}},
+        5600:{1:{cs_naked:66659, cs_xwide:52386}, 2:{cs_naked:16665, cs_xwide:13097}, 3:{cs_naked:7407, cs_xwide:5821}, 4:{cs_naked:4166, cs_xwide:3274}, 5:{cs_naked:2666, cs_xwide:2095}, 6:{cs_naked:1852, cs_xwide:1455}}
+      }
     }
   },
   kelvin: {
@@ -14000,6 +14072,14 @@ var ACC_INFO = {
   native115:{ label:'Native 115° Beam',       beam:'115° Native', emoji:'🔆', angle:115 },
   optic50:  { label:'50° Intensifier Optics', beam:'Optics 50°',  emoji:'🔦', angle:50  },
   native13: { label:'Native 13° Beam',        beam:'13° Native',  emoji:'🔦', angle:13  },
+  // Creamsource Vortex S（Soft）シリーズ。素の状態は 110° half peak。
+  // Intensifier / Diffuser / Dome / XWIDE は角度が公表されていないので角度を入れない。
+  cs_of:    { label:'Open Face',   beam:'110° Native', emoji:'⭕', angle:110 },
+  cs_naked: { label:'Naked',       beam:'110° Native', emoji:'⭕', angle:110 },
+  cs_int:   { label:'Intensifier', beam:'Intensifier', emoji:'🔦' },
+  cs_diff:  { label:'Diffuser',    beam:'Diffuser',    emoji:'⬜' },
+  cs_dome:  { label:'Dome',        beam:'Dome',        emoji:'🔘' },
+  cs_xwide: { label:'XWIDE Lens',  beam:'XWIDE',       emoji:'🔆' },
   // Kelvin Epos 300。素の 93° と Bowens マウントのリフレクター2種。
   // D90 ディフューザーは Epos 300 での角度が公表されていないので角度を入れない。
   kv_bare:  { label:'Bare Light',              beam:'93° Native',    emoji:'⭕', angle:93 },
