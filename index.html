@@ -10142,24 +10142,34 @@ var LIGHTS = {
       url:'https://www.kelvinlight.com/product/epos_600_full_color_spectrum_rgbacl_led_studio_light/',
       group:'LED', name:'Epos 600', desc:'600W RGBACL LED COB Studio Light', emoji:'🔆', watts:600,
       weight:'7.7 kg', weightExtra:'Controller 5.2 kg', size:'348×198×155 mm',
-      ccts:[3200, 5600], cctMin:1700, cctMax:20000,
+      ccts:[2500, 3200, 4500, 5600, 6500, 8000, 10000], cctMin:1700, cctMax:20000,
       accessories:['kv6_bare','kv6_bare_hi','kv6_hpl','kv6_hpl_hi','kv6_r62','kv6_r62_hi','kv6_dome','kv6_dome_hi','kv6_d90','kv6_d90_hi'],
       accUnknown:['kv6_hpl','kv6_hpl_hi','kv6_dome','kv6_dome_hi','kv6_d90','kv6_d90_hi'],   // HPL・ドーム・D90 は角度が公表されていない
-      dmx:{led:'RGBACL',power:'600W (720W max)',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98 (Normal) / 98 (High Speed)',tlci:'99',ip:'IP65',
+      dmx:{led:'RGBACL',power:'600W (720W max)',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
         control:'On-board / DMX 5-pin XLR / CRMX / Art-Net / sACN / Bluetooth',dimming:'0.1%–100%',effects:[]},
-      // 製品ページの配光表。3m のみ、3200K と 5600K。
-      // 表には Max / Constant × High / Normal の4通りが載っている。ここは Max の
-      // 2つ（Normal と High Speed）を入れて、選べるようにした。
-      // Normal は色再現が本来の状態（TM-30 Rf95+）、High Speed は Rf が 93 に
-      // 下がる代わりに明るくなる。Constant（色を変えても明るさが動かないモード）の
-      // 値は入れていない。
+      // 付属品ごとに、その時点でいちばん確かな値を入れてある。出どころが2種類
+      // 混ざっているので、付属品どうしを比べるときは注意がいる。
+      //
+      //   HPL と 62°リフレクター … 露出計で測られた値。1m、色温度7点。
+      //     62° は Normal と High の両方が測られていて、比は 5600K で +10.5%。
+      //     メーカーの表の比（+12.3%）とよく合う。
+      //   素・ドーム・D90、および HPL の High … 測定が無いのでメーカーの表
+      //     （3m、3200K と 5600K）のまま。こちらは実測より1割ほど高めに出る。
+      //
+      // メーカーの表にある Constant（色を変えても明るさが動かないモード）は
+      // 入れていない。
       refData:{
-        3200:{3:{kv6_bare:2220, kv6_bare_hi:2550, kv6_hpl:1920, kv6_hpl_hi:2220,
-                 kv6_r62:7920, kv6_r62_hi:9100, kv6_dome:1000, kv6_dome_hi:1150,
-                 kv6_d90:1660, kv6_d90_hi:1900}},
-        5600:{3:{kv6_bare:2550, kv6_bare_hi:2820, kv6_hpl:2240, kv6_hpl_hi:2530,
-                 kv6_r62:9350, kv6_r62_hi:10500, kv6_dome:1160, kv6_dome_hi:1310,
-                 kv6_d90:1920, kv6_d90_hi:2150}}
+         2500:{1:{kv6_hpl:14600, kv6_r62:50700}},
+         3200:{1:{kv6_hpl:17300, kv6_r62:62200, kv6_r62_hi:71400},
+               3:{kv6_bare:2220, kv6_bare_hi:2550, kv6_hpl_hi:2220,
+                  kv6_dome:1000, kv6_dome_hi:1150, kv6_d90:1660, kv6_d90_hi:1900}},
+         4500:{1:{kv6_hpl:19000, kv6_r62:71900}},
+         5600:{1:{kv6_hpl:19400, kv6_r62:75100, kv6_r62_hi:83000},
+               3:{kv6_bare:2550, kv6_bare_hi:2820, kv6_hpl_hi:2530,
+                  kv6_dome:1160, kv6_dome_hi:1310, kv6_d90:1920, kv6_d90_hi:2150}},
+         6500:{1:{kv6_hpl:19800, kv6_r62:77300}},
+         8000:{1:{kv6_hpl:19800, kv6_r62:78900}},
+        10000:{1:{kv6_hpl:17900, kv6_r62:75000}}
       }
     },
     play_hero: {
