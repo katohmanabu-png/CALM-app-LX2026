@@ -11318,10 +11318,39 @@ var LIGHTS = {
     },
     pluto_fresnel: {
       group:'LED', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'4.6 kg', name:'PlutoFresnel', desc:'Wireless Zoom Fresnel', emoji:'🟣', watts:80,
-      ccts:[2700, 5600, 6500], accessories:["zoom_min", "zoom_mid", "zoom_max"],
+      ccts:[2700,3200,5600,6500], accessories:['none','zoom_max','zoom_mid','zoom_min'],
+      accUnknown:['none'],   // フレネル無しの角度は公表されていない
       dmxUrl:'https://astera-led.com/wp-content/uploads/AF250_LeoFresnel_DMX-Profiles_V1.pdf',
       dmxVer:'v1',
-      refData:{zoom_max:{5600:{1:2872,2:718,3:319,5:114,8:44}},zoom_mid:{5600:{1:10028,2:2507,3:1114,5:401,8:156}},zoom_min:{5600:{1:38167,2:9541,3:4240,5:1526,8:596}}}
+      // 露出計で測られた値（ISO 800 / 1/50 / 25fps）を反映した。
+      //   フレネル無し   @1m 3200K 1,430 / 5600K 1,870   @3m 189 / 259   ← 新規
+      //   フレネル最広   @1m 3200K 1,830 / 5600K 2,407   @3m 221 / 305
+      //
+      // 映像の「Fresnel (Flood)」を最広（zoom_max）に当てた。フレネルを
+      // 付けない状態は今回はじめて入れた。3200K も加わった。
+      //
+      // 距離で比が違ったので分けた（1m ×0.838、3m ×0.956）。実測が無い
+      // 2m / 5m / 8m はいちばん近い距離の比を使った。
+      //
+      // 中間と最狭（zoom_mid / zoom_min）は映像に無いので最広の倍率を借りた。
+      // 元の系列はどれも 1m の1点から逆二乗で計算したものだった（比が 4.00 /
+      // 2.25 とぴったり）。
+      refData:{
+        none:{   // 実測。フレネルを付けない状態
+          3200:{1:1430, 3:189},
+          5600:{1:1870, 3:259}
+        },
+        zoom_max:{   // 実測の升はそのまま。ほかは 1m ×0.838 / 3m ×0.956
+          3200:{1:1830, 3:221},
+          5600:{1:2407, 2:602, 3:305, 5:109, 8:42}
+        },
+        zoom_mid:{   // 実測なし。zoom_max の倍率を借りた
+          5600:{1:8400, 2:2100, 3:1070, 5:383, 8:149}
+        },
+        zoom_min:{   // 実測なし。zoom_max の倍率を借りた
+          5600:{1:32000, 2:8000, 3:4050, 5:1460, 8:570}
+        }
+      }
     },
     leo_fresnel: {
       group:'LED', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'13.8 kg', name:'LeoFresnel', desc:'Wireless Zoom Fresnel', emoji:'🟣', watts:250,
@@ -12425,12 +12454,35 @@ var LIGHTS = {
     litemat_spec_4: {
       url:'https://www.litegear.com/products/litemat-spectrum/',
       group:'LED', weight:'3.4 kg', name:'LiteMat Spectrum 4', desc:'200W RGBWW Soft Mat (LiteGear)', emoji:'💡', watts:200, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
-      ccts:[3200,5600], accessories:['none'], accAngles:{none:53},  // LiteGear Gen 2 データシート公表 53° HPA（Half Peak Angle）。以前ここに 100° を入れていたのは旧データシートの BEAM SPREAD（照射サイズ）から導出した値で誤り。あの表は半値ではなく照射範囲なので約2倍になっていた
+      ccts:[3200,5600], accessories:['none','lm_d14','lm_d12','lm_dfull'], accAngles:{none:53},  // LiteGear Gen 2 データシート公表 53° HPA（Half Peak Angle）。以前ここに 100° を入れていたのは旧データシートの BEAM SPREAD（照射サイズ）から導出した値で誤り。あの表は半値ではなく照射範囲なので約2倍になっていた
+      accUnknown:['none','lm_d14','lm_d12','lm_dfull'],
       dmx:{led:'RGBWW',power:'200W',cct:'2000K–11000K + Full RGB',cri:'≥95',ip:'IP20',control:'DMX / CRMX (LiteDimmer Spectrum)',dimming:'0%–100%',effects:['Flash','Pulse','Fire','TV']},
       dmxUrl:'https://www.litegear.com/wp-content/uploads/2022/04/LiteDimmer-Spectrum-User-Guide.pdf',
+      // 露出計で測られた値（3m）を反映した。ディフューザー3種は今回はじめて入れた。
+      //   3m   素 452 / 1/4 369 / 1/2 346 / Full 238   （5600K）
+      //        素 390 / 1/4 328 / 1/2 308 / Full 213   （3200K）
+      //
+      // 素は色温度で比が違ったので分けた（3200K ×0.878、5600K ×0.919）。
+      //
+      // 元の系列は 1m の1点から逆二乗で計算したものだった（比が 4.00 / 2.25 /
+      // 2.77 / 2.56 とぴったり）。実測は 3m しかないので系列の形はそのまま残し、
+      // 水準だけ合わせてある。面光源なので近距離は実際にはもっと緩やかに落ちる
+      // はずで、1m の値は高めに出ている可能性がある。
       refData:{
-        5600:{1:{none:4432},2:{none:1108},3:{none:492},5:{none:177},8:{none:69}},
-        3200:{1:{none:4000},2:{none:1000},3:{none:444},5:{none:160},8:{none:62}},
+        3200:{
+          1:{none:3510},
+          2:{none:878},
+          3:{none:390, lm_d14:328, lm_d12:308, lm_dfull:213},
+          5:{none:141},
+          8:{none:54}
+        },
+        5600:{
+          1:{none:4070},
+          2:{none:1020},
+          3:{none:452, lm_d14:369, lm_d12:346, lm_dfull:238},
+          5:{none:163},
+          8:{none:63}
+        }
       }
     },
   },
@@ -15275,6 +15327,10 @@ var LIGHTS = {
 
 var ACC_INFO = {
   none:     { label:'Light Only',          beam:'Bare Light',    emoji:'⭕', angle:120 },
+  // LiteMat の付属ディフューザー。角度は公表されていない。
+  lm_d14:   { label:'1/4 Diffuser',        beam:'1/4 Diff',   emoji:'⬜' },
+  lm_d12:   { label:'1/2 Diffuser',        beam:'1/2 Diff',   emoji:'⬜' },
+  lm_dfull: { label:'Full Diffuser',       beam:'Full Diff',  emoji:'⬜' },
   // PavoSlim の付属ディフュージョン。角度は公表されていない。
   ps_diff_full: { label:'Full Diffusion',   beam:'Full Diff',  emoji:'⬜' },
   // K5600 Joker の「レンズ無し」= リフレクターのみ。カタログはビーム角を明記していないが、
