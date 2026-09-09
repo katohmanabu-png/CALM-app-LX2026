@@ -13714,7 +13714,93 @@ var LIGHTS = {
       // 枠に入っていた。紙面どおり 5600K に直した。
       // スポットの 2→3m が 2.5段落ちるのは紙面にそう印字されている。
       refData:{5600:{2:{'flat':9075,'spot':19200},3:{'flat':2269,'spot':3208},5:{'flat':832,'spot':1697},8:{'flat':300,'spot':832},12:{'flat':106,'spot':208}}}
+    },
+
+    /* Super LED フレネル（現行の主要シリーズ）。
+     * 公式データシートの配光表から。FLOOD と SPOT の2態で、角度は機種ごとに違う。
+     * 色温度の刻みは資料に合わせた（F7 と F10 は 3200/5600K、ほかは 2800/6600K）。
+     * どの機種も可変域は 2800〜6600K、Ultra CRI では 1800〜12000K まで伸びる。 */
+super_led_f47: {
+      url:'https://www.desisti.it/',
+      group:'LED', name:'Super LED F4.7', desc:'100W LED Fresnel (120 mm Fresnel)', emoji:'🔴', watts:100,
+      svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
+      weight:'3.5 kg', ccts:[2800, 6600], cctMin:1800, cctMax:12000,
+      accessories:['ds_flood','ds_spot'],
+      accAngles:{ds_flood:55, ds_spot:12},   // De Sisti 公表の Beam Angle（中心値の 50%）
+      dmx:{led:'Vari-White + RGBA',power:'100W',cct:'2800K–6600K（Ultra CRI では 1800K–12000K）',cri:'>95',tlci:'96',ip:'IP20',
+        control:'On-board / DMX 512-A 5-pin / W-DMX LumenRadio（別売）',dimming:'0%–100%',effects:[]},
+      // De Sisti 公式のデータシートに載っている配光表。
+      // 中心光度（カンデラ）と距離ごとの照度がそのまま表になっている。
+      refData:{
+        2800:{3:{ds_flood:606, ds_spot:1920}, 4:{ds_flood:341, ds_spot:1080}, 5:{ds_flood:218, ds_spot:691}},
+        6600:{3:{ds_flood:703, ds_spot:2180}, 4:{ds_flood:395, ds_spot:1226}, 5:{ds_flood:253, ds_spot:785}}
+      }
+    },
+    super_led_f6: {
+      url:'https://www.desisti.it/',
+      group:'LED', name:'Super LED F6', desc:'120W LED Fresnel (150 mm Fresnel)', emoji:'🔴', watts:120,
+      svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
+      weight:'7.8 kg', ccts:[2800, 6600], cctMin:1800, cctMax:12000,
+      accessories:['ds_flood','ds_spot'],
+      accAngles:{ds_flood:60, ds_spot:12},   // De Sisti 公表の Beam Angle（中心値の 50%）
+      dmx:{led:'Vari-White + RGBA',power:'120W',cct:'2800K–6600K（Ultra CRI では 1800K–12000K）',cri:'>95',tlci:'96',ip:'IP20',
+        control:'On-board / DMX 512-A 5-pin / W-DMX LumenRadio（別売）',dimming:'0%–100%',effects:[]},
+      // De Sisti 公式のデータシートに載っている配光表。
+      // 中心光度（カンデラ）と距離ごとの照度がそのまま表になっている。
+      refData:{
+        2800:{3:{ds_flood:940, ds_spot:5870}, 5:{ds_flood:338, ds_spot:2113}, 10:{ds_flood:85, ds_spot:528}},
+        6600:{3:{ds_flood:1245, ds_spot:7600}, 5:{ds_flood:448, ds_spot:2736}, 10:{ds_flood:112, ds_spot:684}}
+      }
+    },
+    super_led_f7: {
+      url:'https://www.desisti.it/',
+      group:'LED', name:'Super LED F7', desc:'170W LED Fresnel (175 mm Fresnel)', emoji:'🔴', watts:170,
+      svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
+      weight:'7.8 kg', ccts:[3200, 5600], cctMin:1800, cctMax:12000,
+      accessories:['ds_flood','ds_spot'],
+      accAngles:{ds_flood:64, ds_spot:23},   // De Sisti 公表の Beam Angle（中心値の 50%）
+      dmx:{led:'Vari-White + RGBA',power:'170W',cct:'2800K–6600K（Ultra CRI では 1800K–12000K）',cri:'>95',tlci:'96',ip:'IP20',
+        control:'On-board / DMX 512-A 5-pin / W-DMX LumenRadio（別売）',dimming:'0%–100%',effects:[]},
+      // De Sisti 公式のデータシートに載っている配光表。
+      // 中心光度（カンデラ）と距離ごとの照度がそのまま表になっている。
+      refData:{
+        3200:{3:{ds_flood:993, ds_spot:2400}, 5:{ds_flood:357, ds_spot:864}, 10:{ds_flood:89, ds_spot:216}},
+        5600:{3:{ds_flood:1170, ds_spot:2830}, 5:{ds_flood:421, ds_spot:1019}, 10:{ds_flood:105, ds_spot:255}}
+      }
+    },
+    super_led_f10: {
+      url:'https://www.desisti.it/',
+      group:'LED', name:'Super LED F10', desc:'230W LED Fresnel (250 mm Fresnel)', emoji:'🔴', watts:230,
+      svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
+      weight:'13.5 kg', ccts:[3200, 5600], cctMin:1800, cctMax:12000,
+      accessories:['ds_flood','ds_spot'],
+      accAngles:{ds_flood:55, ds_spot:18},   // De Sisti 公表の Beam Angle（中心値の 50%）
+      dmx:{led:'Vari-White + RGBA',power:'230W',cct:'2800K–6600K（Ultra CRI では 1800K–12000K）',cri:'>95',tlci:'96',ip:'IP20',
+        control:'On-board / DMX 512-A 5-pin / W-DMX LumenRadio（別売）',dimming:'0%–100%',effects:[]},
+      // De Sisti 公式のデータシートに載っている配光表。
+      // 中心光度（カンデラ）と距離ごとの照度がそのまま表になっている。
+      refData:{
+        3200:{3:{ds_flood:1200, ds_spot:4200}, 5:{ds_flood:432, ds_spot:1512}, 10:{ds_flood:108, ds_spot:378}},
+        5600:{3:{ds_flood:1540, ds_spot:5490}, 5:{ds_flood:554, ds_spot:1976}, 10:{ds_flood:139, ds_spot:494}}
+      }
+    },
+    super_led_f14hp: {
+      url:'https://www.desisti.it/',
+      group:'LED', name:'Super LED F14 HP', desc:'580W LED Fresnel (350 mm Fresnel)', emoji:'🔴', watts:580,
+      svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
+      weight:'18.5 kg', ccts:[2800, 6600], cctMin:1800, cctMax:12000,
+      accessories:['ds_flood','ds_spot'],
+      accAngles:{ds_flood:54, ds_spot:15},   // De Sisti 公表の Beam Angle（中心値の 50%）
+      dmx:{led:'Vari-White + RGBA',power:'580W',cct:'2800K–6600K（Ultra CRI では 1800K–12000K）',cri:'>95',tlci:'96',ip:'IP20',
+        control:'On-board / DMX 512-A 5-pin / W-DMX LumenRadio（別売）',dimming:'0%–100%',effects:[]},
+      // De Sisti 公式のデータシートに載っている配光表。
+      // 中心光度（カンデラ）と距離ごとの照度がそのまま表になっている。
+      refData:{
+        2800:{5:{ds_flood:1601, ds_spot:7893}, 10:{ds_flood:400, ds_spot:1973}, 15:{ds_flood:178, ds_spot:877}},
+        6600:{5:{ds_flood:2227, ds_spot:10891}, 10:{ds_flood:557, ds_spot:2723}, 15:{ds_flood:247, ds_spot:1210}}
+      }
     }
+
   },
 
   vulcan: {
@@ -15820,6 +15906,9 @@ var ACC_INFO = {
   // 合わせて Grid Cloth に付け替えた。Full Diffusion は 60CL / 240C と共用。
   ps_grid_cloth: { label:'Grid Cloth Diffusion', beam:'Grid Cloth',  emoji:'⬜' },
   flood:    { label:'FLOOD',               beam:'Flood',         emoji:'🔆', angle:55 },
+  // De Sisti の LED フレネル。角度は機種ごとに違うので accAngles 側で入れる
+  ds_flood: { label:'FLOOD',              beam:'Flood',         emoji:'🔆' },
+  ds_spot:  { label:'SPOT',               beam:'Spot',          emoji:'🎯' },
   spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
   // フレネルの SPOT(15°前後) と FLOOD(60°前後) の中間。
