@@ -9321,9 +9321,14 @@ var LIGHTS = {
         effects:['Flash','Pulse','TV','Fire','Lightning']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/MC%20Pro/All%20Files/MC%20Pro%20DMX%20Profile%20Specification%20V2.0.pdf',
       dmxVer:'v2.0',
+      // 露出計で測られた値に寄せた。1m / 5600K で 406 lx。公表は 610 lx で
+      // 5割高かった。実測はこの1点だけなので、同じ倍率（×0.666）を全体に
+      // かけている。3200K も同じ倍率にした。5600K だけ下げると 3200K のほうが
+      // 明るくなり、公表の関係（530 < 610）が崩れるため。
+      // 3200K の実測が出てきたら分けて入れ直す。
       refData:{
-        3200:{0.5:{none:1900},1:{none:530},2:{none:145}},
-        5600:{0.5:{none:2200},1:{none:610},2:{none:165}}
+        3200:{0.5:{none:1260}, 1:{none:353}, 2:{none:97}},
+        5600:{0.5:{none:1460}, 1:{none:406}, 2:{none:110}}
       }
     },
     infinibar_pb12: {
