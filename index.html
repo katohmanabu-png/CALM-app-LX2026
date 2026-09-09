@@ -13049,6 +13049,40 @@ var LIGHTS = {
         }
       }
     },
+    f600bi: {
+      group:'LED', name:'KNOWLED F600Bi', desc:'600W Bi-Color Flexible LED Mat', emoji:'💡', watts:600,
+      size:'1210×1210 mm (4×4 ft)',
+      ccts:[3200,5600], cctMin:2700, cctMax:8500,
+      accessories:['none','f6_diff','f6_diff_grid','f6_lantern'],
+      // Godox はビーム角を公表していない
+      accUnknown:['none','f6_diff','f6_diff_grid','f6_lantern'],
+      dmx:{led:'Bi-Color',power:'600W',cct:'2700K–8500K',cri:'96',tlci:'96',
+        control:'On-board controller / DMX512 / CRMX / 2.4GHz / Bluetooth（Godox Light App）',
+        dimming:'0%%–100%%（linear / S-curve / exponential / logarithmic）',
+        effects:['11 FX modes']},
+      // 配光は露出計で測られた値（ISO 400 / 1/50 / 25fps）。4構成がひとつの
+      // 測定で揃っている。1m と 3m、3200K と 5600K。
+      //
+      //   素                   @1m 18,200   @3m 3,550   （5600K）
+      //   付属ディフュージョン   @1m 13,300   @3m 2,350
+      //   同 + グリッド         @1m 10,200   @3m 1,980
+      //   パンケーキランタン     @1m  4,620   @3m 1,230
+      //
+      // メーカー公表は 1m / 5600K で 19,900 lux。実測 18,200 との比は 0.915 で、
+      // 公表がやや高い。実測をそのまま入れてある。
+      //
+      // 重量は資料に記載が無いので入れていない。ビーム角も公表が無い。
+      refData:{
+        3200:{
+          1:{none:16200, f6_diff:11500, f6_diff_grid:8930, f6_lantern:3930},
+          3:{none:3060,  f6_diff:2020,  f6_diff_grid:1710, f6_lantern:1100}
+        },
+        5600:{
+          1:{none:18200, f6_diff:13300, f6_diff_grid:10200, f6_lantern:4620},
+          3:{none:3550,  f6_diff:2350,  f6_diff_grid:1980,  f6_lantern:1230}
+        }
+      }
+    },
     mg1200bi: {
       group:'LED', name:'KNOWLED MG1200Bi', desc:'1400W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:1400, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
       weight:'16 kg', weightExtra:'Controller 6.68 kg', size:'378×579×354 mm',
@@ -15689,6 +15723,10 @@ var ACC_INFO = {
   mgr30:    { label:'Reflector MGR30', beam:'30°',        emoji:'🔦', angle:30 },
   gf14_spot:  { label:'Fresnel GF14 (Spot)',  beam:'Fresnel Spot',  emoji:'🔬' },
   gf14_flood: { label:'Fresnel GF14 (Flood)', beam:'Fresnel Flood', emoji:'🔆' },
+  // Godox F600Bi の付属品。角度は公表されていない。
+  f6_diff:      { label:'Supplied Diffusion',     beam:'Diffusion',   emoji:'⬜' },
+  f6_diff_grid: { label:'Diffusion + Grid',       beam:'Diff + Grid', emoji:'🔲' },
+  f6_lantern:   { label:'Pancake Lantern',        beam:'Lantern',     emoji:'🏮' },
   // Godox MS60R の付属品。SZL2 ズームレンズと DL5 パラレルビームブースターの
   // 組み合わせ。5° は Godox が公表しているが、ほかの角度は公表されていない。
   szl2_flood: { label:'SZL2 Zoom (Flood)',   beam:'Zoom Flood', emoji:'🔆' },
