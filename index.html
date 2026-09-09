@@ -11239,22 +11239,45 @@ var LIGHTS = {
       url:'https://www.arri.com/en/lighting/led-panel-lights/skypanel-x',
       group:'LED', name:'SkyPanel X (X21)', desc:'800W Full Color LED IP66', emoji:'⚫', watts:800, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'18 kg', size:'872×589×323 mm',
-      ccts:[1500, 3200, 5600, 10000, 20000], accessories:['hyper_optic','x21_dome'],
+      ccts:[1500, 3200, 5600, 10000, 20000], accessories:['none','x21_dome','hyper_optic'],
+      accUnknown:['none'],   // ARRI は素の角度を公表していない
       dmx:{led:'RGBACL',power:'800W',cct:'1500K–20000K + RGBWW',cri:'>96',ip:'IP66',
         control:'On-board / ARRI Stellar / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','Fire','TV','Cop Car','Lightning']},
       dmxUrl:'https://www.arri.com/resource/blob/341284/345965876808d3b1f29a6121ab18974b/l5-0049708-arri-skypanel-x-operating-manual-en-data.pdf',
+      // 露出計で測られた値（3m、ISO 400 / 1/50 / 25fps）を基準にした。
+      //   3m / 5600K   素 1,730 / Dome 1,440 / HyPer Optic 11° 29,400
+      //
+      // 素の状態は今回はじめて入れた。
+      //
+      // 公表値との差は付属品で大きく違った。Dome は ×0.933 でほぼ一致するが、
+      // HyPer Optic は ×0.538 で公表が実測の 1.9 倍あった。角度は公表も実測も
+      // 11° で同じ構成。メーカー公表が高めに出る傾向はほかの機種でも同じ。
+      //
+      // 1m のブロックは使っていない。同じ画面の F値と合わない値が複数あり
+      //（10000K が 17,100 lux と書かれているのに F値は 12,100 lux と同じ
+      // F16 2/10、Dome では 5600K が F11 8/10 なのに 3200K より低い）、
+      // 読み取れる値として扱えなかった。3m のブロックは順序も F値も整合している。
+      //
+      // 1500K と 10000K は 3m の実測だけ入れてある。ほかの距離はいちばん近い
+      // 色温度からの代用になる。
       refData:{
+        1500:{
+          3:{none:929, x21_dome:758, hyper_optic:15100}
+        },
         3200:{
-          1:{hyper_optic:464000, x21_dome:13300},
-          3:{hyper_optic:51600,  x21_dome:1480},
-          6:{hyper_optic:12900,  x21_dome:369},
-          10:{hyper_optic:4650,  x21_dome:133}
+          1:{x21_dome:12400, hyper_optic:249800},
+          3:{none:1660, x21_dome:1370, hyper_optic:27100},
+          6:{x21_dome:344, hyper_optic:6950},
+          10:{x21_dome:124, hyper_optic:2500}
         },
         5600:{
-          1:{hyper_optic:480000, x21_dome:13800},
-          3:{hyper_optic:53300,  x21_dome:1530},
-          6:{hyper_optic:13300,  x21_dome:383},
-          10:{hyper_optic:4800,  x21_dome:138}
+          1:{x21_dome:12900, hyper_optic:258400},
+          3:{none:1730, x21_dome:1440, hyper_optic:29400},
+          6:{x21_dome:358, hyper_optic:7160},
+          10:{x21_dome:129, hyper_optic:2580}
+        },
+        10000:{
+          3:{none:1660, x21_dome:1370, hyper_optic:27700}
         }
       }
     },
@@ -11262,22 +11285,48 @@ var LIGHTS = {
       url:'https://www.arri.com/en/lighting/led-panel-lights/skypanel-x',
       group:'LED', name:'SkyPanel X22 (2×X21)', desc:'1600W Full Color LED IP66', emoji:'⚫', watts:1600, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'36 kg', size:'2×872×589 mm',
-      ccts:[1500, 3200, 5600, 10000, 20000], accessories:['hyper_optic','x21_dome'],
+      ccts:[1500, 3200, 5600, 10000, 20000], accessories:['none','x21_dome','hyper_optic'],
+      accUnknown:['none'],   // ARRI は素の角度を公表していない
       dmx:{led:'RGBACL',power:'1600W (2×800W)',cct:'1500K–20000K + RGBWW',cri:'>96',ip:'IP66',
         control:'On-board / ARRI Stellar / DMX / CRMX',dimming:'0–100%',effects:['Flash','Pulse','Fire','TV','Lightning']},
       dmxUrl:'https://www.arri.com/resource/blob/341284/345965876808d3b1f29a6121ab18974b/l5-0049708-arri-skypanel-x-operating-manual-en-data.pdf',
+      // 露出計で測られた値（3m、ISO 400 / 1/50 / 25fps）を基準にした。
+      //   3m / 5600K   素 3,460 / Dome 2,880 / HyPer Optic 11° 58,800
+      //
+      // 素の状態は今回はじめて入れた。
+      //
+      // 公表値との差は付属品で大きく違った。Dome は ×0.933 でほぼ一致するが、
+      // HyPer Optic は ×0.538 で公表が実測の 1.9 倍あった。角度は公表も実測も
+      // 11° で同じ構成。メーカー公表が高めに出る傾向はほかの機種でも同じ。
+      //
+      // 1m のブロックは使っていない。同じ画面の F値と合わない値が複数あり
+      //（10000K が 17,100 lux と書かれているのに F値は 12,100 lux と同じ
+      // F16 2/10、Dome では 5600K が F11 8/10 なのに 3200K より低い）、
+      // 読み取れる値として扱えなかった。3m のブロックは順序も F値も整合している。
+      //
+      // 1500K と 10000K は 3m の実測だけ入れてある。ほかの距離はいちばん近い
+      // 色温度からの代用になる。
+      //
+      // X21 を2台束ねた構成なので、X21 の実測を2倍して入れてある。
+      // 公表値も同じ 2 倍の関係になっていた。
       refData:{
+        1500:{
+          3:{none:1860, x21_dome:1520, hyper_optic:30200}
+        },
         3200:{
-          1:{hyper_optic:929200, x21_dome:26600},
-          3:{hyper_optic:103200, x21_dome:2960},
-          6:{hyper_optic:25800,  x21_dome:739},
-          10:{hyper_optic:9290,  x21_dome:266}
+          1:{x21_dome:24800, hyper_optic:500000},
+          3:{none:3320, x21_dome:2740, hyper_optic:54200},
+          6:{x21_dome:689, hyper_optic:13900},
+          10:{x21_dome:248, hyper_optic:5000}
         },
         5600:{
-          1:{hyper_optic:960000, x21_dome:27600},
-          3:{hyper_optic:106700, x21_dome:3070},
-          6:{hyper_optic:26700,  x21_dome:787},
-          10:{hyper_optic:9800,  x21_dome:276}
+          1:{x21_dome:25700, hyper_optic:516600},
+          3:{none:3460, x21_dome:2880, hyper_optic:58800},
+          6:{x21_dome:733, hyper_optic:14400},
+          10:{x21_dome:257, hyper_optic:5270}
+        },
+        10000:{
+          3:{none:3320, x21_dome:2740, hyper_optic:55400}
         }
       }
     },
@@ -11285,22 +11334,48 @@ var LIGHTS = {
       url:'https://www.arri.com/en/lighting/led-panel-lights/skypanel-x',
       group:'LED', name:'SkyPanel X23 (3×X21)', desc:'2400W Full Color LED IP66', emoji:'⚫', watts:2400, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'54 kg', size:'3×872×589 mm',
-      ccts:[1500, 3200, 5600, 10000, 20000], accessories:['hyper_optic','x21_dome'],
+      ccts:[1500, 3200, 5600, 10000, 20000], accessories:['none','x21_dome','hyper_optic'],
+      accUnknown:['none'],   // ARRI は素の角度を公表していない
       dmx:{led:'RGBACL',power:'2400W (3×800W)',cct:'1500K–20000K + RGBWW',cri:'>96',ip:'IP66',
         control:'On-board / ARRI Stellar / DMX / CRMX',dimming:'0–100%',effects:['Flash','Pulse','Fire','TV','Lightning']},
       dmxUrl:'https://www.arri.com/resource/blob/341284/345965876808d3b1f29a6121ab18974b/l5-0049708-arri-skypanel-x-operating-manual-en-data.pdf',
+      // 露出計で測られた値（3m、ISO 400 / 1/50 / 25fps）を基準にした。
+      //   3m / 5600K   素 5,190 / Dome 4,320 / HyPer Optic 11° 88,200
+      //
+      // 素の状態は今回はじめて入れた。
+      //
+      // 公表値との差は付属品で大きく違った。Dome は ×0.933 でほぼ一致するが、
+      // HyPer Optic は ×0.538 で公表が実測の 1.9 倍あった。角度は公表も実測も
+      // 11° で同じ構成。メーカー公表が高めに出る傾向はほかの機種でも同じ。
+      //
+      // 1m のブロックは使っていない。同じ画面の F値と合わない値が複数あり
+      //（10000K が 17,100 lux と書かれているのに F値は 12,100 lux と同じ
+      // F16 2/10、Dome では 5600K が F11 8/10 なのに 3200K より低い）、
+      // 読み取れる値として扱えなかった。3m のブロックは順序も F値も整合している。
+      //
+      // 1500K と 10000K は 3m の実測だけ入れてある。ほかの距離はいちばん近い
+      // 色温度からの代用になる。
+      //
+      // X21 を3台束ねた構成なので、X21 の実測を3倍して入れてある。
+      // 公表値も同じ 3 倍の関係になっていた。
       refData:{
+        1500:{
+          3:{none:2790, x21_dome:2270, hyper_optic:45300}
+        },
         3200:{
-          1:{hyper_optic:1393800, x21_dome:39900},
-          3:{hyper_optic:154900,  x21_dome:4430},
-          6:{hyper_optic:38700,   x21_dome:1110},
-          10:{hyper_optic:13900,  x21_dome:399}
+          1:{x21_dome:37200, hyper_optic:707300},
+          3:{none:4980, x21_dome:4110, hyper_optic:81300},
+          6:{x21_dome:1040, hyper_optic:19600},
+          10:{x21_dome:372, hyper_optic:7050}
         },
         5600:{
-          1:{hyper_optic:1440000, x21_dome:41400},
-          3:{hyper_optic:180000,  x21_dome:4600},
-          6:{hyper_optic:40000,   x21_dome:1150},
-          10:{hyper_optic:14400,  x21_dome:414}
+          1:{x21_dome:38600, hyper_optic:730700},
+          3:{none:5190, x21_dome:4320, hyper_optic:88200},
+          6:{x21_dome:1070, hyper_optic:20300},
+          10:{x21_dome:386, hyper_optic:7310}
+        },
+        10000:{
+          3:{none:4980, x21_dome:4110, hyper_optic:83100}
         }
       }
     },
