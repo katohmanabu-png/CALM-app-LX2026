@@ -10166,18 +10166,18 @@ var LIGHTS = {
       url:'https://www.kelvinlight.com/product/play_hero_rgbacl_led_panel_pocket_light_with_wireless_dmx/',
       group:'LED', name:'Play Hero', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
       weight:'0.407 kg', size:'157×77×25 mm',
-      ccts:[3200, 4500, 5600, 6500], cctMin:1700, cctMax:20000,
-      accessories:['kv_tir50','kv_tir50_b'],
+      ccts:[3200, 5600], cctMin:1700, cctMax:20000,
+      accessories:['kv_tir50','kv_tir50_b','kvh_d90','kvh_spk','kvh_guide'],
+      accUnknown:['kvh_guide'],
       dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
         control:'On-board / Bluetooth / Narrator App / CRMX',dimming:'0%–100%',effects:[]},
-      // 製品ページの配光表。1m のみ、4つの色温度。
-      // Sparkle（70°）と D90（100°）の配光は公表されていないので入れていない。
-      // Boost は取扱説明書の「約35%多い光量（Lux）」を公表値にかけた値。
+      // Normal は露出計で測られた値（1m）。メーカーの公表値（5600K で 1210 lx）より
+      // 1割ほど低いが、測った値のほうを採る。D90・Sparkle・Light Guide も同じ出どころ。
+      // Boost は測られていないので、取扱説明書の「約35%多い光量（Lux）」を
+      // 測定値にかけた。倍率が「約」なので10の位で丸めてある。
       refData:{
-        3200:{1:{kv_tir50:1150, kv_tir50_b:1550}},
-        4500:{1:{kv_tir50:1200, kv_tir50_b:1620}},
-        5600:{1:{kv_tir50:1210, kv_tir50_b:1630}},
-        6500:{1:{kv_tir50:1200, kv_tir50_b:1620}}
+        3200:{1:{kv_tir50:983,  kv_tir50_b:1330}},
+        5600:{1:{kv_tir50:1090, kv_tir50_b:1470, kvh_d90:313, kvh_spk:376, kvh_guide:764}}
       }
     },
     play_air: {
@@ -10202,18 +10202,25 @@ var LIGHTS = {
       url:'https://www.kelvinlight.com/product/play_pro_full_color_spectrum_rgbacl_led_panel_pocket_light_with_wireless_dmx/',
       group:'LED', name:'Play Pro', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
       weight:'0.375 kg', size:'156×76×21 mm',
-      ccts:[5600], cctMin:1700, cctMax:20000,
-      accessories:['kv_n106','kv_n106_b'],
+      ccts:[2500, 3200, 4500, 5600, 6500, 8000, 10000], cctMin:1700, cctMax:20000,
+      accessories:['kv_n106','kv_n106_b','kvp_d75','kvp_sb'],
+      accUnknown:['kvp_d75','kvp_sb'],
       dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
         control:'On-board / Bluetooth / Narrator App / CRMX',dimming:'0%–100%',effects:[]},
-      // 製品ページの配光欄は空のままなので、公表されている2つの値を使った。
-      //   0.5m 941 lx  … 取扱説明書の Light Intensity（5600K）
-      //   1m   232 lx  … 仕様表の「232 lux at 3.3ft（106°, 5600K）」
-      // 941 を逆二乗で 1m に伸ばすと 235 lx で、232 lx と 1.3% しか違わない。
-      // 別々に出された2つの値が噛み合うので、そのまま両方入れてある。
-      // Beast Mode（+35%）の値は公表が無いので入れていない。
-      // Boost は取扱説明書の「約35%多い光量（Lux）」を公表値にかけた値。
-      refData:{5600:{0.5:{kv_n106:941, kv_n106_b:1270}, 1:{kv_n106:232, kv_n106_b:310}}}
+      // Normal は露出計で測られた値（1m、7つの色温度）。メーカーの公表値
+      //（5600K で 232 lx）より 24% 低いが、測った値のほうを採る。
+      // D75 と Softbox も同じ出どころで、5600K のみ。
+      // Boost は測られていないので、取扱説明書の「約35%多い光量（Lux）」を
+      // 測定値にかけた。倍率が「約」なので10の位で丸めてある。
+      refData:{
+        2500:{1:{kv_n106:142, kv_n106_b:190}},
+        3200:{1:{kv_n106:160, kv_n106_b:220}},
+        4500:{1:{kv_n106:172, kv_n106_b:230}},
+        5600:{1:{kv_n106:176, kv_n106_b:240, kvp_d75:141, kvp_sb:76}},
+        6500:{1:{kv_n106:177, kv_n106_b:240}},
+        8000:{1:{kv_n106:174, kv_n106_b:230}},
+        10000:{1:{kv_n106:171, kv_n106_b:230}}
+      }
     }
   },
 
@@ -14209,6 +14216,12 @@ var ACC_INFO = {
   kv_n35_b:   { label:'Native 35° (Boost)',     beam:'35° Boost',   emoji:'🔺', angle:35 },
   kv_n106:    { label:'Native 106° (Normal)',   beam:'106° Normal', emoji:'🔆', angle:106 },
   kv_n106_b:  { label:'Native 106° (Boost)',    beam:'106° Boost',  emoji:'🔺', angle:106 },
+  // Play Pro / Play Hero の付属品。角度は取扱説明書に出ているものだけ入れる。
+  kvp_d75:    { label:'D75 Diffusion',          beam:'D75',         emoji:'⬜' },
+  kvp_sb:     { label:'DoPchoice Softbox',      beam:'Softbox',     emoji:'⬜' },
+  kvh_d90:    { label:'D90 Diffusion',          beam:'100° D90',    emoji:'⬜', angle:100 },
+  kvh_spk:    { label:'Sparkle Diffuser',       beam:'70° Sparkle', emoji:'✨', angle:70 },
+  kvh_guide:  { label:'Grid Light Guide',       beam:'Light Guide', emoji:'🔲' },
   flood:    { label:'FLOOD',               beam:'Flood',         emoji:'🔆', angle:55 },
   spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
