@@ -10242,6 +10242,22 @@ var LIGHTS = {
         5600:{1:{kv_n35:1200}},
         6500:{1:{kv_n35:1200}}
       }
+    },
+    play_pro: {
+      url:'https://www.kelvinlight.com/product/play_pro_full_color_spectrum_rgbacl_led_panel_pocket_light_with_wireless_dmx/',
+      group:'LED', name:'Play Pro', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
+      weight:'0.375 kg', size:'156×76×21 mm',
+      ccts:[5600], cctMin:1700, cctMax:20000,
+      accessories:['kv_n106'],
+      dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
+        control:'On-board / Bluetooth / Narrator App / CRMX',dimming:'0%–100%',effects:[]},
+      // 製品ページの配光欄は空のままなので、公表されている2つの値を使った。
+      //   0.5m 941 lx  … 取扱説明書の Light Intensity（5600K）
+      //   1m   232 lx  … 仕様表の「232 lux at 3.3ft（106°, 5600K）」
+      // 941 を逆二乗で 1m に伸ばすと 235 lx で、232 lx と 1.3% しか違わない。
+      // 別々に出された2つの値が噛み合うので、そのまま両方入れてある。
+      // Beast Mode（+35%）の値は公表が無いので入れていない。
+      refData:{5600:{0.5:{kv_n106:941}, 1:{kv_n106:232}}}
     }
   },
 
@@ -14218,6 +14234,7 @@ var ACC_INFO = {
   // Kelvin Play シリーズ。Hero は TIR レンズで 50°、Air は素で約 35°。
   kv_tir50: { label:'TIR Lens 50°',          beam:'50° TIR',        emoji:'🔦', angle:50 },
   kv_n35:   { label:'Native 35° Beam',       beam:'35° Native',     emoji:'🔦', angle:35 },
+  kv_n106:  { label:'Native 106° Beam',      beam:'106° Native',    emoji:'🔆', angle:106 },
   flood:    { label:'FLOOD',               beam:'Flood',         emoji:'🔆', angle:55 },
   spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
