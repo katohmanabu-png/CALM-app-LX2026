@@ -10121,6 +10121,57 @@ var LIGHTS = {
           7:{kv_bare:184,  kv_d90:168,  kv_r55:551,   kv_r62:787}
         }
       }
+    },
+    epos600: {
+      url:'https://www.kelvinlight.com/product/epos_600_full_color_spectrum_rgbacl_led_studio_light/',
+      group:'LED', name:'Epos 600', desc:'600W RGBACL LED COB Studio Light', emoji:'🔆', watts:600,
+      weight:'7.7 kg', weightExtra:'Controller 5.2 kg', size:'348×198×155 mm',
+      ccts:[3200, 5600], cctMin:1700, cctMax:20000,
+      accessories:['kv_bare','kv_hpl','kv_hpl62','kv_dome','kv_d90'],
+      accUnknown:['kv_hpl','kv_dome','kv_d90'],   // この3つは角度が公表されていない
+      dmx:{led:'RGBACL',power:'600W (720W max)',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
+        control:'On-board / DMX 5-pin XLR / CRMX / Art-Net / sACN / Bluetooth',dimming:'0.1%–100%',effects:[]},
+      // 製品ページの配光表。3m のみ、3200K と 5600K。
+      // 表は Max / Constant × High / Normal の4通りが並んでいる。ここは
+      // Max in Normal Mode を採った。Normal は色再現が本来の状態（TM-30 Rf95+）で、
+      // High Speed Mode は Rf が 93 に落ちる代わりに明るくなる別物のため。
+      refData:{
+        3200:{3:{kv_bare:2220, kv_hpl:1920, kv_hpl62:7920, kv_dome:1000, kv_d90:1660}},
+        5600:{3:{kv_bare:2550, kv_hpl:2240, kv_hpl62:9350, kv_dome:1160, kv_d90:1920}}
+      }
+    },
+    play_hero: {
+      url:'https://www.kelvinlight.com/product/play_hero_rgbacl_led_panel_pocket_light_with_wireless_dmx/',
+      group:'LED', name:'Play Hero', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
+      weight:'0.407 kg', size:'157×77×25 mm',
+      ccts:[3200, 4500, 5600, 6500], cctMin:1700, cctMax:20000,
+      accessories:['kv_tir50'],
+      dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
+        control:'On-board / Bluetooth / Narrator App / CRMX',dimming:'0%–100%',effects:[]},
+      // 製品ページの配光表。1m のみ、4つの色温度。
+      // Sparkle（70°）と D90（100°）の配光は公表されていないので入れていない。
+      refData:{
+        3200:{1:{kv_tir50:1150}},
+        4500:{1:{kv_tir50:1200}},
+        5600:{1:{kv_tir50:1210}},
+        6500:{1:{kv_tir50:1200}}
+      }
+    },
+    play_air: {
+      url:'https://www.kelvinlight.com/product/play-air/',
+      group:'LED', name:'Play Air', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
+      weight:'0.290 kg', size:'157×77×25 mm',
+      ccts:[3200, 4500, 5600, 6500], cctMin:1700, cctMax:20000,
+      accessories:['kv_n35'],
+      dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
+        control:'On-board / Bluetooth / Narrator App / DMX (adapter)',dimming:'0%–100%',effects:[]},
+      // 製品ページの配光表。1m のみ、4つの色温度。素は約 35°。
+      refData:{
+        3200:{1:{kv_n35:1150}},
+        4500:{1:{kv_n35:1200}},
+        5600:{1:{kv_n35:1200}},
+        6500:{1:{kv_n35:1200}}
+      }
     }
   },
 
@@ -14086,6 +14137,14 @@ var ACC_INFO = {
   kv_d90:   { label:'D90 Diffuser',            beam:'Diffuser D90',  emoji:'⬜' },
   kv_r55:   { label:'Precision Reflector 55°', beam:'Reflector 55°', emoji:'🔦', angle:55 },
   kv_r62:   { label:'Epos Reflector 62°',      beam:'Reflector 62°', emoji:'🔦', angle:62 },
+  // Kelvin Epos 600。素は 93°（Epos 300 と同じなので kv_bare を使い回す）。
+  // HPL とドームは角度が公表されていない。D90 も Epos では未公表（kv_d90 を共用）。
+  kv_hpl:   { label:'High Performance Lens', beam:'HPL',            emoji:'🔍' },
+  kv_hpl62: { label:'HPL + 62° Reflector',   beam:'HPL + 62°',      emoji:'🔦', angle:62 },
+  kv_dome:  { label:'Dome Diffuser',         beam:'Dome',           emoji:'🔘' },
+  // Kelvin Play シリーズ。Hero は TIR レンズで 50°、Air は素で約 35°。
+  kv_tir50: { label:'TIR Lens 50°',          beam:'50° TIR',        emoji:'🔦', angle:50 },
+  kv_n35:   { label:'Native 35° Beam',       beam:'35° Native',     emoji:'🔦', angle:35 },
   flood:    { label:'FLOOD',               beam:'Flood',         emoji:'🔆', angle:55 },
   spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
