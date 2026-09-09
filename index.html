@@ -9991,60 +9991,6 @@ var LIGHTS = {
         5600:{2:{native115:5031, optic50:7600}, 4:{native115:1333, optic50:2200}, 6:{native115:591, optic50:1070}, 8:{native115:328, optic50:650}, 10:{native115:212, optic50:428}}
       }
     },
-    mini_daylight: {
-      url:'https://creamsource.com/product/mini/',
-      group:'LED', name:'Mini+ Daylight', desc:'150W Daylight LED 1×1 Panel', emoji:'🌸', watts:150,
-      weight:'5.2 kg', size:'307×332×100 mm',
-      accessories:['cs_nat'], accUnknown:['cs_nat'],   // 素の角度は未公表（紙面は SPOT レンズ 13° のみ）
-      dmx:{led:'Daylight LED',power:'150W',cct:'5600K',cri:'95 (typ) / 90 min',tlci:'95 (typ) / 90 min',ip:'IP20',
-        control:'On-board / DMX 5-pin (in + thru) / Wired remote',dimming:'0%–100%',effects:[]},
-      // カットシート（CS-mini-cutsheet-29032019）の配光表。1〜4m。
-      ccts:[5600],
-      refData:{5600:{1:{cs_nat:80300}, 2:{cs_nat:34500}, 3:{cs_nat:17500}, 4:{cs_nat:10200}}}
-    },
-    mini_bender: {
-      url:'https://creamsource.com/product/mini/',
-      group:'LED', name:'Mini+ Bender', desc:'150W Bi-Color LED 1×1 Panel', emoji:'🌸', watts:150,
-      weight:'5.2 kg', size:'307×332×100 mm',
-      accessories:['cs_nat'], accUnknown:['cs_nat'],   // 素の角度は未公表（紙面は SPOT レンズ 13° のみ）
-      dmx:{led:'Bi-Color',power:'150W',cct:'3200K–5600K',cri:'95 (typ) / 90 min',tlci:'95 (typ) / 90 min',ip:'IP20',
-        control:'On-board / DMX 5-pin (in + thru) / Wired remote',dimming:'0%–100%',effects:[]},
-      // カットシート（CS-mini-cutsheet-29032019）の配光表。1〜4m。
-      // バイカラーなので中間の 4000K がいちばん明るい（両方の LED が点く）。
-      ccts:[3200, 4000, 5600],
-      refData:{
-        3200:{1:{cs_nat:41900}, 2:{cs_nat:17400}, 3:{cs_nat:8830}, 4:{cs_nat:5170}},
-        4000:{1:{cs_nat:69900}, 2:{cs_nat:29400}, 3:{cs_nat:15000}, 4:{cs_nat:8800}},
-        5600:{1:{cs_nat:44100}, 2:{cs_nat:18900}, 3:{cs_nat:9730}, 4:{cs_nat:5700}}
-      }
-    },
-    doppio_daylight: {
-      url:'https://creamsource.com/product/creamsource-doppio/',
-      group:'LED', name:'Doppio+ Daylight', desc:'350W Daylight LED 2×1 Panel', emoji:'🌸', watts:350,
-      weight:'9.4 kg', size:'654×332×100 mm',
-      accessories:['cs_nat'], accUnknown:['cs_nat'],   // 素の角度は未公表（紙面は SPOT レンズ 13° のみ）
-      dmx:{led:'Daylight LED',power:'350W',cct:'5600K',cri:'95 (typ) / 90 min',tlci:'95 (typ) / 90 min',ip:'IP20',
-        control:'On-board / DMX 5-pin (in + thru) / Wired remote',dimming:'0%–100%',effects:[]},
-      // カットシート（CS-doppio-cutsheet-29032019）の配光表。1〜4m。
-      ccts:[5600],
-      refData:{5600:{1:{cs_nat:100000}, 2:{cs_nat:58600}, 3:{cs_nat:34200}, 4:{cs_nat:21200}}}
-    },
-    doppio_bender: {
-      url:'https://creamsource.com/product/creamsource-doppio/',
-      group:'LED', name:'Doppio+ Bender', desc:'350W Bi-Color LED 2×1 Panel', emoji:'🌸', watts:350,
-      weight:'9.4 kg', size:'654×332×100 mm',
-      accessories:['cs_nat'], accUnknown:['cs_nat'],   // 素の角度は未公表（紙面は SPOT レンズ 13° のみ）
-      dmx:{led:'Bi-Color',power:'350W',cct:'3200K–5600K',cri:'95 (typ) / 90 min',tlci:'95 (typ) / 90 min',ip:'IP20',
-        control:'On-board / DMX 5-pin (in + thru) / Wired remote',dimming:'0%–100%',effects:[]},
-      // カットシート（CS-doppio-cutsheet-29032019）の配光表。1〜4m。
-      // バイカラーなので中間の 4000K がいちばん明るい。
-      ccts:[3200, 4000, 5600],
-      refData:{
-        3200:{1:{cs_nat:55200}, 2:{cs_nat:31300}, 3:{cs_nat:18400}, 4:{cs_nat:11500}},
-        4000:{1:{cs_nat:91200}, 2:{cs_nat:51500}, 3:{cs_nat:30300}, 4:{cs_nat:19000}},
-        5600:{1:{cs_nat:58300}, 2:{cs_nat:32700}, 3:{cs_nat:19500}, 4:{cs_nat:12200}}
-      }
-    },
     sky: {
       url:'https://creamsource.com/product/creamsource-sky/',
       group:'LED', name:'Sky', desc:'1200W RGBAW LED Space Light', emoji:'🌸', watts:1200,
@@ -10221,16 +10167,17 @@ var LIGHTS = {
       group:'LED', name:'Play Hero', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
       weight:'0.407 kg', size:'157×77×25 mm',
       ccts:[3200, 4500, 5600, 6500], cctMin:1700, cctMax:20000,
-      accessories:['kv_tir50'],
+      accessories:['kv_tir50','kv_tir50_b'],
       dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
         control:'On-board / Bluetooth / Narrator App / CRMX',dimming:'0%–100%',effects:[]},
       // 製品ページの配光表。1m のみ、4つの色温度。
       // Sparkle（70°）と D90（100°）の配光は公表されていないので入れていない。
+      // Boost は取扱説明書の「約35%多い光量（Lux）」を公表値にかけた値。
       refData:{
-        3200:{1:{kv_tir50:1150}},
-        4500:{1:{kv_tir50:1200}},
-        5600:{1:{kv_tir50:1210}},
-        6500:{1:{kv_tir50:1200}}
+        3200:{1:{kv_tir50:1150, kv_tir50_b:1550}},
+        4500:{1:{kv_tir50:1200, kv_tir50_b:1620}},
+        5600:{1:{kv_tir50:1210, kv_tir50_b:1630}},
+        6500:{1:{kv_tir50:1200, kv_tir50_b:1620}}
       }
     },
     play_air: {
@@ -10238,15 +10185,17 @@ var LIGHTS = {
       group:'LED', name:'Play Air', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
       weight:'0.290 kg', size:'157×77×25 mm',
       ccts:[3200, 4500, 5600, 6500], cctMin:1700, cctMax:20000,
-      accessories:['kv_n35'],
+      accessories:['kv_n35','kv_n35_b'],
       dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
         control:'On-board / Bluetooth / Narrator App / DMX (adapter)',dimming:'0%–100%',effects:[]},
       // 製品ページの配光表。1m のみ、4つの色温度。素は約 35°。
+      // Boost は取扱説明書の「約25%多い照度（Lux）」を公表値にかけた値。
+      // Play Air だけ 25% で、Pro と Hero の 35% とは違う。
       refData:{
-        3200:{1:{kv_n35:1150}},
-        4500:{1:{kv_n35:1200}},
-        5600:{1:{kv_n35:1200}},
-        6500:{1:{kv_n35:1200}}
+        3200:{1:{kv_n35:1150, kv_n35_b:1440}},
+        4500:{1:{kv_n35:1200, kv_n35_b:1500}},
+        5600:{1:{kv_n35:1200, kv_n35_b:1500}},
+        6500:{1:{kv_n35:1200, kv_n35_b:1500}}
       }
     },
     play_pro: {
@@ -10254,7 +10203,7 @@ var LIGHTS = {
       group:'LED', name:'Play Pro', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
       weight:'0.375 kg', size:'156×76×21 mm',
       ccts:[5600], cctMin:1700, cctMax:20000,
-      accessories:['kv_n106'],
+      accessories:['kv_n106','kv_n106_b'],
       dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
         control:'On-board / Bluetooth / Narrator App / CRMX',dimming:'0%–100%',effects:[]},
       // 製品ページの配光欄は空のままなので、公表されている2つの値を使った。
@@ -10263,7 +10212,8 @@ var LIGHTS = {
       // 941 を逆二乗で 1m に伸ばすと 235 lx で、232 lx と 1.3% しか違わない。
       // 別々に出された2つの値が噛み合うので、そのまま両方入れてある。
       // Beast Mode（+35%）の値は公表が無いので入れていない。
-      refData:{5600:{0.5:{kv_n106:941}, 1:{kv_n106:232}}}
+      // Boost は取扱説明書の「約35%多い光量（Lux）」を公表値にかけた値。
+      refData:{5600:{0.5:{kv_n106:941, kv_n106_b:1270}, 1:{kv_n106:232, kv_n106_b:310}}}
     }
   },
 
@@ -14223,9 +14173,6 @@ var ACC_INFO = {
   cs_diff:  { label:'Diffuser',    beam:'Diffuser',    emoji:'⬜' },
   cs_dome:  { label:'Dome',        beam:'Dome',        emoji:'🔘' },
   cs_xwide: { label:'XWIDE Lens',  beam:'XWIDE',       emoji:'🔆' },
-  // Creamsource の Legacy（Mini+ / Doppio+）。配光表は素の状態のものだが、
-  // 素の角度は公表されていない（紙面にあるのは SPOT レンズの 13° だけ）。
-  cs_nat:   { label:'Bare Light',  beam:'Native',      emoji:'⭕' },
   // Kelvin Epos 300。素の 93° と Bowens マウントのリフレクター2種。
   // D90 ディフューザーは Epos 300 での角度が公表されていないので角度を入れない。
   kv_bare:  { label:'Bare Light',              beam:'93° Native',    emoji:'⭕', angle:93 },
@@ -14252,9 +14199,16 @@ var ACC_INFO = {
   kv6_d90:     { label:'D90 Diffuser (Normal)',     beam:'D90 Normal',      emoji:'⬜' },
   kv6_d90_hi:  { label:'D90 Diffuser (High Speed)', beam:'D90 High Speed',  emoji:'⬜' },
   // Kelvin Play シリーズ。Hero は TIR レンズで 50°、Air は素で約 35°。
-  kv_tir50: { label:'TIR Lens 50°',          beam:'50° TIR',        emoji:'🔦', angle:50 },
-  kv_n35:   { label:'Native 35° Beam',       beam:'35° Native',     emoji:'🔦', angle:35 },
-  kv_n106:  { label:'Native 106° Beam',      beam:'106° Native',    emoji:'🔆', angle:106 },
+  // Kelvin Play シリーズの Power mode。取扱説明書に Normal と Boost があり、
+  // Boost は Play Pro / Play Hero が「約35%多い光量（Lux）」、Play Air は
+  // 「約25%多い照度（Lux）」と書かれている。Boost の値はその倍率を公表値に
+  // かけたもので、別に測られた数字ではない。倍率が「約」なので10の位で丸めた。
+  kv_tir50:   { label:'TIR Lens 50° (Normal)',  beam:'50° Normal',  emoji:'🔦', angle:50 },
+  kv_tir50_b: { label:'TIR Lens 50° (Boost)',   beam:'50° Boost',   emoji:'🔺', angle:50 },
+  kv_n35:     { label:'Native 35° (Normal)',    beam:'35° Normal',  emoji:'🔦', angle:35 },
+  kv_n35_b:   { label:'Native 35° (Boost)',     beam:'35° Boost',   emoji:'🔺', angle:35 },
+  kv_n106:    { label:'Native 106° (Normal)',   beam:'106° Normal', emoji:'🔆', angle:106 },
+  kv_n106_b:  { label:'Native 106° (Boost)',    beam:'106° Boost',  emoji:'🔺', angle:106 },
   flood:    { label:'FLOOD',               beam:'Flood',         emoji:'🔆', angle:55 },
   spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
