@@ -9160,12 +9160,16 @@ var LIGHTS = {
       dmxVer:'v1.1',
       // Aputure 公表の配光表（1m / 3m / 5m）に差し替えた。公表の測定点は
       // 2700 / 3200 / 4300 / 5500 / 6500K。5600K は 5500K で代用される。
+      // 露出計で測られた値に合わせた。@3m で 3200K 1,020 / 5600K 1,160。
+      // 元の 3m は 960 / 1,100 で 6% 低かっただけなので、比の平均（×1.059）を
+      // 全体にかけて水準を揃え、実測のある2升はその値をそのまま入れた。
+      // 5600K の実測はアプリの 5500K の欄に入れてある（100K の差は無視できる）。
       refData:{
-        2700:{1:{none:7450},3:{none:890},5:{none:350}},
-        3200:{1:{none:8200},3:{none:960},5:{none:370}},
-        4300:{1:{none:8600},3:{none:1000},5:{none:395}},
-        5500:{1:{none:9000},3:{none:1100},5:{none:430}},
-        6500:{1:{none:8550},3:{none:1020},5:{none:400}},
+        2700:{1:{'none':7890}, 3:{'none':940},  5:{'none':370}},
+        3200:{1:{'none':8680}, 3:{'none':1020}, 5:{'none':390}},
+        4300:{1:{'none':9100}, 3:{'none':1060}, 5:{'none':420}},
+        5500:{1:{'none':9530}, 3:{'none':1160}, 5:{'none':455}},
+        6500:{1:{'none':9050}, 3:{'none':1080}, 5:{'none':425}}
       }
     },
     ls600d_pro: {
@@ -11553,16 +11557,32 @@ var LIGHTS = {
       url:'https://www.arri.com/en/lighting/led-panel-lights/skypanel-classic/s30-c',
       name:'SkyPanel S-30-C', group:'LED', desc:'200W RGBWW Compact Soft Light', emoji:'⚫', watts:200, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'7.5 kg', size:'563×313×130 mm',
-      ccts:[2800,5600],
-      accessories:['none'], accAngles:{none:105},  // ARRI 公表 105° Half Peak Angle（SkyPanel Classic のテクニカルデータ）
+      ccts:[3200, 5600],
+      accessories:['none','arri_std','arri_int'],
+      accUnknown:['none','arri_std','arri_int'],   // ARRI は拡散板ごとの角度を公表していない accAngles:{none:105},  // ARRI 公表 105° Half Peak Angle（SkyPanel Classic のテクニカルデータ）
       dmx:{led:'RGBW',power:'200W',cct:'2800K–10000K + Full RGBWW',cri:'>95',tlci:'>96',ip:'IP20',
         control:'On-board / DMX / RDM / Art-Net / sACN',dimming:'0%–100%',
         effects:['Flash','Pulse','Fire','TV','Cop Car','Strobe']},
       dmxUrl:'https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf',
       dmxVer:'v4.4',
+      // 露出計で測られた値に総入れ替えした。@3m で
+      //   標準拡散  3200K 661 / 5600K 709
+      //   拡散なし  5600K 742
+      //   Intensifier 5600K 1,050
+      // Intensifier が標準拡散の +48% で、ARRI が公表している増分（約 +50%）と
+      // 一致する。読み取りの裏づけになっている。
+      //
+      // 元は 3m 5600K が 4,900 lx で、実測の約7倍だった。S-360-C（1550W）が
+      // 3m で 6,444 lx なので、200W のこの機種が 4,900 lx は出力比で見て
+      // 成り立たない（比例させると 830 lx 程度）。実測とも桁が合う。
+      //
+      // 5m は 3m の実測から逆二乗で伸ばした。色温度は実測に合わせて
+      // 3200K と 5600K にした（元は 2800K と 5600K）。
       refData:{
-        2800:{3:{none:4100},5:{none:1550}},
-        5600:{3:{none:4900},5:{none:1850}},
+        3200:{3:{'none':692, 'arri_std':661, 'arri_int':979},
+              5:{'none':249, 'arri_std':238, 'arri_int':352}},
+        5600:{3:{'none':742, 'arri_std':709, 'arri_int':1050},
+              5:{'none':267, 'arri_std':255, 'arri_int':378}}
       }
     },
     orbiter: {
@@ -13330,13 +13350,29 @@ var LIGHTS = {
     f400r: {
       group:'LED', name:'Godox F400R', desc:'460W Full Color LED Panel', emoji:'🟡', watts:460, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'1.8 kg', size:'636×1200 mm',
-      ccts:[1800, 3200, 5600, 10000], accessories:['none'], accUnknown:['none'],  // Godox の公式仕様表にビーム角の行が無い
+      ccts:[1800, 3200, 5600, 10000], accessories:['none','gdx_sbg'],
+      accUnknown:['none','gdx_sbg'],  // Godox の公式仕様表にビーム角の行が無い
       dmx:{led:'RGBWW',power:'460W',cct:'1800K–10000K + RGBWW',cri:'>96',ip:'IP54',
         control:'On-board / DMX / CRMX',dimming:'0%–100%',effects:['Flash', 'Pulse', 'TV', 'Fire']},
       dmxUrl:'https://www.godox.com/static/upload/file/20241115/1731636720713188.pdf',
+      // 素は公表値（1m の1点を逆二乗で伸ばしたもの）。
+      //
+      // ソフトボックス＋グリッドは露出計で測られた値（ISO 400 / 1/50 / 25fps）。
+      // 1m は 1800K / 3200K / 5600K の3点、3m は 5600K のみ。
+      // F値との整合を確かめてある（5600K が F11.0、3200K が F8.0 7/10 で
+      // 3/10 段差、実測比 0.842 = 0.25 段。1800K は F5.6 5/10 で 1.5 段差、
+      // 実測比 0.377 = 1.41 段）。
+      //
+      // 同じ映像には素・ソフトボックス単体・インフレータブル・インフレータブル
+      // ＋グリッドの数値も出ているが、明るい背景に重なっていて桁が読み取れない。
+      // 読めない数値は入れない方針で見送った。
+      //
+      // 1m と 3m の比が 4.92 で逆二乗（9）より緩い。0.64×1.2m の面光源に
+      // 1m まで寄ると近距離側になるためで、大きな軟光源では自然な形。
       refData:{
-        3200:{1:{'none':10200}, 2:{'none':2550}, 3:{'none':1133}, 5:{'none':408}, 8:{'none':159}, 10:{'none':102}},
-        5600:{1:{'none':12000}, 2:{'none':3000}, 3:{'none':1333}, 5:{'none':480}, 8:{'none':188}, 10:{'none':120}}
+        1800:{1:{'gdx_sbg':1690}},
+        3200:{1:{'none':10200, 'gdx_sbg':3770}, 2:{'none':2550}, 3:{'none':1133}, 5:{'none':408}, 8:{'none':159}, 10:{'none':102}},
+        5600:{1:{'none':12000, 'gdx_sbg':4480}, 2:{'none':3000}, 3:{'none':1333, 'gdx_sbg':911}, 5:{'none':480}, 8:{'none':188}, 10:{'none':120}}
       }
     },
     f800r: {
@@ -15590,6 +15626,11 @@ var LIGHTS = {
 
 var ACC_INFO = {
   none:     { label:'Light Only',          beam:'Bare Light',    emoji:'⭕', angle:120 },
+  // Godox F400R に付属するソフトボックス。角度は公表されていない
+  gdx_sbg:  { label:'Softbox + Grid',      beam:'Softbox + Grid', emoji:'🔲' },
+  // SkyPanel の交換式拡散板。角度は ARRI が公表していない
+  arri_std: { label:'Standard Diffusion', beam:'Standard Diff', emoji:'⬜' },
+  arri_int: { label:'Intensifier',        beam:'Intensifier',   emoji:'🔺' },
   // LiteMat の付属ディフューザー。角度は公表されていない。
   lm_d14:   { label:'1/4 Diffuser',        beam:'1/4 Diff',   emoji:'⬜' },
   lm_d12:   { label:'1/2 Diffuser',        beam:'1/2 Diff',   emoji:'⬜' },
