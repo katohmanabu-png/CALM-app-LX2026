@@ -11312,6 +11312,41 @@ var LIGHTS = {
         5500:{1:{none:565}}
       }
     },
+    luna_bulb: {
+      group:'LED', name:'LunaBulb', desc:'4.25W RGBMA Smart Bulb', emoji:'💜', watts:4,
+      weight:'0.081 kg', size:'Ø55×99 mm',
+      ccts:[3200,4000,5500],
+      accessories:['none','luna_cover'],
+      // メーカー公表の Beam Angle 240°（Field 338°）。カバーを付けた状態の
+      // 角度は公表されていない
+      accAngles:{none:240},
+      accUnknown:['luna_cover'],
+      dmx:{led:'RGBMA',power:'4.25W',cct:'3200K–6500K + Full RGB',cri:'≥96',tlci:'≥96',ip:'IP44',
+        control:'AsteraApp / CRMX / Bluetooth / UHF / WiFi（DMX 非対応）',dimming:'0%%–100%%',
+        effects:[]},
+      // 1ピクセル。E26 / E27 / B22 ソケット。IP44 はソケット次第。
+      //
+      // 配光はメーカー公表の 1m の値と、露出計で測られた値が噛み合った。
+      //   公表   3200K 18.3 / 4000K 18.8 / 5500K 19.6 lux
+      //   実測   3200K 18   / 5600K 20   lux（正面・カバー無し）
+      // 比は 0.984 と 1.020 でほぼ 1。公表値は「カバー無し」の状態と分かる。
+      // 丸めた実測値が公表値とそのまま並ぶので、そちらを入れてある。
+      //
+      // カバーを付けると明るくなる（3200K 21 / 5600K 24 lux）。全方向に近い
+      // 電球なので、カバーが前方へ寄せるぶん正面が上がる。4000K の測定は
+      // 無いので、その色温度では代用になる。
+      // 実測の 5600K は公表の 5500K の枠に入れた。100K の差は電球の用途では
+      // 無視できる。
+      //
+      // 同じ測定に「側面向き」もあった（カバー無し 3200K 21 / 5600K 25、
+      // カバー有り 18 / 20 lux）。向きによる差なので付属品にはしていない。
+      // カバー無しでは側面のほうが明るく、カバーを付けると逆になる。
+      refData:{
+        3200:{1:{none:18, luna_cover:21}},
+        4000:{1:{none:19}},
+        5500:{1:{none:20, luna_cover:24}}
+      }
+    },
     nyx_bulb: {
       group:'LED', svgIcon:'<svg width=\"120\" height=\"100\" viewBox=\"0 0 120 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M60 12 C40 12 28 27 28 43 C28 55 36 62 40 70 H80 C84 62 92 55 92 43 C92 27 80 12 60 12Z\"/><path d=\"M42 78 H78 M44 86 H76\"/><path d=\"M55 94 H65\"/></g></svg>', name:'NYX Bulb', desc:'15W RGBWW Smart Bulb', emoji:'💜', watts:15,
       weight:'0.18 kg', size:'Ø100×150 mm',
@@ -15670,6 +15705,8 @@ var ACC_INFO = {
   diffuser: { label:'Mini Diffuser',       beam:'Diffused',      emoji:'⬜', angle:100 },
   // Nova II の別売ドーム。角度は映像の表示から。
   nova2_dome_l: { label:'Light Frost Dome',  beam:'95° Light',  emoji:'🔘', angle:95 },
+  // Astera LunaBulb のカバー。角度は公表されていない。
+  luna_cover:  { label:'Cover On',          beam:'Cover',      emoji:'🔘' },
   nova2_dome_h: { label:'Heavy Frost Dome',  beam:'100° Heavy', emoji:'🔘', angle:100 },
   hyper:    { label:'Hyper Reflector',     beam:'Narrow Spot',   emoji:'🔦', angle:15 },
   // LS 600 シリーズの Hyper Reflector は Wide / Medium / Spot の3本立て。
