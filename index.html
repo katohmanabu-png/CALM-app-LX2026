@@ -8839,6 +8839,7 @@ var MAKERS = {
   aputure:     { name:'Aputure', url:'https://www.aputure.com/',            emoji:'⬛', accent:'#212121', dark:'#000000', light:'#f5f5f5', glow:'rgba(33,33,33,0.25)', accent2:'#e53935', accent3:'#ffffff', activeOutline:'#e53935' },
   nanlite_lux: { name:'Nanlite / Nanlux', url:'https://www.nanlux.com/',   emoji:'🔵', accent:'#1976d2', dark:'#0d47a1', light:'#e3f2fd', glow:'rgba(25,118,210,0.25)', accent2:'#ffffff' },
   creamsource:  { name:'Creamsource', url:'https://www.creamsource.com/',        emoji:'⬛', accent:'#212121', dark:'#000000', light:'#f5f5f5', glow:'rgba(33,33,33,0.25)', activeOutline:'#ffffff', accent2:'#ffffff' },
+  kelvin:       { name:'Kelvin', url:'https://www.kelvinlight.com/',            emoji:'🟨', accent:'#f9c83e', dark:'#111111', light:'#fffbea', glow:'rgba(249,200,62,0.28)', accent2:'#111111', accent3:'#111111', activeOutline:'#111111' },
   astera:       { name:'Astera', url:'https://astera-led.com/',             emoji:'🟣', accent:'#7b1fa2', dark:'#4a148c', light:'#f3e5f5', glow:'rgba(123,31,162,0.25)', accent2:'#f57c00' },
   arri_led:     { name:'ARRI LED', url:'https://www.arri.com/en/lighting',           emoji:'🩵', accent:'#7ec8f0', dark:'#4aaed8', light:'#e8f6fd', glow:'rgba(126,200,240,0.30)', accent2:'#ffffff' },
   arri_hmi:     { name:'ARRI HMI', url:'https://www.arri.com/en/lighting',           emoji:'🩵', accent:'#7ec8f0', dark:'#4aaed8', light:'#e8f6fd', glow:'rgba(126,200,240,0.30)', accent2:'#ffffff' },
@@ -10018,6 +10019,35 @@ var LIGHTS = {
       refData:{
         3200:{1:{native13:51800}, 2:{native13:16700}, 3:{native13:7650}, 4:{native13:4390}},
         5600:{1:{native13:55100}, 2:{native13:18200}, 3:{native13:8360}, 4:{native13:4720}}
+      }
+    }
+  },
+  kelvin: {
+    epos300: {
+      url:'https://www.kelvinlight.com/product/epos_300_full_color_spectrum_rgbacl_led_studio_light/',
+      group:'LED', name:'Epos 300', desc:'300W RGBACL LED COB Studio Light', emoji:'🔆', watts:300,
+      weight:'4.7 kg', weightExtra:'Controller 3.48 kg', size:'265×136×140 mm',
+      ccts:[3200, 5600], cctMin:1700, cctMax:20000,
+      accessories:['kv_bare','kv_d90','kv_r55','kv_r62'],
+      accUnknown:['kv_d90'],   // D90 の角度は Epos 300 では公表されていない
+      dmx:{led:'RGBACL',power:'300W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP20',
+        control:'On-board / Bluetooth / Narrator App / DMX 5-pin XLR / CRMX',dimming:'0%–100%',effects:[]},
+      // Kelvin の配光シート（Kelvin-Epos-300-Photometrics-1.pdf）の表。
+      // 1/3/5/7m を 3200K・5600K で、素の状態・D90・55°・62° の4通り。
+      // 紙面の lux と fc、および逆二乗（1m 値 ÷ 9 = 3m 値）が一致することを確認した。
+      refData:{
+        3200:{
+          1:{kv_bare:7972, kv_d90:7279, kv_r55:23730, kv_r62:33900},
+          3:{kv_bare:886,  kv_d90:809,  kv_r55:2637,  kv_r62:3767},
+          5:{kv_bare:319,  kv_d90:291,  kv_r55:949,   kv_r62:1356},
+          7:{kv_bare:163,  kv_d90:149,  kv_r55:484,   kv_r62:692}
+        },
+        5600:{
+          1:{kv_bare:9031, kv_d90:8245, kv_r55:26985, kv_r62:38550},
+          3:{kv_bare:1003, kv_d90:916,  kv_r55:2998,  kv_r62:4283},
+          5:{kv_bare:361,  kv_d90:330,  kv_r55:1079,  kv_r62:1542},
+          7:{kv_bare:184,  kv_d90:168,  kv_r55:551,   kv_r62:787}
+        }
       }
     }
   },
@@ -13970,6 +14000,12 @@ var ACC_INFO = {
   native115:{ label:'Native 115° Beam',       beam:'115° Native', emoji:'🔆', angle:115 },
   optic50:  { label:'50° Intensifier Optics', beam:'Optics 50°',  emoji:'🔦', angle:50  },
   native13: { label:'Native 13° Beam',        beam:'13° Native',  emoji:'🔦', angle:13  },
+  // Kelvin Epos 300。素の 93° と Bowens マウントのリフレクター2種。
+  // D90 ディフューザーは Epos 300 での角度が公表されていないので角度を入れない。
+  kv_bare:  { label:'Bare Light',              beam:'93° Native',    emoji:'⭕', angle:93 },
+  kv_d90:   { label:'D90 Diffuser',            beam:'Diffuser D90',  emoji:'⬜' },
+  kv_r55:   { label:'Precision Reflector 55°', beam:'Reflector 55°', emoji:'🔦', angle:55 },
+  kv_r62:   { label:'Epos Reflector 62°',      beam:'Reflector 62°', emoji:'🔦', angle:62 },
   flood:    { label:'FLOOD',               beam:'Flood',         emoji:'🔆', angle:55 },
   spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
