@@ -10197,17 +10197,23 @@ var LIGHTS = {
       group:'LED', name:'Epos 600', desc:'600W RGBACL LED COB Studio Light', emoji:'🔆', watts:600,
       weight:'7.7 kg', weightExtra:'Controller 5.2 kg', size:'348×198×155 mm',
       ccts:[3200, 5600], cctMin:1700, cctMax:20000,
-      accessories:['kv_bare','kv_hpl','kv_hpl62','kv_dome','kv_d90'],
-      accUnknown:['kv_hpl','kv_dome','kv_d90'],   // この3つは角度が公表されていない
-      dmx:{led:'RGBACL',power:'600W (720W max)',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
+      accessories:['kv6_bare','kv6_bare_hi','kv6_hpl','kv6_hpl_hi','kv6_r62','kv6_r62_hi','kv6_dome','kv6_dome_hi','kv6_d90','kv6_d90_hi'],
+      accUnknown:['kv6_hpl','kv6_hpl_hi','kv6_dome','kv6_dome_hi','kv6_d90','kv6_d90_hi'],   // HPL・ドーム・D90 は角度が公表されていない
+      dmx:{led:'RGBACL',power:'600W (720W max)',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98 (Normal) / 98 (High Speed)',tlci:'99',ip:'IP65',
         control:'On-board / DMX 5-pin XLR / CRMX / Art-Net / sACN / Bluetooth',dimming:'0.1%–100%',effects:[]},
       // 製品ページの配光表。3m のみ、3200K と 5600K。
-      // 表は Max / Constant × High / Normal の4通りが並んでいる。ここは
-      // Max in Normal Mode を採った。Normal は色再現が本来の状態（TM-30 Rf95+）で、
-      // High Speed Mode は Rf が 93 に落ちる代わりに明るくなる別物のため。
+      // 表には Max / Constant × High / Normal の4通りが載っている。ここは Max の
+      // 2つ（Normal と High Speed）を入れて、選べるようにした。
+      // Normal は色再現が本来の状態（TM-30 Rf95+）、High Speed は Rf が 93 に
+      // 下がる代わりに明るくなる。Constant（色を変えても明るさが動かないモード）の
+      // 値は入れていない。
       refData:{
-        3200:{3:{kv_bare:2220, kv_hpl:1920, kv_hpl62:7920, kv_dome:1000, kv_d90:1660}},
-        5600:{3:{kv_bare:2550, kv_hpl:2240, kv_hpl62:9350, kv_dome:1160, kv_d90:1920}}
+        3200:{3:{kv6_bare:2220, kv6_bare_hi:2550, kv6_hpl:1920, kv6_hpl_hi:2220,
+                 kv6_r62:7920, kv6_r62_hi:9100, kv6_dome:1000, kv6_dome_hi:1150,
+                 kv6_d90:1660, kv6_d90_hi:1900}},
+        5600:{3:{kv6_bare:2550, kv6_bare_hi:2820, kv6_hpl:2240, kv6_hpl_hi:2530,
+                 kv6_r62:9350, kv6_r62_hi:10500, kv6_dome:1160, kv6_dome_hi:1310,
+                 kv6_d90:1920, kv6_d90_hi:2150}}
       }
     },
     play_hero: {
@@ -14231,6 +14237,20 @@ var ACC_INFO = {
   kv_hpl:   { label:'High Performance Lens', beam:'HPL',            emoji:'🔍' },
   kv_hpl62: { label:'HPL + 62° Reflector',   beam:'HPL + 62°',      emoji:'🔦', angle:62 },
   kv_dome:  { label:'Dome Diffuser',         beam:'Dome',           emoji:'🔘' },
+  // Epos 600 は Normal と High Speed でメーカーの公表値が違うので、
+  // モディファイアごとに2つずつ並べる（アプリでは Nanlite Dyno と同じ流儀）。
+  // Epos 300 にはモード別の公表が無いため、300 と共用の kv_bare / kv_d90 は
+  // そのままにして、600 専用のキーを別に作ってある。
+  kv6_bare:    { label:'Bare Light (Normal)',       beam:'93° Normal',      emoji:'⭕', angle:93 },
+  kv6_bare_hi: { label:'Bare Light (High Speed)',   beam:'93° High Speed',  emoji:'⭕', angle:93 },
+  kv6_hpl:     { label:'HPL (Normal)',              beam:'HPL Normal',      emoji:'🔍' },
+  kv6_hpl_hi:  { label:'HPL (High Speed)',          beam:'HPL High Speed',  emoji:'🔍' },
+  kv6_r62:     { label:'HPL + 62° (Normal)',        beam:'62° Normal',      emoji:'🔦', angle:62 },
+  kv6_r62_hi:  { label:'HPL + 62° (High Speed)',    beam:'62° High Speed',  emoji:'🔦', angle:62 },
+  kv6_dome:    { label:'Dome Diffuser (Normal)',    beam:'Dome Normal',     emoji:'🔘' },
+  kv6_dome_hi: { label:'Dome Diffuser (High Speed)',beam:'Dome High Speed', emoji:'🔘' },
+  kv6_d90:     { label:'D90 Diffuser (Normal)',     beam:'D90 Normal',      emoji:'⬜' },
+  kv6_d90_hi:  { label:'D90 Diffuser (High Speed)', beam:'D90 High Speed',  emoji:'⬜' },
   // Kelvin Play シリーズ。Hero は TIR レンズで 50°、Air は素で約 35°。
   kv_tir50: { label:'TIR Lens 50°',          beam:'50° TIR',        emoji:'🔦', angle:50 },
   kv_n35:   { label:'Native 35° Beam',       beam:'35° Native',     emoji:'🔦', angle:35 },
