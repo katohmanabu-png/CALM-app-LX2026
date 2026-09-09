@@ -10455,25 +10455,46 @@ var LIGHTS = {
       group:'LED', name:'Epos 300', desc:'300W RGBACL LED COB Studio Light', emoji:'🔆', watts:300,
       weight:'4.7 kg', weightExtra:'Controller 3.48 kg', size:'265×136×140 mm',
       ccts:[3200, 5600], cctMin:1700, cctMax:20000,
-      accessories:['kv_bare','kv_d90','kv_r55','kv_r62'],
-      accUnknown:['kv_d90'],   // D90 の角度は Epos 300 では公表されていない
+      accessories:['kv_bare','kv_d90','kv_d90_r','kv_r55','kv_r62','kv3_dome','kv3_d75','kv3_d100'],
+      accUnknown:['kv_d90','kv_d90_r','kv3_dome','kv3_d75','kv3_d100'],   // ディフューザー類は角度が公表されていない
       dmx:{led:'RGBACL',power:'300W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP20',
         control:'On-board / Bluetooth / Narrator App / DMX 5-pin XLR / CRMX',dimming:'0%–100%',effects:[]},
       // Kelvin の配光シート（Kelvin-Epos-300-Photometrics-1.pdf）の表。
       // 1/3/5/7m を 3200K・5600K で、素の状態・D90・55°・62° の4通り。
       // 紙面の lux と fc、および逆二乗（1m 値 ÷ 9 = 3m 値）が一致することを確認した。
+      // 映像に重ねて表示されていた測定値（ISO 400 / 1/50 / 25fps）が基準。
+      // 6つの構成がひとつの測定で揃っている。1m と 3m、3200K と 5600K。
+      //
+      //   3m / 5600K   素 1,130 / D90 853 / D90+リフレクター 3,090
+      //                ドーム 519 / D75 655 / D100 1,020
+      //
+      // ドーム・D75・D100・D90+リフレクターは今回はじめて入れた構成。
+      //
+      // 公表の表について分かったこと。素の 1m/3m 比が 9.00 とぴったり
+      // 逆二乗になっており、1点から計算で伸ばした表だと分かる。実測の比は
+      // 6.73 で、パネルが大きいぶん近距離の落ち方が緩やかになる実際の挙動を
+      // 表の側は写していない。そのため距離ごとに比が大きく違う。
+      //   素   1m ×0.866   3m ×1.116
+      //   D90  1m ×0.749   3m ×0.932
+      // 5m と 7m は実測が無いので、いちばん近い 3m の比をかけた。
+      //
+      // 55° と 62° のリフレクターは公表のまま。映像のリフレクター測定は
+      // D90 を併用した状態のもので、単体の値ではないため。
+      //
+      // 映像には他社アクセサリー（Amaran Spotlight SE 36°、Nanlite Forza
+      // フレネル）を付けた測定もあったが、別メーカーの部品なので入れていない。
       refData:{
         3200:{
-          1:{kv_bare:7972, kv_d90:7279, kv_r55:23730, kv_r62:33900},
-          3:{kv_bare:886,  kv_d90:809,  kv_r55:2637,  kv_r62:3767},
-          5:{kv_bare:319,  kv_d90:291,  kv_r55:949,   kv_r62:1356},
-          7:{kv_bare:163,  kv_d90:149,  kv_r55:484,   kv_r62:692}
+          1:{kv_bare:7100, kv_d90:5270, kv_r55:23700, kv_r62:33900, kv3_dome:2760, kv3_d75:3390, kv3_d100:6320},
+          3:{kv_bare:979, kv_d90:754, kv_d90_r:2780, kv_r55:2640, kv_r62:3770, kv3_dome:461, kv3_d75:581, kv3_d100:892},
+          5:{kv_bare:356, kv_d90:271, kv_r55:949, kv_r62:1360},
+          7:{kv_bare:182, kv_d90:139, kv_r55:484, kv_r62:692}
         },
         5600:{
-          1:{kv_bare:9031, kv_d90:8245, kv_r55:26985, kv_r62:38550},
-          3:{kv_bare:1003, kv_d90:916,  kv_r55:2998,  kv_r62:4283},
-          5:{kv_bare:361,  kv_d90:330,  kv_r55:1079,  kv_r62:1542},
-          7:{kv_bare:184,  kv_d90:168,  kv_r55:551,   kv_r62:787}
+          1:{kv_bare:7600, kv_d90:6380, kv_r55:27000, kv_r62:38600, kv3_dome:3100, kv3_d75:4060, kv3_d100:7590},
+          3:{kv_bare:1130, kv_d90:853, kv_d90_r:3090, kv_r55:3000, kv_r62:4280, kv3_dome:519, kv3_d75:655, kv3_d100:1020},
+          5:{kv_bare:403, kv_d90:307, kv_r55:1080, kv_r62:1540},
+          7:{kv_bare:205, kv_d90:157, kv_r55:551, kv_r62:787}
         }
       }
     },
@@ -14654,6 +14675,12 @@ var ACC_INFO = {
   kv_d90:   { label:'D90 Diffuser',            beam:'Diffuser D90',  emoji:'⬜' },
   kv_r55:   { label:'Precision Reflector 55°', beam:'Reflector 55°', emoji:'🔦', angle:55 },
   kv_r62:   { label:'Epos Reflector 62°',      beam:'Reflector 62°', emoji:'🔦', angle:62 },
+  // Epos 300 の別売ディフューザーと、D90 にリフレクターを重ねた組み合わせ。
+  // どれも角度は公表されていない。
+  kv_d90_r: { label:'D90 + Reflector',         beam:'D90 + Refl',    emoji:'🔦' },
+  kv3_dome: { label:'Dome Diffuser',           beam:'Dome',          emoji:'🔘' },
+  kv3_d75:  { label:'D75 Heavy Diffuser',      beam:'D75 Heavy',     emoji:'⬜' },
+  kv3_d100: { label:'D100 Light Diffuser',     beam:'D100 Light',    emoji:'⬜' },
   // Kelvin Epos 600。素は 93°（Epos 300 と同じなので kv_bare を使い回す）。
   // HPL とドームは角度が公表されていない。D90 も Epos では未公表（kv_d90 を共用）。
   kv_hpl:   { label:'High Performance Lens', beam:'HPL',            emoji:'🔍' },
