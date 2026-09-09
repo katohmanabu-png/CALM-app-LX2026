@@ -10321,20 +10321,29 @@ var LIGHTS = {
       group:'LED', name:'Play Pro', desc:'10W RGBACL LED Pocket Light', emoji:'🔆', watts:10,
       weight:'0.375 kg', size:'156×76×21 mm',
       ccts:[2500, 3200, 4500, 5600, 6500, 8000, 10000], cctMin:1700, cctMax:20000,
-      accessories:['kv_n106','kv_n106_b','kvp_d75','kvp_sb'],
-      accUnknown:['kvp_d75','kvp_sb'],
+      accessories:['kv_n106','kv_n106_b','kvp_sp_d100','kvp_d75','kvp_sp_d75','kvp_sp_d75x2','kvp_sb'],
+      accUnknown:['kvp_d75','kvp_sb','kvp_sp_d100','kvp_sp_d75','kvp_sp_d75x2'],
       dmx:{led:'RGBACL',power:'10W',cct:'1700K–20000K + HSI / RGB / Gels / XY',cri:'98',tlci:'99',ip:'IP65',
         control:'On-board / Bluetooth / Narrator App / CRMX',dimming:'0%–100%',effects:[]},
-      // Normal は露出計で測られた値（1m、7つの色温度）。メーカーの公表値
-      //（5600K で 232 lx）より 24% 低いが、測った値のほうを採る。
-      // D75 と Softbox も同じ出どころで、5600K のみ。
+      // すべて露出計で測られた値。1m。
+      //
+      // 素の状態は2つの測定が噛み合っている。5600K で 176 lx と 188 lx（6%差）、
+      // 3200K で 160 lx と 172 lx（7%差）。色温度どうしの比も 0.909 と 0.915 で
+      // ほぼ同じ。どちらもメーカーの公表値（5600K で 232 lx）より 2割以上低い。
+      // 色温度が7点ある側を採り、もう一方は裏づけとして扱った。
+      //
+      // スペーサーを挟む3構成は 3200K と 5600K のみ（ISO 800 / 1/50 / 25fps）。
+      // D75 単体（141 lx）とスペーサー付き D75（112 lx）は別の構成なので
+      // 両方入れてある。矛盾ではない。
       // Boost は測られていないので、取扱説明書の「約35%多い光量（Lux）」を
       // 測定値にかけた。倍率が「約」なので10の位で丸めてある。
       refData:{
         2500:{1:{kv_n106:142, kv_n106_b:190}},
-        3200:{1:{kv_n106:160, kv_n106_b:220}},
+        3200:{1:{kv_n106:160, kv_n106_b:220,
+                 kvp_sp_d100:155, kvp_sp_d75:102, kvp_sp_d75x2:74}},
         4500:{1:{kv_n106:172, kv_n106_b:230}},
-        5600:{1:{kv_n106:176, kv_n106_b:240, kvp_d75:141, kvp_sb:76}},
+        5600:{1:{kv_n106:176, kv_n106_b:240, kvp_d75:141, kvp_sb:76,
+                 kvp_sp_d100:171, kvp_sp_d75:112, kvp_sp_d75x2:81}},
         6500:{1:{kv_n106:177, kv_n106_b:240}},
         8000:{1:{kv_n106:174, kv_n106_b:230}},
         10000:{1:{kv_n106:171, kv_n106_b:230}}
@@ -14337,6 +14346,11 @@ var ACC_INFO = {
   // Play Pro / Play Hero の付属品。角度は取扱説明書に出ているものだけ入れる。
   kvp_d75:    { label:'D75 Diffusion',          beam:'D75',         emoji:'⬜' },
   kvp_sb:     { label:'DoPchoice Softbox',      beam:'Softbox',     emoji:'⬜' },
+  // Play Pro のスペーサーを挟む組み合わせ。スペーサーで光源から離すぶん暗くなるので、
+  // スペーサー無しの D75 とは別枠にしてある。角度はどれも公表されていない。
+  kvp_sp_d100:  { label:'Spacer + D100',        beam:'D100',        emoji:'⬜' },
+  kvp_sp_d75:   { label:'Spacer + D75',         beam:'D75',         emoji:'⬜' },
+  kvp_sp_d75x2: { label:'Spacer + D75 ×2',      beam:'D75 ×2',      emoji:'⬜' },
   kvh_d90:    { label:'D90 Diffusion',          beam:'100° D90',    emoji:'⬜', angle:100 },
   kvh_spk:    { label:'Sparkle Diffuser',       beam:'70° Sparkle', emoji:'✨', angle:70 },
   kvh_guide:  { label:'Grid Light Guide',       beam:'Light Guide', emoji:'🔲' },
