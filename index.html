@@ -12955,6 +12955,40 @@ var LIGHTS = {
   },
 
   godox: {
+    ms60r: {
+      group:'LED', name:'KNOWLED MS60R', desc:'60W RGB Mini LED', emoji:'💡', watts:60,
+      weight:'0.311 kg', size:'77×77×91 mm',
+      ccts:[5600], cctMin:1800, cctMax:10000,
+      accessories:['none','szl2_flood','szl2_spot','dl5c_zc','dl5c_ze','dl5e_zc','dl5e_ze'],
+      // 素の角度は公表されていない。DL5 を伸ばして Zoom を縮めた状態だけ
+      // Godox が 5° と公表している
+      accUnknown:['none','szl2_flood','szl2_spot','dl5c_zc','dl5c_ze','dl5e_ze'],
+      dmx:{led:'RGBWW',power:'60W',cct:'1800K–10000K + HSI / RGBW / FX',cri:'≥95',tlci:'≥95',
+        control:'On-board / Bluetooth app / CRMX / DMX512 with RDM / NFC',dimming:'0%%–100%%',
+        effects:['14 FX modes']},
+      // 配光は露出計で測られた値（3m / 5600K）のみ。7構成がひとつの測定で
+      // 揃っている。メーカーは照度を公表していない。
+      //
+      //   素                       180
+      //   SZL2 ズーム フラッド       390
+      //   SZL2 ズーム スポット     1,260
+      //   DL5 圧縮 + ズーム圧縮    1,330
+      //   DL5 圧縮 + ズーム伸長    1,610
+      //   DL5 伸長 + ズーム圧縮    6,090   ← これが 5° の状態
+      //   DL5 伸長 + ズーム伸長    1,730
+      //
+      // 素の 180 lux に対し 5° で 6,090 lux と 34 倍になる。Godox の
+      // 「最大10倍」という説明より大きいが、これは素との比較。
+      //
+      // 色温度は 5600K の1点のみ（測定がその条件だけ）。ほかの色温度は
+      // 5600K の代用になる。距離も 3m のみで、範囲の外は逆二乗で伸ばす。
+      refData:{
+        5600:{
+          3:{none:180, szl2_flood:390, szl2_spot:1260,
+             dl5c_zc:1330, dl5c_ze:1610, dl5e_zc:6090, dl5e_ze:1730}
+        }
+      }
+    },
     mg1200bi: {
       group:'LED', name:'KNOWLED MG1200Bi', desc:'1400W IP54 Bi-Color LED Spotlight', emoji:'🟡', watts:1400, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"66\" cy=\"42\" r=\"36\"/><circle cx=\"66\" cy=\"42\" r=\"25\"/><circle cx=\"66\" cy=\"42\" r=\"13\"/><path d=\"M102 28 H134 V56 H102\"/><line x1=\"30\" y1=\"42\" x2=\"30\" y2=\"90\"/><line x1=\"102\" y1=\"42\" x2=\"102\" y2=\"90\"/><line x1=\"30\" y1=\"90\" x2=\"102\" y2=\"90\"/></g></svg>',
       weight:'16 kg', weightExtra:'Controller 6.68 kg', size:'378×579×354 mm',
@@ -15595,6 +15629,14 @@ var ACC_INFO = {
   mgr30:    { label:'Reflector MGR30', beam:'30°',        emoji:'🔦', angle:30 },
   gf14_spot:  { label:'Fresnel GF14 (Spot)',  beam:'Fresnel Spot',  emoji:'🔬' },
   gf14_flood: { label:'Fresnel GF14 (Flood)', beam:'Fresnel Flood', emoji:'🔆' },
+  // Godox MS60R の付属品。SZL2 ズームレンズと DL5 パラレルビームブースターの
+  // 組み合わせ。5° は Godox が公表しているが、ほかの角度は公表されていない。
+  szl2_flood: { label:'SZL2 Zoom (Flood)',   beam:'Zoom Flood', emoji:'🔆' },
+  szl2_spot:  { label:'SZL2 Zoom (Spot)',    beam:'Zoom Spot',  emoji:'🔬' },
+  dl5c_zc:    { label:'DL5 + Zoom (both compacted)', beam:'DL5+Zoom', emoji:'🔦' },
+  dl5c_ze:    { label:'DL5 comp. + Zoom ext.',       beam:'DL5+Zoom', emoji:'🔦' },
+  dl5e_zc:    { label:'DL5 ext. + Zoom comp. (5°)',  beam:'5° Beam',  emoji:'🎯', angle:5 },
+  dl5e_ze:    { label:'DL5 + Zoom (both extended)',  beam:'DL5+Zoom', emoji:'🔦' },
   // Nanlux Evoke のレンズとリフレクター。ズームレンズは公式の配光表が
   // 端の2点（例 FL-22E は 15°と50°）だけを出しているので、その2点を
   // 別のアクセサリーとして持つ。BE55 / FE30 のパラレルビームと
