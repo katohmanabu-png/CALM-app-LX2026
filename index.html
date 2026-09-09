@@ -9974,6 +9974,51 @@ var LIGHTS = {
         3200:{1:{'none':223236}, 2:{'none':55809}, 3:{'none':24804}, 5:{'none':8929}, 8:{'none':3488}, 10:{'none':2232}},
         5600:{1:{'none':248040}, 2:{'none':62010}, 3:{'none':27560}, 5:{'none':9922}, 8:{'none':3876}, 10:{'none':2480}}
       }
+    },
+    spacex: {
+      url:'https://creamsource.com/product/spacex/',
+      group:'LED', name:'SpaceX', desc:'1200W RGBAW LED Space Light', emoji:'🌸', watts:1200,
+      weight:'18 kg', size:'590 (DIA) × 187 mm',
+      ccts:[3200, 5600], cctMin:2200, cctMax:15000,
+      accessories:['native115','optic50'],
+      dmx:{led:'RGBAW',power:'1200W',cct:'2200K–15000K + RGBAW',cri:'~95 (3200K–6500K)',ip:'IP20',
+        control:'On-board / DMX 5-pin XLR / LumenRadio (ShowDMX optional)',dimming:'0%–100%',effects:[]},
+      // Creamsource のカットシート（CS-spacex-cutsheet-29032019）の配光表。
+      // 素の 115° と 50° インテンシファイア装着時を、3200K / 5600K で 2〜10m。
+      refData:{
+        3200:{2:{native115:4727, optic50:7050}, 4:{native115:1253, optic50:2020}, 6:{native115:555, optic50:1000}, 8:{native115:308, optic50:600}, 10:{native115:199, optic50:400}},
+        5600:{2:{native115:5031, optic50:7600}, 4:{native115:1333, optic50:2200}, 6:{native115:591, optic50:1070}, 8:{native115:328, optic50:650}, 10:{native115:212, optic50:428}}
+      }
+    },
+    micro_colour: {
+      url:'https://creamsource.com/product/micro-colour/',
+      group:'LED', name:'Micro Colour', desc:'80W RRGBBW LED Panel Spot', emoji:'🌸', watts:80,
+      weight:'3.4 kg', size:'223×207×108 mm',
+      ccts:[3200, 5600], cctMin:2200, cctMax:15000,
+      accessories:['native20'],
+      dmx:{led:'RGBW',power:'80W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
+        control:'On-board / DMX-512 (optional adapter) / Wired remote',dimming:'0%–100%',effects:[]},
+      // カットシート（CS-micro-colour-cutsheet-29032019）の配光表。素の状態のみ公表。
+      // レンズ（NAR / MED / WIDE / XWIDE）は配光が公表されていないので入れていない。
+      refData:{
+        3200:{1:{native20:12900}, 2:{native20:3150}, 3:{native20:1400}, 4:{native20:790}},
+        5600:{1:{native20:12340}, 2:{native20:3010}, 3:{native20:1340}, 4:{native20:750}}
+      }
+    },
+    micro_bender: {
+      url:'https://creamsource.com/product/micro/',
+      group:'LED', name:'Micro Bender', desc:'80W Bi-Color LED Panel Spot', emoji:'🌸', watts:80,
+      weight:'3.2 kg', size:'223×207×105 mm',
+      ccts:[3200, 5600], cctMin:2700, cctMax:6500,
+      accessories:['native13'],
+      dmx:{led:'Bi-Color',power:'80W',cct:'2700K–6500K',cri:'>90',tlci:'>90',ip:'IP65',
+        control:'On-board / DMX-512 (optional adapter) / Wired remote',dimming:'0%–100%',effects:[]},
+      // カットシート（CS-micro-cutsheet-29032019）の配光表。
+      // 1m が 2m からの逆二乗より暗いのは、13° の狭角で 1m がまだ近接場のため。紙面どおり。
+      refData:{
+        3200:{1:{native13:51800}, 2:{native13:16700}, 3:{native13:7650}, 4:{native13:4390}},
+        5600:{1:{native13:55100}, 2:{native13:18200}, 3:{native13:8360}, 4:{native13:4720}}
+      }
     }
   },
 
@@ -13919,6 +13964,12 @@ var ACC_INFO = {
   fres16:   { label:'Fresnel 16°',         beam:'Spot 16°',      emoji:'🔬', angle:16 },
   fres48:   { label:'Fresnel 48°',         beam:'Flood 48°',     emoji:'🔆', angle:48 },
   native20: { label:'Native 20° Beam',     beam:'20° Native',   emoji:'🔦', angle:20 },
+  // Creamsource SpaceX。素の状態と、6個の LED それぞれに付ける 50° インテンシファイア。
+  // 付ける／付けないの二択で連続に変えられないので、beam に Fresnel の語は入れない
+  // （入れるとビーム角スライダーが出てしまう）。
+  native115:{ label:'Native 115° Beam',       beam:'115° Native', emoji:'🔆', angle:115 },
+  optic50:  { label:'50° Intensifier Optics', beam:'Optics 50°',  emoji:'🔦', angle:50  },
+  native13: { label:'Native 13° Beam',        beam:'13° Native',  emoji:'🔦', angle:13  },
   flood:    { label:'FLOOD',               beam:'Flood',         emoji:'🔆', angle:55 },
   spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
