@@ -22785,13 +22785,26 @@ function _sheetShell(id, icon, title, sub, bodyHTML) {
 var UI_ZOOM_KEY  = 'calm_ui_zoom';
 var UI_ZOOM_LIST = [1, 1.25, 1.5, 1.75, 2, 2.5, 3];
 
+/* 何も設定していないときの既定の倍率。
+ * 画面は電話の幅（480px）を基準に px で組んであるので、PC の広い画面で
+ * 等倍のまま出すと、柱だけ 760px まで広がって文字は電話のままになる。
+ * 1行の文字数が増えるだけで、字は相対的にどんどん小さく見える。
+ * 画面の広さから見当をつけて、最初から読める大きさで出す。
+ * 電話（〜700px）は今までどおり等倍。 */
+function uiZoomDefault() {
+  var w = window.innerWidth || 480;
+  if (w >= 1400) return 1.75;
+  if (w >= 1000) return 1.5;
+  if (w >=  700) return 1.25;
+  return 1;
+}
 function uiZoomGet() {
   var v = NaN;
   try { v = parseFloat(localStorage.getItem(UI_ZOOM_KEY)); } catch(e) {}
   for (var i = 0; i < UI_ZOOM_LIST.length; i++) {
-    if (Math.abs(UI_ZOOM_LIST[i] - v) < 0.001) return UI_ZOOM_LIST[i];
+    if (Math.abs(UI_ZOOM_LIST[i] - v) < 0.001) return UI_ZOOM_LIST[i];   // 本人が選んだ値が最優先
   }
-  return 1;   // 未設定や知らない値は等倍
+  return uiZoomDefault();
 }
 /* いま画面に掛かっている倍率。保存値ではなく適用値を見る。
    座標の割り戻しはこちらを使う（保存を挟まずに変えても合うように）。 */
