@@ -11599,18 +11599,39 @@ var LIGHTS = {
     },
     orbiter: {
       url:'https://www.arri.com/en/lighting/led-spotlights/orbiter',
-      name:'Orbiter', group:'LED', desc:'570W Full Color LED Fixture', emoji:'⚫', watts:570, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
+      name:'Orbiter', group:'LED', desc:'500W Full Color LED Fixture', emoji:'⚫', watts:500, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'6.3 kg', size:'378×378×295 mm',
-      ccts:[2000,3200,5600,10000],
-      accessories:['none'], accAngles:{none:80},  // ARRI 公表 80° Half Peak Angle（optics なし）
-      dmx:{led:'RGBACL',power:'570W',cct:'1000K–20000K + Full RGBWW',cri:'>96',tlci:'>97',ip:'IP54',
+      ccts:[3200, 5600],
+      accessories:['orb15_c','orb15_o','orb30_c','orb30_o','orb60_c','orb60_o'],
+      accAngles:{orb15_c:15, orb15_o:15, orb30_c:30, orb30_o:30, orb60_c:60, orb60_o:60},   // ARRI 公表の開放光学系の角度
+      dmx:{led:'RGBACL',power:'400W nominal / 500W max',cct:'1000K–20000K + Full RGBWW',cri:'>96',tlci:'>97',ip:'IP54',
         control:'On-board / ARRI Stellar / DMX / RDM / Art-Net / sACN',dimming:'0%–100%',
         effects:['Flash','Pulse','Fire','Lightning','TV','Paparazzi','Cop Car','Strobe','Disco']},
       dmxUrl:'https://www.arri.com/resource/blob/281324/c563bed1e5ac8c3d9d91fe0855f47c27/l5-0037960-arri-orbiter-dmx-mode-specification-en-v5-0-jul2022-data.pdf',
       dmxVer:'v5.0',
+      // ARRI 公式の配光表（1 / 3 / 5m、3200K と 5600K）。
+      // 開放光学系 15° / 30° / 60° を、色再現優先（HiCRI）と明るさ優先（HiOut）の
+      // 2モードぶん入れた。
+      //
+      // 元は光学系の区別が無く 1種類（3m 5600K で 28,000 lx）だった。この値は
+      // どの構成とも一致しない。いちばん明るい 15° HiOut でも 19,780 lx で、
+      // 光学系なし（80° 開放）ならもっと暗くなる。
+      //
+      // 消費電力も 570W から公表値の 400W 定格 / 500W 最大に直した。
+      //
+      // Beam 4° やプロジェクション系の光学系は別資料にあるが、今回は
+      // 開放光学系の3種にとどめた。
       refData:{
-        3200:{3:{none:24000},5:{none:8600},10:{none:2150}},
-        5600:{3:{none:28000},5:{none:10100},10:{none:2520}},
+        3200:{
+          1:{orb15_c:130000, orb15_o:138000, orb30_c:41600, orb30_o:44700, orb60_c:15900, orb60_o:16100},
+          3:{orb15_c:14445, orb15_o:15330, orb30_c:4620, orb30_o:4970, orb60_c:1780, orb60_o:1800},
+          5:{orb15_c:5200, orb15_o:5520, orb30_c:1665, orb30_o:1790, orb60_c:640, orb60_o:645}
+        },
+        5600:{
+          1:{orb15_c:162000, orb15_o:178000, orb30_c:54900, orb30_o:58000, orb60_c:20000, orb60_o:21000},
+          3:{orb15_c:18000, orb15_o:19780, orb30_c:6100, orb30_o:6445, orb60_c:2220, orb60_o:2333},
+          5:{orb15_c:6480, orb15_o:7120, orb30_c:2195, orb30_o:2320, orb60_c:800, orb60_o:840}
+        }
       }
     },
     skypanel_s120c: {
@@ -15662,6 +15683,13 @@ var ACC_INFO = {
   gdx_sbg:  { label:'Softbox + Grid',      beam:'Softbox + Grid', emoji:'🔲' },
   // SkyPanel の交換式拡散板。角度は ARRI が公表していない
   arri_std: { label:'Standard Diffusion', beam:'Standard Diff', emoji:'⬜', angle:105 },
+  // Orbiter の開放光学系。HiCRI は色再現優先、HiOut は明るさ優先のモード
+  orb15_c: { label:'Open Face 15° (HiCRI)', beam:'15° HiCRI', emoji:'🔦', angle:15 },
+  orb15_o: { label:'Open Face 15° (HiOut)', beam:'15° HiOut', emoji:'🔦', angle:15 },
+  orb30_c: { label:'Open Face 30° (HiCRI)', beam:'30° HiCRI', emoji:'🔦', angle:30 },
+  orb30_o: { label:'Open Face 30° (HiOut)', beam:'30° HiOut', emoji:'🔦', angle:30 },
+  orb60_c: { label:'Open Face 60° (HiCRI)', beam:'60° HiCRI', emoji:'🔦', angle:60 },
+  orb60_o: { label:'Open Face 60° (HiOut)', beam:'60° HiOut', emoji:'🔦', angle:60 },
   arri_lite:{ label:'Lite Diffusion',     beam:'Lite Diff',     emoji:'⬜', angle:105 },
   arri_hvy: { label:'Heavy Diffusion',    beam:'Heavy Diff',    emoji:'⬛', angle:105 },
   arri_int: { label:'Intensifier',        beam:'Intensifier',   emoji:'🔺' },
