@@ -8875,6 +8875,8 @@ var MAKERS = {
   k5600:        { name:'K5600 Lighting', url:'https://k5600.com/',     emoji:'⬜', accent:'#ffffff', dark:'#e0e0e0', light:'#f5f5f5', glow:'rgba(200,200,200,0.25)', accent2:'#212121', activeOutline:'#212121' },
   filmgear:     { name:'Film Gear', url:'https://www.filmgearusa.com/', emoji:'🟪', accent:'#5e35b1', dark:'#4527a0', light:'#ede7f6', glow:'rgba(94,53,177,0.25)', accent2:'#ffffff' },
   desisti:      { name:'De Sisti', url:'https://www.desisti.it/', emoji:'🟩', accent:'#2e7d32', dark:'#1b5e20', light:'#e8f5e9', glow:'rgba(46,125,50,0.25)', accent2:'#ffffff' },
+  profoto:      { name:'Profoto', url:'https://www.profoto.com/', emoji:'🔴', accent:'#e2231a', dark:'#8f1410', light:'#fdeceb', glow:'rgba(226,35,26,0.25)', accent2:'#111111' },
+  aparo:        { name:'APARO', url:'https://www.aparolight.com/', emoji:'🩵', accent:'#00838f', dark:'#005662', light:'#e0f4f6', glow:'rgba(0,131,143,0.25)', accent2:'#111111' },
   vulcan:       { name:'Vulcan', emoji:'🌋', accent:'#d84315', dark:'#bf360c', light:'#fbe9e7', glow:'rgba(216,67,21,0.25)', accent2:'#ffffff' },
   tungsten:     { name:'Tungsten',           emoji:'🔥', accent:'#f57c00', dark:'#e65100', light:'#fff3e0', glow:'rgba(245,124,0,0.25)' },
   amaran:       { name:'amaran', url:'https://www.amaran.com/',             emoji:'🔵', accent:'#ffffff', dark:'#e0e0e0', light:'#f5f5f5', glow:'rgba(200,200,200,0.25)', accent2:'#1565c0', activeOutline:'#1565c0' },
@@ -13827,6 +13829,98 @@ super_led_f47: {
 
   },
 
+  /* Profoto（スウェーデン）。ProPanel 3x2 は 2000W の大型ソフトパネル。 */
+  profoto: {
+    propanel_3x2: {
+      url:'https://www.profoto.com/int/en/cinema/experience/profoto-propanel-3x2',
+      group:'LED', name:'ProPanel 3x2', desc:'2000W RGBWW Soft Panel', emoji:'🔴', watts:2000,
+      svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
+      weight:'28.5 kg', size:'1118×660 mm',
+      ccts:[2000, 3200, 5600, 15000], cctMin:2000, cctMax:15000,
+      accessories:['none','pf_dome','pf_sb','pf_sbg'],
+      accAngles:{none:113},   // Profoto 公表の native beam angle
+      accUnknown:['pf_dome','pf_sb','pf_sbg'],   // 付属品ごとの角度は公表されていない
+      dmx:{led:'RGBWW (Core-5)',power:'2000W',cct:'2000K-15000K + RGBWW',cri:'95',tlci:'97',ip:'IP65',
+        control:'On-board / DMX 16bit / CRMX',dimming:'0-100%',effects:[]},
+      // 露出計で測られた値（ISO 400 / 1/50 / 25fps）。1m と 3m、色温度4点。
+      // 4つの構成（素・ドーム・SnapBag・SnapBag+グリッド）が同じ測定で揃っている。
+      //
+      // 15000K の 3m だけ入れていない。映像には 18,624 lux と出ているが、
+      // F値は 2000K（6,730 lux）と同じ F11 5/10 で、数字だけが桁違いに大きい。
+      // 作者の打ち間違いとみて、その升は空けてある。
+      //
+      // 1m と 3m の比が 5.7〜6.1 で逆二乗（9）より緩い。1118×660mm の
+      // 面光源に 1m まで寄ると近距離側になるためで、大きな軟光源では自然。
+      refData:{
+        2000:{1:{none:42700, pf_dome:34400, pf_sb:24200, pf_sbg:13100},
+              3:{none:6730,  pf_dome:5640,  pf_sb:4400,  pf_sbg:3140}},
+        3200:{1:{none:47500, pf_dome:43200, pf_sb:30400, pf_sbg:16000},
+              3:{none:8380,  pf_dome:5870,  pf_sb:5720,  pf_sbg:3850}},
+        5600:{1:{none:51100, pf_dome:42400, pf_sb:30300, pf_sbg:16100},
+              3:{none:8410,  pf_dome:6910,  pf_sb:5790,  pf_sbg:3800}},
+        15000:{1:{none:40900, pf_dome:34800, pf_sb:24000, pf_sbg:13100},
+               3:{pf_dome:5720, pf_sb:4750, pf_sbg:3180}}
+      }
+    }
+  },
+
+  /* APARO（中国）の Radi Pro Air。空気で膨らませるソフトボックスが本体。
+   * メーカーも配光を公表していて、実測とよく合う（Radi 09 は 1m 5600K で
+   * 公表 1,750 対 実測 1,800、Radi 44 は 9,550 対 9,420）。
+   * 数値は実測のほうを入れてある。 */
+  aparo: {
+    radi_09_pro_air: {
+      url:'https://www.aparolight.com/product-page/radi-09-pro-air',
+      group:'LED', name:'Radi 09 Pro Air', desc:'360W RGBWW Inflatable Soft Light', emoji:'🩵', watts:360,
+      svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
+      weight:'2.2 kg', weightExtra:'Control box 3.1 kg', size:'1300 x 250 mm',
+      ccts:[3200, 5600], cctMin:2500, cctMax:9999,
+      accessories:['none'], accAngles:{none:72},   // APARO 公表 72°
+      dmx:{led:'RGBWW (SMD 648x3)',power:'360W',cct:'2500K-9999K + RGB',cri:'95+',ip:'IP20',
+        control:'On-board / DMX / CRMX',dimming:'0-100%',effects:[]},
+      // 露出計で測られた値（ISO 400 / 1/50 / 25fps）。AC 電源時。
+      refData:{
+        3200:{1:{none:1710}, 3:{none:263}},
+        5600:{1:{none:1800}, 3:{none:291}}
+      }
+    },
+    radi_24_pro_air2: {
+      url:'https://www.aparolight.com/product-page/radi-24-pro-air',
+      group:'LED', name:'Radi 24 Pro Air II', desc:'360W RGBWW Inflatable Soft Light', emoji:'🩵', watts:360,
+      svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
+      weight:'2.84 kg', weightExtra:'Control box 3.15 kg',
+      ccts:[2500, 3200, 5600, 20000], cctMin:2500, cctMax:20000,
+      accessories:['none','ap_grid'], accAngles:{none:69},   // APARO 公表 69°
+      accUnknown:['ap_grid'],
+      dmx:{led:'RGBWW (SMD 880x3)',power:'360W',cct:'2500K-20000K + RGB',cri:'95+',ip:'IP20',
+        control:'On-board / DMX / CRMX',dimming:'0-100%',effects:[]},
+      // 露出計で測られた値（ISO 800 / 1/50 / 25fps）。1m と 3m、色温度4点。
+      // メーカーの公表配光は II が付かない旧型のものなので使っていない。
+      refData:{
+        2500:{1:{none:3380, ap_grid:1830}, 3:{none:600, ap_grid:326}},
+        3200:{1:{none:4450, ap_grid:2320}, 3:{none:809, ap_grid:474}},
+        5600:{1:{none:5090, ap_grid:2820}, 3:{none:962, ap_grid:520}},
+        20000:{1:{none:4610, ap_grid:2360}, 3:{none:849, ap_grid:460}}
+      }
+    },
+    radi_44_pro_air: {
+      url:'https://www.aparolight.com/product-page/radi-44pro-air',
+      group:'LED', name:'Radi 44 Pro Air', desc:'680W RGBWW Inflatable Soft Light', emoji:'🩵', watts:680,
+      svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
+      weight:'3.4 kg', weightExtra:'Control box 4.1 kg', size:'1170 x 1160 mm',
+      ccts:[3200, 5600], cctMin:2500, cctMax:9999,
+      accessories:['none','ap_grid'], accAngles:{none:78},   // APARO 公表 78°
+      accUnknown:['ap_grid'],
+      dmx:{led:'RGBWW (SMD 1600x3)',power:'680W',cct:'2500K-9999K + RGB',cri:'95+',ip:'IP20',
+        control:'On-board / DMX / CRMX',dimming:'0-100%',effects:[]},
+      // 露出計で測られた値（ISO 400 / 1/50 / 25fps）。1m と 3m。
+      refData:{
+        3200:{1:{none:8740, ap_grid:4530}, 3:{none:1770, ap_grid:1080}},
+        5600:{1:{none:9420, ap_grid:4850}, 3:{none:2030, ap_grid:1210}}
+      }
+    }
+  },
+
   vulcan: {
     vulcan_par18: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', name:'Vulcan PAR 18K', desc:'18000W Automated HMI Daylight PAR', emoji:'☀️', watts:18000,
@@ -15933,6 +16027,11 @@ var ACC_INFO = {
   // De Sisti の LED フレネル。角度は機種ごとに違うので accAngles 側で入れる
   ds_flood: { label:'FLOOD',              beam:'Flood',         emoji:'🔆' },
   ds_spot:  { label:'SPOT',               beam:'Spot',          emoji:'🎯' },
+  // Profoto ProPanel と APARO Radi の付属品
+  pf_dome:  { label:'Dome',               beam:'Dome',          emoji:'🔘' },
+  pf_sb:    { label:'SnapBag',            beam:'SnapBag',       emoji:'🔲' },
+  pf_sbg:   { label:'SnapBag + Grid',     beam:'SnapBag+Grid',  emoji:'▦' },
+  ap_grid:  { label:'Control Grid',       beam:'Control Grid',  emoji:'▦' },
   spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
   // フレネルの SPOT(15°前後) と FLOOD(60°前後) の中間。
