@@ -49,9 +49,9 @@
    メディアクエリは zoom を掛ける前の実寸しか見えないので、表示サイズを
    上げると柱まで一緒に広がり、1行の文字数が変わらない＝文字が相対的に
    小さいままになる。 */
-@media (min-width: 820px)  { :root { --app-w: 620px; } }
-@media (min-width: 1100px) { :root { --app-w: 760px; } }
-@media (min-width: 1500px) { :root { --app-w: 880px; } }
+/* JS が動く前の保険。実際の値は applyAppWidth() が連続値で入れる */
+@media (min-width: 820px)  { :root { --app-w: 820px; } }
+@media (min-width: 1100px) { :root { --app-w: 880px; } }
 
 .app-header {
   padding-top: env(safe-area-inset-top, 0px);
@@ -23438,14 +23438,24 @@ function uiZoomNow() { return _uiZoomCur; }
    画面幅）で決める。CSS のメディアクエリは zoom を無視した実寸しか
    見えないので、表示サイズを上げると柱まで一緒に広がり、1行の文字数が
    変わらないまま＝文字が相対的に小さいままだった。 */
-var APP_W_TIERS = [[1500, 880], [1100, 760], [820, 620], [0, 480]];
+/* 柱の幅（--app-w）。以前は 880 / 760 / 620 / 480 の4段だった。
+ * 段だと、表示サイズを上げたときに「段が1つ落ちて、画面上ではむしろ
+ * 細くなる」ことが起きる。窓 1280px なら 150% で柱620（実寸930）、
+ * 175% で柱480（実寸840）となり、拡大したのに縮んで見えた。
+ *
+ * 段をやめて連続にした。柱 = レイアウト幅を 360〜880 に収めた値。
+ * 画面上の実寸（柱 × 倍率）はこうなる。
+ *   レイアウト幅が 880 超（低倍率） … 880×倍率 で増える
+ *   360〜880 のあいだ              … ちょうど窓いっぱいで一定
+ *   360 未満（高倍率）             … 360×倍率 で増える
+ * どこでも増えるか横ばいで、減ることがない。 */
+var APP_W_MIN = 360, APP_W_MAX = 880;
 function applyAppWidth() {
   var d  = document.documentElement;
   var vw = (window.innerWidth || 480) / (_uiZoomCur || 1);
-  var w  = 480;
-  for (var i = 0; i < APP_W_TIERS.length; i++) {
-    if (vw >= APP_W_TIERS[i][0]) { w = APP_W_TIERS[i][1]; break; }
-  }
+  /* 下限で押し広げると窓からはみ出す（1024px で 3倍だと 360×3=1080）。
+     柱はレイアウト幅を超えない。狭くなりすぎるのは倍率の上限で防ぐ。 */
+  var w  = Math.round(Math.min(APP_W_MAX, vw));
   d.style.setProperty('--app-w', w + 'px');
   if (vw >= 820) d.setAttribute('data-wide', '1');
   else           d.removeAttribute('data-wide');
@@ -23489,6 +23499,11 @@ window.addEventListener('resize', syncBottomBars);
    下回り、iPhone では 100% しか出ていなかった（押しても何も起きない
    ボタンが1つ並ぶだけ）。300 まで下げて、どの iPhone でも 125% を
    出す。お気に入りのパネルのはみ出しは right を自分の幅ぶんに直した。 */
+/* 倍率の上限を決める下限レイアウト幅。
+ * 柱は min(880, レイアウト幅) なので窓を超えることはなく、はみ出しは
+ * 構造的に起きない。この値は「これ以上狭いと中身が窮屈すぎる」という
+ * 目安だけを見ている。360 にすると iPhone（390px）で 125% すら選べなく
+ * なるため 300 のまま。 */
 var UI_ZOOM_MIN_VW = 300;
 function uiZoomMax() {
   var w = window.innerWidth || 480, m = UI_ZOOM_LIST[0];
