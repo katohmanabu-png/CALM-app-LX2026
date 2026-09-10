@@ -1067,20 +1067,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
         </div>
         <div id="beam-diagram"></div>
       </div>
-      <div class="sl-field">
-        <div class="sl-top"><div class="sl-label" id="lbl-cct">色温度 / CCT</div></div>
-        <div class="cct-display">
-          <div class="cct-swatch" id="cct-swatch"></div>
-          <div><div class="cct-val" id="cct-val">5600K</div><div class="cct-desc" id="cct-desc">Daylight</div></div>
-        </div>
-        <div class="sl-with-btns">
-          <button class="step-btn" onclick="stepSl('cct-sl',-1,onCCTChange)">‹</button>
-          <input type="range" id="cct-sl" min="0" max="1" step="1" value="1" oninput="onCCTChange()">
-          <button class="step-btn" onclick="stepSl('cct-sl',1,onCCTChange)">›</button>
-        </div>
-        <div class="sl-labs" id="cct-labs"></div>
-        <div id="cct-presets" style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;"></div>
-      </div>
+      <!-- 距離はビーム図と連動するので、ビーム角のすぐ下に置く -->
       <div class="sl-field">
         <div class="sl-top">
           <div style="display:flex;align-items:center;gap:6px;">
@@ -1219,6 +1206,21 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
         
 </div>
 </div>
+      <div class="sl-field">
+        <div class="sl-top"><div class="sl-label" id="lbl-cct">色温度 / CCT</div></div>
+        <div class="cct-display">
+          <div class="cct-swatch" id="cct-swatch"></div>
+          <div><div class="cct-val" id="cct-val">5600K</div><div class="cct-desc" id="cct-desc">Daylight</div></div>
+        </div>
+        <div class="sl-with-btns">
+          <button class="step-btn" onclick="stepSl('cct-sl',-1,onCCTChange)">‹</button>
+          <input type="range" id="cct-sl" min="0" max="1" step="1" value="1" oninput="onCCTChange()">
+          <button class="step-btn" onclick="stepSl('cct-sl',1,onCCTChange)">›</button>
+        </div>
+        <div class="sl-labs" id="cct-labs"></div>
+        <div id="cct-presets" style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;"></div>
+      </div>
+      
 
 
 </div></div></div>
