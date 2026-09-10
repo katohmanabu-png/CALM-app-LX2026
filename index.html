@@ -11833,6 +11833,21 @@ var LIGHTS = {
       dmx:{led:'RGBACL',power:'800W',cct:'1500K–20000K + RGBWW',cri:'>96',ip:'IP66',
         control:'On-board / ARRI Stellar / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','Fire','TV','Cop Car','Lightning']},
       dmxUrl:'https://www.arri.com/resource/blob/341284/345965876808d3b1f29a6121ab18974b/l5-0049708-arri-skypanel-x-operating-manual-en-data.pdf',
+      // ドームの 1m を実測に差し替えた。
+      //
+      // 直す前は 3m から逆二乗で伸ばした値で、X21 の 3200K なら 12,400 lx。
+      // 実測は 8,190 lx で 51% 高すぎた。738mm のドームは近距離で逆二乗より
+      // 緩やかに落ちるので、3m を起点に 1m まで戻すと過大に出る。
+      //
+      // 5600K の 1m は入れていない。映像には 5,743 lx と出ているが、F値は
+      // F11 8/10 で4つの色温度のうち最も高いのに、F11 7/10 の 3200K
+      //（8,190 lx）より低い。桁数も1つ多く、打ち間違いとみられる。
+      // 足りない色温度はいちばん近い値で代用される（画面に ≈ が付く）。
+      //
+      // 3m は実測そのもの。6m と 10m はそこから逆二乗で伸ばしてある
+      //（3m 以遠なら面光源でも逆二乗が成り立つ）。
+      // HyPer Optic は 11° の絞った光学系なので 1m でも逆二乗が使え、
+      // そちらは触っていない。
       // 露出計で測られた値（3m、ISO 400 / 1/50 / 25fps）を基準にした。
       //   3m / 5600K   素 1,730 / Dome 1,440 / HyPer Optic 11° 29,400
       //
@@ -11850,22 +11865,22 @@ var LIGHTS = {
       // 1500K と 10000K は 3m の実測だけ入れてある。ほかの距離はいちばん近い
       // 色温度からの代用になる。
       refData:{
-        1500:{
+        1500:{1:{x21_dome:4550}, 
           3:{none:929, x21_dome:758, hyper_optic:15100}
         },
         3200:{
-          1:{x21_dome:12400, hyper_optic:249800},
+          1:{x21_dome:8190, hyper_optic:249800},
           3:{none:1660, x21_dome:1370, hyper_optic:27100},
           6:{x21_dome:344, hyper_optic:6950},
           10:{x21_dome:124, hyper_optic:2500}
         },
         5600:{
-          1:{x21_dome:12900, hyper_optic:258400},
+          1:{hyper_optic:258400},
           3:{none:1730, x21_dome:1440, hyper_optic:29400},
           6:{x21_dome:358, hyper_optic:7160},
           10:{x21_dome:129, hyper_optic:2580}
         },
-        10000:{
+        10000:{1:{x21_dome:8470}, 
           3:{none:1660, x21_dome:1370, hyper_optic:27700}
         }
       }
@@ -11879,6 +11894,21 @@ var LIGHTS = {
       dmx:{led:'RGBACL',power:'1600W (2×800W)',cct:'1500K–20000K + RGBWW',cri:'>96',ip:'IP66',
         control:'On-board / ARRI Stellar / DMX / CRMX',dimming:'0–100%',effects:['Flash','Pulse','Fire','TV','Lightning']},
       dmxUrl:'https://www.arri.com/resource/blob/341284/345965876808d3b1f29a6121ab18974b/l5-0049708-arri-skypanel-x-operating-manual-en-data.pdf',
+      // ドームの 1m を実測に差し替えた。
+      //
+      // 直す前は 3m から逆二乗で伸ばした値で、X21 の 3200K なら 12,400 lx。
+      // 実測は 8,190 lx で 51% 高すぎた。738mm のドームは近距離で逆二乗より
+      // 緩やかに落ちるので、3m を起点に 1m まで戻すと過大に出る。
+      //
+      // 5600K の 1m は入れていない。映像には 5,743 lx と出ているが、F値は
+      // F11 8/10 で4つの色温度のうち最も高いのに、F11 7/10 の 3200K
+      //（8,190 lx）より低い。桁数も1つ多く、打ち間違いとみられる。
+      // 足りない色温度はいちばん近い値で代用される（画面に ≈ が付く）。
+      //
+      // 3m は実測そのもの。6m と 10m はそこから逆二乗で伸ばしてある
+      //（3m 以遠なら面光源でも逆二乗が成り立つ）。
+      // HyPer Optic は 11° の絞った光学系なので 1m でも逆二乗が使え、
+      // そちらは触っていない。
       // 露出計で測られた値（3m、ISO 400 / 1/50 / 25fps）を基準にした。
       //   3m / 5600K   素 3,460 / Dome 2,880 / HyPer Optic 11° 58,800
       //
@@ -11899,22 +11929,22 @@ var LIGHTS = {
       // X21 を2台束ねた構成なので、X21 の実測を2倍して入れてある。
       // 公表値も同じ 2 倍の関係になっていた。
       refData:{
-        1500:{
+        1500:{1:{x21_dome:9100}, 
           3:{none:1860, x21_dome:1520, hyper_optic:30200}
         },
         3200:{
-          1:{x21_dome:24800, hyper_optic:500000},
+          1:{x21_dome:16380, hyper_optic:500000},
           3:{none:3320, x21_dome:2740, hyper_optic:54200},
           6:{x21_dome:689, hyper_optic:13900},
           10:{x21_dome:248, hyper_optic:5000}
         },
         5600:{
-          1:{x21_dome:25700, hyper_optic:516600},
+          1:{hyper_optic:516600},
           3:{none:3460, x21_dome:2880, hyper_optic:58800},
           6:{x21_dome:733, hyper_optic:14400},
           10:{x21_dome:257, hyper_optic:5270}
         },
-        10000:{
+        10000:{1:{x21_dome:16940}, 
           3:{none:3320, x21_dome:2740, hyper_optic:55400}
         }
       }
@@ -11928,6 +11958,21 @@ var LIGHTS = {
       dmx:{led:'RGBACL',power:'2400W (3×800W)',cct:'1500K–20000K + RGBWW',cri:'>96',ip:'IP66',
         control:'On-board / ARRI Stellar / DMX / CRMX',dimming:'0–100%',effects:['Flash','Pulse','Fire','TV','Lightning']},
       dmxUrl:'https://www.arri.com/resource/blob/341284/345965876808d3b1f29a6121ab18974b/l5-0049708-arri-skypanel-x-operating-manual-en-data.pdf',
+      // ドームの 1m を実測に差し替えた。
+      //
+      // 直す前は 3m から逆二乗で伸ばした値で、X21 の 3200K なら 12,400 lx。
+      // 実測は 8,190 lx で 51% 高すぎた。738mm のドームは近距離で逆二乗より
+      // 緩やかに落ちるので、3m を起点に 1m まで戻すと過大に出る。
+      //
+      // 5600K の 1m は入れていない。映像には 5,743 lx と出ているが、F値は
+      // F11 8/10 で4つの色温度のうち最も高いのに、F11 7/10 の 3200K
+      //（8,190 lx）より低い。桁数も1つ多く、打ち間違いとみられる。
+      // 足りない色温度はいちばん近い値で代用される（画面に ≈ が付く）。
+      //
+      // 3m は実測そのもの。6m と 10m はそこから逆二乗で伸ばしてある
+      //（3m 以遠なら面光源でも逆二乗が成り立つ）。
+      // HyPer Optic は 11° の絞った光学系なので 1m でも逆二乗が使え、
+      // そちらは触っていない。
       // 露出計で測られた値（3m、ISO 400 / 1/50 / 25fps）を基準にした。
       //   3m / 5600K   素 5,190 / Dome 4,320 / HyPer Optic 11° 88,200
       //
@@ -11948,22 +11993,22 @@ var LIGHTS = {
       // X21 を3台束ねた構成なので、X21 の実測を3倍して入れてある。
       // 公表値も同じ 3 倍の関係になっていた。
       refData:{
-        1500:{
+        1500:{1:{x21_dome:13650}, 
           3:{none:2790, x21_dome:2270, hyper_optic:45300}
         },
         3200:{
-          1:{x21_dome:37200, hyper_optic:707300},
+          1:{x21_dome:24570, hyper_optic:707300},
           3:{none:4980, x21_dome:4110, hyper_optic:81300},
           6:{x21_dome:1040, hyper_optic:19600},
           10:{x21_dome:372, hyper_optic:7050}
         },
         5600:{
-          1:{x21_dome:38600, hyper_optic:730700},
+          1:{hyper_optic:730700},
           3:{none:5190, x21_dome:4320, hyper_optic:88200},
           6:{x21_dome:1070, hyper_optic:20300},
           10:{x21_dome:386, hyper_optic:7310}
         },
-        10000:{
+        10000:{1:{x21_dome:25410}, 
           3:{none:4980, x21_dome:4110, hyper_optic:83100}
         }
       }
