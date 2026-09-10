@@ -10821,6 +10821,7 @@ var LIGHTS = {
       weight:'7.45 kg', size:'538×433×177 mm',
       ccts:[3200,5600], cctMin:2200, cctMax:15000,
       accessories:['native20'],
+      accAngles:{native20:20},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
       dmx:{led:'RRGBBW',power:'160W',cct:'2200K–15000K + RGB',cri:'≥95',tlci:'≥95',ip:'IP65',
         control:'On-board / App / DMX / RDM / Art-Net / sACN',dimming:'0.0%–100%',
         effects:['Flash','Pulse','Fire','TV','Strobe']},
@@ -10837,6 +10838,7 @@ var LIGHTS = {
       weight:'15.9 kg', size:'690×380×121 mm',
       ccts:[3200,5600], cctMin:2200, cctMax:10000,
       accessories:['native20','cs_diff2','cs_dome'],
+      accAngles:{native20:20},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
       accUnknown:['cs_diff2','cs_dome'],   // ディフューザーとドームの角度は公表されていない
       dmx:{led:'RGBW',power:'650W',cct:'2200K–10000K + RGBW',cri:'≥95',tlci:'≥95',ip:'IP65',
         control:'On-board / App / DMX / RDM / Art-Net / sACN',dimming:'0.0%–100%',
@@ -10879,6 +10881,7 @@ var LIGHTS = {
       weight:'9.8 kg', size:'380×380×121 mm',
       ccts:[3200,5600], cctMin:2200, cctMax:10000,
       accessories:['native20'],
+      accAngles:{native20:20},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
       dmx:{led:'RGBW',power:'400W',cct:'2200K–10000K + RGBW',cri:'≥95',tlci:'≥95',ip:'IP65',
         control:'On-board / App / DMX / RDM / Art-Net / sACN',dimming:'0.0%–100%',
         effects:['Flash','Pulse','Fire','TV','Strobe']},
@@ -10893,14 +10896,30 @@ var LIGHTS = {
       url:'https://www.creamsource.com/products/vortex24/',
       group:'LED', name:'Vortex24', desc:'1950W IP65 Full Color LED Panel Spot', emoji:'🌸', watts:1950, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'53.5 kg', size:'1333×971×258 mm',
-      ccts:[2200, 3200, 5600, 10000, 15000], accessories:['none'], accAngles:{none:20},  // Creamsource 公表 20° half peak angle（ナレッジベース Specs for the Vortex24）
+      ccts:[3200, 5600],
+      accessories:['native20','cs_xwide'],
+      accAngles:{native20:20, cs_xwide:100},   // Creamsource 公表の実効ビーム角
       dmx:{led:'RGBW',power:'1950W',cct:'2200K–15000K + Full RGBWW',cri:'>95',ip:'IP65',
         control:'On-board / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','TV','Fire','Lightning']},
       dmxUrl:'https://creamsource.com/wp-content/downloads/dmx-tables/VortexSeries-DMX-Tables-1.2.1.pdf',
       dmxVer:'v1.2.1',
+      // Creamsource 公式カットシートの配光表。1〜6m。
+      // 3200K と 5600K は紙面でも同じ値（「3200K/5600K」と併記されている）。
+      //
+      // 直す前は 3m の 27,560 lx から逆二乗で伸ばした値が入っていて、
+      // 1m が 248,040 lx になっていた。公式の実測は 96,350 lx で、2.6倍も
+      // 違う。1170×… の大きな面光源に 1m まで寄ると近距離側に入るため、
+      // 逆二乗では合わない。紙面の値に置き換えた。
+      //
+      // XWIDE レンズ（旧 MED ディフューザー）を追加した。紙面では
+      // 「Diffuser」の名で載っている。
       refData:{
-        3200:{1:{'none':223236}, 2:{'none':55809}, 3:{'none':24804}, 5:{'none':8929}, 8:{'none':3488}, 10:{'none':2232}},
-        5600:{1:{'none':248040}, 2:{'none':62010}, 3:{'none':27560}, 5:{'none':9922}, 8:{'none':3876}, 10:{'none':2480}}
+        3200:{1:{native20:96350, cs_xwide:26940}, 2:{native20:48800, cs_xwide:7960},
+              3:{native20:27560, cs_xwide:3730},  4:{native20:16990, cs_xwide:2120},
+              5:{native20:11350, cs_xwide:1410},  6:{native20:8150,  cs_xwide:1010}},
+        5600:{1:{native20:96350, cs_xwide:26940}, 2:{native20:48800, cs_xwide:7960},
+              3:{native20:27560, cs_xwide:3730},  4:{native20:16990, cs_xwide:2120},
+              5:{native20:11350, cs_xwide:1410},  6:{native20:8150,  cs_xwide:1010}}
       }
     },
     spacex: {
@@ -10975,6 +10994,7 @@ var LIGHTS = {
       weight:'5.5 kg', size:'390×207.6×183.6 mm',
       ccts:[3200, 5600], cctMin:2200, cctMax:15000,
       accessories:['cs_of','cs_xwide','cs_int'],
+      accAngles:{cs_of:110, cs_xwide:110, cs_int:80},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
       accUnknown:['cs_xwide','cs_int'],
       dmx:{led:'RRGBBW',power:'160W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
         control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON',dimming:'0%–100%',effects:[]},
@@ -10994,6 +11014,7 @@ var LIGHTS = {
       weight:'8.9 kg', size:'380×380×121 mm',
       ccts:[3200, 5600], cctMin:2200, cctMax:15000,
       accessories:['cs_of','cs_int','cs_diff','cs_dome'],
+      accAngles:{cs_of:110, cs_int:80},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
       accUnknown:['cs_int','cs_diff','cs_dome'],
       dmx:{led:'RRGBBW',power:'325W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
         control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON',dimming:'0%–100%',effects:[]},
@@ -11013,6 +11034,7 @@ var LIGHTS = {
       weight:'14 kg', size:'690×380×121 mm',
       ccts:[3200, 5600], cctMin:2200, cctMax:15000,
       accessories:['cs_of','cs_int','cs_diff','cs_dome'],
+      accAngles:{cs_of:110, cs_int:80},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
       accUnknown:['cs_int','cs_diff','cs_dome'],
       dmx:{led:'RRGBBW',power:'650W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
         control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON',dimming:'0%–100%',effects:[]},
@@ -11032,6 +11054,7 @@ var LIGHTS = {
       weight:'42 kg', size:'971×686×258 mm',
       ccts:[3200, 5600], cctMin:2200, cctMax:15000,
       accessories:['cs_naked','cs_xwide'],
+      accAngles:{cs_naked:110, cs_xwide:110},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
       accUnknown:['cs_xwide'],
       dmx:{led:'RRGBBW',power:'1950W',cct:'2200K–15000K + RGBW',cri:'95 (typical)',tlci:'95 (typical)',ip:'IP65',
         control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON',dimming:'0%–100%',effects:[]},
@@ -15965,12 +15988,12 @@ var ACC_INFO = {
   // Intensifier / Diffuser / Dome / XWIDE は角度が公表されていないので角度を入れない。
   cs_of:    { label:'Open Face',   beam:'110° Native', emoji:'⭕', angle:110 },
   cs_naked: { label:'Naked',       beam:'110° Native', emoji:'⭕', angle:110 },
-  cs_int:   { label:'Intensifier', beam:'Intensifier', emoji:'🔦' },
+  cs_int:   { label:'Intensifier', beam:'80° on Soft',  emoji:'🔦', angle:80 },
   cs_diff:  { label:'Diffuser',    beam:'Diffuser',    emoji:'⬜' },
   cs_dome:  { label:'Dome',        beam:'Dome',        emoji:'🔘' },
   // Vortex8 でディフューザーを2枚重ねた状態。角度は公表されていない。
   cs_diff2: { label:'Both Diffusers', beam:'Diffuser ×2', emoji:'⬜' },
-  cs_xwide: { label:'XWIDE Lens',  beam:'XWIDE',       emoji:'🔆' },
+  cs_xwide: { label:'XWIDE Lens',  beam:'100° on Hard', emoji:'🔆', angle:100 },
   // Kelvin Epos 300。素の 93° と Bowens マウントのリフレクター2種。
   // D90 ディフューザーは Epos 300 での角度が公表されていないので角度を入れない。
   kv_bare:  { label:'Bare Light',              beam:'93° Native',    emoji:'⭕', angle:93 },
