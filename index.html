@@ -1065,6 +1065,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
           </div>
           <div class="sl-labs" id="beam-labs"></div>
         </div>
+        <div id="beam-diagram"></div>
       </div>
       <div class="sl-field">
         <div class="sl-top"><div class="sl-label" id="lbl-cct">色温度 / CCT</div></div>
@@ -2188,6 +2189,7 @@ var LANGS = {
     uiZoomTitle:'表示サイズ', uiZoomHint:'画面全体の大きさを変えます。文字も一緒に大きくなります。',
     hideTitle:'表示する機材', hideHint:'使わない機材を検索や一覧から消せます。この端末の中だけの設定で、データは消えません。',
     hideMakerWhole:'メーカーごと隠す', hideReset:'すべて表示に戻す', hideCountFmt:'非表示 {n} 台', hideAllWarn:'全部は隠せません。1台は残してください。',
+    beamDiagram:'ビームの広がり', beamPoolFront:'正面', beamAngleLab:'ビーム角', beamPoolLab:'照射範囲', beamLuxLab:'照度', beamDistLab:'距離',
     orderTitle:'並びの設定', orderBar:'下部タブ', orderMenu:'メニューの並び', orderMenuSub:'三本線のメニューに出る順です',
     langLabel:'言語',
     arErrNoSupport:'この端末はカメラ計測に対応していません', arErrBusy:'すでに測定中です', arErrOpen:'画面を開けませんでした', arSegHere:'ここから', arSegTwo:'2点間', arSegTri:'2地点から', arBtnFix:'ここで決める', arBtnRedo:'やり直す', arBtnUse:'この距離を使う', arBtnPlace:'点をおく', arBtnAimHere:'ここから狙う', arBtnAimAgain:'もう一度狙う', arHintFromMe:'いまいる場所から測ります。測りたい先に十字を合わせて「ここで決める」', arHintTwoA:'離れた2か所の間を測ります。片方の端に十字を合わせて「点をおく」', arHintTwoB:'もう一方の端に十字を合わせて、もう一度「点をおく」', arHintTriA:'遠くを正確に測ります。測りたい所に十字を合わせて「ここから狙う」', arHintTriB:'同じ所に十字を合わせたまま、横へ数メートル歩いて「もう一度狙う」', arHintDone:'この値でよければ「この距離を使う」', arWarnExtended:'面を延長して測っています（LiDAR の届く範囲の外）。遠くなるほど当てになりません。「2地点から」のほうが正確です', arWarnNoPlane:'測れる面が見つかりません。端末を少し動かしてください', arTriProgress:'横に {d}m 歩きました。狙いのすれ違い {g}m。{tail}', arTriWalkMore:'もう少し横へ歩くと正確になります', arTriReady:'同じ所を狙えていれば「もう一度狙う」', arTriNoCross:'横に {d}m 歩きました。まだ交点が出せません。もう少し横へ歩いてください', arTriFail:'交点が出せません。同じ所を狙ったまま、もう少し横へ歩いてください', arTriNoMove:'ほとんど動いていません。横へ数メートル歩いてから狙ってください', arTriFixed:'基線 {b}m・狙いのすれ違い {g}m。この値でよければ「この距離を使う」', arTrackInit:'端末をゆっくり動かして周囲を認識させてください', arTrackLowFeature:'暗いか模様が少ない面です。明るい所か、模様のある面を狙ってください', arTrackFast:'動きが速すぎます。ゆっくり構えてください',
@@ -2344,6 +2346,7 @@ var LANGS = {
     uiZoomTitle:'Display size', uiZoomHint:'Scales the whole screen, text included.',
     hideTitle:'Visible fixtures', hideHint:'Hide fixtures you never use from lists and search. This device only — nothing is deleted.',
     hideMakerWhole:'Hide the whole maker', hideReset:'Show everything again', hideCountFmt:'{n} hidden', hideAllWarn:'You can\'t hide them all. Leave at least one.',
+    beamDiagram:'Beam spread', beamPoolFront:'Front', beamAngleLab:'Beam angle', beamPoolLab:'Pool size', beamLuxLab:'Illuminance', beamDistLab:'Distance',
     orderTitle:'Layout', orderBar:'Bottom tabs', orderMenu:'Menu order', orderMenuSub:'The order they appear in the menu',
     langLabel:'Language',
     arErrNoSupport:'This device does not support camera measuring', arErrBusy:'A measurement is already running', arErrOpen:'Could not open the screen', arSegHere:'From here', arSegTwo:'2 points', arSegTri:'2 spots', arBtnFix:'Fix it here', arBtnRedo:'Start again', arBtnUse:'Use this distance', arBtnPlace:'Place a point', arBtnAimHere:'Sight from here', arBtnAimAgain:'Sight again', arHintFromMe:'Measures from where you stand. Put the cross on the target and tap Fix it here.', arHintTwoA:'Measures between two separate places. Put the cross on one end and tap Place a point.', arHintTwoB:'Put the cross on the other end and tap Place a point again.', arHintTriA:'For accuracy at long range. Put the cross on the target and tap Sight from here.', arHintTriB:'Keep the cross on the same spot, walk a few metres sideways, then tap Sight again.', arHintDone:'If the value looks right, tap Use this distance.', arWarnExtended:'Measuring on an extended plane, beyond LiDAR range. The further out, the less you can rely on it. 2 spots is more accurate.', arWarnNoPlane:'No measurable surface found. Move the device a little.', arTriProgress:'Walked {d}m sideways. Sight lines miss by {g}m. {tail}', arTriWalkMore:'Walk a little further sideways for better accuracy.', arTriReady:'If you are on the same spot, tap Sight again.', arTriNoCross:'Walked {d}m sideways. Still no crossing point. Walk a little further sideways.', arTriFail:'No crossing point. Keep aiming at the same spot and walk a little further sideways.', arTriNoMove:'You have hardly moved. Walk a few metres sideways before sighting.', arTriFixed:'Baseline {b}m, sight lines miss by {g}m. If the value looks right, tap Use this distance.', arTrackInit:'Move the device slowly so it can read the surroundings.', arTrackLowFeature:'The surface is dark or has little texture. Aim somewhere brighter, or at a surface with pattern.', arTrackFast:'Moving too fast. Hold it steady.',
@@ -2494,6 +2497,7 @@ var LANGS = {
     uiZoomTitle:'Tamaño de pantalla', uiZoomHint:'Escala toda la pantalla, incluido el texto.',
     hideTitle:'Equipos visibles', hideHint:'Oculta los equipos que no usas de las listas y la búsqueda. Solo en este dispositivo; no se borra nada.',
     hideMakerWhole:'Ocultar todo el fabricante', hideReset:'Volver a mostrar todo', hideCountFmt:'{n} ocultos', hideAllWarn:'No puedes ocultarlos todos. Deja al menos uno.',
+    beamDiagram:'Apertura del haz', beamPoolFront:'Frente', beamAngleLab:'Ángulo', beamPoolLab:'Diámetro', beamLuxLab:'Iluminancia', beamDistLab:'Distancia',
     orderTitle:'Disposición', orderBar:'Pestañas inferiores', orderMenu:'Orden del menú', orderMenuSub:'El orden en que aparecen en el menú',
     langLabel:'Idioma',
     arErrNoSupport:'Este dispositivo no admite la medición con cámara', arErrBusy:'Ya hay una medición en curso', arErrOpen:'No se pudo abrir la pantalla', arSegHere:'Desde aquí', arSegTwo:'2 puntos', arSegTri:'2 sitios', arBtnFix:'Fijar aquí', arBtnRedo:'Empezar de nuevo', arBtnUse:'Usar esta distancia', arBtnPlace:'Poner un punto', arBtnAimHere:'Visar desde aquí', arBtnAimAgain:'Visar otra vez', arHintFromMe:'Mide desde donde estás. Pon la cruz en el objetivo y pulsa Fijar aquí.', arHintTwoA:'Mide entre dos sitios separados. Pon la cruz en un extremo y pulsa Poner un punto.', arHintTwoB:'Pon la cruz en el otro extremo y pulsa Poner un punto otra vez.', arHintTriA:'Para precisión a larga distancia. Pon la cruz en el objetivo y pulsa Visar desde aquí.', arHintTriB:'Mantén la cruz en el mismo punto, camina unos metros de lado y pulsa Visar otra vez.', arHintDone:'Si el valor te parece bien, pulsa Usar esta distancia.', arWarnExtended:'Midiendo sobre un plano extendido, fuera del alcance del LiDAR. Cuanto más lejos, menos fiable. 2 sitios es más preciso.', arWarnNoPlane:'No se encuentra una superficie medible. Mueve un poco el dispositivo.', arTriProgress:'Has caminado {d}m de lado. Las visuales se cruzan con {g}m de error. {tail}', arTriWalkMore:'Camina un poco más de lado para ganar precisión.', arTriReady:'Si estás en el mismo punto, pulsa Visar otra vez.', arTriNoCross:'Has caminado {d}m de lado. Todavía no hay punto de cruce. Camina un poco más de lado.', arTriFail:'No hay punto de cruce. Sigue apuntando al mismo sitio y camina un poco más de lado.', arTriNoMove:'Casi no te has movido. Camina unos metros de lado antes de visar.', arTriFixed:'Base {b}m, error entre visuales {g}m. Si el valor te parece bien, pulsa Usar esta distancia.', arTrackInit:'Mueve el dispositivo despacio para que reconozca el entorno.', arTrackLowFeature:'La superficie está oscura o tiene poca textura. Apunta a un sitio más iluminado o con dibujo.', arTrackFast:'Te mueves demasiado rápido. Sujétalo con calma.',
@@ -2641,6 +2645,7 @@ var LANGS = {
     uiZoomTitle:'显示大小', uiZoomHint:'整个画面一起放大，文字也会跟着变大。',
     hideTitle:'显示的灯具', hideHint:'把不用的灯具从列表和搜索中隐藏。仅在本设备生效，数据不会被删除。',
     hideMakerWhole:'隐藏整个厂商', hideReset:'全部重新显示', hideCountFmt:'已隐藏 {n} 台', hideAllWarn:'不能全部隐藏，请至少留一台。',
+    beamDiagram:'光束扩散', beamPoolFront:'正面', beamAngleLab:'光束角', beamPoolLab:'照射范围', beamLuxLab:'照度', beamDistLab:'距离',
     orderTitle:'排列设置', orderBar:'底部标签', orderMenu:'菜单的排列', orderMenuSub:'在三条线菜单中出现的顺序',
     langLabel:'语言',
     arErrNoSupport:'此设备不支持相机测量', arErrBusy:'已经在测量中', arErrOpen:'无法打开界面', arSegHere:'从这里', arSegTwo:'两点间', arSegTri:'两地点', arBtnFix:'在此确定', arBtnRedo:'重新开始', arBtnUse:'使用此距离', arBtnPlace:'放置点', arBtnAimHere:'从这里瞄准', arBtnAimAgain:'再次瞄准', arHintFromMe:'从您所在的位置测量。把十字对准目标，然后点「在此确定」。', arHintTwoA:'测量相隔两处之间的距离。把十字对准一端，然后点「放置点」。', arHintTwoB:'把十字对准另一端，再点一次「放置点」。', arHintTriA:'用于远距离的精确测量。把十字对准目标，然后点「从这里瞄准」。', arHintTriB:'保持十字对准同一处，向侧面走几米，然后点「再次瞄准」。', arHintDone:'如果数值合适，点「使用此距离」。', arWarnExtended:'正在按延长的平面测量（超出 LiDAR 范围）。越远越不可靠。「两地点」更准确。', arWarnNoPlane:'找不到可测量的面。请稍微移动设备。', arTriProgress:'已向侧面走了 {d} 米。瞄准线相差 {g} 米。{tail}', arTriWalkMore:'再向侧面走一点会更准确。', arTriReady:'如果瞄准的是同一处，请点「再次瞄准」。', arTriNoCross:'已向侧面走了 {d} 米。仍算不出交点。请再向侧面走一点。', arTriFail:'算不出交点。保持瞄准同一处，再向侧面走一点。', arTriNoMove:'几乎没有移动。请先向侧面走几米再瞄准。', arTriFixed:'基线 {b} 米，瞄准线相差 {g} 米。如果数值合适，点「使用此距离」。', arTrackInit:'请慢慢移动设备，让它识别周围环境。', arTrackLowFeature:'这个面偏暗或纹理很少。请瞄准更亮的地方，或有纹理的面。', arTrackFast:'移动太快。请拿稳一些。',
@@ -3291,6 +3296,7 @@ var LANGS = {
     uiZoomTitle:'Taille d\'affichage', uiZoomHint:'Agrandit tout l\'écran, texte compris.',
     hideTitle:'Appareils affichés', hideHint:'Masquez les projecteurs que vous n\'utilisez pas des listes et de la recherche. Sur cet appareil uniquement, rien n\'est supprimé.',
     hideMakerWhole:'Masquer toute la marque', hideReset:'Tout réafficher', hideCountFmt:'{n} masqués', hideAllWarn:'Impossible de tout masquer. Laissez-en au moins un.',
+    beamDiagram:'Ouverture du faisceau', beamPoolFront:'Face', beamAngleLab:'Angle', beamPoolLab:'Diamètre', beamLuxLab:'Éclairement', beamDistLab:'Distance',
     orderTitle:'Disposition', orderBar:'Onglets du bas', orderMenu:'Ordre du menu', orderMenuSub:'L\'ordre dans lequel ils apparaissent dans le menu',
     langLabel:'Langue',
     arErrNoSupport:'Cet appareil ne prend pas en charge la mesure à la caméra', arErrBusy:'Une mesure est déjà en cours', arErrOpen:'Impossible d\'ouvrir l\'écran', arSegHere:'D\'ici', arSegTwo:'2 points', arSegTri:'2 endroits', arBtnFix:'Valider ici', arBtnRedo:'Recommencer', arBtnUse:'Utiliser cette distance', arBtnPlace:'Poser un point', arBtnAimHere:'Viser d\'ici', arBtnAimAgain:'Viser à nouveau', arHintFromMe:'Mesure depuis où vous êtes. Placez la croix sur la cible et appuyez sur Valider ici.', arHintTwoA:'Mesure entre deux endroits distants. Placez la croix sur une extrémité et appuyez sur Poser un point.', arHintTwoB:'Placez la croix sur l\'autre extrémité et appuyez de nouveau sur Poser un point.', arHintTriA:'Pour la précision à longue distance. Placez la croix sur la cible et appuyez sur Viser d\'ici.', arHintTriB:'Gardez la croix sur le même point, marchez quelques mètres de côté, puis appuyez sur Viser à nouveau.', arHintDone:'Si la valeur vous convient, appuyez sur Utiliser cette distance.', arWarnExtended:'Mesure sur un plan prolongé, hors de portée du LiDAR. Plus c\'est loin, moins c\'est fiable. 2 endroits est plus précis.', arWarnNoPlane:'Aucune surface mesurable trouvée. Bougez un peu l\'appareil.', arTriProgress:'Vous avez marché {d}m de côté. Les visées se manquent de {g}m. {tail}', arTriWalkMore:'Marchez encore un peu de côté pour gagner en précision.', arTriReady:'Si vous visez le même point, appuyez sur Viser à nouveau.', arTriNoCross:'Vous avez marché {d}m de côté. Toujours pas de point d\'intersection. Marchez encore un peu de côté.', arTriFail:'Pas d\'intersection. Continuez de viser le même point et marchez encore un peu de côté.', arTriNoMove:'Vous n\'avez presque pas bougé. Marchez quelques mètres de côté avant de viser.', arTriFixed:'Base {b}m, écart entre les visées {g}m. Si la valeur vous convient, appuyez sur Utiliser cette distance.', arTrackInit:'Bougez l\'appareil lentement pour qu\'il reconnaisse les lieux.', arTrackLowFeature:'La surface est sombre ou peu texturée. Visez un endroit plus clair, ou une surface avec du motif.', arTrackFast:'Mouvement trop rapide. Tenez l\'appareil calmement.',
@@ -3941,6 +3947,7 @@ var LANGS = {
     uiZoomTitle:'Anzeigegröße', uiZoomHint:'Skaliert den ganzen Bildschirm, den Text eingeschlossen.',
     hideTitle:'Sichtbare Geräte', hideHint:'Blenden Sie ungenutzte Geräte aus Listen und Suche aus. Nur auf diesem Gerät, es wird nichts gelöscht.',
     hideMakerWhole:'Ganzen Hersteller ausblenden', hideReset:'Wieder alle anzeigen', hideCountFmt:'{n} ausgeblendet', hideAllWarn:'Es können nicht alle ausgeblendet werden. Lassen Sie eines übrig.',
+    beamDiagram:'Lichtkegel', beamPoolFront:'Front', beamAngleLab:'Abstrahlwinkel', beamPoolLab:'Lichtkreis', beamLuxLab:'Beleuchtungsstärke', beamDistLab:'Abstand',
     orderTitle:'Anordnung', orderBar:'Untere Tabs', orderMenu:'Reihenfolge im Menü', orderMenuSub:'Die Reihenfolge im Menü',
     langLabel:'Sprache',
     arErrNoSupport:'Dieses Gerät unterstützt das Messen mit der Kamera nicht', arErrBusy:'Eine Messung läuft bereits', arErrOpen:'Der Bildschirm konnte nicht geöffnet werden', arSegHere:'Von hier', arSegTwo:'2 Punkte', arSegTri:'2 Stellen', arBtnFix:'Hier festlegen', arBtnRedo:'Neu anfangen', arBtnUse:'Diese Entfernung nehmen', arBtnPlace:'Punkt setzen', arBtnAimHere:'Von hier peilen', arBtnAimAgain:'Noch einmal peilen', arHintFromMe:'Misst von deinem Standort. Das Kreuz auf das Ziel setzen und Hier festlegen antippen.', arHintTwoA:'Misst zwischen zwei entfernten Stellen. Das Kreuz auf ein Ende setzen und Punkt setzen antippen.', arHintTwoB:'Das Kreuz auf das andere Ende setzen und noch einmal Punkt setzen antippen.', arHintTriA:'Für Genauigkeit auf große Entfernung. Das Kreuz auf das Ziel setzen und Von hier peilen antippen.', arHintTriB:'Das Kreuz auf derselben Stelle halten, einige Meter seitwärts gehen, dann Noch einmal peilen antippen.', arHintDone:'Wenn der Wert passt, Diese Entfernung nehmen antippen.', arWarnExtended:'Gemessen auf einer verlängerten Fläche, außerhalb der LiDAR-Reichweite. Je weiter, desto unzuverlässiger. 2 Stellen ist genauer.', arWarnNoPlane:'Keine messbare Fläche gefunden. Das Gerät ein wenig bewegen.', arTriProgress:'{d}m seitwärts gegangen. Die Peilungen verfehlen sich um {g}m. {tail}', arTriWalkMore:'Noch etwas weiter seitwärts gehen, dann wird es genauer.', arTriReady:'Wenn du dieselbe Stelle anpeilst, Noch einmal peilen antippen.', arTriNoCross:'{d}m seitwärts gegangen. Noch kein Schnittpunkt. Noch etwas weiter seitwärts gehen.', arTriFail:'Kein Schnittpunkt. Weiter dieselbe Stelle anpeilen und noch etwas weiter seitwärts gehen.', arTriNoMove:'Du hast dich kaum bewegt. Erst einige Meter seitwärts gehen, dann peilen.', arTriFixed:'Basis {b}m, Peilungen verfehlen sich um {g}m. Wenn der Wert passt, Diese Entfernung nehmen antippen.', arTrackInit:'Das Gerät langsam bewegen, damit es die Umgebung erfasst.', arTrackLowFeature:'Die Fläche ist dunkel oder wenig strukturiert. Auf eine hellere Stelle oder eine Fläche mit Muster zielen.', arTrackFast:'Zu schnelle Bewegung. Ruhig halten.',
@@ -4591,6 +4598,7 @@ var LANGS = {
     uiZoomTitle:'Tamanho de exibição', uiZoomHint:'Amplia a tela inteira, incluindo o texto.',
     hideTitle:'Equipamentos visíveis', hideHint:'Esconda os equipamentos que você não usa das listas e da busca. Vale só neste aparelho; nada é apagado.',
     hideMakerWhole:'Esconder o fabricante inteiro', hideReset:'Mostrar tudo de novo', hideCountFmt:'{n} ocultos', hideAllWarn:'Não dá para esconder todos. Deixe pelo menos um.',
+    beamDiagram:'Abertura do facho', beamPoolFront:'Frente', beamAngleLab:'Ângulo', beamPoolLab:'Diâmetro', beamLuxLab:'Iluminância', beamDistLab:'Distância',
     orderTitle:'Disposição', orderBar:'Abas de baixo', orderMenu:'Ordem do menu', orderMenuSub:'A ordem em que aparecem no menu',
     langLabel:'Idioma',
     arErrNoSupport:'Este aparelho não suporta medição pela câmera', arErrBusy:'Já existe uma medição em andamento', arErrOpen:'Não foi possível abrir a tela', arSegHere:'Daqui', arSegTwo:'2 pontos', arSegTri:'2 lugares', arBtnFix:'Fixar aqui', arBtnRedo:'Começar de novo', arBtnUse:'Usar esta distância', arBtnPlace:'Marcar um ponto', arBtnAimHere:'Visar daqui', arBtnAimAgain:'Visar de novo', arHintFromMe:'Mede de onde você está. Ponha a cruz no alvo e toque em Fixar aqui.', arHintTwoA:'Mede entre dois lugares separados. Ponha a cruz em uma ponta e toque em Marcar um ponto.', arHintTwoB:'Ponha a cruz na outra ponta e toque em Marcar um ponto de novo.', arHintTriA:'Para precisão a longa distância. Ponha a cruz no alvo e toque em Visar daqui.', arHintTriB:'Mantenha a cruz no mesmo ponto, ande alguns metros para o lado e toque em Visar de novo.', arHintDone:'Se o valor estiver bom, toque em Usar esta distância.', arWarnExtended:'Medindo em um plano estendido, fora do alcance do LiDAR. Quanto mais longe, menos confiável. 2 lugares é mais preciso.', arWarnNoPlane:'Nenhuma superfície mensurável encontrada. Mova um pouco o aparelho.', arTriProgress:'Você andou {d}m para o lado. As visadas erram por {g}m. {tail}', arTriWalkMore:'Ande um pouco mais para o lado para ganhar precisão.', arTriReady:'Se estiver no mesmo ponto, toque em Visar de novo.', arTriNoCross:'Você andou {d}m para o lado. Ainda sem ponto de cruzamento. Ande um pouco mais para o lado.', arTriFail:'Sem ponto de cruzamento. Continue visando o mesmo ponto e ande um pouco mais para o lado.', arTriNoMove:'Você quase não se moveu. Ande alguns metros para o lado antes de visar.', arTriFixed:'Base {b}m, visadas erram por {g}m. Se o valor estiver bom, toque em Usar esta distância.', arTrackInit:'Mova o aparelho devagar para ele reconhecer o ambiente.', arTrackLowFeature:'A superfície está escura ou tem pouca textura. Aponte para um lugar mais claro, ou com padrão.', arTrackFast:'Movimento rápido demais. Segure com calma.',
@@ -5241,6 +5249,7 @@ var LANGS = {
     uiZoomTitle:'Näytön koko', uiZoomHint:'Suurentaa koko näkymän, myös tekstin.',
     hideTitle:'Näkyvät valaisimet', hideHint:'Piilota listoista ja hausta ne valaisimet, joita et käytä. Vain tällä laitteella, mitään ei poisteta.',
     hideMakerWhole:'Piilota koko valmistaja', hideReset:'Näytä taas kaikki', hideCountFmt:'{n} piilotettu', hideAllWarn:'Kaikkia ei voi piilottaa. Jätä ainakin yksi.',
+    beamDiagram:'Keilan levikkö', beamPoolFront:'Edestä', beamAngleLab:'Keilakulma', beamPoolLab:'Valokehä', beamLuxLab:'Valaistusvoimakkuus', beamDistLab:'Etäisyys',
     orderTitle:'Järjestys', orderBar:'Alapalkin välilehdet', orderMenu:'Valikon järjestys', orderMenuSub:'Järjestys, jossa ne näkyvät valikossa',
     langLabel:'Kieli',
     arErrNoSupport:'Tämä laite ei tue kameralla mittaamista', arErrBusy:'Mittaus on jo käynnissä', arErrOpen:'Näkymää ei voitu avata', arSegHere:'Täältä', arSegTwo:'2 pistettä', arSegTri:'2 paikkaa', arBtnFix:'Lukitse tähän', arBtnRedo:'Aloita alusta', arBtnUse:'Käytä tätä etäisyyttä', arBtnPlace:'Aseta piste', arBtnAimHere:'Tähtää täältä', arBtnAimAgain:'Tähtää uudelleen', arHintFromMe:'Mittaa siitä, missä seisot. Aseta risti kohteeseen ja napauta Lukitse tähän.', arHintTwoA:'Mittaa kahden erillisen paikan väliä. Aseta risti toiseen päähän ja napauta Aseta piste.', arHintTwoB:'Aseta risti toiseen päähän ja napauta Aseta piste uudelleen.', arHintTriA:'Tarkkuutta pitkälle matkalle. Aseta risti kohteeseen ja napauta Tähtää täältä.', arHintTriB:'Pidä risti samassa kohdassa, kävele muutama metri sivusuunnassa ja napauta Tähtää uudelleen.', arHintDone:'Jos arvo näyttää oikealta, napauta Käytä tätä etäisyyttä.', arWarnExtended:'Mitataan jatketulla tasolla, LiDARin kantaman ulkopuolella. Mitä kauempana, sitä epävarmempi. 2 paikkaa on tarkempi.', arWarnNoPlane:'Mitattavaa pintaa ei löydy. Liikuta laitetta vähän.', arTriProgress:'Kävelty {d}m sivusuunnassa. Tähtäykset ohittavat {g}m. {tail}', arTriWalkMore:'Kävele vielä vähän sivusuunnassa, niin tarkkuus paranee.', arTriReady:'Jos tähtäät samaan kohtaan, napauta Tähtää uudelleen.', arTriNoCross:'Kävelty {d}m sivusuunnassa. Leikkauspistettä ei vielä ole. Kävele vielä vähän sivusuunnassa.', arTriFail:'Ei leikkauspistettä. Pidä tähtäys samassa kohdassa ja kävele vielä vähän sivusuunnassa.', arTriNoMove:'Et ole liikkunut juuri lainkaan. Kävele muutama metri sivusuunnassa ennen tähtäämistä.', arTriFixed:'Perusviiva {b}m, tähtäykset ohittavat {g}m. Jos arvo näyttää oikealta, napauta Käytä tätä etäisyyttä.', arTrackInit:'Liikuta laitetta hitaasti, jotta se tunnistaa ympäristön.', arTrackLowFeature:'Pinta on tumma tai vähäkuvioinen. Tähtää valoisampaan paikkaan tai kuvioituun pintaan.', arTrackFast:'Liike on liian nopeaa. Pidä laite rauhallisesti.',
@@ -5891,6 +5900,7 @@ var LANGS = {
     uiZoomTitle:'표시 크기', uiZoomHint:'화면 전체를 확대합니다. 글자도 같이 커집니다.',
     hideTitle:'표시할 장비', hideHint:'쓰지 않는 장비를 목록과 검색에서 숨깁니다. 이 기기에서만 적용되며 데이터는 지워지지 않습니다.',
     hideMakerWhole:'제조사 전체 숨기기', hideReset:'다시 모두 표시', hideCountFmt:'{n}대 숨김', hideAllWarn:'전부 숨길 수는 없습니다. 하나는 남겨 주세요.',
+    beamDiagram:'빔 퍼짐', beamPoolFront:'정면', beamAngleLab:'빔 각도', beamPoolLab:'조사 범위', beamLuxLab:'조도', beamDistLab:'거리',
     orderTitle:'배치 설정', orderBar:'하단 탭', orderMenu:'메뉴 순서', orderMenuSub:'메뉴에 나오는 순서입니다',
     langLabel:'언어',
     arErrNoSupport:'이 기기는 카메라 측정을 지원하지 않습니다', arErrBusy:'이미 측정 중입니다', arErrOpen:'화면을 열 수 없습니다', arSegHere:'여기서', arSegTwo:'두 점', arSegTri:'두 지점', arBtnFix:'여기로 확정', arBtnRedo:'다시 시작', arBtnUse:'이 거리 사용', arBtnPlace:'점 놓기', arBtnAimHere:'여기서 겨냥', arBtnAimAgain:'다시 겨냥', arHintFromMe:'지금 서 있는 곳에서 측정합니다. 십자를 대상에 맞추고 「여기로 확정」을 누르세요.', arHintTwoA:'떨어진 두 곳 사이를 측정합니다. 십자를 한쪽 끝에 맞추고 「점 놓기」를 누르세요.', arHintTwoB:'십자를 반대쪽 끝에 맞추고 「점 놓기」를 다시 누르세요.', arHintTriA:'먼 거리를 정확히 측정합니다. 십자를 대상에 맞추고 「여기서 겨냥」을 누르세요.', arHintTriB:'십자를 같은 곳에 유지한 채 옆으로 몇 미터 걸은 다음 「다시 겨냥」을 누르세요.', arHintDone:'값이 맞으면 「이 거리 사용」을 누르세요.', arWarnExtended:'면을 연장해 측정하고 있습니다(LiDAR 범위 밖). 멀어질수록 신뢰도가 떨어집니다. 「두 지점」이 더 정확합니다.', arWarnNoPlane:'측정할 수 있는 면이 없습니다. 기기를 조금 움직이세요.', arTriProgress:'옆으로 {d}m 이동했습니다. 겨냥선이 {g}m 어긋납니다. {tail}', arTriWalkMore:'옆으로 조금 더 걸으면 정확해집니다.', arTriReady:'같은 곳을 겨냥하고 있다면 「다시 겨냥」을 누르세요.', arTriNoCross:'옆으로 {d}m 이동했습니다. 아직 교점이 나오지 않습니다. 옆으로 조금 더 걸으세요.', arTriFail:'교점을 구할 수 없습니다. 같은 곳을 겨냥한 채 옆으로 조금 더 걸으세요.', arTriNoMove:'거의 움직이지 않았습니다. 옆으로 몇 미터 걸은 다음 겨냥하세요.', arTriFixed:'기선 {b}m, 겨냥선 어긋남 {g}m. 값이 맞으면 「이 거리 사용」을 누르세요.', arTrackInit:'기기를 천천히 움직여 주변을 인식시키세요.', arTrackLowFeature:'어둡거나 무늬가 적은 면입니다. 밝은 곳이나 무늬가 있는 면을 겨냥하세요.', arTrackFast:'너무 빠르게 움직입니다. 천천히 잡으세요.',
@@ -6541,6 +6551,7 @@ var LANGS = {
     uiZoomTitle:'ขนาดการแสดงผล', uiZoomHint:'ขยายทั้งหน้าจอ รวมทั้งตัวอักษรด้วย',
     hideTitle:'อุปกรณ์ที่แสดง', hideHint:'ซ่อนอุปกรณ์ที่ไม่ได้ใช้จากรายการและการค้นหา มีผลเฉพาะเครื่องนี้ ข้อมูลไม่ถูกลบ',
     hideMakerWhole:'ซ่อนทั้งยี่ห้อ', hideReset:'แสดงทั้งหมดอีกครั้ง', hideCountFmt:'ซ่อน {n} ดวง', hideAllWarn:'ซ่อนทั้งหมดไม่ได้ กรุณาเหลือไว้อย่างน้อยหนึ่งดวง',
+    beamDiagram:'การกระจายลำแสง', beamPoolFront:'ด้านหน้า', beamAngleLab:'มุมลำแสง', beamPoolLab:'ขนาดวงแสง', beamLuxLab:'ความสว่าง', beamDistLab:'ระยะ',
     orderTitle:'การจัดเรียง', orderBar:'แท็บด้านล่าง', orderMenu:'ลำดับในเมนู', orderMenuSub:'ลำดับที่แสดงในเมนู',
     langLabel:'ภาษา',
     arErrNoSupport:'อุปกรณ์นี้ไม่รองรับการวัดด้วยกล้อง', arErrBusy:'กำลังวัดอยู่แล้ว', arErrOpen:'ไม่สามารถเปิดหน้าจอได้', arSegHere:'จากที่นี่', arSegTwo:'2 จุด', arSegTri:'2 ตำแหน่ง', arBtnFix:'กำหนดที่นี่', arBtnRedo:'เริ่มใหม่', arBtnUse:'ใช้ระยะนี้', arBtnPlace:'วางจุด', arBtnAimHere:'เล็งจากที่นี่', arBtnAimAgain:'เล็งอีกครั้ง', arHintFromMe:'วัดจากตำแหน่งที่คุณยืน วางกากบาทบนเป้าหมายแล้วกด กำหนดที่นี่', arHintTwoA:'วัดระยะระหว่างสองตำแหน่งที่ห่างกัน วางกากบาทที่ปลายด้านหนึ่งแล้วกด วางจุด', arHintTwoB:'วางกากบาทที่ปลายอีกด้านแล้วกด วางจุด อีกครั้ง', arHintTriA:'สำหรับความแม่นยำในระยะไกล วางกากบาทบนเป้าหมายแล้วกด เล็งจากที่นี่', arHintTriB:'คงกากบาทไว้ที่จุดเดิม เดินไปด้านข้างสองสามเมตร แล้วกด เล็งอีกครั้ง', arHintDone:'ถ้าค่าดูถูกต้อง กด ใช้ระยะนี้', arWarnExtended:'กำลังวัดบนระนาบที่ขยายออกไป เกินระยะของ LiDAR ยิ่งไกลยิ่งเชื่อถือได้น้อย ใช้ 2 ตำแหน่ง จะแม่นกว่า', arWarnNoPlane:'ไม่พบพื้นผิวที่วัดได้ ขยับอุปกรณ์เล็กน้อย', arTriProgress:'เดินไปด้านข้าง {d} เมตร เส้นเล็งคลาดกัน {g} เมตร {tail}', arTriWalkMore:'เดินไปด้านข้างอีกหน่อยจะแม่นขึ้น', arTriReady:'ถ้าเล็งจุดเดิมอยู่ กด เล็งอีกครั้ง', arTriNoCross:'เดินไปด้านข้าง {d} เมตร ยังไม่ได้จุดตัด เดินไปด้านข้างอีกหน่อย', arTriFail:'หาจุดตัดไม่ได้ เล็งจุดเดิมไว้แล้วเดินไปด้านข้างอีกหน่อย', arTriNoMove:'แทบไม่ได้ขยับ เดินไปด้านข้างสองสามเมตรก่อนเล็ง', arTriFixed:'เส้นฐาน {b} เมตร เส้นเล็งคลาดกัน {g} เมตร ถ้าค่าดูถูกต้อง กด ใช้ระยะนี้', arTrackInit:'ขยับอุปกรณ์ช้า ๆ ให้รู้จักสภาพแวดล้อม', arTrackLowFeature:'พื้นผิวมืดหรือมีลายน้อย เล็งไปที่สว่างกว่า หรือพื้นผิวที่มีลาย', arTrackFast:'ขยับเร็วเกินไป จับให้นิ่ง',
@@ -7191,6 +7202,7 @@ var LANGS = {
     uiZoomTitle:'Tamanho de exibição', uiZoomHint:'Amplia o ecrã inteiro, incluindo o texto.',
     hideTitle:'Equipamentos visíveis', hideHint:'Esconda dos menus e da pesquisa os equipamentos que não usa. Só neste aparelho; nada é apagado.',
     hideMakerWhole:'Esconder a marca inteira', hideReset:'Mostrar tudo outra vez', hideCountFmt:'{n} ocultos', hideAllWarn:'Não é possível esconder todos. Deixe pelo menos um.',
+    beamDiagram:'Abertura do facho', beamPoolFront:'Frente', beamAngleLab:'Ângulo', beamPoolLab:'Diâmetro', beamLuxLab:'Iluminância', beamDistLab:'Distância',
     orderTitle:'Disposição', orderBar:'Separadores de baixo', orderMenu:'Ordem do menu', orderMenuSub:'A ordem em que aparecem no menu',
     langLabel:'Idioma',
     arErrNoSupport:'Este dispositivo não suporta medição pela câmara', arErrBusy:'Já existe uma medição em curso', arErrOpen:'Não foi possível abrir o ecrã', arSegHere:'Daqui', arSegTwo:'2 pontos', arSegTri:'2 sítios', arBtnFix:'Fixar aqui', arBtnRedo:'Começar de novo', arBtnUse:'Usar esta distância', arBtnPlace:'Marcar um ponto', arBtnAimHere:'Visar daqui', arBtnAimAgain:'Visar de novo', arHintFromMe:'Mede de onde se encontra. Ponha a cruz no alvo e toque em Fixar aqui.', arHintTwoA:'Mede entre dois sítios separados. Ponha a cruz numa ponta e toque em Marcar um ponto.', arHintTwoB:'Ponha a cruz na outra ponta e toque em Marcar um ponto de novo.', arHintTriA:'Para precisão a longa distância. Ponha a cruz no alvo e toque em Visar daqui.', arHintTriB:'Mantenha a cruz no mesmo ponto, ande alguns metros para o lado e toque em Visar de novo.', arHintDone:'Se o valor estiver bom, toque em Usar esta distância.', arWarnExtended:'A medir num plano estendido, fora do alcance do LiDAR. Quanto mais longe, menos fiável. 2 sítios é mais preciso.', arWarnNoPlane:'Não foi encontrada uma superfície mensurável. Mova um pouco o dispositivo.', arTriProgress:'Andou {d}m para o lado. As visadas falham por {g}m. {tail}', arTriWalkMore:'Ande um pouco mais para o lado para ganhar precisão.', arTriReady:'Se estiver no mesmo ponto, toque em Visar de novo.', arTriNoCross:'Andou {d}m para o lado. Ainda sem ponto de cruzamento. Ande um pouco mais para o lado.', arTriFail:'Sem ponto de cruzamento. Continue a visar o mesmo ponto e ande um pouco mais para o lado.', arTriNoMove:'Quase não se moveu. Ande alguns metros para o lado antes de visar.', arTriFixed:'Base {b}m, visadas falham por {g}m. Se o valor estiver bom, toque em Usar esta distância.', arTrackInit:'Mova o dispositivo devagar para reconhecer o ambiente.', arTrackLowFeature:'A superfície está escura ou tem pouca textura. Aponte para um sítio mais claro, ou com padrão.', arTrackFast:'Movimento demasiado rápido. Segure com calma.',
@@ -7841,6 +7853,7 @@ var LANGS = {
     uiZoomTitle:'顯示大小', uiZoomHint:'整個畫面一起放大，文字也會跟著變大。',
     hideTitle:'顯示的燈具', hideHint:'把不用的燈具從清單和搜尋中隱藏。僅在本裝置生效，資料不會被刪除。',
     hideMakerWhole:'隱藏整個廠商', hideReset:'全部重新顯示', hideCountFmt:'已隱藏 {n} 台', hideAllWarn:'不能全部隱藏，請至少留一台。',
+    beamDiagram:'光束擴散', beamPoolFront:'正面', beamAngleLab:'光束角', beamPoolLab:'照射範圍', beamLuxLab:'照度', beamDistLab:'距離',
     orderTitle:'排列設定', orderBar:'底部標籤', orderMenu:'選單的排列', orderMenuSub:'在三條線選單中出現的順序',
     langLabel:'語言',
     arErrNoSupport:'此裝置不支援相機測量', arErrBusy:'已經在測量中', arErrOpen:'無法開啟介面', arSegHere:'從這裡', arSegTwo:'兩點間', arSegTri:'兩地點', arBtnFix:'在此確定', arBtnRedo:'重新開始', arBtnUse:'使用此距離', arBtnPlace:'放置點', arBtnAimHere:'從這裡瞄準', arBtnAimAgain:'再次瞄準', arHintFromMe:'從您所在的位置測量。把十字對準目標，然後點「在此確定」。', arHintTwoA:'測量相隔兩處之間的距離。把十字對準一端，然後點「放置點」。', arHintTwoB:'把十字對準另一端，再點一次「放置點」。', arHintTriA:'用於遠距離的精確測量。把十字對準目標，然後點「從這裡瞄準」。', arHintTriB:'保持十字對準同一處，向側面走幾公尺，然後點「再次瞄準」。', arHintDone:'如果數值合適，點「使用此距離」。', arWarnExtended:'正在按延長的平面測量（超出 LiDAR 範圍）。越遠越不可靠。「兩地點」更準確。', arWarnNoPlane:'找不到可測量的面。請稍微移動裝置。', arTriProgress:'已向側面走了 {d} 公尺。瞄準線相差 {g} 公尺。{tail}', arTriWalkMore:'再向側面走一點會更準確。', arTriReady:'如果瞄準的是同一處，請點「再次瞄準」。', arTriNoCross:'已向側面走了 {d} 公尺。仍算不出交點。請再向側面走一點。', arTriFail:'算不出交點。保持瞄準同一處，再向側面走一點。', arTriNoMove:'幾乎沒有移動。請先向側面走幾公尺再瞄準。', arTriFixed:'基線 {b} 公尺，瞄準線相差 {g} 公尺。如果數值合適，點「使用此距離」。', arTrackInit:'請慢慢移動裝置，讓它辨識周圍環境。', arTrackLowFeature:'這個面偏暗或紋理很少。請瞄準較亮的地方，或有紋理的面。', arTrackFast:'移動太快。請拿穩一些。',
@@ -19637,6 +19650,124 @@ function beamSliderApplies(light, accKey) {
   return false;
 }
 
+/* ── ビーム図 ────────────────────────────────────────────────
+ * 側面から見たビームの広がりと、被写体面での光の円を描く。
+ * 角度・距離・照度・プール直径が数字だけだと掴みにくいので、
+ * 形で分かるようにした。ビーム角スライダーのすぐ下に置いてある。
+ *
+ * 絵の縮尺は「角度が本当の角度に見えること」を優先している。
+ * 横幅いっぱいに伸ばすと 60° のような広い角度は縦にはみ出すので、
+ * はみ出す場合は全体を縮めて収める（角度は変えない）。そのぶん
+ * 広い角度ほど被写体面が近くに描かれるが、距離は数字で出している。 */
+function renderBeamDiagram() {
+  var box = el('beam-diagram'); if (!box) return;
+  var light = LIGHTS[S.maker] && LIGHTS[S.maker][S.model];
+  var ang = light ? currentBeamAngle(light, S.accKey, S.useBeam ? S.beamPct : null) : null;
+  if (!light || ang == null || !(ang > 0) || ang >= 180) { box.innerHTML = ''; return; }
+
+  var dist = getActiveDist();
+  if (!dist || !isFinite(dist) || dist <= 0) { box.innerHTML = ''; return; }
+  var dia = beamDiameterM(ang, dist);
+
+  // いまの照度（Result と同じ出し方）
+  var lux = null;
+  try {
+    var r = (S.useBeam && getBeamAngles(light))
+      ? luxAtBeamAngle(light, dist)
+      : luxForCCTAndDist(light.refData, getActiveCCT(), S.accKey, dist);
+    if (r && r.lux) lux = r.lux;
+  } catch(e) {}
+
+  // ── 側面図の座標を決める
+  // maxLen は 250 だと右の寸法文字（例「15.1 m」）が viewBox の外へ出て切れる。
+  // 文字ぶんの余白を見て 196 まで詰めた。
+  var W = 320, H = 150, apexX = 30, cy = H / 2, maxLen = 196, maxHalf = 60;
+  var halfTan = Math.tan(ang / 2 * Math.PI / 180);
+  var pxPerM = Math.min(maxLen / dist, maxHalf / (dist * halfTan));
+  var L = dist * pxPerM;                 // 描く長さ
+  var halfH = dist * halfTan * pxPerM;   // 被写体面での半分の高さ
+  var planeX = apexX + L;
+
+  var accent = 'var(--accent,#e65100)';
+  var dim = 'var(--text-dim,#999)';
+  var line = 'var(--line,#e6e6e6)';
+
+  function n1(v) { return Math.round(v * 10) / 10; }
+  var svg =
+    '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" style="display:block;">' +
+      '<defs>' +
+        '<linearGradient id="_bmg" x1="0" y1="0" x2="1" y2="0">' +
+          '<stop offset="0" stop-color="' + accent + '" stop-opacity=".55"/>' +
+          '<stop offset="1" stop-color="' + accent + '" stop-opacity=".08"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      // 光軸
+      '<line x1="' + apexX + '" y1="' + cy + '" x2="' + (planeX + 8) + '" y2="' + cy + '" stroke="' + dim + '" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>' +
+      // ビームの三角形
+      '<path d="M' + apexX + ' ' + cy + ' L' + planeX + ' ' + (cy - halfH) + ' L' + planeX + ' ' + (cy + halfH) + ' Z" fill="url(#_bmg)" stroke="' + accent + '" stroke-width="1.5" stroke-linejoin="round"/>' +
+      // 光源
+      '<rect x="' + (apexX - 22) + '" y="' + (cy - 15) + '" width="20" height="30" rx="4" fill="none" stroke="' + dim + '" stroke-width="2"/>' +
+      '<line x1="' + (apexX - 2) + '" y1="' + (cy - 13) + '" x2="' + (apexX - 2) + '" y2="' + (cy + 13) + '" stroke="' + accent + '" stroke-width="3.5" stroke-linecap="round"/>' +
+      // 被写体面
+      '<line x1="' + planeX + '" y1="' + (cy - halfH - 8) + '" x2="' + planeX + '" y2="' + (cy + halfH + 8) + '" stroke="' + dim + '" stroke-width="1.5"/>' +
+      // プール直径の寸法線
+      '<line x1="' + (planeX + 10) + '" y1="' + (cy - halfH) + '" x2="' + (planeX + 10) + '" y2="' + (cy + halfH) + '" stroke="' + accent + '" stroke-width="1"/>' +
+      '<line x1="' + (planeX + 6) + '" y1="' + (cy - halfH) + '" x2="' + (planeX + 14) + '" y2="' + (cy - halfH) + '" stroke="' + accent + '" stroke-width="1"/>' +
+      '<line x1="' + (planeX + 6) + '" y1="' + (cy + halfH) + '" x2="' + (planeX + 14) + '" y2="' + (cy + halfH) + '" stroke="' + accent + '" stroke-width="1"/>' +
+      '<text x="' + (planeX + 18) + '" y="' + (cy + 4) + '" font-size="11" font-weight="800" fill="' + accent + '">' + (dia != null ? _lenLabel(dia) : '—') + '</text>' +
+      // 角度
+      '<text x="' + (apexX + 12) + '" y="' + (cy - 6) + '" font-size="11" font-weight="900" fill="' + accent + '">' + n1(ang) + '°</text>' +
+      // 距離
+      '<text x="' + ((apexX + planeX) / 2) + '" y="' + (H - 4) + '" font-size="10" font-weight="800" fill="' + dim + '" text-anchor="middle">' + distLabel(dist) + '</text>' +
+    '</svg>';
+
+  // ── 正面から見た光の円。角度が広いほど大きく描く（狭い 5° と広い 115° が
+  //    同じ大きさだと、この絵から読み取れるものが無くなってしまう）
+  var poolR = Math.max(11, Math.min(46, 11 + 35 * Math.min(1, ang / 115)));
+  var poolSvg =
+    '<svg viewBox="0 0 100 100" width="100%" style="display:block;">' +
+      '<defs><radialGradient id="_bpg"><stop offset="0" stop-color="' + accent + '" stop-opacity=".9"/>' +
+      '<stop offset="1" stop-color="' + accent + '" stop-opacity=".12"/></radialGradient></defs>' +
+      '<circle cx="50" cy="50" r="47" fill="none" stroke="' + line + '" stroke-width="1"/>' +
+      '<circle cx="50" cy="50" r="' + n1(poolR) + '" fill="url(#_bpg)"/>' +
+    '</svg>';
+
+  var lx = (lux != null) ? luxFcDisplay(lux) : null;
+  function cell(lab, val, unit) {
+    return '<div style="flex:1;min-width:0;padding:7px 4px;text-align:center;">' +
+      '<div style="font-size:9px;font-weight:800;color:' + dim + ';letter-spacing:.04em;">' + lab + '</div>' +
+      '<div style="font-size:14px;font-weight:900;color:var(--text,#111);margin-top:2px;line-height:1.15;">' + val +
+        (unit ? '<span style="font-size:9px;font-weight:800;color:' + dim + ';margin-left:1px;">' + unit + '</span>' : '') +
+      '</div></div>';
+  }
+  var unitBtn = function(lab, on, fn) {
+    return '<button onclick="' + fn + '" style="padding:3px 9px;border-radius:7px;cursor:pointer;' +
+      'font-family:var(--sans);font-size:10px;font-weight:900;border:1.5px solid ' + accent + ';' +
+      'background:' + (on ? accent : 'transparent') + ';color:' + (on ? '#fff' : accent) + ';">' + lab + '</button>';
+  };
+
+  box.innerHTML =
+    '<div style="margin-top:10px;border:1px solid ' + line + ';border-radius:12px;overflow:hidden;">' +
+      '<div style="display:flex;align-items:center;gap:8px;padding:7px 9px 5px;">' +
+        '<span style="flex:1;min-width:0;font-size:10px;font-weight:900;color:' + dim + ';">' + t('beamDiagram') + '</span>' +
+        unitBtn('m',  !S.imperial, 'setUnitMetric();calculate()') +
+        unitBtn('ft', !!S.imperial, 'setUnitImperial();calculate()') +
+      '</div>' +
+      '<div style="display:flex;align-items:center;gap:6px;padding:0 9px 4px;">' +
+        '<div style="flex:1 1 auto;min-width:0;">' + svg + '</div>' +
+        '<div style="flex:0 0 62px;text-align:center;">' + poolSvg +
+          '<div style="font-size:8.5px;font-weight:800;color:' + dim + ';margin-top:2px;">' + t('beamPoolFront') + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div style="display:flex;border-top:1px solid ' + line + ';background:var(--bg,#fafafa);">' +
+        cell(t('beamAngleLab'), n1(ang), '°') +
+        cell(t('beamPoolLab'),  dia != null ? (S.imperial ? mToFt(dia) : n1(dia)) : '—', S.imperial ? 'ft' : 'm') +
+        cell(t('beamLuxLab'),   lx ? lx.primary : '—', lx ? lx.pUnit : '') +
+        cell(t('beamDistLab'),  S.imperial ? mToFt(dist) : n1(dist), S.imperial ? 'ft' : 'm') +
+      '</div>' +
+    '</div>';
+}
+
 // ===== BEAM SLIDER =====
 function renderBeamSlider() {
   var light = LIGHTS[S.maker] && LIGHTS[S.maker][S.model];
@@ -19659,16 +19790,32 @@ function renderBeamSlider() {
   // ARRISUN PAR: レンズごとに固定ビームアングル（スライダー不要）
   var isSunPar = accs.indexOf('sun_blue') >= 0;
 
+  /* スライダーが効かない機種でも、角度が分かるならビーム図は出す。
+   * リフレクターのように角度が固定のものは、その角度と照射範囲を見せて
+   * スライダーだけ半透明にして触れなくする。角度が分からない機種
+   *（accUnknown）は、図も出しようがないので欄ごと隠す。 */
+  var _fixedAng = currentBeamAngle(light, k, null);
   if (!beamSliderApplies(light, k)) {
-    beamWrap.style.display = 'none';
-    // 前の機種の角度が残ると、スライダーの無い機種で嘘の値が見えてしまう
     var _bv0 = el('beam-val');
-    if (_bv0) _bv0.textContent = '';
     S.useBeam = false;
+    if (_fixedAng == null) {
+      beamWrap.style.display = 'none';
+      // 前の機種の角度が残ると、角度の無い機種で嘘の値が見えてしまう
+      if (_bv0) _bv0.textContent = '';
+      return;
+    }
+    beamWrap.style.display = 'block';
+    if (_bv0) _bv0.textContent = _fixedAng + '°';
+    var _sf = beamWrap.querySelector('.sl-field');
+    if (_sf) { _sf.style.opacity = '.4'; _sf.style.pointerEvents = 'none'; }
+    var _lb0 = el('beam-labs'); if (_lb0) _lb0.textContent = '';
+    renderBeamDiagram();
     return;
   }
 
   beamWrap.style.display = 'block';
+  var _sf2 = beamWrap.querySelector('.sl-field');
+  if (_sf2) { _sf2.style.opacity = ''; _sf2.style.pointerEvents = ''; }
   S.useBeam = true;
 
   // SunPAR: スライダー非表示、選択レンズの固定角度を表示
@@ -21531,6 +21678,7 @@ function calculate() {
   }
   updateBadge();
   try { _dftSyncResultPanel(); } catch(e) {}
+  try { renderBeamDiagram(); } catch(e) {}
 }
 
 // ===== FAVORITES =====
