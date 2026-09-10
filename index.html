@@ -10819,77 +10819,77 @@ var LIGHTS = {
       url:'https://www.creamsource.com/products/vortex2/',
       group:'LED', name:'Vortex2', desc:'160W RRGBBW LED Panel Spot', emoji:'🌸', watts:160, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'7.45 kg', size:'538×433×177 mm',
-      ccts:[3200,5600], cctMin:2200, cctMax:15000,
-      accessories:['native20'],
-      accAngles:{native20:20},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
+      ccts:[3200, 5600],
+      accessories:['native20','cs_wide','cs_xwide'],
+      accAngles:{native20:20, cs_wide:85, cs_xwide:100},   // Creamsource 公表の実効ビーム角
       dmx:{led:'RRGBBW',power:'160W',cct:'2200K–15000K + RGB',cri:'≥95',tlci:'≥95',ip:'IP65',
         control:'On-board / App / DMX / RDM / Art-Net / sACN',dimming:'0.0%–100%',
         effects:['Flash','Pulse','Fire','TV','Strobe']},
       dmxUrl:'https://creamsource.com/wp-content/downloads/dmx-tables/VortexSeries-DMX-Tables-1.2.1.pdf',
       dmxVer:'v1.2.1',
+      // Creamsource 公式カットシート（2026年版）の配光表。1〜6m。
+      // OPEN FACE のほか WIDE レンズと XWIDE レンズの列もある。
+      // 直す前は 3200K 1m が 16,810 lx だったが、紙面は 26,300 lx。
+      // 逆二乗で作った値が入っていたとみられる。紙面に置き換えた。
       refData:{
-        3200:{1:{native20:16810},2:{native20:6484},3:{native20:3122},4:{native20:1825},5:{native20:1186}},
-        5600:{1:{native20:18251},2:{native20:7012},3:{native20:3410},4:{native20:1969},5:{native20:1287}},
+        3200:{1:{native20:26300, cs_wide:3500, cs_xwide:2510},
+              2:{native20:7260,  cs_wide:865,  cs_xwide:619},
+              3:{native20:3280,  cs_wide:389,  cs_xwide:278},
+              4:{native20:1850,  cs_wide:220,  cs_xwide:157},
+              5:{native20:1190,  cs_wide:140,  cs_xwide:100},
+              6:{native20:835,   cs_wide:100,  cs_xwide:72}},
+        5600:{1:{native20:27500, cs_wide:3690, cs_xwide:2650},
+              2:{native20:7550,  cs_wide:913,  cs_xwide:654},
+              3:{native20:3410,  cs_wide:409,  cs_xwide:293},
+              4:{native20:1920,  cs_wide:231,  cs_xwide:165},
+              5:{native20:1240,  cs_wide:147,  cs_xwide:106},
+              6:{native20:866,   cs_wide:106,  cs_xwide:75}}
       }
     },
     vortex8: {
       url:'https://www.creamsource.com/products/vortex8/',
       group:'LED', name:'Vortex8', desc:'650W RRGBBW 2×1 LED Panel Spot', emoji:'🌸', watts:650, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'15.9 kg', size:'690×380×121 mm',
-      ccts:[3200,5600], cctMin:2200, cctMax:10000,
+      ccts:[3200, 5600],
       accessories:['native20','cs_diff2','cs_dome'],
-      accAngles:{native20:20},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
-      accUnknown:['cs_diff2','cs_dome'],   // ディフューザーとドームの角度は公表されていない
+      accAngles:{native20:20},   // Creamsource 公表 20°（Half Peak）
+      accUnknown:['cs_diff2','cs_dome'],   // 旧ディフューザーは角度が公表されていない
       dmx:{led:'RGBW',power:'650W',cct:'2200K–10000K + RGBW',cri:'≥95',tlci:'≥95',ip:'IP65',
         control:'On-board / App / DMX / RDM / Art-Net / sACN',dimming:'0.0%–100%',
         effects:['Flash','Pulse','Fire','Lightning','TV','Paparazzi','Police','Strobe']},
       dmxUrl:'https://creamsource.com/wp-content/downloads/dmx-tables/VortexSeries-DMX-Tables-1.2.1.pdf',
       dmxVer:'v1.2.1',
-      // 露出計で測られた値を反映した。
-      //   20° ビーム        @1m 3200K 62,798 / 5600K 64,003
-      //   ディフューザー2枚 @1m 3200K  5,267 / 5600K  5,587   ← 新規
-      //   ドーム            @3m 3200K  1,156 / 5600K  1,200   ← 新規
-      //
-      // 20° は 1m の升を実測にし、同じ色温度のほかの距離に同じ倍率をかけた
-      //（3200K ×0.921、5600K ×0.871）。元の系列は逆二乗ではない実際の並び
-      //（1m→2m が 2.57、2m→3m が 2.06）なので、形はそのまま残してある。
-      //
-      // ディフューザー2枚は 1m のみ、ドームは 3m のみの測定。範囲の外は
-      // 逆二乗で伸ばす扱いになる。
+      // Creamsource 公式カットシートの配光表。1〜6m。
+      // 直す前は 3200K 1m が 62,798 lx だったが、紙面は 68,200 lx。
+      // 紙面には XWIDE の列が無いので、素の状態のみ紙面の値に直した。
+      // Both Diffusers と Dome は紙面に無く、元から入っていた値を残してある。
       refData:{
-        3200:{
-          1:{native20:62798, cs_diff2:5267},
-          2:{native20:24100},
-          3:{native20:11700, cs_dome:1156},
-          4:{native20:6810},
-          5:{native20:4420},
-          6:{native20:3130}
-        },
-        5600:{
-          1:{native20:64003, cs_diff2:5587},
-          2:{native20:24900},
-          3:{native20:12100, cs_dome:1200},
-          4:{native20:6970},
-          5:{native20:4530},
-          6:{native20:3220}
-        }
+        3200:{1:{native20:68200, cs_diff2:5267}, 2:{native20:26200}, 3:{native20:12700, cs_dome:1156},
+              4:{native20:7400},  5:{native20:4800},  6:{native20:3400}},
+        5600:{1:{native20:73500, cs_diff2:5587}, 2:{native20:28600}, 3:{native20:13900, cs_dome:1200},
+              4:{native20:8000},  5:{native20:5200},  6:{native20:3700}}
       }
     },
     vortex4: {
       url:'https://www.creamsource.com/products/vortex4/',
       group:'LED', name:'Vortex4', desc:'400W RRGBBW 1×1 LED Panel Spot', emoji:'🌸', watts:400, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       weight:'9.8 kg', size:'380×380×121 mm',
-      ccts:[3200,5600], cctMin:2200, cctMax:10000,
+      ccts:[3200, 5600],
       accessories:['native20'],
-      accAngles:{native20:20},   // Creamsource 公表の実効ビーム角（Hard は native 20°、Soft は 110°）
+      accAngles:{native20:20},   // Creamsource 公表 20°（Half Peak）
       dmx:{led:'RGBW',power:'400W',cct:'2200K–10000K + RGBW',cri:'≥95',tlci:'≥95',ip:'IP65',
         control:'On-board / App / DMX / RDM / Art-Net / sACN',dimming:'0.0%–100%',
         effects:['Flash','Pulse','Fire','TV','Strobe']},
       dmxUrl:'https://creamsource.com/wp-content/downloads/dmx-tables/VortexSeries-DMX-Tables-1.2.1.pdf',
       dmxVer:'v1.2.1',
+      // Creamsource 公式カットシートの配光表。1〜6m。
+      // 直す前は 3200K 1m が 35,000 lx だったが、紙面は 48,500 lx。
+      // 紙面には XWIDE の列が無いので、この機種は素の状態のみ。
       refData:{
-        3200:{1:{native20:35000},2:{native20:13500},3:{native20:6500},4:{native20:3800},5:{native20:2470}},
-        5600:{1:{native20:38000},2:{native20:14600},3:{native20:7100},4:{native20:4100},5:{native20:2680}},
+        3200:{1:{native20:48500}, 2:{native20:15000}, 3:{native20:6700},
+              4:{native20:3900},  5:{native20:2500},  6:{native20:1700}},
+        5600:{1:{native20:53100}, 2:{native20:16300}, 3:{native20:7300},
+              4:{native20:4200},  5:{native20:2700},  6:{native20:1900}}
       }
     },
     vortex24: {
@@ -15994,6 +15994,7 @@ var ACC_INFO = {
   // Vortex8 でディフューザーを2枚重ねた状態。角度は公表されていない。
   cs_diff2: { label:'Both Diffusers', beam:'Diffuser ×2', emoji:'⬜' },
   cs_xwide: { label:'XWIDE Lens',  beam:'100° on Hard', emoji:'🔆', angle:100 },
+  cs_wide:  { label:'WIDE Lens',   beam:'85° on Hard',  emoji:'🔆', angle:85 },
   // Kelvin Epos 300。素の 93° と Bowens マウントのリフレクター2種。
   // D90 ディフューザーは Epos 300 での角度が公表されていないので角度を入れない。
   kv_bare:  { label:'Bare Light',              beam:'93° Native',    emoji:'⭕', angle:93 },
