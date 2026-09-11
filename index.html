@@ -13127,12 +13127,31 @@ var LIGHTS = {
     },
     alpha_6k: {
       group:'HMI Fresnel', name:'Alpha 6kW HMI', desc:'6kW HMI, Fresnel / Clear lens', emoji:'💡', watts:6000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
-      ccts:[5600], accessories:['spot','flat','clear_spot','clear_flat'], accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      dmx:{power:'6000W',cct:'5600K',control:'Manual'},
-      // 要確認。クリアのスポットとフラッドが5距離すべて同値になっている。
-      // 12kW のほうは同じ表でクリア（S）とクリア（F）が別の値なので、
-      // 6kW でも分かれているはず。片方の列が写し落ちたとみられる。
-      // どちらが正しい側かは紙面でないと決められないので触っていない。
+      // K5600 のブローシュア（Alpha 6/9KW ヘッド）より。
+      // BEAM ANGLE は 8°〜60°、レンズを外すと 97°。ランプは GX38 の
+      // 6kW または 9kW 単端。ヘッド 34kg（レンズ込み39kg）、バラスト 24.8kg。
+      // スポットは 15° を入れていたが、公表は 8° なので直した。
+      // クリア（レンズ無し）は公表が 97° の1つだけで、スポットとフラッドの
+      // 区別が無い。15°/60° を当てていたのは根拠が無いので外した。
+      ccts:[5600], accessories:['spot','flat','clear_spot','clear_flat'],
+      accAngles:{spot:8, flat:60, clear_spot:97, clear_flat:97},
+      accLabels:{spot:'FRESNEL (S)',flat:'FRESNEL (F)',clear_spot:'CLEAR (S)',clear_flat:'CLEAR (F)'},
+      weight:'34 kg', weightExtra:'With lens 39 kg / Ballast 24.8 kg', size:'650×450×765 mm',
+      dmx:{led:'HMI',power:'6000W',cct:'5600K',control:'Manual'},
+      /* 要確認。クリアのスポットとフラッドが5距離すべて同値になっている。
+       * 12kW は同じ表でクリア（S）とクリア（F）が別の値なので、6kW でも
+       * 分かれていそうに見える。ただし 6/9K はもともと「オープンアイ」で、
+       * キットに付くのはフレネルレンズだけ（クリアレンズが付くのは 12/18K）。
+       * レンズを外した状態は 97° の1通りしか公表されていないので、
+       * そもそもクリアに S と F の区別が無い可能性もある。
+       *
+       * 数値そのものも要確認。6kW は 76000 / 38000 / 19000 … と丸めた
+       * 半段の梯子をそのまま辿っていて、3→5m が 2.0倍（逆二乗なら 2.78倍）、
+       * 8→12m が 3.96倍（同 2.25倍）と、刻みでは説明がつかない。
+       * 12kW のほうは F値から換算し直した細かい値（108612 など）なので、
+       * 6kW だけ古い取り込みのまま残っているとみられる。
+       * K5600 自身は配光を公表していない（製品ページの Photometrics は
+       * "Coming Soon"）ので、紙面から入れ直すしかない。 */
       refData:{5600:{3:{spot:76000, flat:14000, clear_spot:6800, clear_flat:6800}, 5:{spot:38000, flat:6800, clear_spot:2400, clear_flat:2400}, 8:{spot:19000, flat:3400, clear_spot:1200, clear_flat:1200}, 12:{spot:4800, flat:1700, clear_spot:600, clear_flat:600}, 15:{spot:2400, flat:840, clear_spot:300, clear_flat:300}}}
     },
     alpha_12k: {
