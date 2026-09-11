@@ -13129,6 +13129,10 @@ var LIGHTS = {
       group:'HMI Fresnel', name:'Alpha 6kW HMI', desc:'6kW HMI, Fresnel / Clear lens', emoji:'💡', watts:6000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       ccts:[5600], accessories:['spot','flat','clear_spot','clear_flat'], accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       dmx:{power:'6000W',cct:'5600K',control:'Manual'},
+      // 要確認。クリアのスポットとフラッドが5距離すべて同値になっている。
+      // 12kW のほうは同じ表でクリア（S）とクリア（F）が別の値なので、
+      // 6kW でも分かれているはず。片方の列が写し落ちたとみられる。
+      // どちらが正しい側かは紙面でないと決められないので触っていない。
       refData:{5600:{3:{spot:76000, flat:14000, clear_spot:6800, clear_flat:6800}, 5:{spot:38000, flat:6800, clear_spot:2400, clear_flat:2400}, 8:{spot:19000, flat:3400, clear_spot:1200, clear_flat:1200}, 12:{spot:4800, flat:1700, clear_spot:600, clear_flat:600}, 15:{spot:2400, flat:840, clear_spot:300, clear_flat:300}}}
     },
     alpha_12k: {
@@ -16143,6 +16147,12 @@ super_led_f47: {
       group:'HMI', weight:'2 kg', name:'Bron Kobold DW400', desc:'400W HMI, lensless flat', emoji:'💡', watts:400, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       ccts:[5600], accessories:['flat', 'pp_vnarrow', 'pp_narrow', 'pp_medium', 'pp_wide', 'pp_frost', 'diffusion'],
       dmx:{power:'400W',cct:'5600K',control:'Manual'},
+      /* 要確認が2点ある。元の紙面でないと決められないので触っていない。
+       * ・flat の 1→2m が半段しか落ちない（305,000→216,000）。距離が倍なら
+       *   2段落ちるはずで、1.5段ぶん足りない。どちらかの升が読み違いとみられる。
+       * ・flat の 3m が 108,000 lx で、倍の電力の DW800 の 3m（76,000 lx）より明るい。
+       * ベリーナローとナローが同値なのは、元が半段刻みの F値の表なので、
+       * 実際の差が半段に満たなければ同じ升に乗る。誤りとは限らない。 */
       refData:{5600:{
         1: {flat:305000, pp_vnarrow:38000, pp_narrow:38000, pp_medium:19000, pp_wide:14000, pp_frost:9600, diffusion:27000},
         2: {flat:216000, pp_vnarrow:6800, pp_narrow:6800, pp_medium:4800, pp_wide:2400, pp_frost:2400, diffusion:4800},
@@ -16154,6 +16164,8 @@ super_led_f47: {
       group:'HMI', weight:'1.6 kg', name:'Bron Kobold DW200', desc:'200W HMI, lensless flat', emoji:'💡', watts:200, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       ccts:[5600], accessories:['flat', 'pp_vnarrow', 'pp_narrow', 'pp_medium', 'pp_wide', 'pp_frost'],
       dmx:{power:'200W',cct:'5600K',control:'Manual'},
+      // ワイドとフロストが同値。元が半段刻みの F値の表なので、差が半段に
+      // 満たなければ同じ升に乗る。誤りとは限らない（DW400 と同じ理由）。
       refData:{5600:{
         1: {flat:152000, pp_vnarrow:38000, pp_narrow:38000, pp_medium:19000, pp_wide:4800, pp_frost:4800},
         2: {flat:54000, pp_vnarrow:6800, pp_narrow:6800, pp_medium:4800, pp_wide:1200, pp_frost:1200},
