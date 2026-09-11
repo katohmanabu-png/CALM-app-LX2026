@@ -12624,7 +12624,10 @@ var LIGHTS = {
     true_blue_d40: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/true-blue-d/d40',
       group:'HMI', weight:'18 kg', size:'727×534×403 mm', name:'ARRI TRUE BLUE D40', desc:'HMI Fresnel Lens', emoji:'💡', watts:4000, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
-      ccts:[5600], accessories:['flat','spot'], accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
+      // クリアは配光が入っているのに accessories に無く、画面から選べなかった。
+      // 角度は ARRI が公表していないので accUnknown にしてある（図は出ない）。
+      ccts:[5600], accessories:['flat','spot','clear'], accUnknown:['clear'],
+      accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT',clear:'CLEAR'},
       // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
       // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
@@ -16360,7 +16363,6 @@ var ACC_INFO = {
   // ポケットパーの T 変換レンズ（タングステン変換 3600K）。ARC も ARRI も
   // 角度を公表していないので入れない。
   pp_tconv:  { label:'Lens T Conversion',   beam:'T Conv 3600K',  emoji:'🟠' },
-  r30:      { label:'30° Reflector',       beam:'Spot 30°',      emoji:'🔆', angle:30 },
   fres16:   { label:'Fresnel 16°',         beam:'Spot 16°',      emoji:'🔬', angle:16 },
   fres48:   { label:'Fresnel 48°',         beam:'Flood 48°',     emoji:'🔆', angle:48 },
   native20: { label:'Native 20° Beam',     beam:'20° Native',   emoji:'🔦', angle:20 },
@@ -16455,7 +16457,6 @@ var ACC_INFO = {
   pf_sb:    { label:'SnapBag',            beam:'SnapBag',       emoji:'🔲' },
   pf_sbg:   { label:'SnapBag + Grid',     beam:'SnapBag+Grid',  emoji:'▦' },
   ap_grid:  { label:'Control Grid',       beam:'Control Grid',  emoji:'▦' },
-  spot:     { label:'SPOT',               beam:'Spot ~10°',     emoji:'🎯', angle:10 },
   // TRUEBLUE ST1 / ST5 が使っているが定義が無く、75° に化けていた。
   // フレネルの SPOT(15°前後) と FLOOD(60°前後) の中間。
   medium:   { label:'MEDIUM',              beam:'Medium 30°',    emoji:'🔦', angle:30 },
@@ -16522,7 +16523,6 @@ var ACC_INFO = {
   deg50:    { label:'50° Beam',  beam:'Wide 50°',   emoji:'🔆', angle:50 },
   nova9_flood:    { label:'NOVA 9° Flood',    beam:'Flood ~25°', emoji:'☀️', angle:25 },
   nova9_diffuser: { label:'NOVA 9° Diffuser', beam:'Diffused ~60°', emoji:'🔆', angle:60 },
-  diffuser: { label:'Mini Diffuser',       beam:'Diffused',      emoji:'⬜', angle:100 },
   // Nova II の別売ドーム。角度は映像の表示から。
   nova2_dome_l: { label:'Light Frost Dome',  beam:'95° Light',  emoji:'🔘', angle:95 },
   // Astera LunaBulb のカバー。角度は公表されていない。
@@ -16545,7 +16545,6 @@ var ACC_INFO = {
   // amaran の Bowens マウント用 Fresnel 2X。角度は公表されていない。
   f2x_flood:{ label:'Fresnel 2X (Flood)', beam:'Fresnel Flood', emoji:'🔆' },
   f2x_spot: { label:'Fresnel 2X (Spot)',  beam:'Fresnel Spot',  emoji:'🔬' },
-  clear:       { label:'Clear Lens',            beam:'Clear',       emoji:'🔆' },
   fres_s_spot: { label:'Fresnel SPOT — Spot',    beam:'Fresnel',     emoji:'🔦' },
   fres_s_flat: { label:'Fresnel SPOT — Flat',    beam:'Fresnel',     emoji:'🔆' },
   fres_f_spot: { label:'Fresnel FLAT — Spot',    beam:'Fresnel',     emoji:'🔦' },
@@ -16625,9 +16624,6 @@ var ACC_INFO = {
   md_soft:   { label:'Magnetic Diffuser', beam:'Diffused', emoji:'⬜' },
   softdome:  { label:'Soft Dome',      beam:'Soft',       emoji:'🔘' },
   fresnel45: { label:'Fresnel 45°', beam:'Fresnel 45°', emoji:'🔬', angle:45 },
-  r30:   { label:'30° Reflector', beam:'30°', emoji:'🔦', angle:30 },
-  r45:   { label:'45° Reflector', beam:'45°', emoji:'🔦', angle:45 },
-  r60:   { label:'60° Reflector', beam:'60°', emoji:'🔦', angle:60 },
   r15:      { label:'15° Reflector',      beam:'15°',           emoji:'🔦', angle:15 },
   r30:      { label:'30° Reflector',      beam:'30°',           emoji:'🔦', angle:30 },
   r45:      { label:'45° Reflector',      beam:'45°',           emoji:'🔦', angle:45 },
