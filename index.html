@@ -2286,7 +2286,7 @@ var LANGS = {
     secLabel1:'1台・目標以上 (±1 stop)', secLabel2:'複数台・目標以上 (±1 stop)', secLabel3:'1台・目標より暗い (−1 stop以内)', secLabel4:'複数台・目標より暗い (−1 stop以内)', secLabel5:'±2 stop以内（参考）',
     altSec1:'1台で代替 (±1 stop)', altSec2:'複数台で代替 (±1 stop)', altSec3:'1台・明るい (+2 stopまで)', altSec4:'複数台・明るい (+2 stopまで)',
     altSelectedLight:'選択ライト',
-    dmxPower:'定格出力', dmxCCT:'CCT', dmxDimming:'調光', dmxIP:'IP等級', dmxControl:'コントロール', dmxEffects:'エフェクト / Effects', dmxChart:'DMXチャート (公式)', dmxChartOpen:'PDFを開く',
+    dmxPower:'定格出力', dmxCCT:'CCT', dmxDimming:'調光', dmxIP:'IP等級', dmxLed:'光源', dmxGamut:'色域', dmxControl:'コントロール', dmxEffects:'エフェクト / Effects', dmxChart:'DMXチャート (公式)', dmxChartOpen:'PDFを開く',
     cmCtxCalc:'光量計算タブ', cmCtxFinder:'おすすめ検索タブ', cmCtxAlt:'代替検索タブ', cmCtxMix:'複数台タブ',
     dblTapHint:'ダブルタップで直接入力',
     pairSectionLabel:'2灯 組み合わせ', pairLabel:'📦 2灯セット', pairTotalW:'W 合計',
@@ -2472,7 +2472,7 @@ var LANGS = {
     secLabel1:'1 unit · at/above target (±1 stop)', secLabel2:'Multi · at/above target (±1 stop)', secLabel3:'1 unit · below target (within −1 stop)', secLabel4:'Multi · below target (within −1 stop)', secLabel5:'Within ±2 stop (reference)',
     altSec1:'1 unit (±1 stop)', altSec2:'Multi units (±1 stop)', altSec3:'1 unit · brighter (up to +2 stop)', altSec4:'Multi · brighter (up to +2 stop)',
     altSelectedLight:'Selected',
-    dmxPower:'Power', dmxCCT:'CCT', dmxDimming:'Dimming', dmxIP:'IP Rating', dmxControl:'Control', dmxEffects:'Effects', dmxChart:'DMX Chart (official)', dmxChartOpen:'Open PDF',
+    dmxPower:'Power', dmxCCT:'CCT', dmxDimming:'Dimming', dmxIP:'IP Rating', dmxLed:'Light Source', dmxGamut:'Color Space', dmxControl:'Control', dmxEffects:'Effects', dmxChart:'DMX Chart (official)', dmxChartOpen:'Open PDF',
     cmCtxCalc:'Calc tab', cmCtxFinder:'Finder tab', cmCtxAlt:'Alt tab', cmCtxMix:'Mix tab',
     dblTapHint:'Double-tap to enter directly',
     pairSectionLabel:'2-Light Combo', pairLabel:'📦 2-Light Set', pairTotalW:'W total',
@@ -2636,7 +2636,7 @@ var LANGS = {
     secLabel1:'1 unidad · objetivo o más (±1 stop)', secLabel2:'Múltiples · objetivo o más (±1 stop)', secLabel3:'1 unidad · bajo objetivo (−1 stop)', secLabel4:'Múltiples · bajo objetivo (−1 stop)', secLabel5:'Dentro de ±2 stop (referencia)',
     altSec1:'1 unidad (±1 stop)', altSec2:'Múltiples (±1 stop)', altSec3:'1 unidad · más brillante (hasta +2 stop)', altSec4:'Múltiples · más brillante (hasta +2 stop)',
     altSelectedLight:'Seleccionado',
-    dmxPower:'Potencia', dmxCCT:'CCT', dmxDimming:'Regulación', dmxIP:'Grado IP', dmxControl:'Control', dmxEffects:'Efectos', dmxChart:'Tabla DMX (oficial)', dmxChartOpen:'Abrir PDF',
+    dmxPower:'Potencia', dmxCCT:'CCT', dmxDimming:'Regulación', dmxIP:'Grado IP', dmxLed:'Fuente de luz', dmxGamut:'Espacio de color', dmxControl:'Control', dmxEffects:'Efectos', dmxChart:'Tabla DMX (oficial)', dmxChartOpen:'Abrir PDF',
     cmCtxCalc:'Tab Calc', cmCtxFinder:'Tab Buscador', cmCtxAlt:'Tab Alt', cmCtxMix:'Tab Mix',
     dblTapHint:'Toque doble para ingresar',
     pairSectionLabel:'Combinación 2 luces', pairLabel:'📦 Juego 2 luces', pairTotalW:'W total',
@@ -3070,7 +3070,7 @@ var LANGS = {
     dmxPower:'额定功率',
     dmxCCT:'CCT',
     dmxDimming:'调光',
-    dmxIP:'IP 等级',
+    dmxIP:'IP 等级', dmxLed:'光源', dmxGamut:'色域',
     dmxControl:'控制',
     dmxEffects:'特效 / Effects',
     dmxChart:'DMX 通道表（官方）',
@@ -3737,7 +3737,7 @@ var LANGS = {
     dmxPower:'Puissance',
     dmxCCT:'CCT',
     dmxDimming:'Gradation',
-    dmxIP:'Indice IP',
+    dmxIP:'Indice IP', dmxLed:'Source lumineuse', dmxGamut:'Espace colorimétrique',
     dmxControl:'Pilotage',
     dmxEffects:'Effets',
     dmxChart:'Table DMX (officielle)',
@@ -4404,7 +4404,7 @@ var LANGS = {
     dmxPower:'Nennleistung',
     dmxCCT:'CCT',
     dmxDimming:'Dimmung',
-    dmxIP:'IP-Schutzart',
+    dmxIP:'IP-Schutzart', dmxLed:'Lichtquelle', dmxGamut:'Farbraum',
     dmxControl:'Steuerung',
     dmxEffects:'Effekte',
     dmxChart:'DMX-Chart (offiziell)',
@@ -5071,7 +5071,7 @@ var LANGS = {
     dmxPower:'Potência nominal',
     dmxCCT:'CCT',
     dmxDimming:'Dimerização',
-    dmxIP:'Grau IP',
+    dmxIP:'Grau IP', dmxLed:'Fonte de luz', dmxGamut:'Espaço de cor',
     dmxControl:'Controle',
     dmxEffects:'Efeitos',
     dmxChart:'Tabela DMX (oficial)',
@@ -5738,7 +5738,7 @@ var LANGS = {
     dmxPower:'Nimellisteho',
     dmxCCT:'CCT',
     dmxDimming:'Himmennys',
-    dmxIP:'IP-luokitus',
+    dmxIP:'IP-luokitus', dmxLed:'Valonlähde', dmxGamut:'Väriavaruus',
     dmxControl:'Ohjaus',
     dmxEffects:'Efektit',
     dmxChart:'DMX-kartta (virallinen)',
@@ -6405,7 +6405,7 @@ var LANGS = {
     dmxPower:'정격 출력',
     dmxCCT:'CCT',
     dmxDimming:'조광',
-    dmxIP:'IP 등급',
+    dmxIP:'IP 등급', dmxLed:'광원', dmxGamut:'색 영역',
     dmxControl:'컨트롤',
     dmxEffects:'이펙트',
     dmxChart:'DMX 차트 (공식)',
@@ -7072,7 +7072,7 @@ var LANGS = {
     dmxPower:'กำลังไฟที่กำหนด',
     dmxCCT:'CCT',
     dmxDimming:'การหรี่แสง',
-    dmxIP:'ระดับ IP',
+    dmxIP:'ระดับ IP', dmxLed:'แหล่งกำเนิดแสง', dmxGamut:'ขอบเขตสี',
     dmxControl:'การควบคุม',
     dmxEffects:'เอฟเฟกต์',
     dmxChart:'ตาราง DMX (จากผู้ผลิต)',
@@ -7739,7 +7739,7 @@ var LANGS = {
     dmxPower:'Potência nominal',
     dmxCCT:'CCT',
     dmxDimming:'Dimerização',
-    dmxIP:'Grau IP',
+    dmxIP:'Grau IP', dmxLed:'Fonte de luz', dmxGamut:'Espaço de cor',
     dmxControl:'Controle',
     dmxEffects:'Efeitos',
     dmxChart:'Tabela DMX (oficial)',
@@ -8406,7 +8406,7 @@ var LANGS = {
     dmxPower:'額定功率',
     dmxCCT:'CCT',
     dmxDimming:'調光',
-    dmxIP:'IP 等級',
+    dmxIP:'IP 等級', dmxLed:'光源', dmxGamut:'色域',
     dmxControl:'控制',
     dmxEffects:'特效 / Effects',
     dmxChart:'DMX 通道表（官方）',
@@ -9113,7 +9113,7 @@ var LIGHTS = {
       accessories:['bare', 'bm15', 'bm30', 'bm45', 'cf12_15', 'cf12_45', 'spot50', 'spot36', 'spot19'],
       // 素の COB のビーム角はメーカー公称 67°。CF12 フレネルは 15°〜45° の可変
       accAngles:{bare:67},
-      dmx:{led:'BLAIR',power:'1550W (output 1200W)',cct:'2500K–10000K',cri:'≥95',tlci:'≥95',cqs:'≥94',ssi:'87',tm30:'Rf 95 / Rg 100',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
+      dmx:{led:'BLAIR (Blue/Lime/Amber/Indigo/Red)',gamut:'70% Rec. 2020',power:'1550W (output 1200W)',cct:'2500K–10000K',cri:'≥95',tlci:'≥95',cqs:'≥94',ssi:'P3200 87 / D5600 87',tm30:'Rf 95 / Rg 100',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
       dmxUrl:'https://help.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%201200x/documents/STORM%201200x%20DMX%20Profile%20Specification%20V1.5.pdf?hsLang=en',
       dmxVer:'v1.5',
       // 出所: Aputure 公式の製品ページ（STORM 1200x Cine Kit）の配光表（3m / 5m）。
@@ -9651,7 +9651,7 @@ var LIGHTS = {
       accessories:['bare','am81150','am81135_wide','am81125_medium','am81120_narrow','cf16_flood_50','cf16_spot_18','parallel_beam_70'],
       accAngles:{bare:93, am81150:50, am81135_wide:35, am81125_medium:25, am81120_narrow:20,
                  cf16_flood_50:50, cf16_spot_18:18, parallel_beam_70:70},
-      dmx:{led:'BLAIR',power:'5200W (max 6000W)',cct:'2500K–10000K',cri:'≥96',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
+      dmx:{led:'BLAIR (Blue/Lime/Amber/Indigo/Red)',gamut:'70% Rec. 2020',ssi:'P3200 87 / D5600 88',power:'5200W (max 6000W)',cct:'2500K–10000K',cri:'≥96',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%20XT52/Documents/STORM%20XT52%20DMX%20Profile%20Specification%20V1.2.pdf',
       dmxVer:'v1.2',
       // 直す前は付属品で分かれておらず、8つのリフレクターすべてが同じ値を
@@ -9707,7 +9707,7 @@ var LIGHTS = {
       group:'LED COB', name:'STORM 700X', desc:'700W IP65 Bi-Color LED Spot', emoji:'💡', watts:700, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'9.66 kg', size:'335×355×220 mm', ccts:[2500, 3200, 4300, 5600, 6500, 7500, 10000],
       accessories:['bare', 'cf10_15', 'cf10_40', 'hyper25', 'hyper35'], accAngles:{bare:58},  // Aputure 公表 Native COB Beam Angle 58°
-      dmx:{led:'BLAIR',power:'700W',cct:'2500K–10000K',cri:'≥95',ip:'IP65',control:'Bluetooth / CRMX / DMX'},
+      dmx:{led:'BLAIR (Blue/Lime/Amber/Indigo/Red)',gamut:'70% Rec. 2020',ssi:'P3200 87 / D5600 85',power:'700W',cct:'2500K–10000K',cri:'≥95',ip:'IP65',control:'Bluetooth / CRMX / DMX'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%20700x/documents/STORM%20700x%20400x%20DMX%20Profile%20Specification%201.1.pdf',
       dmxVer:'v1.1',
       refData:{bare:{2500:{1.0:36700,3.0:4200,5.0:1588},3200:{1.0:42400,3.0:4870,5.0:1839},4300:{1.0:53700,3.0:6210,5.0:2330},5600:{1.0:54900,3.0:6370,5.0:2394},6500:{1.0:53600,3.0:6190,5.0:2333},7500:{1.0:49200,3.0:5660,5.0:2136},10000:{1.0:40900,3.0:4720,5.0:1778}},cf10_15:{2500:{3.0:37400,5.0:13020},3200:{3.0:43300,5.0:15050},4300:{3.0:54700,5.0:19000},5600:{3.0:56200,5.0:19550},6500:{3.0:54700,5.0:19050},7500:{3.0:50100,5.0:17470},10000:{3.0:41700,5.0:14520}},cf10_40:{2500:{1.0:71000,3.0:7850,5.0:3030},3200:{1.0:82300,3.0:9990,5.0:3510},4300:{1.0:104100,3.0:11590,5.0:4440},5600:{1.0:107500,3.0:11900,5.0:4570},6500:{1.0:104700,3.0:11570,5.0:4460},7500:{1.0:96100,3.0:10610,5.0:4080},10000:{1.0:80000,3.0:8850,5.0:3400}},hyper25:{2500:{3.0:18120,5.0:6040},3200:{3.0:20950,5.0:5880},4300:{3.0:26430,5.0:7560},5600:{3.0:27190,5.0:7950},6500:{3.0:26520,5.0:8060},7500:{3.0:24300,5.0:7810},10000:{3.0:20200,5.0:6960}},hyper35:{2500:{3.0:12480,5.0:4100},3200:{3.0:14430,5.0:3930},4300:{3.0:18120,5.0:5040},5600:{3.0:18670,5.0:5320},6500:{3.0:18250,5.0:5380},7500:{3.0:16760,5.0:5240},10000:{3.0:13930,5.0:4650}}}
@@ -9717,7 +9717,7 @@ var LIGHTS = {
       group:'LED COB', name:'STORM 400X', desc:'400W IP65 Bi-Color LED Spot', emoji:'💡', watts:500, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       weight:'3.95 kg', size:'238×253×424 mm', ccts:[2500, 3200, 4300, 5600, 6500, 7500, 10000],
       accessories:['bare', 'cf7_15', 'cf7_40', 'hyper30', 'hyper35'], accAngles:{bare:57},  // Aputure 公表 Native Beam Angle 57°
-      dmx:{led:'BLAIR',power:'400W (max 500W)',cct:'2500K–10000K',cri:'≥95',ip:'IP65',control:'Bluetooth / CRMX / DMX'},
+      dmx:{led:'BLAIR (Blue/Lime/Amber/Indigo/Red)',gamut:'70% Rec. 2020',ssi:'P3200 87 / D5600 85',power:'400W (max 500W)',cct:'2500K–10000K',cri:'≥95',ip:'IP65',control:'Bluetooth / CRMX / DMX'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%20700x/documents/STORM%20700x%20400x%20DMX%20Profile%20Specification%201.1.pdf',
       dmxVer:'v1.1',
       // 映像に重ねて表示されていた測定値（ISO 400 / 1/50 / 25fps）を升ごとに
@@ -9923,7 +9923,7 @@ var LIGHTS = {
       accessories:['cf16_spot_18','am81120_narrow','am81125_medium','r30','am81135_wide','am81150','cf16_flood_50','none'],
       // 素の球は Aputure 公表の 78°。汎用の 'none'（120°）ではない
       accAngles:{none:78},
-      dmx:{led:'BLAIR-CG + Extended Red',power:'3200W (4K HMI equivalent)',cct:'1800K–20000K + Full Color',cri:'97',tlci:'98',ip:'IP65',control:'Bluetooth / Sidus Link / CRMX / DMX / Art-Net / sACN',dimming:'0%–100%'},
+      dmx:{led:'BLAIR-CG With Extended Red',gamut:'90% Rec. 2020',ssi:'P3200 93 / D5600 91',power:'3200W (4K HMI equivalent)',cct:'1800K–20000K + Full Color',cri:'97',tlci:'98',ip:'IP65',control:'Bluetooth / Sidus Link / CRMX / DMX / Art-Net / sACN',dimming:'0%–100%'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%20CS32/Documents/STORM%20CS32%20DMX%20Profile%20Specification%20V1.0.pdf',
       dmxVer:'v1.0',
       // none（素の球）と r30（30°リフレクター）は Aputure の公表値。3m / 5m。
@@ -9966,7 +9966,7 @@ var LIGHTS = {
       // 素の COB のビーム角はメーカー公称 67°。ACC_INFO の bare は汎用の 120° なので上書きする。
       // CF12 フレネルは 15°〜45° の可変
       accAngles:{bare:67},
-      dmx:{led:'BLAIR-CG',power:'1440W (output 1000W)',cct:'1800K–20000K',cri:'≥97',tlci:'≥97',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
+      dmx:{led:'BLAIR-CG (Blue/Lime/Amber/Indigo/Red/Cyan/Green)',gamut:'90% Rec. 2020',ssi:'P3200 88 / D5600 86',power:'1440W (output 1000W)',cct:'1800K–20000K',cri:'≥97',tlci:'≥97',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%2080c/manuals/STORM%201000c%20&%2080c%20DMX%20Profile%20Specification%20V1.2.pdf',
       dmxVer:'v1.2',
       // 出所: Aputure 公式の製品ページ（STORM 1000c Cine Kit）の配光表。
@@ -10117,7 +10117,7 @@ var LIGHTS = {
       weight:'1.01 kg', size:'101×104×147 mm', ccts:[1800, 3200, 4300, 5600, 6500, 8000, 10000, 15000, 20000],
       accessories:['bare','hyper_reflector','cf4_15','cf4_40','sl_mini_19','sl_mini_36',
                    'lantern30','light_dome40_stop1','light_dome40_stop2','mini_diffuser'], accAngles:{bare:60, hyper_reflector:35},  // Aputure 公表 Native COB 60° / 付属リフレクター 35°（汎用値の10°が出ていた）
-      dmx:{led:'BLAIR-CG',power:'80W (max 100W)',cct:'1800K–20000K',cri:'≥97',tlci:'≥99',ip:'IP65',control:'Bluetooth / CRMX / DMX'},
+      dmx:{led:'BLAIR-CG (Blue/Lime/Amber/Indigo/Red/Cyan/Green)',gamut:'90% Rec. 2020',ssi:'P3200 88 / D5600 84',power:'80W (max 100W)',cct:'1800K–20000K',cri:'≥97',tlci:'≥99',ip:'IP65',control:'Bluetooth / CRMX / DMX'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%2080c/manuals/STORM%201000c%20&%2080c%20DMX%20Profile%20Specification%20V1.2.pdf',
       dmxVer:'v1.2',
       // hyper_reflector（付属のリフレクター）の 5600K / 3200K は ARC SYSTEM
@@ -10654,7 +10654,7 @@ var LIGHTS = {
     },
     evoke5000b: {
       group:'LED COB', name:'Evoke 5000B', desc:'5000W IP66 Bi-Color LED Spot', emoji:'💡', watts:5000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
-      weight:'41 kg', weightExtra:'ヨーク別 3 kg', size:'556.7×461.6×219.2 mm',
+      weight:'43.12 kg', weightExtra:'ヨーク 3.42 kg / 総重量 46.54 kg', size:'556.7×461.6×219.2 mm',
       ccts:[2700,3200,4300,5600,6500],
       accessories:['none','r15','r30','r45','r60','nlpb','fresnel16','fresnel50'], accAngles:{none:95},  // Nanlux 公表 Beam Angle 95°
       // FL-45E は 16°〜50° のズーム。公表表は両端だけなので、その2つを付属品として持つ
@@ -11124,7 +11124,7 @@ var LIGHTS = {
       // Creamsource は「2点の間は補間」と書いており、その補間は角度に対して
       // 直線（39° でちょうど中間の 5,750 lx）。メーカーの表示と合わせる。
       beamLerp:'linear',
-      dmx:{led:'BCGLARD 7-colour',power:'3000W',cct:'2200K–15000K + RGBW',cri:'98 (typical)',tlci:'98 (typical)',ip:'IP65',
+      dmx:{led:'BCGLARD (Blue/Cyan/Green/Lime/Amber/Red/Deep Red)',gamut:'>92% Rec. 2020',tm30:'Rf 96 / Rg 100',power:'3000W',cct:'2200K–15000K + RGBW',cri:'98 (typical)',tlci:'98 (typical)',ip:'IP65',
         control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON / USB',dimming:'0%–100%',effects:[]},
       // Creamsource 公表の暫定値（Preliminary Specs）。10m の2点だけ。
       //   スポット 18°  10m 10,000 lx
@@ -22042,9 +22042,13 @@ function renderDMX() {
   var d = light.dmx;
   var items = [
     [t('dmxPower'), descText(d.power)], [t('dmxCCT'), d.cct],
+    // 光源（LEDエンジン）は全機種が持っていたのに、どこにも出していなかった
+    [t('dmxLed'), d.led],
     ['CRI', d.cri], ['TLCI', d.tlci],
     [t('dmxDimming'), d.dimming], [t('dmxIP'), d.ip]
   ];
+  // 色域は公表している機種が少ないので、ある機種にだけ足す
+  if (d.gamut) items.push([t('dmxGamut'), d.gamut]);
   // 決め打ちの6項目しか出していなかったため、入れた公称値が表に出ていなかった。
   // 持っている機種にだけ足す
   if (d.r9)   items.push(['R9', d.r9]);
