@@ -16863,39 +16863,52 @@ function _lenLabel(m) {
   return (Math.round(m * 10) / 10) + ' m';
 }
 
-function fLab(f) {
-  if (!f || f <= 0) return '—';
-  // FSTOPS13の最近傍を探す
-  var best = null, bestDiff = Infinity;
-  for (var i = 0; i < FSTOPS13.length; i++) {
-    var diff = Math.abs(Math.log2(FSTOPS13[i]) - Math.log2(f));
-    if (diff < bestDiff) { bestDiff = diff; best = FSTOPS13[i]; }
+/* 露出計（セコニック）の書き方に合わせた絞りの表記。
+ * 1段刻みの基準値に、そこから何割の段だけ明るいかを小数1桁で足す。
+ *   T2.8+.3  = 2.8 から 0.3段 明るい
+ *   T5.6+.0  = ちょうど 5.6
+ * 基準値は 1・1.4・2・2.8・4・5.6・8・11・16・22・32・45・64・90・128。
+ * 配列の添字は「1 を 0 とした段数」で、値は 2^(段数/2)。
+ * 1 より暗い側（0.7〜0.125）も同じ並びで続けてある。 */
+var SEKO_F = ['0.125','0.18','0.25','0.35','0.5','0.7',
+              '1','1.4','2','2.8','4','5.6','8','11','16','22','32','45','64','90','128','180','256'];
+var SEKO_F_ZERO = 6;   // SEKO_F[6] が 1（= 段数 0）
+
+/** 絞り値 → セコニック式の文字列。pre は頭に付ける記号 */
+function sekoLab(f, pre) {
+  if (!f || f <= 0 || !isFinite(f)) return '—';
+  /* 表に並べている 11・22・45 や 0.18・0.35・0.7 は、2^(段/2) を慣用でまるめた数字。
+   * 11 の真値は 11.314 で、そのまま段数に直すと 0.08段ぶん足りず「8+.9」になってしまう。
+   * カメラの絞りに 11 と書いてあれば 11 と出したいので、
+   * 入力が表の数字そのものだったときは端数 0 として扱う。 */
+  for (var _k = 0; _k < SEKO_F.length; _k++) {
+    var _v = parseFloat(SEKO_F[_k]);
+    if (Math.abs(f - _v) < _v * 0.005) return (pre || '') + SEKO_F[_k] + '+.0';
   }
-  // 0.15stop以内なら標準値を使う
-  if (bestDiff < 0.15) {
-    // 整数値は整数表示（8.0→f8, 5.6→f5.6）
-    return 'f' + (best === Math.floor(best) ? Math.floor(best) : best);
-  }
-  // 標準値から外れた場合は実数表示
-  if (f >= 10) return 'f' + Math.round(f);
-  return 'f' + (Math.round(f * 10) / 10).toFixed(1);
+  var s = 2 * Math.log2(f);                  // 1 を 0 とした段数
+  var i = Math.floor(s);                     // 下の基準値
+  var tenth = Math.round((s - i) * 10);
+  if (tenth >= 10) { i += 1; tenth = 0; }    // 2.8 などは端数が 0.97 になるので繰り上げる
+  var k = i + SEKO_F_ZERO;
+  var base = (k >= 0 && k < SEKO_F.length)
+           ? SEKO_F[k]
+           : String(Math.round(Math.pow(2, i / 2) * 100) / 100);   // 表の外は計算値で出す
+  return (pre || '') + base + '+.' + tenth;
 }
 
-// T-stop表記（値は同じ、接頭辞のみ f→T）。シネマ表記用
-function tLab(f) {
-  return fLab(f).replace('f', 'T');
-}
+function fLab(f) { return sekoLab(f, 'T'); }
+
+// シネマ表記。今は f 側と同じ書き方なので、呼び分けだけ残してある
+function tLab(f) { return sekoLab(f, 'T'); }
 
 // 表示中のF値ラベルに対応する数値を返す（0.15stop以内なら標準絞りにスナップ）
 // stop差バッジをF値ラベルと必ず整合させるために使う
 function _fSnap(f) {
   if (!f || f <= 0) return 0;
-  var best = f, bd = Infinity;
-  for (var i = 0; i < FSTOPS13.length; i++) {
-    var d = Math.abs(Math.log2(FSTOPS13[i]) - Math.log2(f));
-    if (d < bd) { bd = d; best = FSTOPS13[i]; }
-  }
-  return bd < 0.15 ? best : f;
+  // 表示が 0.1段まで出るようになったので、バッジ側も 0.1段に丸める。
+  // 以前は 1/3段の標準絞りに寄せていたため、表示とバッジが最大 0.15段ずれていた。
+  var s = Math.round(2 * Math.log2(f) * 10) / 10;
+  return Math.pow(2, s / 2);
 }
 
 // ===== HMI BEAM =====
@@ -19390,11 +19403,8 @@ function _ambDistForLux(light, cct, acc, wantLux) {
 /** いちばん近い 1/3 段の F 値の呼び名 */
 function _ambNearestF(f) {
   if (!f || !isFinite(f)) return '—';
-  var best = FSTOPS13[0];
-  for (var i = 0; i < FSTOPS13.length; i++) {
-    if (Math.abs(Math.log2(FSTOPS13[i]) - Math.log2(f)) < Math.abs(Math.log2(best) - Math.log2(f))) best = FSTOPS13[i];
-  }
-  return fLab(best);
+  // 標準絞りへ寄せる必要は無くなった（0.1段まで書けるため）
+  return fLab(f);
 }
 
 function openAmbientTool() {
@@ -22617,7 +22627,7 @@ function calculate() {
 
   inner.innerHTML =
     '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:2px 2px;">' +
-    '<span style="font-size:34px;font-weight:900;color:#ffffff;letter-spacing:-1px;line-height:1;">' + fLab(FSTOPS13[nearIdx]) + '</span>' +
+    '<span style="font-size:34px;font-weight:900;color:#ffffff;letter-spacing:-1px;line-height:1;">' + fLab(calcF) + '</span>' +
     (Math.abs(stopR) < 0.15
       ? '<span style="font-size:13px;font-weight:800;color:#4caf50;padding:2px 6px;border-radius:4px;background:rgba(76,175,80,.18);">OK</span>'
       : '<span style="font-size:13px;font-weight:800;padding:2px 6px;border-radius:4px;color:' +
@@ -23167,7 +23177,7 @@ function _cmpRenderRows() {
   var maxLux = -1, maxIdx = -1;
   luxes.forEach(function(v,i){ if (v != null && v > maxLux) { maxLux = v; maxIdx = i; } });
   var specs = [
-    { label: t('cmpFstop'), hi: true, val: function(l,i){ var lx=luxes[i]; if(lx==null) return '—'; var f=luxToFstopCamera(lx); return f? ('f' + f.toFixed(1)) : '—'; } },
+    { label: t('cmpFstop'), hi: true, val: function(l,i){ var lx=luxes[i]; if(lx==null) return '—'; var f=luxToFstopCamera(lx); return f? fLab(f) : '—'; } },
     { label: t('cmpLuxAt') + ' @' + dv.toFixed(1) + 'm', hi: true, val: function(l,i){ var lx=luxes[i]; return lx==null? '—' : (lx.toLocaleString() + ' lx' + _cmpOutMark(infos[i])); } },
     { label: t('cmpMaxLux'), val: function(l,i){
         if(!l) return '—';
@@ -25500,7 +25510,7 @@ function onFinderFstopChange() {
   if (!sl) return;
   var idx = parseInt(sl.value) || 30;
   var fval = FINDER_FSTOPS[idx] || 8;
-  var fstr = fval >= 10 ? 'f' + Math.round(fval) : 'f' + fval;
+  var fstr = fLab(fval);
   var dispEl = el('rank-target-f-disp');
   if (dispEl) dispEl.textContent = fstr;
   // 環境光からのモードのときは、目標は段数側が決めるので上書きしない
@@ -25540,7 +25550,7 @@ function onFinderFstopDirectInput() {
   if (hid) hid.value = v;
   // 表示更新
   var dispEl = el('rank-target-f-disp');
-  if (dispEl) dispEl.textContent = 'f' + v;
+  if (dispEl) dispEl.textContent = fLab(v);
   // スライダーを最近傍インデックスに移動
   var sl = el('rank-target-f-sl');
   if (sl) {
@@ -25974,7 +25984,7 @@ function renderFinderResults() {
       }
 
       var fStr = fLab(bestFnum);
-      // stopDiffはfLab後の標準値から計算（表示値との整合）
+      // stopDiff は表示値と同じ 0.1段の丸めで計算する
       var _snapF = bestFnum;
       if (FSTOPS13 && bestFnum > 0) {
         var _sD = Infinity;
@@ -25982,7 +25992,7 @@ function renderFinderResults() {
           var _sd2 = Math.abs(Math.log2(FSTOPS13[_si]) - Math.log2(bestFnum));
           if (_sd2 < _sD) { _sD = _sd2; _snapF = FSTOPS13[_si]; }
         }
-        if (_sD >= 0.15) _snapF = bestFnum;
+        _snapF = _fSnap(bestFnum);
       }
       var _snap1 = fNum1;
       if (FSTOPS13 && fNum1 > 0) {
@@ -25991,7 +26001,7 @@ function renderFinderResults() {
           var _sd3 = Math.abs(Math.log2(FSTOPS13[_si1]) - Math.log2(fNum1));
           if (_sd3 < _sD1) { _sD1 = _sd3; _snap1 = FSTOPS13[_si1]; }
         }
-        if (_sD1 >= 0.15) _snap1 = fNum1;
+        _snap1 = _fSnap(fNum1);
       }
       var stopDiff1 = targetFval > 0 ? 2 * Math.log2(_snap1 / targetFval) : 0;
       var stopDiffU = targetFval > 0 ? 2 * Math.log2(_snapF / targetFval) : 0;
@@ -26049,7 +26059,7 @@ function renderFinderResults() {
   // 件数表示
   var sub = el('rank-result-sub');
   var countMsg = results.length + ' lights found';
-  if (targetFval > 0) countMsg += ' · f' + targetFval + ' ±1 ' + stopUnit();
+  if (targetFval > 0) countMsg += ' · ' + fLab(targetFval) + ' ±1 ' + stopUnit();
   if (useBeamFilter) countMsg += ' · ' + bs.label + ' ±15°';
   if (sub) sub.textContent = countMsg;
 
@@ -27749,7 +27759,7 @@ function calcMix() {
   }
 
   // F-stopと露出補正を計算
-  // fvalをFSTOPS13の最近傍標準値に丸めてstopDiff計算（表示値との整合性）
+  // 表示と stopDiff は実際の値でそろえる（丸めない）
   var baseF = S.customFstop || (FSTOPS13 ? FSTOPS13[S.fstop] : 2.8);
   var fvalForStop = fval;
   if (FSTOPS13 && fval > 0) {
@@ -27758,7 +27768,7 @@ function calcMix() {
       var _d = Math.abs(Math.log2(FSTOPS13[_fi]) - Math.log2(fval));
       if (_d < _bestD) { _bestD = _d; _bestF = FSTOPS13[_fi]; }
     }
-    if (_bestD < 0.15) fvalForStop = _bestF;  // 標準値に近ければ標準値を使用
+    // 標準値へ寄せるのはやめた。0.1段まで書けるので実際の値をそのまま出す
   }
   var stopDiff = camFstop && baseF ? 2 * (Math.log2(fvalForStop) - Math.log2(baseF)) : 0;
   var stopDiffStr = '';
@@ -29912,7 +29922,7 @@ function _dftDrawLightFstops(ctx) {
     if (!fv) return;
 
     var sp = _dftW2S(lt.wx, lt.wy);
-    var label = 'f' + fv.toFixed(1);
+    var label = fLab(fv);
     // Place badge below the name label (name is at sy+R+3, ~11px tall → badge starts at sy+R+18)
     ctx.save();
     ctx.font = 'bold 12px -apple-system,Arial';
@@ -30437,7 +30447,7 @@ function _dftDrawObj(ctx, o) {
   if (o.type === 'camera') {
     var fidx = (o.fstopIdx != null) ? o.fstopIdx : 21;
     var fval = FSTOPS13[fidx] || FSTOPS13[21];
-    var fstr = fLab(fval);   // fLab は 'f2.8' の形で返す（'f' を足すと二重になる）
+    var fstr = fLab(fval);   // fLab は 'T2.8+.0' の形で返す（記号を足すと二重になる）
     ctx.font = 'bold 10px -apple-system,Arial';
     var bw = ctx.measureText(fstr).width + 10, bh = 16;
     var bx = sx - bw/2, by = _badgeY;
@@ -31288,7 +31298,7 @@ function _dftSumLabel(ctx, lightObj, personObj, totalDist, bounceObj) {
   var ps = _dftW2S(personObj.wx, personObj.wy);
   var bnExtra = bounceObj ? getTotalFactorStops(bounceObj.factors || []) : 0;
   var fv = _dftCalcFstop(lightObj, totalDist, bnExtra);
-  var label = '∑' + _dftFmt(totalDist) + (fv ? '  f' + fv.toFixed(1) : '');
+  var label = '∑' + _dftFmt(totalDist) + (fv ? '  ' + fLab(fv) : '');
   ctx.save();
   ctx.font = 'bold 11px -apple-system,Arial';
   var tw = ctx.measureText(label).width;
@@ -31338,7 +31348,7 @@ function _dftDistLine(ctx, a, b, color, showFstop, lightObj, totalDist, thin) {
   if (totalDist != null) label += ' (∑' + _dftFmt(totalDist) + ')';
   if (showFstop && fstopLight && fstopLight.makerKey) {
     var fv = _dftCalcFstop(fstopLight, fstopDist);
-    if (fv) label += ' f' + fv.toFixed(1);
+    if (fv) label += ' ' + fLab(fv);
   }
   ctx.font = 'bold 10px -apple-system,Arial';
   var tw = ctx.measureText(label).width;
@@ -32570,7 +32580,7 @@ function _dftUpdateInfoBar() {
       var near = subs.reduce(function(b,s){ return _dftDist(o,s)<_dftDist(o,b)?s:b; }, subs[0]);
       var dm = _dftDist(o, near);
       var fv = _dftCalcFstop(o, dm);
-      if (fv) info += ' &nbsp;<b>f' + fv.toFixed(1) + '</b>';
+      if (fv) info += ' &nbsp;<b>' + fLab(fv) + '</b>';
     }
   }
   // layer selector
@@ -33204,7 +33214,7 @@ function _dftLsBeamFstop(oid) {
   var p = _dftLightPaths(people[0]).find(function(x){ return x.light.id === oid; });
   if (!p) { out.textContent = '— ' + t('beamOutOfCone'); return; }
   var fv = _dftCalcFstop(p.light, p.dist, p.extraStops);
-  out.textContent = fv ? ('f' + fv.toFixed(1) + (p.via ? ' ↩' : '')) : '';
+  out.textContent = fv ? (fLab(fv) + (p.via ? ' ↩' : '')) : '';
 }
 
 function _dftApplyBeam(oid) {
@@ -34123,9 +34133,9 @@ function dftExposureTool() {
       _dftExpPolarSVG(d, maxR) +
       // まとめ
       '<div style="display:flex;gap:6px;margin:14px 0 4px;">' +
-        _dftExpStat(t('expAtCamera'), atCam && atCam.fstop ? 'f'+atCam.fstop.toFixed(1) : '—', Math.round(atCam?atCam.lux:0)+' lx', '#e65100') +
-        _dftExpStat(t('expKey'), maxR && maxR.fstop ? 'f'+maxR.fstop.toFixed(1) : '—', maxR ? maxR.angle+'°' : '—', '#f9a825') +
-        _dftExpStat(t('expFill'), minR && minR.fstop ? 'f'+minR.fstop.toFixed(1) : '—', minR ? minR.angle+'°' : '—', '#0288d1') +
+        _dftExpStat(t('expAtCamera'), atCam && atCam.fstop ? fLab(atCam.fstop) : '—', Math.round(atCam?atCam.lux:0)+' lx', '#e65100') +
+        _dftExpStat(t('expKey'), maxR && maxR.fstop ? fLab(maxR.fstop) : '—', maxR ? maxR.angle+'°' : '—', '#f9a825') +
+        _dftExpStat(t('expFill'), minR && minR.fstop ? fLab(minR.fstop) : '—', minR ? minR.angle+'°' : '—', '#0288d1') +
         _dftExpStat(t('expRatio'), ratio!=null ? ratio.toFixed(1)+' '+stopUnit() : '—', ratio!=null ? '1:'+Math.pow(2,ratio).toFixed(1) : '—', '#5e35b1') +
       '</div>' +
       // 角度ごとの表
@@ -34145,7 +34155,7 @@ function dftExposureTool() {
         return '<tr style="border-top:1px solid #f0f0f0;'+(isMax?'background:#fff8e1;':'')+(r.angle===0?'font-weight:800;':'')+'">' +
           '<td style="padding:5px 8px;">' + _dftExpAngleLabel(r.angle) + '</td>' +
           '<td style="padding:5px 8px;text-align:right;font-family:var(--mono);">' + (r.lux>0?Math.round(r.lux).toLocaleString():'—') + '</td>' +
-          '<td style="padding:5px 8px;text-align:right;font-family:var(--mono);color:#e65100;font-weight:800;">' + (r.fstop?'f'+r.fstop.toFixed(1):'—') + '</td>' +
+          '<td style="padding:5px 8px;text-align:right;font-family:var(--mono);color:#e65100;font-weight:800;">' + (r.fstop?fLab(r.fstop):'—') + '</td>' +
           '<td style="padding:5px 8px;text-align:right;font-family:var(--mono);color:#888;">' + (rel!=null ? (rel>=-0.05?'±0.0':rel.toFixed(1)) : '—') + '</td>' +
         '</tr>';
       }).join('') +
@@ -34164,7 +34174,7 @@ function dftExposureTool() {
           '<span style="font-family:var(--mono);color:#5e35b1;">' +
             (uni ? '—' : (Math.abs(s.elev) < 1 ? '→0°' : (s.elev > 0 ? '↑' : '↓') + Math.abs(s.elev).toFixed(0) + '°')) + '</span>' +
           '<span style="font-family:var(--mono);">' + _dftFmt(s.dist) + '</span>' +
-          '<span style="font-family:var(--mono);font-weight:800;color:#e65100;">f' + (luxToFstopCamera(s.lux)||0).toFixed(1) + '</span>' +
+          '<span style="font-family:var(--mono);font-weight:800;color:#e65100;">' + fLab(luxToFstopCamera(s.lux)) + '</span>' +
         '</div>';
       }).join('') : '<div style="font-size:11px;color:#888;padding:6px;">'+t('expNoSource')+'</div>') +
       '<div style="font-size:11px;line-height:1.6;color:#888;margin-top:12px;">ℓ ' +
@@ -34580,7 +34590,7 @@ function _dftExpBindFace(d) {
   var leg = document.getElementById('_dft_exp_faceleg');
   if (leg) {
     var fv = luxToFstopCamera(peak);
-    leg.innerHTML = t('faceLegend') + ' <b>f' + (fv ? fv.toFixed(1) : '—') + '</b> · ' +
+    leg.innerHTML = t('faceLegend') + ' <b>' + (fv ? fLab(fv) : '—') + '</b> · ' +
       Math.round(peak).toLocaleString() + ' lx<br>' +
       '<span style="opacity:.8;">' + t('faceScale') + '</span>';
   }
@@ -34656,7 +34666,7 @@ function _dftExpProbeSVG(d) {
     return '<div style="flex:1;padding:6px 4px;background:#fff;border:1.5px solid '+col+';border-radius:9px;text-align:center;">' +
       '<div style="font-size:10.5px;font-weight:800;color:'+col+';">'+tag+' · <span id="_dft_exp_ang'+tag+'">'+Math.round(ang)+'</span>°' +
         ' <span id="_dft_exp_el'+tag+'" style="opacity:.75;">'+_dftElevLabel(rd.elev)+'</span></div>' +
-      '<div id="_dft_exp_rf'+tag+'" style="font-size:18px;font-weight:900;color:'+col+';font-family:var(--mono);">'+(rd.fstop ? 'f'+rd.fstop.toFixed(1) : '—')+'</div>' +
+      '<div id="_dft_exp_rf'+tag+'" style="font-size:18px;font-weight:900;color:'+col+';font-family:var(--mono);">'+(rd.fstop ? fLab(rd.fstop) : '—')+'</div>' +
       '<div id="_dft_exp_rlx'+tag+'" style="font-size:10.5px;color:#999;font-family:var(--mono);">'+(rd.lux ? Math.round(rd.lux).toLocaleString()+' lx' : t('expProbeNone'))+'</div>' +
     '</div>';
   }
@@ -34976,7 +34986,7 @@ function _dftExpRefreshDial(d) {
     var el2 = document.getElementById('_dft_exp_el'+tag);
     if (el2) el2.textContent = _dftElevLabel(rd.elev);
     var fEl = document.getElementById('_dft_exp_rf'+tag);
-    if (fEl) fEl.textContent = rd.fstop ? 'f' + rd.fstop.toFixed(1) : '—';
+    if (fEl) fEl.textContent = rd.fstop ? fLab(rd.fstop) : '—';
     var lxEl = document.getElementById('_dft_exp_rlx'+tag);
     if (lxEl) lxEl.textContent = rd.lux ? Math.round(rd.lux).toLocaleString() + ' lx' : t('expProbeNone');
   }
