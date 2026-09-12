@@ -11091,6 +11091,32 @@ var LIGHTS = {
   },
 
   creamsource: {
+    c3: {
+      url:'https://creamsource.com/product/C3/',
+      svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
+      group:'LED Spot', name:'C3', desc:'3000W Full-Colour LED Fresnel', emoji:'💡', watts:3000,
+      weight:'45 kg', weightExtra:'Head only, excluding yoke', size:'855×515×500 mm',
+      ccts:[3200, 5600], cctMin:2200, cctMax:15000,
+      // レンズは動かず、中の光源が動いて 18°〜60° を作る。スポットとフラッドの
+      // 2つを置いて、間はビームのつまみで補間する（Creamsource 自身も
+      // 「この2点の間は補間」と書いている）。
+      accessories:['spot','flood'],
+      accAngles:{spot:18, flood:60},
+      accLabels:{spot:'SPOT 18°', flood:'FLOOD 60°'},
+      // Creamsource は「2点の間は補間」と書いており、その補間は角度に対して
+      // 直線（39° でちょうど中間の 5,750 lx）。メーカーの表示と合わせる。
+      beamLerp:'linear',
+      dmx:{led:'BCGLARD 7-colour',power:'3000W',cct:'2200K–15000K + RGBW',cri:'98 (typical)',tlci:'98 (typical)',ip:'IP65',
+        control:'On-board / DMX 5-pin XLR / LumenRadio TimoTwo BLE / etherCON / USB',dimming:'0%–100%',effects:[]},
+      // Creamsource 公表の暫定値（Preliminary Specs）。10m の2点だけ。
+      //   スポット 18°  10m 10,000 lx
+      //   フラッド 60°  10m  1,500 lx
+      // ほかの距離は表の外なので逆二乗で伸ばす扱いになる（画面に ⚠ が付く）。
+      // 色温度ごとの値は公表されていないので 5600K の1本だけ。ほかの色温度は
+      // いちばん近い値で代用される（画面に ≈ が付く）。
+      // 2026年11月発売予定。正式な配光が出たら差し替えること。
+      refData:{ 5600:{ 10:{ spot:10000, flood:1500 } } }
+    },
     vortex2: {
       url:'https://www.creamsource.com/products/vortex2/',
       group:'LED', name:'Vortex2', desc:'160W RRGBBW LED Panel Spot', emoji:'🌸', watts:160, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"42\" cy=\"26\" r=\"3.5\"/><circle cx=\"60\" cy=\"26\" r=\"3.5\"/><circle cx=\"80\" cy=\"26\" r=\"3.5\"/><circle cx=\"100\" cy=\"26\" r=\"3.5\"/><circle cx=\"118\" cy=\"26\" r=\"3.5\"/><circle cx=\"42\" cy=\"40\" r=\"3.5\"/><circle cx=\"60\" cy=\"40\" r=\"3.5\"/><circle cx=\"80\" cy=\"40\" r=\"3.5\"/><circle cx=\"100\" cy=\"40\" r=\"3.5\"/><circle cx=\"118\" cy=\"40\" r=\"3.5\"/><circle cx=\"42\" cy=\"54\" r=\"3.5\"/><circle cx=\"60\" cy=\"54\" r=\"3.5\"/><circle cx=\"80\" cy=\"54\" r=\"3.5\"/><circle cx=\"100\" cy=\"54\" r=\"3.5\"/><circle cx=\"118\" cy=\"54\" r=\"3.5\"/><circle cx=\"42\" cy=\"68\" r=\"3.5\"/><circle cx=\"60\" cy=\"68\" r=\"3.5\"/><circle cx=\"80\" cy=\"68\" r=\"3.5\"/><circle cx=\"100\" cy=\"68\" r=\"3.5\"/><circle cx=\"118\" cy=\"68\" r=\"3.5\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
@@ -20840,7 +20866,13 @@ function onBeamSlider() {
 
   if (isDegreeMode && ba) {
     var deg = parseInt(sl.value) || ba[0];
-    S.beamPct = Math.round((deg - ba[0]) / (ba[1] - ba[0]) * 100);
+    /* 画面に出している角度と、図・照射範囲・照度に使う角度をそろえる。
+     * beamAngleAt は % → 角度を対数で戻すので、こちらも対数で % にする。
+     * 直線で % にしていたため、39° と表示しながら 33° の光束を描いていた
+     *（両端だけ一致し、間でずれる）。 */
+    var _p = beamPctFor(light, deg);
+    S.beamPct = (_p == null) ? Math.round((deg - ba[0]) / (ba[1] - ba[0]) * 100)
+                             : Math.round(_p * 10) / 10;
     var valEl = el('beam-val');
     if (valEl) valEl.textContent = deg + '°';
     // Sync acc button highlights
@@ -22220,7 +22252,18 @@ function luxAtBeamAngle(light, dist, beamPctOverride, cctOverride) {
   if (rS && !rF) return rS;
   if (rF && !rS) return rF;
   var pct = (beamPctOverride !== undefined ? beamPctOverride : S.beamPct) / 100;
-  var logLux = Math.log(rS.lux) * (1-pct) + Math.log(rF.lux) * pct;
+  /* 既定は資料値どうしを対数で結ぶ。ただしメーカーが「その2点の間は直線で
+   * 補間する」と明記している機種（beamLerp:'linear'）は、そのとおり角度に
+   * 対して直線で結ぶ。つまみの位置 pct は角度の対数で作ってあるので、
+   * いったん角度に戻してから割合を出す。 */
+  var _lux;
+  if (light.beamLerp === 'linear' && ba[1] > ba[0]) {
+    var _ang = ba[0] * Math.pow(ba[1] / ba[0], pct);
+    var _f = Math.max(0, Math.min(1, (_ang - ba[0]) / (ba[1] - ba[0])));
+    _lux = rS.lux * (1 - _f) + rF.lux * _f;
+  } else {
+    _lux = Math.exp(Math.log(rS.lux) * (1 - pct) + Math.log(rF.lux) * pct);
+  }
   // 測定範囲外かどうかは、混合元のどちらかが範囲外なら範囲外として引き継ぐ。
   // これを落とすと Calc が外挿値を通常の補間値として表示してしまう。
   // 呼び出し側は exactDist を見るため、キー名を合わせる（exact では常に undefined になり
@@ -22229,7 +22272,7 @@ function luxAtBeamAngle(light, dist, beamPctOverride, cctOverride) {
   var _exact = (pct <= 0) ? !!rS.exactDist : (pct >= 1) ? !!rF.exactDist : false;
   // 色温度の代用もどちらかで起きていれば引き継ぐ（片方だけ代用でも値は混ざる）
   var _exCct = (rS.exactCCT !== false) && (rF.exactCCT !== false);
-  return { lux: luxRound(Math.exp(logLux)), exactDist: _exact,
+  return { lux: luxRound(_lux), exactDist: _exact,
            exactCCT: _exCct, usedCCT: (rS.usedCCT != null ? rS.usedCCT : rF.usedCCT),
            below: !!(rS.below || rF.below), above: !!(rS.above || rF.above),
            minDist: Math.min(rS.minDist, rF.minDist),
@@ -26403,9 +26446,9 @@ function renderAltBeamUI() {
   S_altUseBeam = !!isHMIBeam;
   if (isHMIBeam) {
     var sl = el('alt-beam-sl');
-    if (sl) { sl.min = ba[0]; sl.max = ba[1]; sl.step = 1; sl.value = ba[0] + S_altBeamPct / 100 * (ba[1] - ba[0]); }
+    if (sl) { sl.min = ba[0]; sl.max = ba[1]; sl.step = 1; sl.value = beamAngleAt(light, S_altBeamPct); }
     var valEl = el('alt-beam-val');
-    var curDeg = Math.round(ba[0] + S_altBeamPct / 100 * (ba[1] - ba[0]));
+    var curDeg = Math.round(beamAngleAt(light, S_altBeamPct));
     if (valEl) valEl.textContent = curDeg + '°';
     var labs = el('alt-beam-labs');
     if (labs) labs.innerHTML = '<span>SPOT ' + ba[0] + '°</span><span>' + Math.round((ba[0]+ba[1])/2) + '°</span><span>FLOOD ' + ba[1] + '°</span>';
@@ -26429,8 +26472,8 @@ function altSelectBeam(which) {
   var ba = getBeamAngles(light); if (!ba) return;
   S_altBeamPct = (which === 'spot') ? 0 : 100;
   var sl = el('alt-beam-sl');
-  if (sl) sl.value = ba[0] + S_altBeamPct / 100 * (ba[1] - ba[0]);
-  var deg = Math.round(ba[0] + S_altBeamPct / 100 * (ba[1] - ba[0]));
+  if (sl) sl.value = beamAngleAt(light, S_altBeamPct);
+  var deg = Math.round(beamAngleAt(light, S_altBeamPct));
   var valEl = el('alt-beam-val'); if (valEl) valEl.textContent = deg + '°';
   updateAltBeamBtns(deg, ba);
   try { runAlternativeFinder(); } catch(e) {}
@@ -26442,7 +26485,11 @@ function onAltBeamSlider() {
   var light = LIGHTS[msel.value] && LIGHTS[msel.value][lsel.value];
   var ba = getBeamAngles(light); if (!ba) return;
   var deg = parseInt(sl.value) || ba[0];
-  S_altBeamPct = Math.round((deg - ba[0]) / (ba[1] - ba[0]) * 100);
+  /* Calc と同じで、表示している角度と計算に使う角度をそろえる。
+   * luxAtBeamAngle は % を対数で角度に戻すので、% にするときも対数で。 */
+  var _ap = beamPctFor(light, deg);
+  S_altBeamPct = (_ap == null) ? Math.round((deg - ba[0]) / (ba[1] - ba[0]) * 100)
+                               : Math.round(_ap * 10) / 10;
   var valEl = el('alt-beam-val'); if (valEl) valEl.textContent = deg + '°';
   updateAltBeamBtns(deg, ba);
   try { runAlternativeFinder(); } catch(e) {}
