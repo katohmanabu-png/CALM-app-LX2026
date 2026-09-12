@@ -10653,11 +10653,15 @@ var LIGHTS = {
       }
     },
     evoke5000b: {
-      group:'LED COB', name:'Evoke 5000B', desc:'5000W IP54 Bi-Color LED Spot', emoji:'💡', watts:5000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
-      weight:'22.3 kg', size:'520×510×395 mm',
+      group:'LED COB', name:'Evoke 5000B', desc:'5000W IP66 Bi-Color LED Spot', emoji:'💡', watts:5000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
+      weight:'41 kg', weightExtra:'ヨーク別 3 kg', size:'556.7×461.6×219.2 mm',
       ccts:[2700,3200,4300,5600,6500],
-      accessories:['none','r15','r30','r45','r60','nlpb'], accAngles:{none:95},  // Nanlux 公表 Beam Angle 95°
-      dmx:{led:'Bi-Color',power:'5000W',cct:'2700K–6500K',cri:'≥95',ip:'IP54',control:'Bluetooth / DMX / Art-Net'},
+      accessories:['none','r15','r30','r45','r60','nlpb','fresnel16','fresnel50'], accAngles:{none:95},  // Nanlux 公表 Beam Angle 95°
+      // FL-45E は 16°〜50° のズーム。公表表は両端だけなので、その2つを付属品として持つ
+      accLabels:{fresnel16:'FL-45E 16°', fresnel50:'FL-45E 50°'},
+      dmx:{led:'Nebula B4',power:'5000W (200-240V) / 5200W (100-125V)',cct:'2700K–6500K (G/M±80)',cri:'97 (average)',tlci:'98 (average)',ip:'IP66',
+        control:'On-board / Wired Controller / NANLINK APP / DMX/RDM / LumenRadio CRMX / Art-Net/sACN',
+        dimming:'0.0%–100.0%',effects:['CCT Loop','INT Loop','Flash','Pulse','Storm','TV','Paparazzi','Candle/Fire','Bad Bulb','Firework','Explosion','Welding']},
       dmxUrl:'https://cdn-aliyun.nanlux.com/release/1768007355782-337065-1133883637016734-Nanlux_Evoke5000B_DMXCharts_EN_V1.3_20251216.pdf',
       dmxVer:'v1.3',
       // ARC SYSTEM カタログ 2026 p64（30°リフレクター装着時） の紙面から、F値（ISO800 / 30FPS）を
@@ -10722,6 +10726,20 @@ var LIGHTS = {
           4300:{5:146100, 10:34500, 15:14490, 20:8110},
           5600:{5:146100, 10:34500, 15:14490, 20:8110},
           6500:{5:143178, 10:33810, 15:14200, 20:7948}
+        },
+        fresnel16:{   // FL-45E を 16°（狭い側）にしたとき。公表のまま
+          2700:{5:59800, 10:15010, 15:5900, 20:3260},
+          3200:{5:66900, 10:16760, 15:6620, 20:3640},
+          4300:{5:76900, 10:19100, 15:7580, 20:4170},
+          5600:{5:79500, 10:19640, 15:7790, 20:4300},
+          6500:{5:79400, 10:19590, 15:7690, 20:4260}
+        },
+        fresnel50:{   // FL-45E を 50°（広い側）にしたとき。公表のまま
+          2700:{5:9600, 10:2668, 15:997, 20:546},
+          3200:{5:10700, 10:2977, 15:1110, 20:608},
+          4300:{5:12180, 10:3280, 15:1255, 20:694},
+          5600:{5:12520, 10:3360, 15:1287, 20:713},
+          6500:{5:12420, 10:3340, 15:1285, 20:712}
         }
       }
     },
@@ -13149,39 +13167,6 @@ var LIGHTS = {
       // 角度は ARC も K5600 も公表していない。ACC_INFO の soft_tube に
       // 元からある 120° を使っている（アプリ側の見積り値）。
       refData:{'joker_open':{5600:{1:434446,2:108612,3:37969,5:19200,8:6788}},'soft_tube':{5600:{0.5:2269,1:832,2:208,3:106}}}
-    },
-    alpha_6k: {
-      group:'HMI Fresnel', name:'Alpha 6kW HMI', desc:'6kW HMI, Fresnel / Clear lens', emoji:'💡', watts:6000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
-      // K5600 のブローシュア（Alpha 6/9KW ヘッド）より。
-      // BEAM ANGLE は 8°〜60°、レンズを外すと 97°。ランプは GX38 の
-      // 6kW または 9kW 単端。ヘッド 34kg（レンズ込み39kg）、バラスト 24.8kg。
-      // スポットは 15° を入れていたが、公表は 8° なので直した。
-      // クリア（レンズ無し）は公表が 97° の1つだけで、スポットとフラッドの
-      // 区別が無い。15°/60° を当てていたのは根拠が無いので外した。
-      ccts:[5600], accessories:['spot','flat','clear_spot','clear_flat'],
-      accAngles:{spot:8, flat:60, clear_spot:97, clear_flat:97},
-      accLabels:{spot:'FRESNEL (S)',flat:'FRESNEL (F)',clear_spot:'CLEAR (S)',clear_flat:'CLEAR (F)'},
-      weight:'34 kg', weightExtra:'With lens 39 kg / Ballast 24.8 kg', size:'650×450×765 mm',
-      dmx:{led:'HMI',power:'6000W',cct:'5600K',control:'Manual'},
-      /* 要確認。クリアのスポットとフラッドが5距離すべて同値になっている。
-       * 12kW は同じ表でクリア（S）とクリア（F）が別の値なので、6kW でも
-       * 分かれていそうに見える。ただし 6/9K はもともと「オープンアイ」で、
-       * キットに付くのはフレネルレンズだけ（クリアレンズが付くのは 12/18K）。
-       * レンズを外した状態は 97° の1通りしか公表されていないので、
-       * そもそもクリアに S と F の区別が無い可能性もある。
-       *
-       * 数値は 76000 / 38000 / 19000 … と丸めた半段の梯子に乗っている。
-       * これはアプリに元からある F値の表から来たデータの形で、同じ形の機種が
-       * 59ある（Briese、Dino Light、Mole、LTM、USHIO、ARRI の HMI など）。
-       * 逆二乗からのずれは最大 +0.81段（spot 8→12m）で、59機種の中では
-       * 真ん中あたり。刻みの範囲に収まっているので、この形であること自体は
-       * おかしくない。
-       *
-       * ただし出どころは確かめられていない。ARC SYSTEM のカタログに
-       * Alpha 6kW のページは無く、K5600 自身も配光を公表していない
-       *（製品ページの Photometrics は "Coming Soon"）。
-       * 12kW のほうは ARC の F値から換算し直した細かい値（108612 など）。 */
-      refData:{5600:{3:{spot:76000, flat:14000, clear_spot:6800, clear_flat:6800}, 5:{spot:38000, flat:6800, clear_spot:2400, clear_flat:2400}, 8:{spot:19000, flat:3400, clear_spot:1200, clear_flat:1200}, 12:{spot:4800, flat:1700, clear_spot:600, clear_flat:600}, 15:{spot:2400, flat:840, clear_spot:300, clear_flat:300}}}
     },
     alpha_12k: {
       svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
@@ -16186,21 +16171,31 @@ super_led_f47: {
   },
   kobold: {
     kobold_800: {
-      group:'HMI', weight:'6 kg', name:'Bron Kobold DW800', desc:'800W HMI, lensless flat', emoji:'💡', watts:800, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
-      ccts:[5600], accessories:['flat'],
+      group:'HMI', weight:'6 kg', size:'310×385×440 mm', name:'Bron Kobold DW800', desc:'800W HMI, lensless flat', emoji:'💡', watts:800, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
+      ccts:[5600], accessories:['flat', 'pp_vnarrow', 'pp_narrow', 'pp_medium', 'pp_wide'],
       dmx:{power:'800W',cct:'5600K',control:'Manual'},
-      refData:{5600:{3:{flat:76000}, 5:{flat:27000}}}
+      /* ARC SYSTEM カタログ p18。ISO800 / 30FPS の F値を lux に換算（lux = F² × 18.75）。
+       * 1 / 2 / 3 / 5m の4距離、レンズなしとレンズ 1〜4 の5列。
+       * 以前は flat の 3m / 5m しか入っていなかった。
+       * ミディアムの 3m がナローより明るい（F11 1/2 と F11）が、紙面がそう印刷されている。
+       * 1→2m が半段しか落ちないのも紙面どおりで、DW400 と同じ形。 */
+      refData:{5600:{
+        1: {flat:610000, pp_vnarrow:38000, pp_narrow:38000, pp_medium:27000, pp_wide:19000},
+        2: {flat:430000, pp_vnarrow:9600,  pp_narrow:6800,  pp_medium:6800,  pp_wide:4800},
+        3: {flat:76000,  pp_vnarrow:3400,  pp_narrow:2400,  pp_medium:3400,  pp_wide:2400},
+        5: {flat:27000,  pp_vnarrow:1200,  pp_narrow:840,   pp_medium:840,   pp_wide:840}
+      }}
     },
     kobold_400: {
-      group:'HMI', weight:'2 kg', name:'Bron Kobold DW400', desc:'400W HMI, lensless flat', emoji:'💡', watts:400, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
+      group:'HMI', weight:'2 kg', size:'175×240×320 mm', name:'Bron Kobold DW400', desc:'400W HMI, lensless flat', emoji:'💡', watts:400, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       ccts:[5600], accessories:['flat', 'pp_vnarrow', 'pp_narrow', 'pp_medium', 'pp_wide', 'pp_frost', 'diffusion'],
       dmx:{power:'400W',cct:'5600K',control:'Manual'},
-      /* 要確認が2点ある。元の紙面でないと決められないので触っていない。
-       * ・flat の 1→2m が半段しか落ちない（305,000→216,000）。距離が倍なら
-       *   2段落ちるはずで、1.5段ぶん足りない。どちらかの升が読み違いとみられる。
-       * ・flat の 3m が 108,000 lx で、倍の電力の DW800 の 3m（76,000 lx）より明るい。
-       * ベリーナローとナローが同値なのは、元が半段刻みの F値の表なので、
-       * 実際の差が半段に満たなければ同じ升に乗る。誤りとは限らない。 */
+      /* ARC SYSTEM カタログ p18 の紙面で7列すべて確かめた（レンズなし＋レンズ 1〜6）。
+       * 以前「読み違いでは」と書いた2点は、紙面がそう印刷されている。
+       * ・flat の 1→2m が半段しか落ちない（F128 → F90 1/2）
+       * ・flat の 3m（F64 1/2）が、倍の電力の DW800 の 3m（F64）より明るい
+       * ベリーナローとナローが同値なのも紙面どおり。半段刻みなので、
+       * 実際の差が半段に満たなければ同じ升に乗る。 */
       refData:{5600:{
         1: {flat:305000, pp_vnarrow:38000, pp_narrow:38000, pp_medium:19000, pp_wide:14000, pp_frost:9600, diffusion:27000},
         2: {flat:216000, pp_vnarrow:6800, pp_narrow:6800, pp_medium:4800, pp_wide:2400, pp_frost:2400, diffusion:4800},
@@ -16209,7 +16204,7 @@ super_led_f47: {
       }}
     },
     kobold_200: {
-      group:'HMI', weight:'1.6 kg', name:'Bron Kobold DW200', desc:'200W HMI, lensless flat', emoji:'💡', watts:200, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
+      group:'HMI', weight:'1.6 kg', size:'170×210×280 mm', name:'Bron Kobold DW200', desc:'200W HMI, lensless flat', emoji:'💡', watts:200, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       ccts:[5600], accessories:['flat', 'pp_vnarrow', 'pp_narrow', 'pp_medium', 'pp_wide', 'pp_frost'],
       dmx:{power:'200W',cct:'5600K',control:'Manual'},
       // ワイドとフロストが同値。元が半段刻みの F値の表なので、差が半段に
@@ -16632,6 +16627,7 @@ var ACC_INFO = {
   r26:   { label:'26° Reflector', beam:'26°', emoji:'🔦', angle:26 },
   fresnel11: { label:'Fresnel 11°', beam:'Fresnel 11°', emoji:'🔬', angle:11 },
   fresnel12: { label:'Fresnel 12°', beam:'Fresnel 12°', emoji:'🔬', angle:12 },
+  fresnel16: { label:'Fresnel 16°', beam:'Fresnel 16°', emoji:'🔬', angle:16 },
   fresnel25: { label:'Fresnel 25°', beam:'Fresnel 25°', emoji:'🔬', angle:25 },
   fresnel30: { label:'Fresnel 30°', beam:'Fresnel 30°', emoji:'🔬', angle:30 },
   fresnel35: { label:'Fresnel 35°', beam:'Fresnel 35°', emoji:'🔬', angle:35 },
