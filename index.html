@@ -23039,7 +23039,8 @@ function _cmpBeamAngleAt(light, pct) {
 function _cmpSlotBeam(slot) { return (slot && slot.beamPct != null) ? slot.beamPct : 50; }
 function _cmpSetBeam(i, val) {
   if (!_cmp.slots[i]) return;
-  _cmp.slots[i].beamPct = Math.max(0, Math.min(100, parseInt(val) || 0));
+  var _v = parseFloat(val);
+  _cmp.slots[i].beamPct = Math.max(0, Math.min(100, isFinite(_v) ? _v : 0));
   // ラベルのみ更新し、スライダー要素は再構築しない（ドラッグを滑らかに）
   var l = _cmpLightOf(_cmp.slots[i]);
   var lbl = document.getElementById('_cmp_beamlbl_' + i);
@@ -23052,10 +23053,35 @@ function _cmpDistLabel(d) {
 }
 function _cmpBeamSliderHTML(i, light, pct) {
   var ang = _cmpBeamAngleAt(light, pct);
-  return '<div style="margin-top:5px;">' +
-    '<input type="range" min="0" max="100" step="1" value="' + pct + '" oninput="_cmpSetBeam(' + i + ',this.value)" style="width:100%;accent-color:var(--accent,#1976d2);">' +
-    '<div id="_cmp_beamlbl_' + i + '" style="font-size:10.5px;font-weight:800;color:var(--text-dim,#777);margin-top:1px;">🔦 ' + (ang != null ? ang + '°' : '—') + '</div>' +
+  /* 角度はスライダーの上に置く。下にあると、iPhone ではスライダーを動かす指で隠れた。
+   * 数字はダブルタップで直接打てる（_cmpBindBeamEdit）。 */
+  return '<div style="margin-top:6px;">' +
+    '<div id="_cmp_beamlbl_' + i + '" style="font-size:15px;font-weight:900;color:var(--accent,#1976d2);font-family:var(--mono);line-height:1.2;margin-bottom:2px;touch-action:manipulation;">🔦 ' + (ang != null ? ang + '°' : '—') + '</div>' +
+    '<input id="_cmp_beamsl_' + i + '" type="range" min="0" max="100" step="1" value="' + pct + '" oninput="_cmpSetBeam(' + i + ',this.value)"' +
+      ' ontouchstart="event.stopPropagation()" ontouchmove="event.stopPropagation()"' +
+      /* 溝はカードと同じ var(--bg) で描かれて見えなかったので、ここで描き直す。
+       * 触れる高さは 30px 取り、見た目の溝は中央の 6px だけにする。 */
+      ' style="width:100%;height:30px;margin:0;border-radius:0;accent-color:var(--accent,#1976d2);' +
+      'background:linear-gradient(to bottom,transparent 12px,rgba(127,127,127,.38) 12px,rgba(127,127,127,.38) 18px,transparent 18px);">' +
   '</div>';
+}
+/** 角度表示をダブルタップしたら、角度（°）を打ち込めるようにする。
+ * スライダーの中身は 0〜100 のつまみ位置なので、打った角度は beamPctFor で位置に直す
+ * （Calc と同じ対数の対応。表示・図・照度に使う角度とそろう）。 */
+function _cmpBindBeamEdit(i) {
+  var slot = _cmp.slots[i];
+  function light() { return _cmpLightOf(_cmp.slots[i]); }
+  function range() { var b = getBeamAngles(light()); return b || [1, 180]; }
+  makeSlValEditable('_cmp_beamlbl_' + i, null,
+    function(){ return range()[0]; }, function(){ return range()[1]; }, 1,
+    function(v){
+      var l = light(); if (!l) return;
+      var pct = beamPctFor(l, v);
+      if (pct == null) return;
+      var sl = document.getElementById('_cmp_beamsl_' + i);
+      if (sl) sl.value = pct;
+      _cmpSetBeam(i, pct);
+    });
 }
 // カメラタブ設定のサマリー（F値計算に使用中の設定を表示）
 function _cmpCamSummary() {
@@ -23173,6 +23199,7 @@ function _cmpRenderHeader() {
     }
   }
   host.innerHTML = html + '</div>';
+  for (var j = 0; j < 3; j++) { if (P.beamOn[j]) _cmpBindBeamEdit(j); }
 }
 
 // 仕様行（距離/ビーム/CCT変更時はここだけ再描画＝ドラッグが滑らか）
