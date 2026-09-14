@@ -2286,7 +2286,7 @@ var LANGS = {
     secLabel1:'1台・目標以上 (±1 stop)', secLabel2:'複数台・目標以上 (±1 stop)', secLabel3:'1台・目標より暗い (−1 stop以内)', secLabel4:'複数台・目標より暗い (−1 stop以内)', secLabel5:'±2 stop以内（参考）',
     altSec1:'1台で代替 (±1 stop)', altSec2:'複数台で代替 (±1 stop)', altSec3:'1台・明るい (+2 stopまで)', altSec4:'複数台・明るい (+2 stopまで)',
     altSelectedLight:'選択ライト',
-    dmxPower:'定格出力', dmxCCT:'CCT', dmxDimming:'調光', dmxIP:'IP等級', dmxLed:'光源', dmxGamut:'色域', dmxControl:'コントロール', dmxEffects:'エフェクト / Effects', dmxChart:'DMXチャート (公式)', dmxChartOpen:'PDFを開く',
+    dmxPower:'定格出力', dmxCCT:'CCT', dmxDimming:'調光', dmxIP:'IP等級', dmxLed:'光源', dmxGamut:'色域', dftEditDist:'距離を編集', dftHeightBlock:'⚠ {h} の高さ差があるため {d} には縮められません', dmxControl:'コントロール', dmxEffects:'エフェクト / Effects', dmxChart:'DMXチャート (公式)', dmxChartOpen:'PDFを開く',
     cmCtxCalc:'光量計算タブ', cmCtxFinder:'おすすめ検索タブ', cmCtxAlt:'代替検索タブ', cmCtxMix:'複数台タブ',
     dblTapHint:'ダブルタップで直接入力',
     pairSectionLabel:'2灯 組み合わせ', pairLabel:'📦 2灯セット', pairTotalW:'W 合計',
@@ -2472,7 +2472,7 @@ var LANGS = {
     secLabel1:'1 unit · at/above target (±1 stop)', secLabel2:'Multi · at/above target (±1 stop)', secLabel3:'1 unit · below target (within −1 stop)', secLabel4:'Multi · below target (within −1 stop)', secLabel5:'Within ±2 stop (reference)',
     altSec1:'1 unit (±1 stop)', altSec2:'Multi units (±1 stop)', altSec3:'1 unit · brighter (up to +2 stop)', altSec4:'Multi · brighter (up to +2 stop)',
     altSelectedLight:'Selected',
-    dmxPower:'Power', dmxCCT:'CCT', dmxDimming:'Dimming', dmxIP:'IP Rating', dmxLed:'Light Source', dmxGamut:'Color Space', dmxControl:'Control', dmxEffects:'Effects', dmxChart:'DMX Chart (official)', dmxChartOpen:'Open PDF',
+    dmxPower:'Power', dmxCCT:'CCT', dmxDimming:'Dimming', dmxIP:'IP Rating', dmxLed:'Light Source', dmxGamut:'Color Space', dftEditDist:'Edit distance', dftHeightBlock:'⚠ There is a {h} height difference, so it cannot be shortened to {d}', dmxControl:'Control', dmxEffects:'Effects', dmxChart:'DMX Chart (official)', dmxChartOpen:'Open PDF',
     cmCtxCalc:'Calc tab', cmCtxFinder:'Finder tab', cmCtxAlt:'Alt tab', cmCtxMix:'Mix tab',
     dblTapHint:'Double-tap to enter directly',
     pairSectionLabel:'2-Light Combo', pairLabel:'📦 2-Light Set', pairTotalW:'W total',
@@ -2636,7 +2636,7 @@ var LANGS = {
     secLabel1:'1 unidad · objetivo o más (±1 stop)', secLabel2:'Múltiples · objetivo o más (±1 stop)', secLabel3:'1 unidad · bajo objetivo (−1 stop)', secLabel4:'Múltiples · bajo objetivo (−1 stop)', secLabel5:'Dentro de ±2 stop (referencia)',
     altSec1:'1 unidad (±1 stop)', altSec2:'Múltiples (±1 stop)', altSec3:'1 unidad · más brillante (hasta +2 stop)', altSec4:'Múltiples · más brillante (hasta +2 stop)',
     altSelectedLight:'Seleccionado',
-    dmxPower:'Potencia', dmxCCT:'CCT', dmxDimming:'Regulación', dmxIP:'Grado IP', dmxLed:'Fuente de luz', dmxGamut:'Espacio de color', dmxControl:'Control', dmxEffects:'Efectos', dmxChart:'Tabla DMX (oficial)', dmxChartOpen:'Abrir PDF',
+    dmxPower:'Potencia', dmxCCT:'CCT', dmxDimming:'Regulación', dmxIP:'Grado IP', dmxLed:'Fuente de luz', dmxGamut:'Espacio de color', dftEditDist:'Editar distancia', dftHeightBlock:'⚠ Hay {h} de diferencia de altura; no se puede acortar a {d}', dmxControl:'Control', dmxEffects:'Efectos', dmxChart:'Tabla DMX (oficial)', dmxChartOpen:'Abrir PDF',
     cmCtxCalc:'Tab Calc', cmCtxFinder:'Tab Buscador', cmCtxAlt:'Tab Alt', cmCtxMix:'Tab Mix',
     dblTapHint:'Toque doble para ingresar',
     pairSectionLabel:'Combinación 2 luces', pairLabel:'📦 Juego 2 luces', pairTotalW:'W total',
@@ -3070,7 +3070,7 @@ var LANGS = {
     dmxPower:'额定功率',
     dmxCCT:'CCT',
     dmxDimming:'调光',
-    dmxIP:'IP 等级', dmxLed:'光源', dmxGamut:'色域',
+    dmxIP:'IP 等级', dmxLed:'光源', dmxGamut:'色域', dftEditDist:'编辑距离', dftHeightBlock:'⚠ 存在 {h} 的高度差，无法缩短到 {d}',
     dmxControl:'控制',
     dmxEffects:'特效 / Effects',
     dmxChart:'DMX 通道表（官方）',
@@ -3737,7 +3737,7 @@ var LANGS = {
     dmxPower:'Puissance',
     dmxCCT:'CCT',
     dmxDimming:'Gradation',
-    dmxIP:'Indice IP', dmxLed:'Source lumineuse', dmxGamut:'Espace colorimétrique',
+    dmxIP:'Indice IP', dmxLed:'Source lumineuse', dmxGamut:'Espace colorimétrique', dftEditDist:'Modifier la distance', dftHeightBlock:'⚠ Il y a {h} de différence de hauteur : impossible de raccourcir à {d}',
     dmxControl:'Pilotage',
     dmxEffects:'Effets',
     dmxChart:'Table DMX (officielle)',
@@ -4404,7 +4404,7 @@ var LANGS = {
     dmxPower:'Nennleistung',
     dmxCCT:'CCT',
     dmxDimming:'Dimmung',
-    dmxIP:'IP-Schutzart', dmxLed:'Lichtquelle', dmxGamut:'Farbraum',
+    dmxIP:'IP-Schutzart', dmxLed:'Lichtquelle', dmxGamut:'Farbraum', dftEditDist:'Abstand bearbeiten', dftHeightBlock:'⚠ Es gibt {h} Höhenunterschied – auf {d} lässt es sich nicht verkürzen',
     dmxControl:'Steuerung',
     dmxEffects:'Effekte',
     dmxChart:'DMX-Chart (offiziell)',
@@ -5071,7 +5071,7 @@ var LANGS = {
     dmxPower:'Potência nominal',
     dmxCCT:'CCT',
     dmxDimming:'Dimerização',
-    dmxIP:'Grau IP', dmxLed:'Fonte de luz', dmxGamut:'Espaço de cor',
+    dmxIP:'Grau IP', dmxLed:'Fonte de luz', dmxGamut:'Espaço de cor', dftEditDist:'Editar distância', dftHeightBlock:'⚠ Há {h} de diferença de altura; não dá para encurtar para {d}',
     dmxControl:'Controle',
     dmxEffects:'Efeitos',
     dmxChart:'Tabela DMX (oficial)',
@@ -5738,7 +5738,7 @@ var LANGS = {
     dmxPower:'Nimellisteho',
     dmxCCT:'CCT',
     dmxDimming:'Himmennys',
-    dmxIP:'IP-luokitus', dmxLed:'Valonlähde', dmxGamut:'Väriavaruus',
+    dmxIP:'IP-luokitus', dmxLed:'Valonlähde', dmxGamut:'Väriavaruus', dftEditDist:'Muokkaa etäisyyttä', dftHeightBlock:'⚠ Korkeusero on {h}, joten etäisyyttä ei voi lyhentää arvoon {d}',
     dmxControl:'Ohjaus',
     dmxEffects:'Efektit',
     dmxChart:'DMX-kartta (virallinen)',
@@ -6405,7 +6405,7 @@ var LANGS = {
     dmxPower:'정격 출력',
     dmxCCT:'CCT',
     dmxDimming:'조광',
-    dmxIP:'IP 등급', dmxLed:'광원', dmxGamut:'색 영역',
+    dmxIP:'IP 등급', dmxLed:'광원', dmxGamut:'색 영역', dftEditDist:'거리 편집', dftHeightBlock:'⚠ {h}의 높이 차이가 있어 {d}(으)로 줄일 수 없습니다',
     dmxControl:'컨트롤',
     dmxEffects:'이펙트',
     dmxChart:'DMX 차트 (공식)',
@@ -7072,7 +7072,7 @@ var LANGS = {
     dmxPower:'กำลังไฟที่กำหนด',
     dmxCCT:'CCT',
     dmxDimming:'การหรี่แสง',
-    dmxIP:'ระดับ IP', dmxLed:'แหล่งกำเนิดแสง', dmxGamut:'ขอบเขตสี',
+    dmxIP:'ระดับ IP', dmxLed:'แหล่งกำเนิดแสง', dmxGamut:'ขอบเขตสี', dftEditDist:'แก้ไขระยะ', dftHeightBlock:'⚠ มีความต่างของความสูง {h} จึงย่อให้เหลือ {d} ไม่ได้',
     dmxControl:'การควบคุม',
     dmxEffects:'เอฟเฟกต์',
     dmxChart:'ตาราง DMX (จากผู้ผลิต)',
@@ -7739,7 +7739,7 @@ var LANGS = {
     dmxPower:'Potência nominal',
     dmxCCT:'CCT',
     dmxDimming:'Dimerização',
-    dmxIP:'Grau IP', dmxLed:'Fonte de luz', dmxGamut:'Espaço de cor',
+    dmxIP:'Grau IP', dmxLed:'Fonte de luz', dmxGamut:'Espaço de cor', dftEditDist:'Editar distância', dftHeightBlock:'⚠ Há {h} de diferença de altura; não é possível encurtar para {d}',
     dmxControl:'Controle',
     dmxEffects:'Efeitos',
     dmxChart:'Tabela DMX (oficial)',
@@ -8406,7 +8406,7 @@ var LANGS = {
     dmxPower:'額定功率',
     dmxCCT:'CCT',
     dmxDimming:'調光',
-    dmxIP:'IP 等級', dmxLed:'光源', dmxGamut:'色域',
+    dmxIP:'IP 等級', dmxLed:'光源', dmxGamut:'色域', dftEditDist:'編輯距離', dftHeightBlock:'⚠ 存在 {h} 的高度差，無法縮短到 {d}',
     dmxControl:'控制',
     dmxEffects:'特效 / Effects',
     dmxChart:'DMX 通道表（官方）',
@@ -8737,6 +8737,12 @@ var DESC_I18N = {
     '9×300W or 9×500W': '9×300W or 9×500W',
     '9×500W or 9×1kW': '9×500W or 9×1kW',
     '電源ボックス 19 kg': 'Ballast 19 kg',
+    'ヨーク 3.42 kg / 総重量 46.54 kg': 'Yoke 3.42 kg / total 46.54 kg',
+    '木': 'Wood', '黒幕': 'Black drape',
+    '2800K–6600K（Ultra CRI では 1800K–12000K）': '2800K–6600K (1800K–12000K in Ultra CRI mode)',
+    'On-board / DMX 512-A 5-pin / W-DMX LumenRadio（別売）': 'On-board / DMX 512-A 5-pin / W-DMX LumenRadio (sold separately)',
+    'AsteraApp / CRMX / Bluetooth / UHF / WiFi（DMX 非対応）': 'AsteraApp / CRMX / Bluetooth / UHF / WiFi (no DMX)',
+    'On-board / Bluetooth（Nanlink）/ CRMX / DMX・RDM（別売アダプター）': 'On-board / Bluetooth (Nanlink) / CRMX / DMX/RDM (adapter sold separately)',
     '電源ボックス 20.5 kg': 'Ballast 20.5 kg',
     '電源ボックス 5.92 kg': 'Ballast 5.92 kg',
     '電源ボックス 6.12 kg': 'Ballast 6.12 kg',
@@ -11758,7 +11764,7 @@ var LIGHTS = {
       accAngles:{none:240},
       accUnknown:['luna_cover'],
       dmx:{led:'RGBMA',power:'4.25W',cct:'3200K–6500K + Full RGB',cri:'≥96',tlci:'≥96',ip:'IP44',
-        control:'AsteraApp / CRMX / Bluetooth / UHF / WiFi（DMX 非対応）',dimming:'0%%–100%%',
+        control:'AsteraApp / CRMX / Bluetooth / UHF / WiFi（DMX 非対応）',dimming:'0%–100%',
         effects:[]},
       // 1ピクセル。E26 / E27 / B22 ソケット。IP44 はソケット次第。
       //
@@ -13529,7 +13535,7 @@ var LIGHTS = {
       // Godox が 5° と公表している
       accUnknown:['none','szl2_flood','szl2_spot','dl5c_zc','dl5c_ze','dl5e_ze'],
       dmx:{led:'RGBWW',power:'60W',cct:'1800K–10000K + HSI / RGBW / FX',cri:'≥95',tlci:'≥95',
-        control:'On-board / Bluetooth app / CRMX / DMX512 with RDM / NFC',dimming:'0%%–100%%',
+        control:'On-board / Bluetooth app / CRMX / DMX512 with RDM / NFC',dimming:'0%–100%',
         effects:['14 FX modes']},
       // 配光は露出計で測られた値（3m / 5600K）のみ。7構成がひとつの測定で
       // 揃っている。メーカーは照度を公表していない。
@@ -22050,7 +22056,7 @@ function renderDMX() {
   }
   var d = light.dmx;
   var items = [
-    [t('dmxPower'), descText(d.power)], [t('dmxCCT'), d.cct],
+    [t('dmxPower'), descText(d.power)], [t('dmxCCT'), descText(d.cct)],
     // 光源（LEDエンジン）は全機種が持っていたのに、どこにも出していなかった
     [t('dmxLed'), d.led],
     ['CRI', d.cri], ['TLCI', d.tlci],
@@ -22826,8 +22832,8 @@ function openCompare() {
       '<button onclick="closeCompare()" title="' + t('dftClose') + '" ' +
         'style="flex:0 0 auto;display:flex;align-items:center;gap:4px;padding:7px 11px 7px 8px;border:none;border-radius:10px;' +
         'background:var(--bg,#eee);color:var(--text,#333);font-size:13px;font-weight:800;cursor:pointer;line-height:1;">' +
-        '‹ <span style="font-size:11px;">' + t('cmpBack') + '</span></button>' +
-      '<div style="font-size:16px;font-weight:900;color:var(--text,#111);">⚖️ ' + t('cmpTitle') + '</div>' +
+        '‹ <span id="_cmp_back_lbl" style="font-size:11px;">' + t('cmpBack') + '</span></button>' +
+      '<div id="_cmp_title" style="font-size:16px;font-weight:900;color:var(--text,#111);">⚖️ ' + t('cmpTitle') + '</div>' +
       '<div style="flex:1;"></div>' +
       langChipHTML() +
       '<button onclick="closeCompare()" style="flex:0 0 auto;width:32px;height:32px;border:none;border-radius:50%;background:var(--bg,#eee);color:var(--text,#333);font-size:17px;font-weight:800;cursor:pointer;line-height:1;">✕</button>' +
@@ -22837,7 +22843,7 @@ function openCompare() {
     // 下にも出口を置く。上に戻らなくても閉じられるように
     '<div style="flex-shrink:0;padding:8px 12px calc(10px + env(safe-area-inset-bottom, 0px));border-top:1px solid var(--bg,#eee);">' +
       '<button onclick="closeCompare()" style="width:100%;padding:12px;border:none;border-radius:12px;' +
-        'background:var(--bg,#eee);color:var(--text,#333);font-size:13px;font-weight:800;cursor:pointer;">' +
+        'background:var(--bg,#eee);color:var(--text,#333);font-size:13px;font-weight:800;cursor:pointer;" id="_cmp_close_btn">' +
         t('dftClose') + '</button>' +
     '</div>';
   document.body.appendChild(ov);
@@ -23007,7 +23013,7 @@ function _cmpCCTSelectHTML(i, light, cur) {
 }
 function _cmpSetSlotCCT(i, cct) { if (_cmp.slots[i]) { _cmp.slots[i].cct = parseInt(cct); _cmpRenderRows(); } }
 function _cmpCCTRange(light) {
-  if (light.dmx && light.dmx.cct) return light.dmx.cct;
+  if (light.dmx && light.dmx.cct) return descText(light.dmx.cct);
   if (light.ccts && light.ccts.length) {
     var mn = Math.min.apply(null, light.ccts), mx = Math.max.apply(null, light.ccts);
     return mn === mx ? (mn + 'K') : (mn + '–' + mx + 'K');
@@ -23097,6 +23103,12 @@ function _cmpCamSummary() {
 
 function renderCompare() {
   var body = document.getElementById('_cmp_body'); if (!body) return;
+  /* 上下のバーは openCompare で一度だけ作っている。言語を変えると
+   * renderCompare だけが呼ばれるので、ここで文字を書き換えないと
+   * 「戻る」「ライト比較」「閉じる」が前の言語のまま残る。 */
+  var _cb = document.getElementById('_cmp_back_lbl'); if (_cb) _cb.textContent = t('cmpBack');
+  var _ct = document.getElementById('_cmp_title');    if (_ct) _ct.textContent = '⚖️ ' + t('cmpTitle');
+  var _cc = document.getElementById('_cmp_close_btn'); if (_cc) _cc.textContent = t('dftClose');
   var ctl = document.getElementById('_cmp_ctl');
   var dv = _cmp.dist;
   // 制御バー: 距離のみ（CCTはライトごとに設定）＋ カメラ設定サマリー
@@ -30417,7 +30429,7 @@ function _dftDrawObj(ctx, o) {
     ctx.font = 'bold 10px -apple-system,Arial';
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     var ltr = o.type==='diffuser' ? 'D' : o.type==='bounce' ? 'B'
-            : o.type==='form' ? (_dftIsCloth(o) ? '幕' : (_fp ? _fp.letter : '■')) : 'F';
+            : o.type==='form' ? (_dftIsCloth(o) ? (LANG === 'ja' ? '幕' : 'C') : (_fp ? _fp.letter : '■')) : 'F';   // 布は日本語以外では C（cloth）
     if (!_rd.stand || rw > 22) ctx.fillText(ltr, 0, 0);
     // 生地の名前。同じ大きさの反射板が並ぶと一文字では見分けが付かないので、
     // 入っていれば四角の中に小さく添える。狭いときは出さない。
@@ -31906,7 +31918,7 @@ function _dftEditDist(dl) {
   var html =
     '<div id="_dft_dedit" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;" onclick="if(event.target===this)document.getElementById(\'_dft_dedit\').remove()">' +
     '<div style="background:#fff;color:#111;border-radius:18px;padding:22px 20px 18px;width:280px;box-shadow:0 8px 40px rgba(0,0,0,.3);">' +
-    '<div style="font-size:13px;font-weight:800;margin-bottom:4px;">距離を編集</div>' +
+    '<div style="font-size:13px;font-weight:800;margin-bottom:4px;">' + t('dftEditDist') + '</div>' +
     '<div style="font-size:11px;color:#888;margin-bottom:14px;">' + aName + ' → ' + bName + '</div>' +
     '<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">' +
     '<input id="_dft_dedit_val" type="number" min="0.01" step="0.01" value="' + dispVal + '" ' +
@@ -31915,8 +31927,8 @@ function _dftEditDist(dl) {
     '<span style="font-size:16px;font-weight:700;color:#555;">' + unitLabel + '</span>' +
     '</div>' +
     '<div style="display:flex;gap:8px;">' +
-    '<button onclick="document.getElementById(\'_dft_dedit\').remove()" style="flex:1;padding:11px;border:none;background:#eee;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;">キャンセル</button>' +
-    '<button onclick="_dftApplyDist()" style="flex:1;padding:11px;border:none;background:#1976d2;color:#fff;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;">適用</button>' +
+    '<button onclick="document.getElementById(\'_dft_dedit\').remove()" style="flex:1;padding:11px;border:none;background:#eee;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;">' + t('dftCancel') + '</button>' +
+    '<button onclick="_dftApplyDist()" style="flex:1;padding:11px;border:none;background:#1976d2;color:#fff;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;">' + t('dftApply') + '</button>' +
     '</div></div></div>';
   _dft._pendingDistEdit = dl;
   document.body.insertAdjacentHTML('beforeend', html);
@@ -31932,7 +31944,7 @@ function _dftCamFstopEdit(camObj) {
     '<div id="_dft_cedit" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;" onclick="if(event.target===this)document.getElementById(\'_dft_cedit\').remove()">' +
     '<div style="background:#fff;color:#111;border-radius:18px;padding:22px 20px 18px;width:300px;box-shadow:0 8px 40px rgba(0,0,0,.3);">' +
     '<div style="font-size:13px;font-weight:800;margin-bottom:2px;">🎥 ' + (camObj.label||'Camera') + '</div>' +
-    '<div style="font-size:11px;color:#888;margin-bottom:16px;">F値を設定 (ダブルタップで編集)</div>' +
+    '<div style="font-size:11px;color:#888;margin-bottom:16px;">' + t('camSetFstop') + '</div>' +
     '<div style="text-align:center;margin-bottom:12px;">' +
     '<span id="_dft_cedit_disp" style="font-size:42px;font-weight:900;color:#1976d2;letter-spacing:-1px;">' + fLab(fval) + '</span>' +
     '</div>' +
@@ -31946,8 +31958,8 @@ function _dftCamFstopEdit(camObj) {
     'style="flex:1;padding:10px;font-size:18px;font-weight:700;border:2px solid #1976d2;border-radius:10px;text-align:center;box-sizing:border-box;">' +
     '</div>' +
     '<div style="display:flex;gap:8px;">' +
-    '<button onclick="document.getElementById(\'_dft_cedit\').remove()" style="flex:1;padding:11px;border:none;background:#eee;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;">キャンセル</button>' +
-    '<button onclick="_dftCamFapply(\''+camObj.id+'\')" style="flex:1;padding:11px;border:none;background:#1976d2;color:#fff;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;">適用</button>' +
+    '<button onclick="document.getElementById(\'_dft_cedit\').remove()" style="flex:1;padding:11px;border:none;background:#eee;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;">' + t('dftCancel') + '</button>' +
+    '<button onclick="_dftCamFapply(\''+camObj.id+'\')" style="flex:1;padding:11px;border:none;background:#1976d2;color:#fff;border-radius:11px;font-size:13px;font-weight:700;cursor:pointer;">' + t('dftApply') + '</button>' +
     '</div></div></div>';
   document.body.insertAdjacentHTML('beforeend', html);
 }
@@ -31998,7 +32010,7 @@ function _dftApplyDist() {
   var wantH = Math.sqrt(Math.max(0, newM*newM - dz*dz));
   if (wantH < 0.01) {
     // 高さ差だけで指定距離に達している（真下・真上）。水平に動かす余地がない
-    _dftSetStatus('⚠ ' + _dftFmt(Math.abs(dz)) + ' の高さ差があるため ' + _dftFmt(newM) + ' には縮められません');
+    _dftSetStatus(t('dftHeightBlock').replace('{h}', _dftFmt(Math.abs(dz))).replace('{d}', _dftFmt(newM)));
     return;
   }
   _dftPushHistory();
@@ -33738,7 +33750,7 @@ function dftRectStart(type) {
   var presetBtns = _dftRectPresetsFor(presetType).map(function(p){
     return '<button onclick="_dftRectPick(\'' + type + '\',' + p.wm + ',' + p.hm + ')" ' +
       'style="padding:11px 6px;border:1px solid #cfd8e3;border-radius:10px;background:#f5f8fc;color:#1565c0;' +
-      'font-size:12px;font-weight:700;cursor:pointer;">' + p.label + '</button>';
+      'font-size:12px;font-weight:700;cursor:pointer;">' + descText(p.label) + '</button>';
   }).join('');
   var html =
     '<div id="_dft_rs" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:flex-end;" onclick="if(event.target===this)document.getElementById(\'_dft_rs\').remove()">' +
@@ -35139,7 +35151,7 @@ function _dftFormColorHTML(o) {
       'background:' + (act ? '#e3f2fd' : '#f8f8f8') + ';cursor:pointer;min-width:52px;">' +
       '<div style="width:100%;height:14px;border-radius:3px;background:' + pc.fill +
       ';border:1px solid ' + pc.edge + ';margin-bottom:3px;"></div>' +
-      '<div style="font-size:10.5px;font-weight:800;color:#333;white-space:nowrap;">' + pr.label + '</div>' +
+      '<div style="font-size:10.5px;font-weight:800;color:#333;white-space:nowrap;">' + descText(pr.label) + '</div>' +
       '</button>';
   }).join('');
 
