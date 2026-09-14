@@ -9650,7 +9650,7 @@ var LIGHTS = {
       weight:'27.8 kg', size:'550×541×830 mm',      ccts:[2500, 3200, 4300, 5600, 6500, 7500, 10000],
       accessories:['bare','am81150','am81135_wide','am81125_medium','am81120_narrow','cf16_flood_50','cf16_spot_18','parallel_beam_70'],
       accAngles:{bare:93, am81150:50, am81135_wide:35, am81125_medium:25, am81120_narrow:20,
-                 cf16_flood_50:50, cf16_spot_18:18, parallel_beam_70:70},
+                 cf16_flood_50:50, cf16_spot_18:18, parallel_beam_70:5},
       dmx:{led:'BLAIR (Blue/Lime/Amber/Indigo/Red)',gamut:'70% Rec. 2020',ssi:'P3200 87 / D5600 88',power:'5200W (max 6000W)',cct:'2500K–10000K',cri:'≥96',ip:'IP65',control:'Bluetooth / CRMX / DMX / Art-Net / sACN'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%20XT52/Documents/STORM%20XT52%20DMX%20Profile%20Specification%20V1.2.pdf',
       dmxVer:'v1.2',
@@ -9677,6 +9677,9 @@ var LIGHTS = {
       // いちばん近い色温度で代用される（画面に ≈ が付く）。2500K と
       // 10000K では 25° より明るいことが確認できている。
       refData:{
+        // STORM Parallel Beam 70（70cm カセグレン鏡）。公式ページの配光表より 10m / 15m
+        'parallel_beam_70':{2500:{10:28200,15:13280},3200:{10:38400,15:16350},4300:{10:41600,15:19700},5600:{10:40300,15:19000},10000:{10:29670,15:14100}},
+        
         bare:{
           2500:{3:10700}, 3200:{3:20200}, 5600:{3:24000}, 10000:{3:17000}
         },
@@ -9791,7 +9794,7 @@ var LIGHTS = {
       // 電源ボックスは別体なので weightExtra に分ける
       weight:'21.2 kg', weightExtra:'Power box 20.5 kg', size:'457×352×281 mm',
       ccts:[2700,3200,4300,5600,6500],
-      accessories:['flood','refl50','refl35','refl20','fresnel18','fresnel50','spot50','spot36','spot19'],
+      accessories:['flood','refl50','refl35','refl20','fresnel18','fresnel50','spot50','spot36','spot19','parallel_beam_70'],
       // リフレクター無しの公称ビーム角は 62°。ACC_INFO の flood は汎用の 55° なので上書きする
       accAngles:{flood:62},
       accLabels:{flood:'No Reflector'},
@@ -9823,6 +9826,9 @@ var LIGHTS = {
       // 相対比を保っている（2m を除きほぼ逆二乗）。
       // これで9付属品すべて 5600K が頂点になり、歪みは消えた。
       refData:{
+        // STORM Parallel Beam 70（70cm カセグレン鏡）。公式ページの配光表より 10m / 15m（2500K と 10000K は表に無い）
+        'parallel_beam_70':{3200:{10:15930,15:9270},4300:{10:21050,15:8310},5600:{10:24990,15:14240}},
+        
         flood:{   // 3m/5600K を実測に合わせ、ほかは ×0.506
           2700:{3:3220, 5:1300},
           3200:{3:4050, 5:1630},
@@ -9894,7 +9900,7 @@ var LIGHTS = {
       // 重量は灯体＋ヨーク（18 + 3.2）。電源ボックスは別体なので weightExtra に分ける
       weight:'21.2 kg', weightExtra:'Power box 19 kg', size:'457×352×281 mm',
       ccts:[2000,3200,4300,5600,10000],
-      accessories:['none','refl50','refl35','refl20','fresnel18','fresnel50'],
+      accessories:['none','refl50','refl35','refl20','fresnel18','fresnel50','parallel_beam_70'],
       // 素の状態のビーム角はメーカー公称 62°。リフレクターは 20°/35°/50°（35°が付属）。
       // F14 モーターフレネルは 18°〜50° の可変
       accAngles:{none:62},
@@ -9913,7 +9919,10 @@ var LIGHTS = {
       // 【A マウント Medium】は角度の記載が無いが、値が refl35 と 0.2段差で
       // refl20（1.5段差）や refl50 より明らかに近いので refl35 に入れた。
       // ほかの色温度とレンズ類は Aputure 公表値のまま。
-      refData:{2000:{3:{'none':1818,'refl20':30100,'refl50':5310},5:{'none':712,'refl20':10450,'refl50':2034}},2700:{},3200:{2:{'fresnel18':76800,'fresnel50':15800,'refl35':76800},3:{'fresnel18':33429,'fresnel50':8357,'none':5040,'refl20':85400,'refl35':33429,'refl50':15210},5:{'fresnel18':11975,'fresnel50':3208,'none':1827,'refl20':30100,'refl35':9075,'refl50':5760},8:{'fresnel18':4800,'fresnel50':1583,'refl35':3208},12:{'fresnel18':2269,'fresnel50':675,'refl35':1697},15:{'fresnel18':1697,'fresnel50':455,'refl35':1024}},4300:{3:{'none':5210,'refl20':91800,'refl50':15980},5:{'none':2056,'refl20':31600,'refl50':6120}},5600:{2:{'fresnel18':108612,'fresnel50':19200,'refl35':88220},3:{'fresnel18':37969,'fresnel50':9075,'none':5540,'refl20':94500,'refl35':33429,'refl50':16740},5:{'fresnel18':15800,'fresnel50':3950,'none':2143,'refl20':33100,'refl35':10424,'refl50':6420},8:{'fresnel18':6334,'fresnel50':1697,'refl35':4800},12:{'fresnel18':2994,'fresnel50':832,'refl35':2089},15:{'fresnel18':2089,'fresnel50':522,'refl35':1378}},6500:{},10000:{3:{'none':4870,'refl20':82400,'refl50':14420},5:{'none':1911,'refl20':28600,'refl50':5530}}}
+      refData:{
+        // STORM Parallel Beam 70（70cm カセグレン鏡）。公式ページの配光表より 10m / 15m
+        2500:{10:{'parallel_beam_70':9650},15:{'parallel_beam_70':5780}},
+        2000:{3:{'none':1818,'refl20':30100,'refl50':5310},5:{'none':712,'refl20':10450,'refl50':2034}},2700:{},3200:{10:{'parallel_beam_70':12570},2:{'fresnel18':76800,'fresnel50':15800,'refl35':76800},3:{'fresnel18':33429,'fresnel50':8357,'none':5040,'refl20':85400,'refl35':33429,'refl50':15210},5:{'fresnel18':11975,'fresnel50':3208,'none':1827,'refl20':30100,'refl35':9075,'refl50':5760},8:{'fresnel18':4800,'fresnel50':1583,'refl35':3208},12:{'fresnel18':2269,'fresnel50':675,'refl35':1697},15:{'fresnel18':1697,'fresnel50':455,'refl35':1024,'parallel_beam_70':7520}},4300:{10:{'parallel_beam_70':14100},15:{'parallel_beam_70':8650},3:{'none':5210,'refl20':91800,'refl50':15980},5:{'none':2056,'refl20':31600,'refl50':6120}},5600:{10:{'parallel_beam_70':15580},2:{'fresnel18':108612,'fresnel50':19200,'refl35':88220},3:{'fresnel18':37969,'fresnel50':9075,'none':5540,'refl20':94500,'refl35':33429,'refl50':16740},5:{'fresnel18':15800,'fresnel50':3950,'none':2143,'refl20':33100,'refl35':10424,'refl50':6420},8:{'fresnel18':6334,'fresnel50':1697,'refl35':4800},12:{'fresnel18':2994,'fresnel50':832,'refl35':2089},15:{'fresnel18':2089,'fresnel50':522,'refl35':1378,'parallel_beam_70':8850}},6500:{},10000:{10:{'parallel_beam_70':11400},15:{'parallel_beam_70':7040},3:{'none':4870,'refl20':82400,'refl50':14420},5:{'none':1911,'refl20':28600,'refl50':5530}}}
     },
     storm_cs32: {
       url:'https://www.aputure.com/products/storm-cs32/',
@@ -16701,7 +16710,7 @@ var ACC_INFO = {
   am81150: { label:'AM81 Reflector 50°',     beam:'50°',    emoji:'🔦', angle:50  },
   cf16_spot_18: { label:'CF16 Fresnel 18°',       beam:'Fresnel Spot',    emoji:'🔦', angle:18  },
   cf16_flood_50: { label:'CF16 Fresnel 50°',       beam:'Fresnel Flood',    emoji:'🔦', angle:50  },
-  parallel_beam_70: { label:'Parallel Beam 70°',      beam:'70°',    emoji:'🔦', angle:70  },
+  parallel_beam_70: { label:'PB70 Para.Beam',      beam:'Parallel',    emoji:'🔦', angle:5  },   // 70 は鏡の径 70cm。公式のビーム角は 5°
   // Tungsten new accessories
   soft:     { label:'Soft (No Modifier)',  beam:'Soft',           emoji:'☁️',  angle:100 },
   spot_25:  { label:'Zoom Spot (25°)',     beam:'Spot 25°',       emoji:'🔦', angle:25   },
