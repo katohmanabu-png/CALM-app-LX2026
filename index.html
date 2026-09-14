@@ -25619,6 +25619,15 @@ function setFinderType(type) {
   }
   renderFinderResults();
 }
+/* Alt の一覧を今の設定で描き直す。
+ * 並び替え・種類の切り替え、カメラ設定や言語の変更から呼ばれる。
+ * この名前の関数が無いまま typeof で確かめて呼んでいたため、何も起きず、
+ * ボタンを押しても「検索」を押し直すまで一覧が古いままだった。
+ * まだ一度も検索していないときは、勝手に一覧を出さない。 */
+function renderAltResults() {
+  var box = el('alt-results');
+  if (box && box.children.length) runAlternativeFinder();
+}
 function setAltType(type) {
   S_altType = type;
   var chips = document.querySelectorAll('.alt-type-chip');
