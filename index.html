@@ -110,6 +110,9 @@ header{background:var(--white);padding:1px 8px 1px;padding-top:calc(1px + env(sa
 .drawer-item.active{background:var(--accent-light);color:var(--accent);}
 .drawer-footer{margin-top:auto;padding:12px 16px;font-size:10.5px;color:var(--text-dim);text-align:center;}
 .lang-sel{max-width:100%;padding:4px 22px 4px 8px;border-radius:7px;border:1.5px solid var(--accent);background:rgba(230,81,0,0.1);color:var(--accent);font-family:var(--sans);font-size:11px;font-weight:800;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--accent) 50%),linear-gradient(135deg,var(--accent) 50%,transparent 50%);background-position:calc(100% - 12px) 50%,calc(100% - 8px) 50%;background-size:4px 4px,4px 4px;background-repeat:no-repeat;}
+/* 幅の狭い端末では、言語の選択が見出しの場所を食う。旗と頭の数文字が
+   見えれば分かるので、狭いときだけ幅を抑える（iPhone SE など） */
+@media (max-width:389px){ .lang-sel{max-width:92px;} }
 .drawer-lang{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--bg);}
 .drawer-lang-lbl{font-size:11px;font-weight:900;color:var(--text-dim);white-space:nowrap;flex:0 0 auto;}
 /* Feedback page */
@@ -23284,14 +23287,18 @@ function openCompare() {
   ov.style.cssText = 'position:fixed;left:0;right:0;top:0;bottom:0;height:calc(100vh / var(--ui-zoom));height:calc(100dvh / var(--ui-zoom));' +
     'background:var(--white,#fff);z-index:9998;display:flex;flex-direction:column;';
   ov.innerHTML =
-    '<div style="flex-shrink:0;display:flex;align-items:center;gap:10px;' +
+    /* 幅の狭い iPhone（375pt）では、見出し・言語の選択・✕ を 10px 間隔で
+       並べると入りきらず、見出しが2行に折れていた。間隔を詰め、見出しは
+       折らずに収まらない分だけ省く。 */
+    '<div style="flex-shrink:0;display:flex;align-items:center;gap:6px;' +
       'padding:14px 16px 10px;padding-top:calc(14px + env(safe-area-inset-top, 0px));' +
       'border-bottom:1px solid var(--bg,#eee);">' +
       '<button onclick="closeCompare()" title="' + t('dftClose') + '" ' +
         'style="flex:0 0 auto;display:flex;align-items:center;gap:4px;padding:7px 11px 7px 8px;border:none;border-radius:10px;' +
         'background:var(--bg,#eee);color:var(--text,#333);font-size:13px;font-weight:800;cursor:pointer;line-height:1;">' +
         '‹ <span id="_cmp_back_lbl" style="font-size:11px;">' + t('cmpBack') + '</span></button>' +
-      '<div id="_cmp_title" style="font-size:16px;font-weight:900;color:var(--text,#111);">⚖️ ' + t('cmpTitle') + '</div>' +
+      '<div id="_cmp_title" style="font-size:16px;font-weight:900;color:var(--text,#111);' +
+        'flex:0 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">⚖️ ' + t('cmpTitle') + '</div>' +
       '<div style="flex:1;"></div>' +
       langChipHTML() +
       '<button onclick="closeCompare()" style="flex:0 0 auto;width:32px;height:32px;border:none;border-radius:50%;background:var(--bg,#eee);color:var(--text,#333);font-size:17px;font-weight:800;cursor:pointer;line-height:1;">✕</button>' +
@@ -24675,6 +24682,8 @@ function openHelp() {
   document.body.appendChild(w.firstChild);
   // 開いた時点で「見た」ことにする。閉じ方（✕・背景・ボタン）を選ばない。
   try { localStorage.setItem(HELP_SEEN_KEY, helpSeenToken()); } catch(e) {}
+  // 開いたままで言語を変えたら作り直す（作るときの言語のまま残っていた）
+  i18nOn('_help_ov', openHelp);
 }
 function closeHelp() { var o = document.getElementById('_help_ov'); if (o) o.remove(); }
 
@@ -25027,7 +25036,7 @@ function openGuide() {
   var body = GUIDE_TABS.map(function(g, i) {
     var lines = String(t(g.body)).split('\n').map(function(l) {
       return '<div style="display:flex;gap:7px;margin-top:5px;">' +
-        '<span style="color:var(--accent,#1976d2);font-weight:900;flex:0 0 auto;">・</span>' +
+        '<span style="color:var(--accent,#1976d2);font-weight:900;flex:0 0 auto;">•</span>' +
         '<span style="flex:1;min-width:0;">' + l + '</span></div>';
     }).join('');
     return (i ? '<div style="height:1px;background:var(--line,#eee);margin:16px 0 14px;"></div>' : '') +
@@ -25526,7 +25535,7 @@ function fbGetDeviceInfo() {
   var ios = ua.match(/OS (\d+[_\d]*)/);
   var iosVer = ios ? 'iOS ' + ios[1].replace(/_/g,'.') : (ua.match(/Android/) ? 'Android' : navigator.platform || 'unknown');
   // 18.7 は iOS 26 以降が名乗る固定値。そのまま出すと実際の版と取り違える
-  if (iosVer === 'iOS 18.7') iosVer = 'iOS 18.7+ (UserAgent — 26 以降の可能性あり)';
+  if (iosVer === 'iOS 18.7') iosVer = 'iOS 18.7+ (UserAgent — may be 26 or later)';
   else if (ios) iosVer += ' (UserAgent)';
   var model = ua.match(/\(([^)]+)\)/);
   var modelStr = model ? model[1].split(';')[0].trim() : 'unknown';
