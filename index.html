@@ -17120,13 +17120,19 @@ function isFresnel(accKey) { return !!FRESNEL_ACC_KEYS[accKey]; }
  *   例: STORM 80c はフレネルが 15〜40° なのに、ランタン(360°)が範囲の上端を
  *       決めてしまい、スライダーを右端まで振ると「360°」と出るのに照度は
  *       40° フレネルのものだった。 */
+/* フレネルのアクセサリーかどうか。小字（beam）だけを見ていたので、
+   名前が「F10 Fresnel (Flood)」でも小字が「45°」の組は拾えず、
+   Aputure LS 系や Matrix でスライダーが働いていなかった。名前も見る。 */
+function isFresnelAcc(key) {
+  var i = ACC_INFO[key];
+  if (!i || i.angle == null) return false;
+  if (typeof i.beam === 'string' && i.beam.indexOf('Fresnel') >= 0) return true;
+  return typeof i.label === 'string' && /fresnel/i.test(i.label);
+}
 function accPairKeys(light) {
   var accs = (light && light.accessories) || [];
   // フレネルが2つ以上あるならそれが優先（狭い側と広い側）。luxAtBeamAngle と同じ判断
-  var fres = accs.filter(function(a) {
-    return ACC_INFO[a] && typeof ACC_INFO[a].beam === 'string'
-        && ACC_INFO[a].beam.indexOf('Fresnel') >= 0 && ACC_INFO[a].angle != null;
-  });
+  var fres = accs.filter(isFresnelAcc);
   if (fres.length >= 2) {
     fres.sort(function(a,b){ return ACC_INFO[a].angle - ACC_INFO[b].angle; });
     return { spot: fres[0], flood: fres[fres.length-1] };
@@ -17245,12 +17251,7 @@ function getBeamAngles(light) {
     if (_hi - _lo >= 3) return [_lo, _hi];
   }
   // Fresnel only: beam field must contain 'Fresnel'
-  var fresnelAccs = accs.filter(function(a) {
-    return ACC_INFO[a]
-      && typeof ACC_INFO[a].beam === 'string'
-      && ACC_INFO[a].beam.indexOf('Fresnel') >= 0
-      && ACC_INFO[a].angle != null;
-  });
+  var fresnelAccs = accs.filter(isFresnelAcc);
   if (fresnelAccs.length < 2) return null;
   var angles = fresnelAccs.map(function(a) { return ACC_INFO[a].angle; });
   var minA = Math.min.apply(null, angles);
@@ -21137,8 +21138,7 @@ function selectAcc(k) {
   var accs = (light && light.accessories) || [];
   var ba = getBeamAngles(light);
   // フレネルレンズのみ beam slider 有効
-  var isFresnel = ba && ACC_INFO[k] && typeof ACC_INFO[k].beam === 'string'
-                  && ACC_INFO[k].beam.indexOf('Fresnel') >= 0;
+  var isFresnel = ba && isFresnelAcc(k);
   /* PAR のレンズは差し替えで角度が決まる。以前はここでスライダーを強制的に
      入れて中央（50%）にしていたため、レンズを選んでも角度はその機種の
      真ん中の値になり、照度は補間できずに素の値が出ていた。レンズ自身の
@@ -21175,7 +21175,7 @@ function beamSliderApplies(light, accKey) {
   var ba = getBeamAngles(light);
   if (!ba) return false;
   var ai = ACC_INFO[accKey];
-  if (ai && typeof ai.beam === 'string' && ai.beam.indexOf('Fresnel') >= 0) return true;
+  if (isFresnelAcc(accKey)) return true;
   if (accs.indexOf('spot') >= 0 && accs.indexOf('flood') >= 0) return true;
   if (accs.indexOf('spot') >= 0 && accs.indexOf('flat')  >= 0) return true;
   if (HMI_BEAM[light.name]) return true;
@@ -21372,8 +21372,7 @@ function renderBeamSlider() {
   var accs = (light && light.accessories) || [];
 
   // フレネル判定: beam に 'Fresnel' が含まれる
-  var isFresnel = ba && ACC_INFO[k] && typeof ACC_INFO[k].beam === 'string'
-                  && ACC_INFO[k].beam.indexOf('Fresnel') >= 0;
+  var isFresnel = ba && isFresnelAcc(k);
   // spot/flood ペア判定
   var isSpotFlood = ba && (accs.indexOf('spot') >= 0 && accs.indexOf('flood') >= 0);
   // spot/flat ペア判定
@@ -21498,7 +21497,7 @@ function onBeamSlider() {
   var isSpotFlood = ba && accs.indexOf('spot') >= 0 && accs.indexOf('flood') >= 0;
   var isHMI = light && HMI_BEAM[light.name] && ba;
   var k = S.accKey;
-  var isFresnel = ACC_INFO[k] && typeof ACC_INFO[k].beam === 'string' && ACC_INFO[k].beam.indexOf('Fresnel') >= 0;
+  var isFresnel = isFresnelAcc(k);
   var isDegreeMode = (isSpotFlood || isHMI) && !isFresnel;
 
   if (isDegreeMode && ba) {
@@ -23608,7 +23607,7 @@ function _cmpSetAcc(i, acc) {
   sl.acc = acc;
   // Calc の selectAcc と同じ扱い。フレネルならその角度に、spot / flood なら端へ
   var l = _cmpLightOf(sl), ba = getBeamAngles(l), ai = ACC_INFO[acc];
-  if (ba && ai && typeof ai.beam === 'string' && ai.beam.indexOf('Fresnel') >= 0 && ai.angle != null) {
+  if (ba && ai && isFresnelAcc(acc)) {
     sl.beamPct = Math.max(0, Math.min(100, Math.round((ai.angle - ba[0]) / (ba[1] - ba[0] || 1) * 100)));
   } else if (acc === 'spot') { sl.beamPct = 0; }
   else if (acc === 'flood' || acc === 'flat') { sl.beamPct = 100; }
