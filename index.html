@@ -16661,13 +16661,14 @@ var ACC_INFO = {
   sun_6k:   { label:'SUN 6kW Lens',       beam:'SUN PAR',       emoji:'☀️', angle:40 },
   sun_12k:  { label:'SUN 12kW Lens',      beam:'SUN PAR',       emoji:'☀️', angle:40 },
   /* ARRISUN の PAR レンズ5枚。現場ではレンズの色で呼ぶので、ARRI の名前と色を併記する。
-     色は 1=黒 / 2=青 / 3=緑 / 4=オレンジ / 5=白（以前は 1 と 2 の色が逆だった）。
+     色は ARRI の部品表のとおり（L2.77923.0 spot, blue / L2.77926.0 narrow flood, black /
+     L2.77924.0 flood, green / L2.77925.0 super flood, red / L2.77871.0 super flood frosted, silver）。
      角度は機種ごとに accAngles で入れてある。ここの数字は入っていない機種の控え */
-  sun_l1: { label:'1. Spot (Black)',                beam:'~5°',  emoji:'⬛', angle:5 },
-  sun_l2: { label:'2. Narrow Flood (Blue)',         beam:'~10°', emoji:'🟦', angle:10 },
-  sun_l3: { label:'3. Flood (Green)',               beam:'~20°', emoji:'🟩', angle:20 },
-  sun_l4: { label:'4. Super Flood (Orange)',        beam:'~35°', emoji:'🟧', angle:35 },
-  sun_l5: { label:'5. Super Flood Frosted (White)', beam:'~50°', emoji:'⬜', angle:50 },
+  sun_l1: { label:'1. Spot (Blue)',                  beam:'~5°',  emoji:'🟦', angle:5 },
+  sun_l2: { label:'2. Narrow Flood (Black)',         beam:'~10°', emoji:'⬛', angle:10 },
+  sun_l3: { label:'3. Flood (Green)',                beam:'~20°', emoji:'🟩', angle:20 },
+  sun_l4: { label:'4. Super Flood (Red)',            beam:'~35°', emoji:'🟥', angle:35 },
+  sun_l5: { label:'5. Super Flood Frosted (Silver)', beam:'~50°', emoji:'⬜', angle:50 },
   // Misc
   round_diff:   { label:'Round Diffuser', beam:'145° Diffused', emoji:'🔦', angle:145 },
   flat_diff:   { label:'Flat Diffuser', beam:'130° Diffused', emoji:'🔦', angle:130 },
