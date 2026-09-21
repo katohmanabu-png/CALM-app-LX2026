@@ -12481,15 +12481,18 @@ var LIGHTS = {
     },
     hmi_18k_mame: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/arri-daylight-18-12',
-      name:'ARRI 18kW MAME HMI', group:'HMI', desc:'18000W HMI Fresnel Lens', emoji:'⚫', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', watts:18000,
-      weight:'76 kg', size:'1236×1040×825 mm', ccts:[5600], accessories:["flat", "spot"], accAngles:{flat:60,spot:15}, accLabels:{flat:'FLOOD',spot:'SPOT'},
+      name:'ARRI 18kW MAME HMI', group:'HMI', desc:'18000W HMI Fresnel — twin fan, tilts 90° down', emoji:'⚫', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', watts:18000,
+      weight:'76 kg', size:'1236×1040×825 mm', ccts:[5600], accessories:['flat','medium','spot'], accAngles:{flat:56,medium:30,spot:11}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       dmx:{power:'18000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
       // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
       // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
       //   flat        3m F64, 5m F32 1/2, 8m F22 1/2, 12m F16, 15m F11 1/2
       //   spot        3m F128, 5m F90 1/2, 8m F64, 12m F45, 15m F32 1/2
-      refData:{5600:{3:{flat:76800,spot:307200},5:{flat:27153,spot:214784},8:{flat:12834,spot:76800},12:{flat:4800,spot:37969},15:{flat:3208,spot:27153}}}
+      /* 角度は ARRI Daylight 18/12 の公表値（MAME は二重ファンで下向き 90° まで
+         振れる型。光学系は同じ）。Middle は ARRI 公表の 10m 16,000 lux を
+         逆二乗で伸ばしたもの。Flood・Spot の照度は ARC の実測のまま。 */
+      refData:{5600:{3:{flat:76800,medium:177778,spot:307200},5:{flat:27153,medium:64000,spot:214784},8:{flat:12834,medium:25000,spot:76800},12:{flat:4800,medium:11111,spot:37969},15:{flat:3208,medium:7111,spot:27153}}}
     },
     arri_m40: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/m-series/m40',
