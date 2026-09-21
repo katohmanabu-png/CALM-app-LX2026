@@ -13170,10 +13170,11 @@ var LIGHTS = {
     },
     joker_400: {
       url:'https://k5600.com/collections/400/Joker',
-      group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', name:'Joker 400', desc:'400W HMI Fresnel Lens', emoji:'💛', watts:400,
+      group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', name:'Joker² 400', desc:'400W HMI PAR — Beamer + 4-lens set', emoji:'💛', watts:400,
       weight:'3.8 kg', size:'240×210×280 mm',
       ccts:[5600],
-      accessories:['joker_open','soft_tube'],
+      accessories:['joker_open','jk_s4_19','jk_med','jk_s4_36','jk_frost','jk_wide','jk_swide','jk_octa3','soft_tube'],
+      accAngles:{joker_open:5}, accBeams:{joker_open:'5°'},
       dmx:{led:'HMI',power:'400W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
       // ARC SYSTEM カタログ 2026 p21「400W ジョーカー2」レンズ無しの紙面から。
@@ -13188,11 +13189,20 @@ var LIGHTS = {
       // 同じ読みになる（0.5→1m の落ち方も指数 -1.45 で面光源らしい）。
       // 角度は ARC も K5600 も公表していない。ACC_INFO の soft_tube に
       // 元からある 120° を使っている（アプリ側の見積り値）。
-      refData:{'joker_open':{5600:{1:859135,2:307200,3:151875,5:76800,8:27153}},'soft_tube':{5600:{0.5:2269,1:832,2:208,3:106}}}
+      // レンズ4枚（Medium / Wide / Super Wide / Frosted Fresnel）と
+      // Bug-A-Beam の S4、Octa 3 は K5600 の公表値（1/3/5m）。K5600 は 6000K で
+      // 出しているが、この機種のほかの値と同じ 5600K の欄に入れている。
+      // レンズ無しは ARC の実測を残した（K5600 は 1m 1,250,000 lux で 0.5段 明るい）。
+      // 角度はレンズ無しも含めて K5600 の公表値。Medium と Wide は楕円。
+      refData:{'joker_open':{5600:{1:859135,2:307200,3:151875,5:76800,8:27153}},'soft_tube':{5600:{0.5:2269,1:832,2:208,3:106}},
+        'jk_med':{5600:{1:160000,3:17778,5:6400}},'jk_wide':{5600:{1:53500,3:5944,5:2140}},
+        'jk_swide':{5600:{1:22500,3:2500,5:900}},'jk_frost':{5600:{1:20625,3:2292,5:825}},
+        'jk_s4_19':{5600:{1:625000,3:69444,5:25000}},'jk_s4_36':{5600:{1:130000,3:14444,5:5200}},
+        'jk_octa3':{5600:{1:11625,3:1292,5:465}}}
     },
     joker_200: {
       url:'https://k5600.com/collections/200/Joker',
-      group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', name:'Joker 200', desc:'200W HMI Fresnel Lens', emoji:'💛', watts:200,
+      group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', name:'Joker² 200', desc:'200W HMI PAR', emoji:'💛', watts:200,
       weight:'2.6 kg', size:'210×190×240 mm',
       ccts:[5600],
       accessories:['joker_open','soft_tube'],
@@ -16726,6 +16736,16 @@ var ACC_INFO = {
   sf_lens:   { label:'Source Four Lens',   beam:'26°',           emoji:'🎭', angle:26   },
 
   sf400:     { label:'Source Four 400W',    beam:'Ellipsoidal',   emoji:'🎭', angle:19   },
+  /* K5600 Joker のレンズ（PAR36 の4枚組）とビーマーの付属品。
+     Medium と Wide は楕円のビームで、angle は広いほうの軸。小字に 10×25° の
+     ように両方を書いてある。角度・照度とも K5600 の公表値。 */
+  jk_med:    { label:'Medium Flood',        beam:'10×25°',        emoji:'🔦', angle:25 },
+  jk_wide:   { label:'Wide Flood',          beam:'15×55°',        emoji:'🔦', angle:55 },
+  jk_swide:  { label:'Super Wide Flood',    beam:'60°',           emoji:'🔦', angle:60 },
+  jk_frost:  { label:'Frosted Fresnel',     beam:'40° Soft',      emoji:'❄️', angle:40 },
+  jk_s4_19:  { label:'Bug-A-Beam S4 19°',   beam:'19°',           emoji:'🎭', angle:19 },
+  jk_s4_36:  { label:'Bug-A-Beam S4 36°',   beam:'36°',           emoji:'🎭', angle:36 },
+  jk_octa3:  { label:'Octa 3 (no diff)',    beam:'70° Soft',      emoji:'☁️', angle:70 },
   med: { label:'Medium (30deg)',     beam:'30deg', emoji:'🔦', angle:30 },
   zoom_min: { label:'Zoom Min',           beam:'Narrow',emoji:'🔦', angle:13 },
   zoom_mid: { label:'Zoom Mid',           beam:'Mid',   emoji:'🔦', angle:35 },
