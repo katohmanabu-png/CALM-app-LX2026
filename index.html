@@ -12646,7 +12646,7 @@ var LIGHTS = {
     },
     pp_125: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'1 kg', name:'Pocket Par 125W', emoji:'💡', watts:125,
-      ccts:[5600], accessories:['spot','pp_tconv','pp_narrow','pp_medium','pp_wide','pp_frost'], accUnknown:['pp_tconv'],
+      ccts:[5600], accessories:['spot','pp_tconv','pp_narrow','pp_medium','pp_wide','pp_frost'], accBeams:{pp_narrow:'~15°',pp_medium:'~25°',pp_wide:'~40°',pp_frost:'~50°'}, accLabels:{pp_narrow:'1. Spot',pp_medium:'2. Medium',pp_wide:'3. Flood',pp_frost:'4. Frosted Flood'}, accUnknown:['pp_tconv'],
       // 配光資料 lux.pdf（ポケットパー 125W スポットモード + レンズセット）。
       // web カタログ p18 の 1m/2m は「125W エリレンズキット」という別製品のため取り込まない。
       // ARC SYSTEM カタログ 2026 p17 の紙面から。F値（ISO800 / 30FPS）を lux に
@@ -12669,7 +12669,7 @@ var LIGHTS = {
     pp_200: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'1.9 kg', name:'Pocket Par 200W', emoji:'💡', watts:200,
       // HMI なので色温度は変わらない。ランプ固定の 5600K のみ。
-      ccts:[5600], accessories:['spot','pp_tconv','pp_narrow','pp_medium','pp_wide','pp_frost'], accUnknown:['pp_tconv'],
+      ccts:[5600], accessories:['spot','pp_tconv','pp_narrow','pp_medium','pp_wide','pp_frost'], accBeams:{pp_narrow:'~15°',pp_medium:'~25°',pp_wide:'~40°',pp_frost:'~50°'}, accLabels:{pp_narrow:'1. Spot',pp_medium:'2. Medium',pp_wide:'3. Flood',pp_frost:'4. Frosted Flood'}, accUnknown:['pp_tconv'],
       // ARC SYSTEM カタログ 2026 p17 の紙面から。1/2/3/5/8m。
       // 200W のレンズセットは「1.T変換 / 2.ナロー / 3.ミディアム / 4.ワイド /
       // 5.フロスト」。T変換とナローは紙面で同値（F90 / F45 / F32 / F16 / F11）
@@ -17084,6 +17084,8 @@ function accLabel(light, key) {
    機種側で角度を上書きしていても古い数字のまま出る（M18 の Medium は 39° なのに
    「Medium 30°」と出ていた）。機種の角度が分かっていればそこだけ入れ替える。 */
 function accBeamText(light, key, info) {
+  // 機種側で小字も決められる（呼び名を変えた機種で、共通の説明と食い違わないように）
+  if (light && light.accBeams && light.accBeams[key]) return light.accBeams[key];
   var ai = info || ACC_INFO[key] || {};
   var txt = (typeof ai.beam === 'string') ? ai.beam : '';
   if (!txt) return (ai.angle != null) ? ai.angle + '°' : '—';
