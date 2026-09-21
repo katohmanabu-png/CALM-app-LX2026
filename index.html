@@ -12508,7 +12508,9 @@ var LIGHTS = {
     arrimax_18k: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/arri-daylight-18-12',
       name:'ARRIMAX 18kW', group:'HMI Open', desc:'18000W HMI Fresnel Open', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:18000,
-      weight:'65 kg', size:'1051×784×942 mm', ccts:[5600], accessories:['flood','medium','spot'], accAngles:{flood:50,medium:30,spot:16},
+      weight:'65 kg', size:'1051×784×942 mm', ccts:[5600],
+      accessories:['flood','medium','spot','arx_sr_fl','arx_sr_mid','arx_sr_sp'],
+      accAngles:{flood:50,medium:30,spot:16,arx_sr_fl:15,arx_sr_mid:12,arx_sr_sp:10},
       dmx:{led:'HMI',power:'18000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
       // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
@@ -12523,16 +12525,36 @@ var LIGHTS = {
       //   （20m の F8 より明るい値が残り、遠いほうが明るくなっていた）。
       /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
-      refData:{5600:{3:{flood:110556,medium:271111,spot:607500},5:{flood:39800,medium:97600,spot:214784},8:{flood:15547,medium:38125,spot:108612},12:{flood:6910,medium:16944,spot:53696},15:{flood:4422,medium:10844,spot:37969},20:{flood:2488,medium:6100,spot:19200}}}
+      // 別売スポットリフレクター（arx_sr_*）は ARRI 公表の 10m の値を逆二乗で
+      // 伸ばしたもの。ARRI は最短 15m を想定しているので、近距離は目安。
+      refData:{5600:{
+        3: {flood:110556,medium:271111,spot:607500,arx_sr_fl:780000,arx_sr_mid:967778,arx_sr_sp:2377778},
+        5: {flood:39800, medium:97600, spot:214784,arx_sr_fl:280800,arx_sr_mid:348400,arx_sr_sp:856000},
+        8: {flood:15547, medium:38125, spot:108612,arx_sr_fl:109688,arx_sr_mid:136094,arx_sr_sp:334375},
+        12:{flood:6910,  medium:16944, spot:53696, arx_sr_fl:48750, arx_sr_mid:60486, arx_sr_sp:148611},
+        15:{flood:4422,  medium:10844, spot:37969, arx_sr_fl:31200, arx_sr_mid:38711, arx_sr_sp:95111},
+        20:{flood:2488,  medium:6100,  spot:19200, arx_sr_fl:17550, arx_sr_mid:21775, arx_sr_sp:53500}
+      }}
     },
     arrimax_12k: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/arri-daylight-18-12',
       name:'ARRIMAX 12kW', group:'HMI Open', desc:'12000W HMI Open Face — max reflector', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:12000,
-      weight:'65 kg', size:'1051×784×942 mm', ccts:[5600], accessories:['flood','medium','spot'], accAngles:{flood:50,medium:30,spot:16},
+      weight:'65 kg', size:'1051×784×942 mm', ccts:[5600],
+      accessories:['flood','medium','spot','arx_sr_fl','arx_sr_mid','arx_sr_sp'],
+      accAngles:{flood:50,medium:30,spot:16,arx_sr_fl:13,arx_sr_mid:10,arx_sr_sp:7},
       dmx:{led:'HMI',power:'12000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
       /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
-      refData:{5600:{3:{flood:76000,medium:210000,spot:675556},5:{flood:38000,medium:75600,spot:243200},8:{flood:9600,medium:29531,spot:95000},12:{flood:6800,medium:13125,spot:42222},15:{flood:4800,medium:8400,spot:27022}}}
+      // 別売スポットリフレクター（arx_sr_*）は ARRI 公表の 10m の値を逆二乗で
+      // 伸ばしたもの。Middle は、元から入っていた 12m 76,000 lux とほぼ一致する
+      // （0.01段）。ARRI は最短 15m を想定しているので、近距離は目安。
+      refData:{5600:{
+        3: {flood:76000,medium:210000,spot:675556,arx_sr_fl:945556,arx_sr_mid:1222222,arx_sr_sp:2288889},
+        5: {flood:38000,medium:75600, spot:243200,arx_sr_fl:340400,arx_sr_mid:440000, arx_sr_sp:824000},
+        8: {flood:9600, medium:29531, spot:95000, arx_sr_fl:132969,arx_sr_mid:171875, arx_sr_sp:321875},
+        12:{flood:6800, medium:13125, spot:42222, arx_sr_fl:59097, arx_sr_mid:76389,  arx_sr_sp:143056},
+        15:{flood:4800, medium:8400,  spot:27022, arx_sr_fl:37822, arx_sr_mid:48889,  arx_sr_sp:91556}
+      }}
     },
     arri_m90: {
       url:'https://www.arri.com/en/lighting/daylight-tungsten/daylight/m-series/m90',
@@ -16737,6 +16759,11 @@ var ACC_INFO = {
   sf_lens:   { label:'Source Four Lens',   beam:'26°',           emoji:'🎭', angle:26   },
 
   sf400:     { label:'Source Four 400W',    beam:'Ellipsoidal',   emoji:'🎭', angle:19   },
+  /* ARRIMAX 18/12 の別売スポットリフレクター。標準の MAX リフレクターと
+     入れ替えて使う。角度は機種で違うので accAngles で入れてある（既定は 18kW）。 */
+  arx_sr_fl:  { label:'Spot Refl. Flood',  beam:'15°',  emoji:'🔦', angle:15 },
+  arx_sr_mid: { label:'Spot Refl. Middle', beam:'12°',  emoji:'🔦', angle:12 },
+  arx_sr_sp:  { label:'Spot Refl. Spot',   beam:'10°',  emoji:'🔦', angle:10 },
   /* K5600 Joker のレンズ（PAR36 の4枚組）とビーマーの付属品。
      Medium と Wide は楕円のビームで、angle は広いほうの軸。小字に 10×25° の
      ように両方を書いてある。角度・照度とも K5600 の公表値。 */
