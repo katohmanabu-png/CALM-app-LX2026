@@ -9005,9 +9005,10 @@ function applyI18n() {
   s('lbl-direct','directInput'); s('lbl-manual','manualInput');
   // Units / multi
   s('lbl-units','unitsLabel');
-  // Strip Japanese unit suffix from count display when not JA
+  // 台数の表示。日本語の「台」を消すだけにしていたので、韓国語の「대」や
+  // 中国語の「台」が出ず、日本語でもスライダーを動かすと単位が消えていた。
   var _mcd = el('multi-count-disp');
-  if (_mcd && LANG !== 'ja') { var _mcdN = parseInt(_mcd.textContent); if (!isNaN(_mcdN)) _mcd.textContent = _mcdN; }
+  if (_mcd) { var _mcdN = parseInt(_mcd.textContent); if (!isNaN(_mcdN)) _mcd.textContent = _mcdN + t('mixUnitSuffix'); }
   // Mix dist
   s('lbl-mix-dist','mixDistLabel');
   // Finder labels (already handled by refreshFinderI18n but add fallback)
@@ -29451,7 +29452,7 @@ function onMultiChange() {
   var sl = el('multi-sl'); if (!sl) return;
   var v = parseInt(sl.value) || 1;
   var dispEl = el('multi-count-disp');
-  if (dispEl) dispEl.textContent = v;
+  if (dispEl) dispEl.textContent = v + t('mixUnitSuffix');   // 「台」「대」なども付ける
   calculate();
 }
 function updateTriUnits() {
