@@ -9147,8 +9147,8 @@ var LIGHTS = {
       //    3m の値だけ外した。
       // 落としたところは、測定のある近い色温度から引く動きになる。
       // bare（リフレクター無し）と bm45（ワイドリフレクター 45°）の 5600K /
-      // 3200K は ARC SYSTEM カタログ 2026 p66 の紙面から。F値（ISO800 /
-      // 30FPS）を lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 3200K は 配光資料 p66 の紙面から。F値（ISO800 /
+      // 30FPS）を lux に換算（lux = f² × 18.75）。表の値を優先する。
       //   5600K 無し   1m F64 1/5 / 2m F32 1/5 / 3m F22 / 5m F11 3/5 / 8m F8 1/2 / 10m F8
       //   5600K ワイド 1m F90 4/5 / 2m F45 1/2 / 3m F32 1/5 / 5m F16 4/5 / 8m F11 3/5 / 10m F11
       //   3200K 無し   1m F64 / 2m F32 / 3m F16 4/5 / 5m F11 1/2 / 8m F8 1/5 / 10m F5.6 4/5
@@ -9475,10 +9475,10 @@ var LIGHTS = {
       // 出どころの違う2系統が混ざっている。'none' を宣言していなかったため 5600K で
       // 値がまったく返らなくなっていた。宣言を足して読めるようにしてある。
       // 同じ光学条件で揃ったデータが手に入ったら差し替えたい。
-      // ARC SYSTEM カタログ 2026 p67 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p67 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
       //   Hyper Reflector を 'none'、フレネル Spot / Flat を 'r15' / 'r30' と
-      //   していたので名前を直した。値は元から ARC のものだった。
+      //   していたので名前を直した。値は元から 資料のものだった。
       //   5600K のフレネル2行は入っていなかったので足した。
       //   3200K f10_flood  3208 1697 741 300 147
       //   3200K f10_spot   9075 3601 1697 741 378
@@ -9522,8 +9522,8 @@ var LIGHTS = {
       dmx:{led:'Bi-Color COB',power:'350W',cct:'2700K–6500K',cri:'≥96',tlci:'≥97',ip:'IP54',
         control:'On-board / App / DMX / RDM',dimming:'0%–100%',
         effects:['Flash','Pulse','TV','Paparazzi','Fire','Fireworks']},
-      // ARC SYSTEM カタログ 2026 p68 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p68 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
       // 値は元から紙面と完全一致していた（30点すべて）。'none' / 'r30' / 'r15'
       // としていた3行が、紙面の Hyper Refrector / フレネル Flat / フレネル Spot
       // そのものだったので名前を直した。
@@ -9926,8 +9926,8 @@ var LIGHTS = {
       // 以前入っていた値（3200K 2m=12000 / 5m=4320 など）は公式と合わず、
       // しかも自分の 2m から逆二乗した 5m とも合っていなかった（2080 のはずが 4320）。
       // refl35（A マウント Medium）と fresnel18 / fresnel50 の 5600K / 3200K は
-      // ARC SYSTEM カタログ 2026 p65 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。2/3/5/8/12/15m。
+      // 配光資料 p65 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。2/3/5/8/12/15m。
       // 紙面の【フレネルレンズ スポット18°】【フラット50°】はアプリの
       // fresnel18 / fresnel50 と角度がそのまま一致する。
       // 【A マウント Medium】は角度の記載が無いが、値が refl35 と 0.2段差で
@@ -10122,8 +10122,8 @@ var LIGHTS = {
       dmx:{led:'5600K fixed',power:'1440W',cct:'5600K',cri:'≤96',ip:'IP54',control:'On-board / App / DMX / CRMX',dimming:'0%–100%',effects:['Flash','Pulse','TV','Paparazzi','Fire']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%201200d%20Pro/All%20Files/LS1200D-Pro-DMX-Profile-Specification-V1.0-.pdf',
       dmxVer:'v1.0',
-      // ARC SYSTEM カタログ 2026 p66 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p66 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
       //   ナロー(15°)     2m F64 1/3 / 3m F45 1/3 / 5m F22 1/2 / 8m F16 1/3 / 12m F11 1/3
       //   ミディアム(30°) 2m F32 1/2 / 3m F22 1/3 / 5m F11 2/3 / 8m F8 1/2 / 12m F5.6 1/2
       //   ワイド(45°)     2m F22 1/2 / 3m F16 1/2 / 5m F11 1/3 / 8m F8 / 12m F5.6
@@ -10143,7 +10143,7 @@ var LIGHTS = {
       dmx:{led:'BLAIR-CG (Blue/Lime/Amber/Indigo/Red/Cyan/Green)',gamut:'90% Rec. 2020',ssi:'P3200 88 / D5600 84',power:'80W (max 100W)',cct:'1800K–20000K',cri:'≥97',tlci:'≥99',ip:'IP65',control:'Bluetooth / CRMX / DMX'},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/STORM%2080c/manuals/STORM%201000c%20&%2080c%20DMX%20Profile%20Specification%20V1.2.pdf',
       dmxVer:'v1.2',
-      // hyper_reflector（付属のリフレクター）の 5600K / 3200K は ARC SYSTEM
+      // hyper_reflector（付属のリフレクター）の 5600K / 3200K は 配光資料
       // カタログ 2026 p68 の紙面から。F値（ISO800 / 30FPS）を lux に換算。
       //   5600K 1m F32 1/2 / 2m F16 / 3m F8 4/5 / 5m F5.6 2/5 / 8m F4 / 10m F2.8 1/2
       //   3200K 1m F32 / 2m F16 / 3m F8 1/2 / 5m F5.6 / 8m F2.8 4/5 / 10m F2.8 1/5
@@ -10287,9 +10287,9 @@ var LIGHTS = {
       dmx:{led:'Daylight COB',power:'350W',cct:'5600K',cri:'≤96',ip:'IP54',control:'On-board / App / DMX',dimming:'0%–100%',effects:['Flash','Pulse','TV']},
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20300d%20II/All%20files/LS-600d-Pro-LS-300d-II-common-DMX-Profile-Specification-V1.0.pdf',
       dmxVer:'v1.0',
-      // ARC SYSTEM カタログ 2026 p67 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
-      //   'none' / 'r15' / 'r30' としていた名前を直した。値は元から ARC のもの。
+      // 配光資料 p67 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
+      //   'none' / 'r15' / 'r30' としていた名前を直した。値は元から 資料のもの。
       //   5600K f10_flood  7620 3208 1512 588 300
       //   5600K f10_spot   14406 6788 2858 933 476
       //   5600K hyper      6048 1905 832 378 147
@@ -10299,8 +10299,8 @@ var LIGHTS = {
       url:'https://www.aputure.com/products/ls-600c-pro-ii/',
       group:'LED COB', weight:'5.9 kg', name:'LS 600c Pro II', emoji:'💡', watts:720, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
       ccts:[2300,3200,5600,10000], accessories:['hyper','f10_flood','f10_spot'],
-      // ARC SYSTEM カタログ 2026 p67 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p67 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
       //   3200K f10_flood  10424 5514 2606 1819 675 345
       //   3200K f10_spot   33429 10424 7275 3950 1697 776
       //   3200K hyper      15800 7275 3439 2269 832 396
@@ -10315,8 +10315,8 @@ var LIGHTS = {
       ccts:[2700,3200,5600,6500], accessories:['hyper','f10_flood','f10_spot'],
       dmxUrl:'https://docs.aputure.com/hubfs/Knowledge%20Base/Aputure/LS%20600x%20Pro/All%20Files/LS600X-Pro-DMX-Profile-Specification-V1.0-.pdf',
       dmxVer:'v1.0',
-      // ARC SYSTEM カタログ 2026 p67 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p67 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
       //   距離は 2/3/5/8/12m。紙面の定規には 4m もあるが、この灯体の行は
       //   4m 列が空で値が5つ。アプリは 2,3,4,5,8m と読み違えていた
       //   （4m とすると 3→4m が指数 -3.02 で成立しない。5m なら -1.70）。
@@ -10687,9 +10687,9 @@ var LIGHTS = {
         dimming:'0.0%–100.0%',effects:['CCT Loop','INT Loop','Flash','Pulse','Storm','TV','Paparazzi','Candle/Fire','Bad Bulb','Firework','Explosion','Welding']},
       dmxUrl:'https://cdn-aliyun.nanlux.com/release/1768007355782-337065-1133883637016734-Nanlux_Evoke5000B_DMXCharts_EN_V1.3_20251216.pdf',
       dmxVer:'v1.3',
-      // ARC SYSTEM カタログ 2026 p64（30°リフレクター装着時） の紙面から、F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
-      //   15m / 20m は ARC の表に無いので Nanlux 公表値のまま（ARC の 10m から
+      // 配光資料 p64（30°リフレクター装着時） の紙面から、F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
+      //   15m / 20m は 資料の表に無いので Nanlux 公表値のまま（資料の 10m から
       //   続けて指数 -1.9 / -2.05 で整合する）。
       //   3200K r30  3m=133717 5m=37969 8m=12834 10m=9075
       //   5600K r30  3m=151875 5m=53696 8m=19200 10m=11975
@@ -10777,10 +10777,10 @@ var LIGHTS = {
       dmxUrl:'https://cdn-aliyun.nanlux.com/release/1701081200682-488419-11338834471-Evoke+1200B+DMX+REFERENCE+GUIDE%EF%BC%88NANLUX%EF%BC%89B+V2+20220830+W.pdf',
       dmxVer:'v2',
       // Official Nanlux photometrics (nanlux.com) — Light Only / 26° / 45° / 60° reflectors, 3–9m
-      // ARC SYSTEM カタログ 2026 p64（45°リフレクター装着時） の紙面から、F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
-      //   45° は ARC で置き換えた。Nanlux 公表の 7m / 9m は ARC の 8m と
-      //   混ぜると成立しないので外した。ARC と Nanlux 公表値は 3m で 19,200 対
+      // 配光資料 p64（45°リフレクター装着時） の紙面から、F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
+      //   45° は 資料で置き換えた。Nanlux 公表の 7m / 9m は 資料の 8m と
+      //   混ぜると成立しないので外した。資料と Nanlux 公表値は 3m で 19,200 対
       //   18,570、5m で 6,788 対 6,800 とよく一致している。
       //   3200K r45  1m=151875 2m=33429 3m=13755 5m=5514 8m=2269 10m=1583
       //   5600K r45  1m=174459 2m=37969 3m=19200 5m=6788 8m=2606 10m=2089
@@ -10847,9 +10847,9 @@ var LIGHTS = {
         dimming:'0%–100%',effects:['Flash','Pulse','Storm','TV','Firework']},
       dmxUrl:'https://cdn-aliyun.nanlux.com/release/1715246546501-639074-11338836370-Evoke_2400B_DMX_REFERENCE_GUIDE_EN.pdf',
       // Estimated: Evoke 1200B official table scaled to the official 2400B anchor (45°@3m 5600K = 41,910 lx). Same NL 26/45/60 reflectors.
-      // ARC SYSTEM カタログ 2026 p64（付属の45°リフレクター） の紙面から、F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
-      //   45° は ARC で置き換えた。Nanlux 公表の 7m / 9m は ARC の 8m と
+      // 配光資料 p64（付属の45°リフレクター） の紙面から、F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
+      //   45° は 資料で置き換えた。Nanlux 公表の 7m / 9m は 資料の 8m と
       //   混ぜると 7→8m が指数 -4.49 になり成立しないので外した。
       //   カタログの「(C30)」は付属のコントローラー名で、リフレクターの角度ではない。
       //   3200K r45  2m=53696 3m=22055 5m=9075 8m=3950 12m=1819 15m=1200
@@ -11049,16 +11049,16 @@ var LIGHTS = {
       dmx:{led:'RGBWW COB',power:'940W',cct:'1800K–20000K + Full RGBWW',cri:'Average 96',ip:'IP55',control:'On-board / NANLINK APP / DMX / CRMX / Art-Net',dimming:'0%–100%',effects:['Flash','Pulse','Storm','TV','Fire']},
       dmxUrl:'https://cdn-aliyun.nanlux.com/release/1701079376851-926524-11338834471-Evoke_900C_DMX_REFERENCE_GUIDE_EN.pdf',
       // Official Nanlux photometrics (nanlux.com) — Light Only / 26° / 45° / 60°, 3/5/7m
-      // 5600K の 45°リフレクターとフレネルは ARC SYSTEM カタログ 2026 p65 の
+      // 5600K の 45°リフレクターとフレネルは 配光資料 p65 の
       // 紙面から。F値（ISO800 / 30FPS）を lux に換算（lux = f² × 18.75）。
       //   r45       1m F90 / 2m F32 4/5 / 3m F22 1/2 / 5m F16 / 8m F8 3/5 / 12m F5.6 3/5
       //   fresnel45 1m F45 1/2 / 2m F22 2/3 / 3m F16 2/3 / 5m F11 1/3 / 8m F8 / 12m F5.6
       //   fresnel11 1m F90 1/2 / 2m F45 2/3 / 3m F32 2/3 / 5m F22 1/3 / 8m F11 2/3 / 12m F8 2/3
       // 紙面の【リフレクター装着】は付属の 45°（付属品欄に「45°リフレクター」）。
       // 【フレネル Flat】【フレネル Spot】に角度の記載は無いが、Nanlux 公表の
-      // フレネルは 11°/30°/45° の3位置で、3m の spot/flat 比が ARC 4.00 に対し
+      // フレネルは 11°/30°/45° の3位置で、3m の spot/flat 比が 資料の 4.00 に対し
       // Nanlux 公表（Evoke 1200）4.30 と合うので Spot=11°、Flat=45° とした。
-      // 7m の r45 は外した。ARC の 8m と混ぜると出どころが混ざるため。
+      // 7m の r45 は外した。資料の 8m と混ぜると出どころが混ざるため。
       // ほかの色温度と r26 / r60 / none は Nanlux 公表値のまま。
       refData:{2700:{3:{'none':3852,'r26':35820,'r45':11570,'r60':7595},5:{'none':1518,'r26':11220,'r45':4008,'r60':2742},7:{'none':835,'r26':5452,'r45':2080,'r60':1513}},3200:{3:{'none':4250,'r26':39530,'r45':12810,'r60':8240},5:{'none':1656,'r26':12300,'r45':4404,'r60':3038},7:{'none':925,'r26':6036,'r45':2266,'r60':1642}},4300:{3:{'none':4470,'r26':41560,'r45':13500,'r60':8565},5:{'none':1738,'r26':12940,'r45':4656,'r60':3201},7:{'none':973,'r26':6336,'r45':2379,'r60':1734}},5600:{1:{'fresnel11':214784,'fresnel45':53696,'r45':151875},2:{'fresnel11':60272,'fresnel45':14406,'r45':33429},3:{'fresnel11':30478,'fresnel45':7620,'none':4341,'r26':40300,'r45':12834,'r60':8541},5:{'fresnel11':11434,'fresnel45':2858,'none':1688,'r26':12560,'r45':4800,'r60':3110},7:{'none':945,'r26':6176,'r60':1693},8:{'fresnel11':3601,'fresnel45':1200,'r45':1819},12:{'fresnel11':1905,'fresnel45':588,'r45':891}},7500:{3:{'none':4265,'r26':39560,'r45':12820,'r60':8380},5:{'none':1676,'r26':12380,'r45':4421,'r60':3055},7:{'none':929,'r26':6050,'r45':2261,'r60':1665}}}
     },
@@ -11070,7 +11070,7 @@ var LIGHTS = {
       dmxUrl:'https://cdn-aliyun.nanlite.com/release/1691141511427-746640-1-Forza_60C_DMX_REFERENCE_GUIDE_EN+V1+20220430+W.pdf',
       dmxVer:'v1',
       // Official Nanlite @1m (bare ~5,790 / 45° reflector 12,810 lx @5600K); 2/3m via inverse-square (compact fixture)
-      // 45°リフレクターの 5600K / 3200K は ARC SYSTEM カタログ 2026 p68 の
+      // 45°リフレクターの 5600K / 3200K は 配光資料 p68 の
       // 紙面から。F値（ISO800 / 30FPS）を lux に換算。
       //   5600K 1m F22 1/2 / 2m F11 1/5 / 3m F8 / 5m F4 3/5 / 8m F2.8 2/5 / 10m F2 4/5
       //   3200K 1m F22 / 2m F11 / 3m F5.6 4/5 / 5m F4 2/5 / 8m F2.8 / 10m F2 3/5
@@ -12376,12 +12376,12 @@ var LIGHTS = {
       name:'ARRI SUN 12kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'12000W HMI PAR — lens interchange', emoji:'⚫', watts:12000,
       weight:'48 kg', size:'765×1055×827 mm', ccts:[5600], accessories:['spot','sun_l1','sun_l2','sun_l3','sun_l4','sun_l5'], accAngles:{sun_l1:13,sun_l2:33,sun_l3:55,sun_l4:57,sun_l5:58},
       dmx:{led:'HMI',power:'12000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
-      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。表の値を優先する。
       // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
       // 5 Frost）が sun_l1 / black / green / orange / white にそのまま
       // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
-      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // 元の値も 同じ資料の由来だったが丸められており、抜けている組み合わせが
       // あった。紙面どおりに入れ直した。
       refData:{5600:{3:{'sun_l2':434446,'sun_l1':607500,'sun_l3':214784,'sun_l4':108612,'sun_l5':76800},5:{'spot':859135,'sun_l2':151875,'sun_l1':307200,'sun_l3':76800,'sun_l4':37969,'sun_l5':27153},8:{'spot':307200,'sun_l2':53696,'sun_l1':151875,'sun_l3':27153,'sun_l4':12834,'sun_l5':12834},12:{'spot':108612,'sun_l2':27153,'sun_l1':76800,'sun_l3':12834,'sun_l4':6788,'sun_l5':4800},15:{'spot':76800,'sun_l2':19200,'sun_l1':37969,'sun_l3':9075,'sun_l4':4800,'sun_l5':3208}}}
     },
@@ -12389,12 +12389,12 @@ var LIGHTS = {
       name:'ARRI SUN 6kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'6000W HMI PAR — lens interchange', emoji:'⚫', watts:6000,
       weight:'43 kg', size:'590×915×640 mm', ccts:[5600], accessories:['spot','sun_l1','sun_l2','sun_l3','sun_l4','sun_l5'], accAngles:{sun_l1:13,sun_l2:22,sun_l3:43,sun_l4:44,sun_l5:53},
       dmx:{led:'HMI',power:'6000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
-      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。表の値を優先する。
       // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
       // 5 Frost）が sun_l1 / black / green / orange / white にそのまま
       // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
-      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // 元の値も 同じ資料の由来だったが丸められており、抜けている組み合わせが
       // あった。紙面どおりに入れ直した。
       refData:{5600:{3:{'spot':434446,'sun_l2':76800,'sun_l1':151875,'sun_l3':37969,'sun_l4':19200,'sun_l5':9075},5:{'spot':214784,'sun_l2':37969,'sun_l1':76800,'sun_l3':12834,'sun_l4':6788,'sun_l5':3208},8:{'spot':108612,'sun_l2':9075,'sun_l1':27153,'sun_l3':6788,'sun_l4':3208,'sun_l5':1200},12:{'spot':53696,'sun_l2':6788,'sun_l1':19200,'sun_l3':3208,'sun_l4':1697,'sun_l5':588},15:{'spot':27153,'sun_l2':3208,'sun_l1':9075,'sun_l3':2269,'sun_l4':1200,'sun_l5':208}}}
     },
@@ -12402,12 +12402,12 @@ var LIGHTS = {
       name:'ARRI SUN 4kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'4000W HMI PAR — lens interchange', emoji:'⚫', watts:4000,
       weight:'21 kg', size:'530×650×580 mm', ccts:[5600], accessories:['spot','sun_l1','sun_l2','sun_l3','sun_l4','sun_l5'], accAngles:{sun_l1:11,sun_l2:24,sun_l3:49,sun_l4:49,sun_l5:50},
       dmx:{led:'HMI',power:'4000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
-      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。表の値を優先する。
       // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
       // 5 Frost）が sun_l1 / black / green / orange / white にそのまま
       // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
-      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // 元の値も 同じ資料の由来だったが丸められており、抜けている組み合わせが
       // あった。紙面どおりに入れ直した。
       refData:{5600:{3:{'spot':307200,'sun_l2':151875,'sun_l1':214784,'sun_l3':37969,'sun_l4':27153,'sun_l5':12834},5:{'spot':108612,'sun_l2':53696,'sun_l1':76800,'sun_l3':12834,'sun_l4':6788,'sun_l5':4800},8:{'spot':53696,'sun_l2':19200,'sun_l1':37969,'sun_l3':6788,'sun_l4':3208,'sun_l5':1697},12:{'spot':27153,'sun_l2':6788,'sun_l1':12834,'sun_l3':3208,'sun_l4':1697,'sun_l5':832},15:{'spot':12834,'sun_l2':4800,'sun_l1':6788,'sun_l3':1697,'sun_l4':832,'sun_l5':588}}}
     },
@@ -12415,12 +12415,12 @@ var LIGHTS = {
       name:'ARRI SUN 2.5kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'2500W HMI PAR — lens interchange', emoji:'⚫', watts:2500,
       weight:'21 kg', size:'530×650×580 mm', ccts:[5600], accessories:['spot','sun_l1','sun_l2','sun_l3','sun_l4','sun_l5'], accAngles:{sun_l1:11,sun_l2:20,sun_l3:36,sun_l4:39,sun_l5:41},
       dmx:{led:'HMI',power:'2500W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
-      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。表の値を優先する。
       // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
       // 5 Frost）が sun_l1 / black / green / orange / white にそのまま
       // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
-      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // 元の値も 同じ資料の由来だったが丸められており、抜けている組み合わせが
       // あった。紙面どおりに入れ直した。
       refData:{5600:{3:{'spot':108612,'sun_l2':76800,'sun_l1':108612,'sun_l3':27153,'sun_l4':12834,'sun_l5':6788},5:{'spot':53696,'sun_l2':27153,'sun_l1':53696,'sun_l3':9075,'sun_l4':4800,'sun_l5':3208},8:{'spot':27153,'sun_l2':9075,'sun_l1':19200,'sun_l3':3208,'sun_l4':1697,'sun_l5':1200},12:{'spot':12834,'sun_l2':4800,'sun_l1':12834,'sun_l3':1697,'sun_l4':832,'sun_l5':588},15:{'spot':6788,'sun_l2':3208,'sun_l1':6788,'sun_l3':1200,'sun_l4':588,'sun_l5':424}}}
     },
@@ -12428,12 +12428,12 @@ var LIGHTS = {
       name:'ARRI SUN 1.2kW', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'1200W HMI PAR — lens interchange', emoji:'⚫', watts:1200,
       weight:'12 kg', size:'420×540×460 mm', ccts:[5600], accessories:['spot','sun_l1','sun_l2','sun_l3','sun_l4','sun_l5'], accAngles:{sun_l1:12,sun_l2:25,sun_l3:32,sun_l4:54,sun_l5:62},
       dmx:{led:'HMI',power:'1200W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
-      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p15（CSV） から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。表の値を優先する。
       // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
       // 5 Frost）が sun_l1 / black / green / orange / white にそのまま
       // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
-      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // 元の値も 同じ資料の由来だったが丸められており、抜けている組み合わせが
       // あった。紙面どおりに入れ直した。
       refData:{5600:{3:{'spot':108612,'sun_l2':27153,'sun_l1':76800,'sun_l3':12834,'sun_l4':9075,'sun_l5':3208},5:{'spot':53696,'sun_l2':12834,'sun_l1':27153,'sun_l3':4800,'sun_l4':2269,'sun_l5':1200},8:{'spot':19200,'sun_l2':4800,'sun_l1':12834,'sun_l3':1697,'sun_l4':1200,'sun_l5':424},12:{'spot':9075,'sun_l2':1697,'sun_l1':6788,'sun_l3':832,'sun_l4':424,'sun_l5':208},15:{'spot':6788,'sun_l2':1200,'sun_l1':3208,'sun_l3':588,'sun_l4':300,'sun_l5':147}}}
     },
@@ -12441,12 +12441,12 @@ var LIGHTS = {
       name:'ARRI SUN 575W', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'575W HMI PAR — lens interchange', emoji:'⚫', watts:575,
       weight:'4.5 kg', size:'270×340×320 mm', ccts:[5600], accessories:['spot','sun_l1','sun_l2','sun_l3','sun_l4','sun_l5'], accAngles:{sun_l1:11.5,sun_l2:13.6,sun_l3:28,sun_l4:50,sun_l5:52.5},
       dmx:{led:'HMI',power:'575W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p16 の紙面 から。F値（ISO800 / 30FPS）を lux に
-      // 換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p16 の紙面 から。F値（ISO800 / 30FPS）を lux に
+      // 換算（lux = f² × 18.75）。表の値を優先する。
       // レンズセットの5段（1 Very Narrow / 2 Narrow / 3 Medium / 4 Wide /
       // 5 Frost）が sun_l1 / black / green / orange / white にそのまま
       // 対応する。ARRI SUN 575W の30点で位置どおり一致することを確認した。
-      // 元の値も ARC 由来だったが丸められており、抜けている組み合わせが
+      // 元の値も 同じ資料の由来だったが丸められており、抜けている組み合わせが
       // あった。紙面どおりに入れ直した。
       refData:{5600:{2:{'spot':151875,'sun_l2':37969,'sun_l1':108612,'sun_l3':19200,'sun_l4':12834,'sun_l5':3208},3:{'spot':76800,'sun_l2':19200,'sun_l1':53696,'sun_l3':9075,'sun_l4':4800,'sun_l5':1697},5:{'spot':27153,'sun_l2':6788,'sun_l1':19200,'sun_l3':3208,'sun_l4':2269,'sun_l5':588},8:{'spot':12834,'sun_l2':3208,'sun_l1':6788,'sun_l3':1200,'sun_l4':832,'sun_l5':208},12:{'spot':4800,'sun_l2':1200,'sun_l1':3208,'sun_l3':424,'sun_l4':300,'sun_l5':106}}}
     },
@@ -12454,7 +12454,7 @@ var LIGHTS = {
       name:'ARRI SUN 200W', group:'HMI Lens', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', desc:'200W HMI PAR — lens interchange', emoji:'⚫', watts:200,
       weight:'2 kg', size:'210×270×270 mm', ccts:[5600], accessories:['spot','sun_l1','sun_l2','sun_l3','sun_l4','sun_l5'], accAngles:{sun_l1:15.3,sun_l2:24,sun_l3:43.4,sun_l4:57,sun_l5:62.6},
       dmx:{led:'HMI',power:'200W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p16 の紙面から。F値（ISO800 / 30FPS）を
+      // 配光資料 p16 の紙面から。F値（ISO800 / 30FPS）を
       // lux に換算（lux = f² × 18.75）。1/2/3/5/8m。
       //   スポットモード  F90 1/2 / F64 / F32 1/2 / F22 1/2 / F16
       //   1.ベリーナロー  F90 / F45 1/2 / F32 / F16 1/2 / F11 1/2
@@ -12470,12 +12470,12 @@ var LIGHTS = {
       name:'ARRI 18kW HMI', group:'HMI', desc:'18000W HMI Fresnel', emoji:'⚫', watts:18000, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       weight:'73 kg', size:'1236×1040×825 mm', ccts:[5600], accessories:['flat','medium','spot'], accAngles:{medium:30,spot:11,flat:56},
       dmx:{led:'HMI',power:'18000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        3m F64, 5m F32 1/2, 8m F22 1/2, 12m F16 1/2, 15m F16
       //   spot        3m F180, 5m F90 1/2, 8m F64 1/2, 12m F45 1/2, 15m F45
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flat:76800,medium:177778,spot:607500},5:{flat:27153,medium:64000,spot:214784},8:{flat:12834,medium:25000,spot:108612},12:{flat:6788,medium:11111,spot:53696},15:{flat:4800,medium:7111,spot:37969}}}
     },
@@ -12484,14 +12484,14 @@ var LIGHTS = {
       name:'ARRI 18kW MAME HMI', group:'HMI', desc:'18000W HMI Fresnel — twin fan, tilts 90° down', emoji:'⚫', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', watts:18000,
       weight:'76 kg', size:'1236×1040×825 mm', ccts:[5600], accessories:['flat','medium','spot'], accAngles:{flat:56,medium:30,spot:11}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       dmx:{power:'18000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        3m F64, 5m F32 1/2, 8m F22 1/2, 12m F16, 15m F11 1/2
       //   spot        3m F128, 5m F90 1/2, 8m F64, 12m F45, 15m F32 1/2
       /* 角度は ARRI Daylight 18/12 の公表値（MAME は二重ファンで下向き 90° まで
          振れる型。光学系は同じ）。Middle は ARRI 公表の 10m 16,000 lux を
-         逆二乗で伸ばしたもの。Flood・Spot の照度は ARC の実測のまま。 */
+         逆二乗で伸ばしたもの。Flood・Spot の照度は 表の値のまま。 */
       refData:{5600:{3:{flat:76800,medium:177778,spot:307200},5:{flat:27153,medium:64000,spot:214784},8:{flat:12834,medium:25000,spot:76800},12:{flat:4800,medium:11111,spot:37969},15:{flat:3208,medium:7111,spot:27153}}}
     },
     arri_m40: {
@@ -12499,12 +12499,12 @@ var LIGHTS = {
       name:'ARRI M40', group:'HMI Open', desc:'4000W HMI Fresnel Open', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:4000,
       weight:'19 kg', size:'724×505×524 mm', ccts:[5600], accessories:['flood','medium','spot'], accAngles:{flood:52,medium:30,spot:18},
       dmx:{led:'HMI',power:'4000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flood       3m F32 1/2, 5m F22, 8m F11 1/2, 12m F8 1/2, 15m F8
       //   spot        3m F64 1/2, 5m F45, 8m F32, 12m F22, 15m F16
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flood:27153,medium:71667,spot:215278},5:{flood:9075,medium:25800,spot:77500},8:{flood:3208,medium:10078,spot:30273},12:{flood:1697,medium:4479,spot:13455},15:{flood:1200,medium:2867,spot:8611}}}
     },
@@ -12515,9 +12515,9 @@ var LIGHTS = {
       accessories:['flood','medium','spot','arx_sr_fl','arx_sr_mid','arx_sr_sp'],
       accAngles:{flood:50,medium:30,spot:16,arx_sr_fl:15,arx_sr_mid:12,arx_sr_sp:10},
       dmx:{led:'HMI',power:'18000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   spot   3m F180, 5m F90 1/2, 8m F64 1/2, 12m F45 1/2, 15m F45, 20m F32
       //   flood  5m F22, 8m F16, 12m F11, 15m F8 1/2, 20m F8（紙面 p14 どおり）
       //   flood の 3m は紙面では F64 だが入れていない。5m 以降は逆二乗から
@@ -12526,7 +12526,7 @@ var LIGHTS = {
       //   F38 前後になるので、紙面側の誤植とみて空けた（3m は逆二乗で補間）。
       //   カタログは 20m までなので、別の出どころだった 30m は落とした
       //   （20m の F8 より明るい値が残り、遠いほうが明るくなっていた）。
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       // 別売スポットリフレクター（arx_sr_*）は ARRI 公表の 10m の値を逆二乗で
       // 伸ばしたもの。ARRI は最短 15m を想定しているので、近距離は目安。
@@ -12546,7 +12546,7 @@ var LIGHTS = {
       accessories:['flood','medium','spot','arx_sr_fl','arx_sr_mid','arx_sr_sp'],
       accAngles:{flood:50,medium:30,spot:16,arx_sr_fl:13,arx_sr_mid:10,arx_sr_sp:7},
       dmx:{led:'HMI',power:'12000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       // 別売スポットリフレクター（arx_sr_*）は ARRI 公表の 10m の値を逆二乗で
       // 伸ばしたもの。Middle は、元から入っていた 12m 76,000 lux とほぼ一致する
@@ -12565,14 +12565,14 @@ var LIGHTS = {
       weight:'39.5 kg', size:'832×713×720 mm', ccts:[5600], accessories:['flood','medium','spot'], accAngles:{spot:16,flood:49,medium:30},
       dmx:{led:'HMI',power:'9000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flood       3m F90, 5m F32 1/2, 8m F22 1/2, 12m F16 1/2, 15m F11 1/2, 20m F11
       //   spot        3m F180, 5m F90, 8m F64, 12m F32 1/2, 15m F32, 20m F22 1/2
       //   spot の 12m / 15m はカタログ紙面（p14）どおり。CSV はこの2点が
       //   入れ替わっていた（紙面は 12m F32 1/2、15m F32）ので紙面を採った。
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flood:151875,medium:202778,spot:607500},5:{flood:27153,medium:73000,spot:151875},8:{flood:12834,medium:28516,spot:76800},12:{flood:6788,medium:12674,spot:27153},15:{flood:3208,medium:8111,spot:19200},20:{flood:2269,medium:4563,spot:12834}}}
     },
@@ -12581,7 +12581,7 @@ var LIGHTS = {
       weight:'39.5 kg', size:'832×713×720 mm', ccts:[5600], accessories:['flood','medium','spot'], accAngles:{spot:15,flood:43,medium:30},
       dmx:{led:'HMI',power:'6000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50–100%',effects:[]},
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flood:58156,medium:106311,spot:202500},5:{flood:20936,medium:38272,spot:71600},8:{flood:8178,medium:14950,spot:36200},12:{flood:3635,medium:6644,spot:17900},15:{flood:2326,medium:4252,spot:12657},20:{flood:1309,medium:2392,spot:6400}}}
     },
@@ -12590,12 +12590,12 @@ var LIGHTS = {
       name:'ARRI M18', group:'HMI Open', desc:'1800W HMI Fresnel Open', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:1800,
       weight:'10.5 kg', size:'543×388×412 mm', ccts:[5600], accessories:['flood','medium','spot'], accAngles:{spot:16,medium:39,flood:63},
       dmx:{led:'HMI',power:'1800W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flood       3m F32, 5m F16 1/2, 8m F11, 12m F8, 15m F5.6 1/2
       //   spot        3m F64, 5m F32 1/2, 8m F22 1/2, 12m F16, 15m F11
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flood:9556,medium:19200,spot:76800},5:{flood:3440,medium:6788,spot:27153},8:{flood:1344,medium:2269,spot:12834},12:{flood:597,medium:1200,spot:4800},15:{flood:382,medium:832,spot:2269}}}
     },
@@ -12604,12 +12604,12 @@ var LIGHTS = {
       name:'ARRI M8', group:'HMI Open', desc:'800W HMI Fresnel Open', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:800,
       weight:'7.8 kg', size:'476×350×319 mm', ccts:[5600], accessories:['flood','medium','spot'], accAngles:{medium:40,spot:15,flood:60},
       dmx:{led:'HMI',power:'800W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flood       3m F16, 5m F8 1/2, 8m F5.6, 12m F4, 15m F2.8 1/2
       //   spot        3m F45 1/2, 5m F32, 8m F16 1/2, 12m F11 1/2, 15m F8 1/2
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flood:4800,medium:8456,spot:53696},5:{flood:1697,medium:3044,spot:19200},8:{flood:588,medium:1189,spot:6788},12:{flood:300,medium:528,spot:3208},15:{flood:208,medium:338,spot:1697}}}
     },
@@ -12618,12 +12618,12 @@ var LIGHTS = {
       name:'ARRI TRUE BLUE D25', group:'HMI', desc:'2500W HMI Fresnel Lens', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"18\"/><circle cx=\"42\" cy=\"40\" r=\"12\"/><circle cx=\"42\" cy=\"40\" r=\"6\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:2500,
       weight:'15 kg', size:'643×464×390 mm', ccts:[5600], accessories:['flat','medium','spot'], accAngles:{flat:59,spot:6,medium:30}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       dmx:{led:'HMI',power:'2500W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        2m F32 1/2, 3m F22 1/2, 5m F16, 8m F8 1/2, 12m F4 1/2
       //   spot        2m F90, 3m F64 1/2, 5m F45, 8m F32, 12m F16 1/2
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{2:{flat:27153,medium:69250,spot:405688},3:{flat:12834,medium:30778,spot:180306},5:{flat:4800,medium:11080,spot:64910},8:{flat:1697,medium:4328,spot:25355},12:{flat:424,medium:1924,spot:11269}}}
     },
@@ -12632,12 +12632,12 @@ var LIGHTS = {
       name:'ARRI TRUE BLUE D12', group:'HMI', desc:'1200W HMI Fresnel Lens', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"18\"/><circle cx=\"42\" cy=\"40\" r=\"12\"/><circle cx=\"42\" cy=\"40\" r=\"6\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:1200,
       weight:'9.9 kg', size:'511×374×325 mm', ccts:[5600], accessories:['flat','medium','spot'], accAngles:{flat:50,spot:7.5,medium:30}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       dmx:{led:'HMI',power:'1200W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        2m F22 1/2, 3m F16, 5m F11, 8m F5.6 1/2, 12m F4 1/2
       //   spot        2m F64, 3m F45, 5m F22 1/2, 8m F16 1/2, 12m F11
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{2:{flat:12834,medium:34438,spot:148125},3:{flat:4800,medium:15306,spot:65833},5:{flat:2269,medium:5510,spot:23700},8:{flat:832,medium:2152,spot:9258},12:{flat:424,medium:957,spot:4115}}}
     },
@@ -12646,9 +12646,9 @@ var LIGHTS = {
       name:'ARRI TRUE BLUE D5', group:'HMI', desc:'575W HMI Fresnel Lens', emoji:'⚫', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"18\"/><circle cx=\"42\" cy=\"40\" r=\"12\"/><circle cx=\"42\" cy=\"40\" r=\"6\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', watts:575,
       weight:'7.5 kg', size:'360×327×223 mm', ccts:[5600], accessories:['flat','medium','spot'], accAngles:{flat:56,spot:6,medium:30}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       dmx:{led:'HMI',power:'575W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   spot   2m F64, 3m F45, 5m F22 1/2, 8m F16, 12m F11
       //   flat   2m F16 1/2, 3m F11, 5m F5.6 1/2, 8m F8 1/2, 12m F2.8 1/2
       //   flat の 8m は紙面どおり F8 1/2。前後（5m F5.6 1/2、12m F2.8 1/2）
@@ -12666,7 +12666,7 @@ var LIGHTS = {
       // なお flat の 2m→3m の比は 2.99 で、逆二乗の 2.25 より急になっている。
       // F値の読みが 1/3 段ほどずれると起きる範囲で、8m ほど極端ではないため
       // そのまま残してある。spot 側は 2.02 / 2.96 / 2.67 / 2.12 と概ね妥当。
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{2:{flat:6788,medium:17325,spot:76800},3:{flat:2269,medium:7700,spot:37969},5:{flat:832,medium:2772,spot:12834},8:{medium:1083,spot:4800},12:{flat:208,medium:481,spot:2269}}}
     },
@@ -12675,28 +12675,28 @@ var LIGHTS = {
       ccts:[5600], accessories:['spot','pp_tconv','pp_narrow','pp_medium','pp_wide','pp_frost'], accBeams:{pp_narrow:'~15°',pp_medium:'~25°',pp_wide:'~40°',pp_frost:'~50°'}, accLabels:{pp_narrow:'1. Spot',pp_medium:'2. Medium',pp_wide:'3. Flood',pp_frost:'4. Frosted Flood'}, accUnknown:['pp_tconv'],
       // 配光資料 lux.pdf（ポケットパー 125W スポットモード + レンズセット）。
       // web カタログ p18 の 1m/2m は「125W エリレンズキット」という別製品のため取り込まない。
-      // ARC SYSTEM カタログ 2026 p17 の紙面から。F値（ISO800 / 30FPS）を lux に
+      // 配光資料 p17 の紙面から。F値（ISO800 / 30FPS）を lux に
       // 換算（lux = f² × 18.75）。1/2/3/5/8m。
       // 125W のレンズセットは「1.T変換3600K / 2.ナロー / 3.ミディアム /
       // 4.ワイド / 5.フロスト」の5種。ベリーナローは無い。
       // フロストの 8m は紙面が F- で値なし。
-      // 元の値も ARC 由来だったが丸められており 3/5/8m の3点だけだった。
+      // 元の値も 同じ資料の由来だったが丸められており 3/5/8m の3点だけだった。
       refData:{5600:{1:{'pp_frost':4800,'pp_medium':27153,'pp_narrow':37969,'pp_tconv':19200,'pp_wide':6788,'spot':214784},2:{'pp_frost':832,'pp_medium':4800,'pp_narrow':12834,'pp_tconv':6788,'pp_wide':1200,'spot':76800},3:{'pp_frost':424,'pp_medium':2269,'pp_narrow':6788,'pp_tconv':3208,'pp_wide':588,'spot':27153},5:{'pp_frost':147,'pp_medium':1200,'pp_narrow':2269,'pp_tconv':1200,'pp_wide':208,'spot':12834},8:{'pp_medium':424,'pp_narrow':1200,'pp_tconv':588,'pp_wide':75,'spot':4800}}}
     },
     pp_125_cyl: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'2.5 kg', name:'Pocket Par 125W Cyl', emoji:'💡', watts:125,
       ccts:[5600], accessories:['flat'],
-      // ARC SYSTEM カタログ 2026 p17「125W パーキットシリンダー」の紙面から。
+      // 配光資料 p17「125W パーキットシリンダー」の紙面から。
       // 0.5/1/2m（3m は紙面が F- で値なし）。フラットとスポットは同値。
       // 元の値（3m 2400 / 5m 1200）は出どころ不明で、ディフューザー筒として
-      // 明るすぎた（ARC の 0.5m から逆二乗で伸ばすと 3m は 47 程度）。
+      // 明るすぎた（資料の 0.5m から逆二乗で伸ばすと 3m は 47 程度）。
       refData:{5600:{0.5:{'flat':1697},1:{'flat':588},2:{'flat':106}}}
     },
     pp_200: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'1.9 kg', name:'Pocket Par 200W', emoji:'💡', watts:200,
       // HMI なので色温度は変わらない。ランプ固定の 5600K のみ。
       ccts:[5600], accessories:['spot','pp_tconv','pp_narrow','pp_medium','pp_wide','pp_frost'], accBeams:{pp_narrow:'~15°',pp_medium:'~25°',pp_wide:'~40°',pp_frost:'~50°'}, accLabels:{pp_narrow:'1. Spot',pp_medium:'2. Medium',pp_wide:'3. Flood',pp_frost:'4. Frosted Flood'}, accUnknown:['pp_tconv'],
-      // ARC SYSTEM カタログ 2026 p17 の紙面から。1/2/3/5/8m。
+      // 配光資料 p17 の紙面から。1/2/3/5/8m。
       // 200W のレンズセットは「1.T変換 / 2.ナロー / 3.ミディアム / 4.ワイド /
       // 5.フロスト」。T変換とナローは紙面で同値（F90 / F45 / F32 / F16 / F11）
       // なので、T変換はナローに変換コーティングを掛けたものと思われる。
@@ -12705,15 +12705,15 @@ var LIGHTS = {
     pp_200_cyl: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'2 kg', name:'Pocket Par 200W Cyl', emoji:'💡', watts:200,
       ccts:[5600], accessories:['flat'],
-      // ARC SYSTEM カタログ 2026 p17「200W パーキットシリンダー」の紙面から。
-      // 0.5/1/2/3m。元は 0.5m だけが ARC と一致していた。
+      // 配光資料 p17「200W パーキットシリンダー」の紙面から。
+      // 0.5/1/2/3m。元は 0.5m だけが 資料と一致していた。
       refData:{5600:{0.5:{'flat':2269},1:{'flat':832},2:{'flat':208},3:{'flat':106}}}
     },
     pp_400: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'2.8 kg', name:'Pocket Par 400W', emoji:'💡', watts:400,
       // HMI なので色温度は変わらない。ランプ固定の 5600K のみ。
       ccts:[5600], accessories:['spot','pp_tconv','pp_vnarrow','pp_narrow','pp_medium','pp_wide','pp_frost'], accAngles:{pp_vnarrow:10,pp_narrow:24,pp_medium:42,pp_wide:45,pp_frost:50}, accUnknown:['pp_tconv'],
-      // ARC SYSTEM カタログ 2026 p16 の紙面から。1/2/3/5/8m。
+      // 配光資料 p16 の紙面から。1/2/3/5/8m。
       // 400W のレンズセットは「1.ベリーナロー / 2.ナロー / 3.ミディアム /
       // 4.ワイド / 5.フロスト / 6.T変換(3600k)」の6種。
       // スポットモードは 1m 列が空で 2m から（元のアプリの並びが正しかった）。
@@ -12722,8 +12722,8 @@ var LIGHTS = {
     pp_400_cyl: {
       group:'HMI', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M42 12 H82 Q96 12 96 26 V54 Q96 68 82 68 H42\"/><circle cx=\"42\" cy=\"40\" r=\"24\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 16 L42 64\"/><path d=\"M26 22 L58 58\"/><path d=\"M58 22 L26 58\"/><path d=\"M20 40 H64\"/><path d=\"M30 16 Q42 40 30 64\"/><path d=\"M54 16 Q42 40 54 64\"/><path d=\"M34 16 L22 20 L20 28\"/><path d=\"M34 64 L22 60 L20 52\"/><path d=\"M42 64 V74\"/><path d=\"M58 64 V74\"/><path d=\"M42 74 H58\"/><path d=\"M56 40 H72\"/></g></svg>', weight:'2 kg', name:'Pocket Par 400W Cyl', emoji:'💡', watts:400,
       ccts:[5600], accessories:['flat'],
-      // ARC SYSTEM カタログ 2026 p16「400W パーキットシリンダー」の紙面から。
-      // 0.5/1/2/3m。元は 3m だけが ARC と一致していた。
+      // 配光資料 p16「400W パーキットシリンダー」の紙面から。
+      // 0.5/1/2/3m。元は 3m だけが 資料と一致していた。
       refData:{5600:{0.5:{'flat':1697},1:{'flat':832},2:{'flat':208},3:{'flat':75}}}
     },
     true_blue_d40: {
@@ -12733,13 +12733,13 @@ var LIGHTS = {
       // 角度は ARRI が公表していないので accUnknown にしてある（図は出ない）。
       ccts:[5600], accessories:['flat','medium','spot','clear'], accUnknown:['clear'],
       accAngles:{flat:61,spot:6.5,medium:30}, accLabels:{flat:'FLOOD',spot:'SPOT',clear:'CLEAR'},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        2m F45 1/3, 3m F32 1/3, 5m F16 2/3, 8m F11 1/2, 12m F8 1/2
       //   spot        2m F128 1/2, 3m F90 1/2, 5m F64 1/3, 8m F32 2/3, 12m F22 2/3
       //   clear       2m F22, 3m F16 1/3, 5m F8 2/3, 8m F5.6 1/2, 12m F4 1/3
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{2:{flat:47838,medium:113000,spot:434446,clear:9075},3:{flat:24190,medium:50222,spot:214784,clear:6048},5:{flat:7620,medium:18080,spot:96762,clear:1905},8:{flat:3208,medium:7063,spot:30478,clear:832},12:{flat:1697,medium:3139,spot:14406,clear:378}}}
     },
@@ -12751,12 +12751,12 @@ var LIGHTS = {
       // spot の 3m / 5m は元々抜けていたので補った。
       // flat の 8m / 15m は旧データがカタログと 1/2 段ずれていた
       //（F16→F16 1/2、F8→F8 1/2）。前後の距離と較べても暗すぎたので直した。
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        3m F45, 5m F32, 8m F16 1/2, 12m F11 1/2, 15m F8 1/2
       //   spot        3m F128 1/2, 5m F90 1/2, 8m F64, 12m F45, 15m F32 1/2
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flat:37969,medium:122056,spot:434446},5:{flat:19200,medium:43940,spot:214784},8:{flat:6788,medium:17164,spot:76800},12:{flat:3208,medium:7628,spot:37969},15:{flat:1697,medium:4882,spot:27153}}}
     },
@@ -12765,23 +12765,23 @@ var LIGHTS = {
       weight:'62 kg',
       ccts:[5600], accessories:['flat','medium','spot','clear'], accUnknown:['clear'], accAngles:{flat:48,spot:5.3,medium:30}, accLabels:{flat:'FLOOD',spot:'SPOT'},
       // spot の 3m / 5m / 8m が抜けていた。同じくカタログの F 値から補った。
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        3m F45 1/2, 5m F32, 8m F16 1/2, 12m F11 1/2, 15m F11
       //   spot        3m F180, 5m F128, 8m F64 1/2, 12m F45 1/2, 15m F45
       //   クリアレンズはカタログ紙面（p8）から。CSV は 6kW コンパクトの行として
       //   記録されていたが、紙面ではこちらの灯体の行だった。
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flat:53696,medium:122056,spot:607500,clear:11434},5:{flat:19200,medium:43940,spot:307200,clear:4800},8:{flat:6788,medium:17164,spot:108612,clear:1905},12:{flat:3208,medium:7628,spot:53696,clear:832},15:{flat:2269,medium:4882,spot:37969,clear:588}}}
     },
     arri_200: {
       group:'HMI', weight:'3 kg', name:'ARRI 200W Compact HMI', emoji:'💡', watts:200, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       ccts:[5600], accessories:['flat','spot'], accAngles:{flat:52,spot:8.5}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        1m F16 1/2, 2m F8 1/2, 3m F5.6 1/2, 5m F4
       //   spot        1m F45 1/2, 2m F32, 3m F22, 5m F11 1/2
       /* 角度は ARRI の公表値。 */
@@ -12791,42 +12791,42 @@ var LIGHTS = {
       group:'HMI', weight:'34 kg', name:'ARRI 6kW Compact HMI', emoji:'💡', watts:6000, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       ccts:[5600], accessories:['flat','medium','spot','clear'], accUnknown:['clear'], // ARRI Compact 6000 Plus の IES の角度
       accAngles:{flat:58,spot:5.2,medium:30}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   flat        3m F32 1/2, 5m F22 1/2, 8m F11 1/2, 12m F8 1/2, 15m F8
       //   spot        3m F90, 5m F64, 8m F32 1/2, 12m F22 1/2, 15m F22
       //   クリアレンズの2行は、カタログの同じページに 12kW と 6kW が並んでいて
       //   どちらの行か判別できないため入れていない。
       //   クリアレンズはカタログ紙面（p8）から。
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{3:{flat:27153,medium:67122,spot:527744,clear:6788},5:{flat:12834,medium:24164,spot:189988,clear:2858},8:{flat:3208,medium:9439,spot:74214,clear:933},12:{flat:1697,medium:4195,spot:32984,clear:476},15:{flat:1200,medium:2685,spot:21110,clear:300}}}
     },
     arri_x_1200: {
       group:'HMI Open', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"16\" y=\"10\" width=\"52\" height=\"60\" rx=\"3\"/><path d=\"M68 20 H96 V60 H68\"/><circle cx=\"42\" cy=\"40\" r=\"21\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 19 V61\"/><path d=\"M21 40 H63\"/><path d=\"M27 25 L57 55\"/><path d=\"M57 25 L27 55\"/><path d=\"M42 70 V76\"/><path d=\"M58 70 V76\"/><path d=\"M42 76 H58\"/><path d=\"M96 40 H108\"/></g></svg>', weight:'16 kg', name:'ARRI X 1.2kW HMI', emoji:'💡', watts:1200,
       ccts:[5600], accessories:['spot'],
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   spot        2m F11 1/2, 3m F8 1/2, 5m F5.6, 8m F4, 12m F2 1/2
       refData:{5600:{2:{spot:3208},3:{spot:1697},5:{spot:588},8:{spot:300},12:{spot:106}}}
     },
     arri_x_575: {
       group:'HMI Open', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"16\" y=\"10\" width=\"52\" height=\"60\" rx=\"3\"/><path d=\"M68 20 H96 V60 H68\"/><circle cx=\"42\" cy=\"40\" r=\"21\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 19 V61\"/><path d=\"M21 40 H63\"/><path d=\"M27 25 L57 55\"/><path d=\"M57 25 L27 55\"/><path d=\"M42 70 V76\"/><path d=\"M58 70 V76\"/><path d=\"M42 76 H58\"/><path d=\"M96 40 H108\"/></g></svg>', weight:'8.5 kg', name:'ARRI X 575W HMI', emoji:'💡', watts:575,
       ccts:[5600], accessories:["spot"],
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   spot        2m F8, 3m F5.6, 5m F4, 8m F2 1/2
       refData:{5600:{2:{spot:1200},3:{spot:588},5:{spot:300},8:{spot:106}}}
     },
     arri_x_4k: {
       group:'HMI Open', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"16\" y=\"10\" width=\"52\" height=\"60\" rx=\"3\"/><path d=\"M68 20 H96 V60 H68\"/><circle cx=\"42\" cy=\"40\" r=\"21\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 19 V61\"/><path d=\"M21 40 H63\"/><path d=\"M27 25 L57 55\"/><path d=\"M57 25 L27 55\"/><path d=\"M42 70 V76\"/><path d=\"M58 70 V76\"/><path d=\"M42 76 H58\"/><path d=\"M96 40 H108\"/></g></svg>', weight:'20 kg', name:'ARRI X 4kW HMI', emoji:'💡', watts:4000,
       ccts:[5600], accessories:['spot'],
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   spot        2m F22, 3m F16, 5m F11, 8m F5.6 1/2, 12m F4
       refData:{5600:{2:{spot:9075},3:{spot:4800},5:{spot:2269},8:{spot:832},12:{spot:300}}}
     },
@@ -12844,9 +12844,9 @@ var LIGHTS = {
     arri_x_2500: {
       group:'HMI Open', svgIcon:'<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"16\" y=\"10\" width=\"52\" height=\"60\" rx=\"3\"/><path d=\"M68 20 H96 V60 H68\"/><circle cx=\"42\" cy=\"40\" r=\"21\"/><circle cx=\"42\" cy=\"40\" r=\"5\"/><path d=\"M42 19 V61\"/><path d=\"M21 40 H63\"/><path d=\"M27 25 L57 55\"/><path d=\"M57 25 L27 55\"/><path d=\"M42 70 V76\"/><path d=\"M58 70 V76\"/><path d=\"M42 76 H58\"/><path d=\"M96 40 H108\"/></g></svg>', weight:'20 kg', name:'ARRI X 2.5kW HMI', emoji:'💡', watts:2500,
       ccts:[5600], accessories:['spot'],
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   spot        2m F16 1/2, 3m F11 1/2, 5m F8, 8m F5.6, 12m F2.8 1/2
       refData:{5600:{2:{spot:6788},3:{spot:3208},5:{spot:1200},8:{spot:588},12:{spot:208}}}
     },
@@ -12900,7 +12900,7 @@ var LIGHTS = {
     arri_2500: {
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'14.8 kg', name:'ARRI 2.5kW Compact HMI', emoji:'💡', watts:2500,
       ccts:[5600], accessories:['flat','medium','spot'], accAngles:{flat:56,spot:6.4,medium:30}, accLabels:{flat:'FLOOD',spot:'SPOT'},
-      /* 角度は ARRI の公表値。ARC の実測と位置が合わなかったぶんと Middle は、
+      /* 角度は ARRI の公表値。表の値と位置が合わなかったぶんと Middle は、
          ARRI 公表の 10m の値を逆二乗で各距離に伸ばした。 */
       refData:{5600:{2:{flat:27000,medium:59438},3:{flat:14000,medium:26417},5:{flat:3400,medium:9510,spot:54000},8:{flat:1700,medium:3715,spot:19000},12:{flat:840,medium:1651,spot:6800}}}
     },
@@ -13188,8 +13188,8 @@ var LIGHTS = {
       url:'https://k5600.com/collections/800/Joker',
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'4.2 kg', name:'Joker² 800', desc:'800W HMI Fresnel Lens', emoji:'💛', watts:800,
       ccts:[5600], accessories:['sf_lens'],
-      // ARC SYSTEM カタログ 2026 p23「800W ジョーカー2 ソースフォー」の紙面から。
-      // 標準レンズ 26°。1/2/3/5/8m。元の値も ARC 由来だったが3桁に丸めて
+      // 配光資料 p23「800W ジョーカー2 ソースフォー」の紙面から。
+      // 標準レンズ 26°。1/2/3/5/8m。元の値も 同じ資料の由来だったが3桁に丸めて
       // いた。紙面では 1600W バグビームと完全に同値（どちらもソースフォーの
       // 筒に 26° 標準レンズ）。
       refData:{'sf_lens':{5600:{1:151875,2:53696,3:24190,5:7620,8:3208}}}
@@ -13203,22 +13203,22 @@ var LIGHTS = {
       accAngles:{joker_open:5}, accBeams:{joker_open:'5°'},
       dmx:{led:'HMI',power:'400W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p21「400W ジョーカー2」レンズ無しの紙面から。
-      // 1/2/3/5/8m。元の値も ARC 由来だったが3桁に丸められていた。
-      // ARC SYSTEM カタログ 2026 p21 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 配光資料 p21「400W ジョーカー2」レンズ無しの紙面から。
+      // 1/2/3/5/8m。元の値も 同じ資料の由来だったが3桁に丸められていた。
+      // 配光資料 p21 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
       //   レンズ無し    1/2/3/5/8m
       //   ソフトチューブ 0.5m F11 / 1m F5.6 1/2 / 2m F2.8 1/2 / 3m F2 1/2
       // 「400W ジョーカーチューブ（SOFTUBE）」は灯体の先に付けるディフューザー
       // なので付属品として入れた。紙面では 200W と 400W が完全に同値。筒の
       // 表面そのものが発光面になるので、近距離では中の球の出力に関わらず
       // 同じ読みになる（0.5→1m の落ち方も指数 -1.45 で面光源らしい）。
-      // 角度は ARC も K5600 も公表していない。ACC_INFO の soft_tube に
+      // 角度は 資料も K5600 も公表していない。ACC_INFO の soft_tube に
       // 元からある 120° を使っている（アプリ側の見積り値）。
       // レンズ4枚（Medium / Wide / Super Wide / Frosted Fresnel）と
       // Bug-A-Beam の S4、Octa 3 は K5600 の公表値（1/3/5m）。K5600 は 6000K で
       // 出しているが、この機種のほかの値と同じ 5600K の欄に入れている。
-      // レンズ無しは ARC の実測を残した（K5600 は 1m 1,250,000 lux で 0.5段 明るい）。
+      // レンズ無しは 表の値を残した（K5600 は 1m 1,250,000 lux で 0.5段 明るい）。
       // 角度はレンズ無しも含めて K5600 の公表値。Medium と Wide は楕円。
       refData:{'joker_open':{5600:{1:859135,2:307200,3:151875,5:76800,8:27153}},'soft_tube':{5600:{0.5:2269,1:832,2:208,3:106}},
         'jk_med':{5600:{1:160000,3:17778,5:6400}},'jk_wide':{5600:{1:53500,3:5944,5:2140}},
@@ -13234,18 +13234,18 @@ var LIGHTS = {
       accessories:['joker_open','soft_tube'],
       dmx:{led:'HMI',power:'200W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p21「200W ジョーカー2」レンズ無しの紙面から。
+      // 配光資料 p21「200W ジョーカー2」レンズ無しの紙面から。
       // F値（ISO800 / 30FPS）を lux に換算（lux = f² × 18.75）。1/2/3/5/8m。
-      // 元の値も ARC 由来だったが3桁に丸められていた。
-      // ARC SYSTEM カタログ 2026 p21 の紙面から。F値（ISO800 / 30FPS）を
-      // lux に換算（lux = f² × 18.75）。ARC の実測値が最優先。
+      // 元の値も 同じ資料の由来だったが3桁に丸められていた。
+      // 配光資料 p21 の紙面から。F値（ISO800 / 30FPS）を
+      // lux に換算（lux = f² × 18.75）。表の値を優先する。
       //   レンズ無し    1/2/3/5/8m
       //   ソフトチューブ 0.5m F11 / 1m F5.6 1/2 / 2m F2.8 1/2 / 3m F2 1/2
       // 「200W ジョーカーチューブ（SOFTUBE）」は灯体の先に付けるディフューザー
       // なので付属品として入れた。紙面では 200W と 400W が完全に同値。筒の
       // 表面そのものが発光面になるので、近距離では中の球の出力に関わらず
       // 同じ読みになる（0.5→1m の落ち方も指数 -1.45 で面光源らしい）。
-      // 角度は ARC も K5600 も公表していない。ACC_INFO の soft_tube に
+      // 角度は 資料も K5600 も公表していない。ACC_INFO の soft_tube に
       // 元からある 120° を使っている（アプリ側の見積り値）。
       refData:{'joker_open':{5600:{1:434446,2:108612,3:37969,5:19200,8:6788}},'soft_tube':{5600:{0.5:2269,1:832,2:208,3:106}}}
     },
@@ -13256,11 +13256,11 @@ var LIGHTS = {
       ccts:[5600],
       accessories:['spot','flat','clear_spot','clear_flat'],
       accLabels:{spot:'FRESNEL (S)',flat:'FRESNEL (F)',clear_spot:'CLEAR (S)',clear_flat:'CLEAR (F)'},
-      // 角度は ARC SYSTEM も K5600 も公表していない
+      // 角度は 配光資料 も K5600 も公表していない
       accUnknown:['spot','flat','clear_spot','clear_flat'],
       dmx:{led:'HMI',power:'12000W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p7。ISO800 / 30FPS の F値を lux に換算
+      // 配光資料 p7。ISO800 / 30FPS の F値を lux に換算
       // （lux = f² × 18.75）。3 / 5 / 8 / 12 / 15m。
       // フレネル（S） F64 1/2, F45, F32, F22, F16
       // フレネル（F） F45 1/2, F32, F16 1/2, F11 1/2, F8 1/2
@@ -13268,9 +13268,9 @@ var LIGHTS = {
       // クリア（F）   F22, F11 1/2, F8 1/2, F5.6, F2.8 1/2
       // カタログの注記: フレネルは色温度 5800K・CC 2M、クリアは 5620K・CC 3M。
       // アプリの色温度は 5600K の枠に入れている（HMI の球のばらつきの範囲内）。
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   spot        3m F64 1/2, 5m F45, 8m F32, 12m F22, 15m F16
       //   flat        3m F45 1/2, 5m F32, 8m F16 1/2, 12m F11 1/2, 15m F8 1/2
       //   clear_spot  3m F22 1/2, 5m F16, 8m F11, 12m F5.6 1/2, 15m F4
@@ -13284,11 +13284,11 @@ var LIGHTS = {
       name:'Alpha 4kW HMI', desc:'4kW HMI, Clear / two Fresnel lenses', emoji:'💡', watts:4000,
       ccts:[5600],
       accessories:['clear','fres_s_spot','fres_s_flat','fres_f_spot','fres_f_flat'],
-      // 角度は ARC SYSTEM も K5600 も公表していない
+      // 角度は 配光資料 も K5600 も公表していない
       accUnknown:['clear','fres_s_spot','fres_s_flat','fres_f_spot','fres_f_flat'],
       dmx:{led:'HMI',power:'4000W / 2500W',cct:'5600K (HMI)',cri:'>90',tlci:'>90',ip:'IP20',
         control:'Manual / DMX Ballast',dimming:'50%–100%',effects:[]},
-      // ARC SYSTEM カタログ 2026 p9。ISO800 / 30FPS の F値を lux に換算。
+      // 配光資料 p9。ISO800 / 30FPS の F値を lux に換算。
       // 2 / 3 / 5 / 8 / 12m。フレネルレンズは SPOT 用と FLAT 用の2種があり、
       // それぞれ灯体側のフラット／スポットで測られている。
       // クリアレンズ         F22 1/2, F16 1/2, F11, F5.6 1/2, F4 1/2
@@ -13296,9 +13296,9 @@ var LIGHTS = {
       // フレネルSPOT フラット F45, F32, F22, F11 1/2, F8 1/2
       // フレネルFLAT スポット F45 1/2, F32 1/2, F22 1/2, F16, F11
       // フレネルFLAT フラット F32 1/2, F22 1/2, F16, F11, F8
-      // ARC SYSTEM カタログ 2026 の F値（ISO800 / 30FPS）を lux に換算。
+      // 配光資料 の F値（ISO800 / 30FPS）を lux に換算。
       // lux = f² × 18.75（半段は f 値に 2^(1/4)、1/3段は 2^(1/6)、
-      // 2/3段は 2^(1/3)）。ARC の実測値が最優先。
+      // 2/3段は 2^(1/3)）。表の値を優先する。
       //   clear       2m F22 1/2, 3m F16 1/2, 5m F11, 8m F5.6 1/2, 12m F4 1/2
       //   fres_s_flat 2m F45, 3m F32, 5m F22, 8m F11 1/2, 12m F8 1/2
       //   fres_s_spot 2m F90, 3m F64 1/2, 5m F45, 8m F22 1/2, 12m F16 1/2
@@ -13310,9 +13310,9 @@ var LIGHTS = {
       url:'https://k5600.com/collections/1600/Joker',
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'7.4 kg', name:'Joker² 1600', desc:'1600W HMI Fresnel Lens', emoji:'💛', watts:1600,
       ccts:[5600], accessories:['bugbeam'],
-      // ARC SYSTEM カタログ 2026 p23「1600W バグビーム」の紙面から。
+      // 配光資料 p23「1600W バグビーム」の紙面から。
       // 標準レンズ 26°。1/2/3/5/8m。紙面では 800W ジョーカー2 ソースフォーと
-      // 完全に同値。元の値も ARC 由来だったが3桁に丸められていた。
+      // 完全に同値。元の値も 同じ資料の由来だったが3桁に丸められていた。
       refData:{'bugbeam':{5600:{1:151875,2:53696,3:24190,5:7620,8:3208}}}
     },
   
@@ -13992,7 +13992,7 @@ var LIGHTS = {
       // 重量 10.5kg は DLH1200 ヘッド単体（公式 23 lbs）。
       // 配光資料の「HMI dedo 1200 spot」は 92×106×62cm・IP63 の防水一体型で
       // 49.8kg だが、それはバラスト込みの別製品なのでここでは採らない。
-      // spot は ARC SYSTEM カタログ 2026 の「HMI Dedo 1200 Spot」の紙面から。
+      // spot は 配光資料 の「HMI Dedo 1200 Spot」の紙面から。
       // F値（ISO800 / 30FPS）を lux に換算。3m F90 / 5m F64 1/2 / 8m F45 1/2 /
       // 12m F32 2/3 / 15m F32。投影光学系なので落ち方が逆二乗よりかなり緩い
       // （3→15m で指数 -1.28）。med / flood は元の値のまま。
@@ -14002,22 +14002,22 @@ var LIGHTS = {
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'1.6 kg', name:'Dedolight 200W HMI', emoji:'🟤', watts:200,
       ccts:[5600], accessories:["flat", "spot"],
       // 配光資料（dedolight 200w）
-      // ARC SYSTEM カタログ 2026 p22 の紙面から。F値（ISO800 / 30FPS）を
+      // 配光資料 p22 の紙面から。F値（ISO800 / 30FPS）を
       // lux に換算。2/3/5/8/12m。
       //   フラット F16 1/2 / F8 1/2 / F5.6 1/2 / F4 / F2.8
       //   スポット F64 1/2 / F45 / F32 / F16 1/2 / F11
-      // 元の値も ARC 由来だったが丸められており、スポットの 2m が抜けていた。
+      // 元の値も 同じ資料の由来だったが丸められており、スポットの 2m が抜けていた。
       refData:{5600:{2:{'flat':6788,'spot':108612},3:{'flat':1697,'spot':37969},5:{'flat':832,'spot':19200},8:{'flat':300,'spot':6788},12:{'flat':147,'spot':2269}}}
     },
     dedo_400: {
       group:'HMI', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'4.6 kg', name:'Dedolight 400W HMI', emoji:'🟤', watts:400,
       ccts:[5600], accessories:["flat", "spot"],
       // 配光資料（dedolight 400w）。旧データの spot 列は 200W の値だった。
-      // ARC SYSTEM カタログ 2026 p22 の紙面から。F値（ISO800 / 30FPS）を
+      // 配光資料 p22 の紙面から。F値（ISO800 / 30FPS）を
       // lux に換算。2/3/5/8/12m。
       //   フラット F16 1/2 / F11 / F5.6 1/2 / F4 1/2 / F2.8 1/2
       //   スポット F90 / F45 1/2 / F32 1/2 / F16 1/2 / F11
-      // 元の値も ARC 由来だったが丸められており、スポットの 2m が抜けていた。
+      // 元の値も 同じ資料の由来だったが丸められており、スポットの 2m が抜けていた。
       refData:{5600:{2:{'flat':6788,'spot':151875},3:{'flat':2269,'spot':53696},5:{'flat':832,'spot':27153},8:{'flat':424,'spot':6788},12:{'flat':208,'spot':2269}}}
     },
   
@@ -14222,11 +14222,11 @@ var LIGHTS = {
     cizarno_200: {
       group:'Tungsten', svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>', weight:'2.8 kg', name:'Cizarno 200W', desc:'200W HMI Fresnel', emoji:'✨', watts:200,
       ccts:[5600], accessories:['flat','spot'],
-      // ARC SYSTEM カタログ 2026 p22（DESISTI チザーノ 200W）の紙面から。
+      // 配光資料 p22（DESISTI チザーノ 200W）の紙面から。
       // F値（ISO800 / 30FPS）を lux に換算（lux = f² × 18.75）。2/3/5/8/12m。
       //   フラット F22 / F11 / F5.6 1/2 / F4 / F2 1/2
       //   スポット F32 / F11 1/2 / F8 1/2 / F5.6 1/2 / F2.8 1/2
-      // 元の値も ARC 由来だったが丸められており、さらに HMI なのに 3200K の
+      // 元の値も 同じ資料の由来だったが丸められており、さらに HMI なのに 3200K の
       // 枠に入っていた。紙面どおり 5600K に直した。
       // スポットの 2→3m が 2.5段落ちるのは紙面にそう印字されている。
       refData:{5600:{2:{'flat':9075,'spot':19200},3:{'flat':2269,'spot':3208},5:{'flat':832,'spot':1697},8:{'flat':300,'spot':832},12:{'flat':106,'spot':208}}}
@@ -14779,10 +14779,10 @@ super_led_f47: {
     etc_sf26: {
       group:'Tungsten', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"46\" cy=\"46\" rx=\"30\" ry=\"34\"/><path d=\"M70 26 H104 V66 H70\"/><path d=\"M104 22 H140 V70 H104\"/><circle cx=\"122\" cy=\"46\" r=\"13\"/><path d=\"M84 22 V16 M92 70 V76 M96 22 V16 M80 70 V76\"/><circle cx=\"40\" cy=\"46\" r=\"6\"/><path d=\"M60 84 V92 H96 V84\"/><path d=\"M140 46 H152\"/></g></svg>', weight:'7 kg', name:'ETC Source Four 26°', desc:'750W Tungsten Ellipsoidal 26°', emoji:'🎭', watts:750,
       ccts:[3200], accessories:['spot'], accAngles:{spot:26}, accLabels:{spot:'26° Lens'},
-      // ARC SYSTEM カタログ 2026 p23「SOURCE FOUR 400W」フラットの紙面から。
-      // 1/2/3/5/8m。元の値の 1〜5m は ARC と一致していたが 8m だけ 840 で
+      // 配光資料 p23「SOURCE FOUR 400W」フラットの紙面から。
+      // 1/2/3/5/8m。元の値の 1〜5m は 資料と一致していたが 8m だけ 840 で
       // 紙面の F5.6（588）と 0.5段ずれていた。
-      // なお ARC は「SOURCE FOUR 400W」と表記している。アプリの
+      // なお 資料は「SOURCE FOUR 400W」と表記している。アプリの
       // 「ETC Source Four 26° 750W」という名前・電力とは食い違うが、
       // 名前は変えずに値だけ合わせた。
       refData:{3200:{1:{'spot':53696},2:{'spot':12834},3:{'spot':4800},5:{'spot':1697},8:{'spot':588}}}
@@ -15104,7 +15104,7 @@ super_led_f47: {
       // 角度はメーカーが公表している（素 90° / ハイパーリフレクター 65°）
       accAngles:{none:90, reflector:65},
       dmx:{led:'RGBWW',power:'360W',cct:'2500K–7500K + Full RGBWW',cri:'≤96',ip:'IP20',control:'On-board / App / DMX',dimming:'0%–100%',effects:['Flash','Pulse','TV','Fire']},
-      // ARC SYSTEM カタログ 2026 p68 の紙面から。F値（ISO800 / 30FPS）を
+      // 配光資料 p68 の紙面から。F値（ISO800 / 30FPS）を
       // lux に換算。値は元から紙面と完全一致していた（12点すべて）。
       // 'none' としていたが紙面は【リフレクター】（付属品）なので名前を直した。
       // 角度は紙面に無いので「角度未確認」（元の accAngles none:90 は汎用値）。
@@ -15701,9 +15701,9 @@ super_led_f47: {
     etc_warp575: {
       group:'HMI', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"46\" cy=\"46\" rx=\"30\" ry=\"34\"/><path d=\"M70 26 H104 V66 H70\"/><path d=\"M104 22 H140 V70 H104\"/><circle cx=\"122\" cy=\"46\" r=\"13\"/><path d=\"M84 22 V16 M92 70 V76 M96 22 V16 M80 70 V76\"/><circle cx=\"40\" cy=\"46\" r=\"6\"/><path d=\"M60 84 V92 H96 V84\"/><path d=\"M140 46 H152\"/></g></svg>', weight:'15 kg', name:'ETC WarpZoom 575W', emoji:'💡', watts:575,
       ccts:[5600], accessories:["flat"],
-      // ARC SYSTEM カタログ 2026 p23「ETC WarpZoom 575W」フラットの紙面から。
+      // 配光資料 p23「ETC WarpZoom 575W」フラットの紙面から。
       // F値（ISO800 / 30FPS）を lux に換算。1/2/3/5/8m。
-      // 元の値も ARC 由来だったが丸められていた（3m は 14000 と 0.13段ずれ）。
+      // 元の値も 同じ資料の由来だったが丸められていた（3m は 14000 と 0.13段ずれ）。
       refData:{5600:{1:{'flat':76800},2:{'flat':27153},3:{'flat':12834},5:{'flat':4800},8:{'flat':2269}}}
     },
     etc_s4led_s2_lustr: {
@@ -15743,15 +15743,15 @@ super_led_f47: {
     optex_1200: {
       group:'HMI', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M30 14 H130 L142 34 V62 L130 82 H30 L18 62 V34 Z\"/><rect x=\"34\" y=\"26\" width=\"92\" height=\"44\" rx=\"4\"/><path d=\"M34 40 H126 M34 56 H126\"/><path d=\"M62 82 V92 H98 V82\"/></g></svg>', weight:'28 kg', name:'OPTEX Aura Soft 1.2kW', emoji:'💡', watts:1200,
       ccts:[5600], accessories:["flat"],
-      // ARC SYSTEM カタログ 2026 p21「OPTEX Aura Soft 1.2kW」フラットの紙面から。
-      // 2/3/5/8m。元の値も ARC 由来だったが丸められていた。
+      // 配光資料 p21「OPTEX Aura Soft 1.2kW」フラットの紙面から。
+      // 2/3/5/8m。元の値も 同じ資料の由来だったが丸められていた。
       refData:{5600:{2:{'flat':2269},3:{'flat':1200},5:{'flat':424},8:{'flat':208}}}
     },
     optex_2500: {
       group:'HMI', svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M30 14 H130 L142 34 V62 L130 82 H30 L18 62 V34 Z\"/><rect x=\"34\" y=\"26\" width=\"92\" height=\"44\" rx=\"4\"/><path d=\"M34 40 H126 M34 56 H126\"/><path d=\"M62 82 V92 H98 V82\"/></g></svg>', weight:'37.8 kg', name:'OPTEX Aura Soft 2.5kW', emoji:'💡', watts:2500,
       ccts:[5600], accessories:["flat"],
-      // ARC SYSTEM カタログ 2026 p21「OPTEX Aura Soft 2.5kW」フラットの紙面から。
-      // 2/3/5/8m。元の値も ARC 由来だったが丸められていた（3m は 0.08段ずれ）。
+      // 配光資料 p21「OPTEX Aura Soft 2.5kW」フラットの紙面から。
+      // 2/3/5/8m。元の値も 同じ資料の由来だったが丸められていた（3m は 0.08段ずれ）。
       refData:{5600:{2:{'flat':4800},3:{'flat':2269},5:{'flat':832},8:{'flat':300}}}
     }
   },
@@ -16255,7 +16255,7 @@ super_led_f47: {
       group:'HMI', weight:'6 kg', size:'310×385×440 mm', name:'Bron Kobold DW800', desc:'800W HMI, lensless flat', emoji:'💡', watts:800, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       ccts:[5600], accessories:['flat', 'pp_vnarrow', 'pp_narrow', 'pp_medium', 'pp_wide'],
       dmx:{power:'800W',cct:'5600K',control:'Manual'},
-      /* ARC SYSTEM カタログ p18。ISO800 / 30FPS の F値を lux に換算（lux = F² × 18.75）。
+      /* 配光資料 p18。ISO800 / 30FPS の F値を lux に換算（lux = F² × 18.75）。
        * 1 / 2 / 3 / 5m の4距離、レンズなしとレンズ 1〜4 の5列。
        * 以前は flat の 3m / 5m しか入っていなかった。
        * ミディアムの 3m がナローより明るい（F11 1/2 と F11）が、紙面がそう印刷されている。
@@ -16271,7 +16271,7 @@ super_led_f47: {
       group:'HMI', weight:'2 kg', size:'175×240×320 mm', name:'Bron Kobold DW400', desc:'400W HMI, lensless flat', emoji:'💡', watts:400, svgIcon:'<svg width=\"240\" height=\"160\" viewBox=\"0 0 240 160\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M95 42 H160 Q188 42 188 70 V105 Q188 132 160 132 H98\"/><path d=\"M75 35 C106 35 128 60 128 84 C128 108 106 133 75 133 C44 133 22 108 22 84 C22 60 44 35 75 35Z\"/><circle cx=\"75\" cy=\"84\" r=\"39\"/><circle cx=\"75\" cy=\"84\" r=\"29\"/><circle cx=\"75\" cy=\"84\" r=\"19\"/><circle cx=\"75\" cy=\"84\" r=\"9\"/><path d=\"M32 53 L10 43\"/><path d=\"M27 111 L10 121\"/><path d=\"M116 85 H145\"/><path d=\"M135 73 V132\"/><path d=\"M135 132 C135 148 115 148 115 132\"/><path d=\"M115 132 V115\"/><path d=\"M74 133 V148 H103 V133\"/><path d=\"M55 34 L35 18\"/><path d=\"M70 31 H100\"/><path d=\"M160 70 H172\"/><path d=\"M160 88 H172\"/><path d=\"M160 106 H172\"/></g></svg>',
       ccts:[5600], accessories:['flat', 'pp_vnarrow', 'pp_narrow', 'pp_medium', 'pp_wide', 'pp_frost', 'diffusion'],
       dmx:{power:'400W',cct:'5600K',control:'Manual'},
-      /* ARC SYSTEM カタログ p18 の紙面で7列すべて確かめた（レンズなし＋レンズ 1〜6）。
+      /* 配光資料 p18 の紙面で7列すべて確かめた（レンズなし＋レンズ 1〜6）。
        * 以前「読み違いでは」と書いた2点は、紙面がそう印刷されている。
        * ・flat の 1→2m が半段しか落ちない（F128 → F90 1/2）
        * ・flat の 3m（F64 1/2）が、倍の電力の DW800 の 3m（F64）より明るい
@@ -16458,7 +16458,7 @@ var ACC_INFO = {
   pp_medium: { label:'Lens 3 Medium',       beam:'Medium',        emoji:'🔦', angle:25 },
   pp_wide:   { label:'Lens 4 Wide',         beam:'Wide',          emoji:'🔦', angle:40 },
   pp_frost:  { label:'Lens 5 Frost',        beam:'Soft',          emoji:'❄️', angle:50 },
-  // ポケットパーの T 変換レンズ（タングステン変換 3600K）。ARC も ARRI も
+  // ポケットパーの T 変換レンズ（タングステン変換 3600K）。資料も ARRI も
   // 角度を公表していないので入れない。
   pp_tconv:  { label:'Lens T Conversion',   beam:'T Conv 3600K',  emoji:'🟠' },
   fres16:   { label:'Fresnel 16°',         beam:'Spot 16°',      emoji:'🔬', angle:16 },
@@ -16637,7 +16637,7 @@ var ACC_INFO = {
   f10_spot: { label:'F10 Fresnel (Spot)',  beam:'15°',           emoji:'🔦', angle:15 },
   // K5600 Alpha のレンズ。ALPHA 4/2.5kW はフレネルレンズが2種（SPOT用・
   // FLAT用）あり、それぞれ灯体側のフラット／スポットで測られている。
-  // 角度は ARC SYSTEM も K5600 も公表していないので入れない（角度未確認）。
+  // 角度は 配光資料 も K5600 も公表していないので入れない（角度未確認）。
   // 付属のリフレクター。角度が公表されていない機種で使う。
   reflector:   { label:'Reflector',             beam:'Reflector',   emoji:'🔆' },
   // amaran の Bowens マウント用 Fresnel 2X。角度は公表されていない。
@@ -17039,7 +17039,7 @@ var HMI_BEAM = {
   'Alpha 12kW HMI':[12,60],
   // M シリーズ・ARRIMAX の角度は ARRI 公表の配光ファイル（IES）に
   // 書かれている値。それまでは全機種 10〜55° の決め打ちだった。
-  // 照度は ARC SYSTEM の実測のまま。角度だけ差し替えている。
+  // 照度は 配光資料 の実測のまま。角度だけ差し替えている。
   'ARRI M40':[17.9,54.4],
   'ARRI M18':[15.5,62.8],
   'ARRI M8':[14.9,59.9],
