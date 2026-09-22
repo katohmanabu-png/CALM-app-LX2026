@@ -129,7 +129,7 @@ header{background:var(--white);padding:1px 8px 1px;padding-top:calc(1px + env(sa
 .fb-file-names{margin-top:6px;font-size:11px;color:var(--accent);font-weight:700;line-height:1.5;}
 .fb-devinfo{background:var(--card);border-radius:10px;padding:12px 14px;font-size:11px;color:var(--text-dim);font-weight:700;line-height:1.8;}
 .fb-devinfo span{color:var(--text);}
-.fb-submit{width:100%;padding:14px;background:var(--accent);color:white;border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;font-family:var(--sans);letter-spacing:0.3px;}
+.fb-submit{width:100%;padding:14px;background:var(--accent);color:var(--accent-on,#fff);border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;font-family:var(--sans);letter-spacing:0.3px;}
 .fb-submit:active{opacity:0.85;}
 .fb-thanks{text-align:center;padding:60px 24px;display:none;}
 .fb-thanks-icon{font-size:52px;margin-bottom:16px;}
@@ -150,7 +150,7 @@ header{background:var(--white);padding:1px 8px 1px;padding-top:calc(1px + env(sa
 .sort-row{display:flex;align-items:center;gap:5px;padding:0 4px 8px;flex-wrap:wrap;}
 .sort-lbl{font-size:11px;font-weight:800;color:var(--text-dim);}
 .sort-btn{padding:3px 8px;border-radius:50px;border:1px solid #ddd;background:var(--bg);font-family:var(--sans);font-size:11px;font-weight:700;cursor:pointer;color:var(--text-dim);}
-.sort-btn.active{background:var(--accent);border-color:var(--accent);color:white;}
+.sort-btn.active{background:var(--accent);border-color:var(--accent);color:var(--accent-on,#fff);}
 .maker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:0 4px 14px;}
 .maker-btn{padding:8px 3px;border-radius:var(--radius-sm);border:2px solid transparent;background:var(--bg);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;transition:all .2s;font-family:var(--sans);}
 .maker-btn.active{border-color:var(--accent);background:var(--accent-light);box-shadow:0 4px 14px var(--accent-glow);;box-shadow:0 4px 14px var(--accent-glow);transform:scale(1.06);outline:3px solid var(--accent);outline-offset:2px;}
@@ -178,12 +178,12 @@ header{background:var(--white);padding:1px 8px 1px;padding-top:calc(1px + env(sa
 .model-chip.active .model-chip-name{color:white;font-size:10px;}
 .model-chip-sub{font-family:var(--mono);font-size:10px;color:var(--text-dim);font-weight:500;overflow:hidden;text-overflow:ellipsis;width:100%;white-space:nowrap;max-width:100%;}
 .model-chip.active .model-chip-sub{color:rgba(255,255,255,0.75);}
-.model-group-hdr{grid-column:1/-1;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:white;background:var(--accent);padding:2px 8px;border-radius:50px;display:inline-flex;width:fit-content;opacity:.85;margin-top:4px;}
+.model-group-hdr{grid-column:1/-1;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-on,#fff);background:var(--accent);padding:2px 8px;border-radius:50px;display:inline-flex;width:fit-content;opacity:.85;margin-top:4px;}
 .light-preview{margin:0 0 4px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);padding:16px;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden;}
 .light-preview::before{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);transition:background .4s;pointer-events:none;}
 .light-sil{width:68px;height:68px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:36px;border:1px solid rgba(255,255,255,0.1);flex-shrink:0;}
 .light-sil svg{max-width:80px;height:auto;}
-.light-info .brand{font-size:10.5px;font-weight:800;color:var(--accent);letter-spacing:2px;text-transform:uppercase;transition:color .4s;}
+.light-info .brand{font-size:10.5px;font-weight:800;color:var(--accent-ondark,var(--accent));letter-spacing:2px;text-transform:uppercase;transition:color .4s;}
 .light-info .model-name{font-size:15px;font-weight:900;color:white;margin:2px 0 2px;}
 .light-info .model-desc{font-size:11px;color:rgba(255,255,255,0.5);font-weight:600;}
 .spec-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}
@@ -235,7 +235,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .tri-result{display:flex;align-items:center;justify-content:space-between;padding:9px 11px;border-radius:9px;background:white;border:2px solid var(--accent);}
 .tri-res-lbl{font-size:11px;font-weight:800;color:var(--text-dim);}
 .tri-res-val{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--accent);}
-.tri-btn{width:100%;padding:8px;border-radius:9px;border:none;background:var(--accent);color:white;font-family:var(--sans);font-size:11px;font-weight:800;cursor:pointer;box-shadow:0 3px 10px var(--accent-glow);}
+.tri-btn{width:100%;padding:8px;border-radius:9px;border:none;background:var(--accent);color:var(--accent-on,#fff);font-family:var(--sans);font-size:11px;font-weight:800;cursor:pointer;box-shadow:0 3px 10px var(--accent-glow);}
 .tri-btn:disabled{background:#ccc;box-shadow:none;cursor:not-allowed;}
 .tri-active{padding:7px 10px;border-radius:9px;background:rgba(230,81,0,0.1);font-size:11px;font-weight:800;color:var(--accent);display:flex;align-items:center;justify-content:space-between;}
 .tri-clear{border:none;background:none;color:var(--accent);font-size:12px;cursor:pointer;}
@@ -260,7 +260,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .fav-name{font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .fav-memo{font-size:11px;color:var(--text-dim);}
 .fav-btns{display:flex;gap:4px;}
-.fav-load{padding:4px 8px;border-radius:6px;border:none;background:var(--accent);color:white;font-size:11px;font-weight:800;cursor:pointer;}
+.fav-load{padding:4px 8px;border-radius:6px;border:none;background:var(--accent);color:var(--accent-on,#fff);font-size:11px;font-weight:800;cursor:pointer;}
 .fav-del{padding:4px 6px;border-radius:6px;border:none;background:#fee;color:#c00;font-size:11px;cursor:pointer;}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:600;display:none;align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.open{display:flex;}
@@ -269,7 +269,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .modal textarea{width:100%;padding:10px;border-radius:10px;border:2px solid #eee;font-family:var(--sans);font-size:12px;resize:none;height:80px;}
 .modal textarea:focus{outline:none;border-color:var(--accent);}
 .modal-btns{display:flex;gap:8px;margin-top:12px;}
-.modal-save{flex:1;padding:8px;border-radius:10px;border:none;background:var(--accent);color:white;font-family:var(--sans);font-size:12px;font-weight:800;cursor:pointer;}
+.modal-save{flex:1;padding:8px;border-radius:10px;border:none;background:var(--accent);color:var(--accent-on,#fff);font-family:var(--sans);font-size:12px;font-weight:800;cursor:pointer;}
 .modal-cancel{padding:8px 14px;border-radius:10px;border:1px solid #ddd;background:white;font-family:var(--sans);font-size:12px;cursor:pointer;}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:rgba(26,26,46,0.9);color:white;padding:9px 18px;border-radius:50px;font-size:12px;font-weight:800;transition:.3s;z-index:999;opacity:0;}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
@@ -373,7 +373,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   background:transparent;color:var(--accent);font-size:12px;font-weight:700;
   cursor:pointer;transition:all .15s;white-space:nowrap;
 }
-.finder-type-chip.active{background:var(--accent);color:white;}
+.finder-type-chip.active{background:var(--accent);color:var(--accent-on,#fff);}
 .rank-list {
   display: flex;
   flex-direction: column;
@@ -8768,7 +8768,7 @@ var DESC_I18N = {
     '9×300W or 9×500W': '9×300W or 9×500W',
     '9×500W or 9×1kW': '9×500W or 9×1kW',
     '電源ボックス 19 kg': 'Ballast 19 kg',
-    'ヨーク 3.42 kg / 総重量 46.54 kg': 'Yoke 3.42 kg / total 46.54 kg',
+    'Yoke 3.42 kg / Total 46.54 kg': 'Yoke 3.42 kg / total 46.54 kg',
     '木': 'Wood', '黒幕': 'Black drape',
     '2800K–6600K（Ultra CRI では 1800K–12000K）': '2800K–6600K (1800K–12000K in Ultra CRI mode)',
     'On-board / DMX 512-A 5-pin / W-DMX LumenRadio（別売）': 'On-board / DMX 512-A 5-pin / W-DMX LumenRadio (sold separately)',
@@ -10703,7 +10703,7 @@ var LIGHTS = {
     },
     evoke5000b: {
       group:'LED COB', name:'Evoke 5000B', desc:'5000W IP66 Bi-Color LED Spot', emoji:'💡', watts:5000, svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"20,14 106,14 122,4 36,4\" fill=\"none\"/><polygon points=\"106,14 106,74 122,64 122,4\" fill=\"none\"/><rect x=\"20\" y=\"14\" width=\"86\" height=\"60\" rx=\"3\"/><circle cx=\"63\" cy=\"44\" r=\"22\"/><circle cx=\"63\" cy=\"44\" r=\"16\"/><circle cx=\"20\" cy=\"44\" r=\"4\"/><circle cx=\"106\" cy=\"44\" r=\"4\"/><line x1=\"14\" y1=\"44\" x2=\"14\" y2=\"90\"/><line x1=\"112\" y1=\"44\" x2=\"112\" y2=\"90\"/><line x1=\"14\" y1=\"90\" x2=\"112\" y2=\"90\"/></g><g><circle cx=\"57\" cy=\"37\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"62\" cy=\"35\" r=\"2\" fill=\"#111111\"/><circle cx=\"68\" cy=\"36\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"72\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"41\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"40\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"42\" r=\"2\" fill=\"#111111\"/><circle cx=\"74\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"50\" cy=\"44\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"55\" cy=\"46\" r=\"2\" fill=\"#111111\"/><circle cx=\"62\" cy=\"45\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"68\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"73\" cy=\"49\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"53\" cy=\"50\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"59\" cy=\"52\" r=\"2\" fill=\"#111111\"/><circle cx=\"65\" cy=\"51\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"70\" cy=\"53\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"57\" cy=\"56\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"63\" cy=\"57\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"69\" cy=\"55\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"60\" cy=\"38\" r=\"1.5\" fill=\"#111111\"/><circle cx=\"66\" cy=\"43\" r=\"2\" fill=\"#111111\"/><circle cx=\"52\" cy=\"47\" r=\"1.5\" fill=\"#111111\"/></g></svg>',
-      weight:'43.12 kg', weightExtra:'ヨーク 3.42 kg / 総重量 46.54 kg', size:'556.7×461.6×219.2 mm',
+      weight:'43.12 kg', weightExtra:'Yoke 3.42 kg / Total 46.54 kg', size:'556.7×461.6×219.2 mm',
       ccts:[2700,3200,4300,5600,6500],
       accessories:['none','r15','r30','r45','r60','nlpb','fresnel16','fresnel50'], accAngles:{none:95},  // Nanlux 公表 Beam Angle 95°
       // FL-45E は 16°〜50° のズーム。公表表は両端だけなので、その2つを付属品として持つ
@@ -11178,7 +11178,7 @@ var LIGHTS = {
       url:'https://creamsource.com/product/C3/',
       svgIcon:'<svg width=\"160\" height=\"100\" viewBox=\"0 0 160 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g stroke=\"#111111\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"22\" y=\"6\" width=\"116\" height=\"72\" rx=\"4\"/><rect x=\"30\" y=\"14\" width=\"100\" height=\"56\" rx=\"2\"/><circle cx=\"22\" cy=\"42\" r=\"4\"/><circle cx=\"138\" cy=\"42\" r=\"4\"/><line x1=\"16\" y1=\"42\" x2=\"16\" y2=\"88\"/><line x1=\"144\" y1=\"42\" x2=\"144\" y2=\"88\"/><line x1=\"16\" y1=\"88\" x2=\"144\" y2=\"88\"/></g></svg>',
       group:'LED Spot', name:'C3', desc:'3000W Full-Colour LED Fresnel', emoji:'💡', watts:3000,
-      weight:'45 kg', weightExtra:'Head only, excluding yoke', size:'855×515×500 mm',
+      weight:'45 kg', size:'855×515×500 mm',
       ccts:[3200, 5600], cctMin:2200, cctMax:15000,
       // レンズは動かず、中の光源が動いて 18°〜60° を作る。スポットとフラッドの
       // 2つを置いて、間はビームのつまみで補間する（Creamsource 自身も
@@ -20294,6 +20294,9 @@ function applyTheme(mk) {
     if (_lum(onDark) < 110) onDark = '#ff9966';
   }
   r.style.setProperty('--accent-ondark', onDark);
+  /* アクセント色を背景に敷いたボタンの文字色。白いブランド色（amaran・ETC・
+   * K5600）だと、暗いテーマで白ボタンに白文字になって読めなかった。 */
+  r.style.setProperty('--accent-on', (_lum(accentMain) > 150) ? '#15151c' : '#ffffff');
   // In dark mode use semi-transparent accent instead of the light pastel
   r.style.setProperty('--accent-light', isDark ? accentMain + '2e' : m.light);
   r.style.setProperty('--accent-glow', m.glow);
@@ -27337,19 +27340,26 @@ function syncMixFromCalc() {
   var units = multiSl ? (parseInt(multiSl.value) || 1) : 1;
   var calcFactors = (typeof S_calcFactors !== 'undefined') ? JSON.parse(JSON.stringify(S_calcFactors)) : [];
 
-  // Slot 0 を Calc の選択ライトで更新（ファクターはMix側の編集を保持）
+  /* Slot 0 は Calc で選んでいるライトを映す枠。ただし、同じ機種のままなら
+   * MIX 側で直した色温度・アクセサリー・台数・距離をそのまま残す。
+   * 以前は MIX に入るたびに Calc の値で上書きしていたので、MIX で色温度や
+   * 台数を変えても、タブを移って戻ると元に戻ってしまっていた。
+   * Calc で別の機種に変えたときだけ、まるごと入れ替える。 */
+  var cur = mixLights[0];
+  var sameLight = !!(cur && cur.makerKey === S.maker && cur.modelKey === S.model);
   if (mixLights.length === 0) {
     mixLights.push({ makerKey: S.maker, modelKey: S.model, units: units, cct: cct, acc: acc, dist: dist, factors: calcFactors, enabled: true });
-  } else {
-    // ライト・距離・CCT・台数のみ更新、Mixで編集済みのfactorsは保持
-    var existingFactors = mixLights[0].factors && mixLights[0].factors.length > 0 ? mixLights[0].factors : calcFactors;
-    mixLights[0] = Object.assign({}, mixLights[0], {
+  } else if (!sameLight) {
+    // ファクターは MIX 側で足したものがあればそれを残す
+    var existingFactors = cur.factors && cur.factors.length > 0 ? cur.factors : calcFactors;
+    mixLights[0] = Object.assign({}, cur, {
       makerKey: S.maker, modelKey: S.model, units: units, cct: cct, acc: acc, dist: dist,
       factors: existingFactors
     });
   }
+  if (sameLight) return;   // MIX の距離もそのままにする
 
-  // グローバル距離スライダーを Calc の距離に同期
+  // 機種が変わったときだけ、全体の距離を Calc に合わせる
   S_mixManualDist = dist;
   updateMixDistDisplay();
 }
