@@ -17259,7 +17259,11 @@ function getBeamAngles(light) {
   var _pkH = accPairKeys(light);
   var _ownPair = !!(light.accAngles && _pkH.spot && _pkH.flood &&
                     light.accAngles[_pkH.spot] != null && light.accAngles[_pkH.flood] != null);
-  if (HMI_BEAM[light.name] && !_ownPair) return HMI_BEAM[light.name];
+  /* HMI_BEAM に範囲があっても、照度を補間できる2つ（accPairKeys）が無ければ
+   * スライダーは出せない。出すと角度だけ動いて照度が「—」になり、
+   * レンズを差し替える機種（Pocket Par・Broncolor）では選んだレンズの
+   * 角度や楕円まで隠れてしまっていた。下の各段と同じ条件をここにも置く。 */
+  if (HMI_BEAM[light.name] && !_ownPair && _pkH.spot && _pkH.flood) return HMI_BEAM[light.name];
   var accs = light.accessories || [];
   // まず、照度の補間に実際に使う2つのアクセサリの角度で範囲を作る。
   // ここを全アクセサリの最小〜最大にしていたため、ランタン(360°)や素の球の
