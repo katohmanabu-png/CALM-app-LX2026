@@ -1674,8 +1674,8 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
                    line-height:1;padding:0;">&#128247;</button>
     </div>
     <div class="sl-labs" id="mix-dist-labs">
-      <span class="sl-lab">0.5m</span><span class="sl-lab">1m</span>
-      <span class="sl-lab" style="margin-left:auto;">100m</span>
+      <span class="sl-lab">0.5m</span><span class="sl-lab">50m</span>
+      <span class="sl-lab">100m</span>
     </div>
     <div style="display:flex;gap:6px;margin-top:8px;">
       <button onclick="setMixDist(1)" style="flex:1;padding:8px 0;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:800;font-family:var(--mono);background:var(--bg);color:var(--text);">1m</button>
@@ -2167,7 +2167,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
   <div style="padding:5px 12px 6px;background:rgba(10,12,22,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
     <!-- RESULT ラベル行 -->
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
-      <div style="font-size:10.5px;font-weight:900;color:var(--accent,#f96);letter-spacing:.18em;text-transform:uppercase;line-height:1;" id="lbl-result-header">RESULT</div>
+      <div style="font-size:10.5px;font-weight:900;color:var(--accent-ondark,#f96);letter-spacing:.18em;text-transform:uppercase;line-height:1;" id="lbl-result-header">RESULT</div>
       <div style="flex:1;height:1px;background:rgba(255,255,255,0.08);"></div>
     </div>
     <div id="result-inner" style="display:flex;align-items:center;gap:0;width:100%;"></div>
@@ -2179,7 +2179,7 @@ html.dark .tab-btn.active { background:var(--accent); color:#fff; }
 <div id="mix-sticky-result" style="position:fixed;bottom:var(--nav-h, 49px);left:0;right:0;max-width:var(--app-w);margin:0 auto;z-index:250;display:none;">
   <div style="padding:5px 12px 6px;background:rgba(10,12,22,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
-      <div style="font-size:10.5px;font-weight:900;color:var(--accent,#f96);letter-spacing:.18em;text-transform:uppercase;line-height:1;">RESULT</div>
+      <div style="font-size:10.5px;font-weight:900;color:var(--accent-ondark,#f96);letter-spacing:.18em;text-transform:uppercase;line-height:1;">RESULT</div>
       <div style="font-size:10px;font-weight:800;color:rgba(255,255,255,0.45);letter-spacing:.1em;">MIX</div>
       <div style="flex:1;height:1px;background:rgba(255,255,255,0.08);"></div>
     </div>
@@ -17070,6 +17070,16 @@ function sekoLab(f, pre) {
 
 function fLab(f) { return sekoLab(f, 'T'); }
 
+/** 「T8+.7」の +.7 は段であって F値の小数ではない。
+ * 初めての人には T8 と T11 の間だと分かりにくいので、実際の F値を小さく添える。
+ * size と color は置く場所（黒い帯・白い表）に合わせて渡す。 */
+function fNumHint(f, size, color) {
+  if (!f || f <= 0 || !isFinite(f)) return '';
+  var v = (f >= 100) ? Math.round(f) : Math.round(f * 10) / 10;
+  return '<span style="font-size:' + (size || 11) + 'px;font-weight:700;font-family:var(--mono);' +
+         'color:' + (color || 'var(--text-dim,#999)') + ';margin-left:4px;white-space:nowrap;">(' + v + ')</span>';
+}
+
 // シネマ表記。今は f 側と同じ書き方なので、呼び分けだけ残してある
 function tLab(f) { return sekoLab(f, 'T'); }
 
@@ -20257,8 +20267,29 @@ function applyTheme(mk) {
     }
     accentDark = accentMain;
   }
+  /* 明るいテーマでその逆。白に近いアクセント（K5600・amaran・ETC は
+   * ブランド色が白）のままだと、白いカードの上で文字もボタンも見えなくなる。
+   * ダークのときと同じ考えで、暗いほうの色に置き換える。 */
+  if (!isDark && _lum(m.accent) > 200) {
+    var cands2 = [m.accent2, m.accent3, m.activeOutline, '#3a3a45'];
+    for (var cj = 0; cj < cands2.length; cj++) {
+      if (cands2[cj] && _lum(cands2[cj]) >= 0 && _lum(cands2[cj]) <= 180) { accentMain = cands2[cj]; break; }
+    }
+    accentDark = accentMain;
+  }
   r.style.setProperty('--accent', accentMain);
   r.style.setProperty('--accent-dark', accentDark);
+  /* 黒い RESULT バーの上に置く色。アクセントが暗い社（Aputure・Creamsource・
+   * K5600 など）だと、そのままでは字が黒帯に沈む。明るいほうへ寄せる。 */
+  var onDark = m.accent;
+  if (_lum(onDark) >= 0 && _lum(onDark) < 110) {
+    var cands3 = [m.accent2, m.accent3, m.dark, '#ff9966'];
+    for (var ck = 0; ck < cands3.length; ck++) {
+      if (cands3[ck] && _lum(cands3[ck]) >= 110) { onDark = cands3[ck]; break; }
+    }
+    if (_lum(onDark) < 110) onDark = '#ff9966';
+  }
+  r.style.setProperty('--accent-ondark', onDark);
   // In dark mode use semi-transparent accent instead of the light pastel
   r.style.setProperty('--accent-light', isDark ? accentMain + '2e' : m.light);
   r.style.setProperty('--accent-glow', m.glow);
@@ -21757,16 +21788,16 @@ function updateDistSlider() {
     sl.min = 1.6; sl.max = 328; sl.step = 1;  // 1.6ft ~ 328ft (≈100m)
     sl.value = Math.max(1.6, Math.min(328, Math.round(S.dist * 3.28084 * 2)/2));
     setHTML('dist-labs',
-      '<span class="sl-lab">1ft</span>' +
-      '<span class="sl-lab">2ft</span>' +
-      '<span class="sl-lab" style="margin-left:auto;">328ft</span>');
+      '<span class="sl-lab">1.6ft</span>' +
+      '<span class="sl-lab">164ft</span>' +
+      '<span class="sl-lab">328ft</span>');
   } else {
     sl.min = 0.5; sl.max = 100; sl.step = 0.5;  // 0.5m ~ 100m
     sl.value = Math.max(0.5, Math.min(100, S.dist < 0.75 ? 0.5 : Math.round(S.dist)));
     setHTML('dist-labs',
       '<span class="sl-lab">0.5m</span>' +
-      '<span class="sl-lab">1m</span>' +
-      '<span class="sl-lab" style="margin-left:auto;">100m</span>');
+      '<span class="sl-lab">50m</span>' +
+      '<span class="sl-lab">100m</span>');
   }
   updateDistDisplay();
 }
@@ -22558,9 +22589,9 @@ function updateAltDistDisplay() {
 function renderAltDistLabs() {
   var labs = el('alt-dist-labs'); if (!labs) return;
   if (S_altImperial) {
-    labs.innerHTML = '<span class="sl-lab">1ft</span><span class="sl-lab">2ft</span><span class="sl-lab" style="margin-left:auto;">328ft</span>';
+    labs.innerHTML = '<span class="sl-lab">1.6ft</span><span class="sl-lab">164ft</span><span class="sl-lab">328ft</span>';
   } else {
-    labs.innerHTML = '<span class="sl-lab">0.5m</span><span class="sl-lab">1m</span><span class="sl-lab" style="margin-left:auto;">100m</span>';
+    labs.innerHTML = '<span class="sl-lab">0.5m</span><span class="sl-lab">50m</span><span class="sl-lab">100m</span>';
   }
 }
 
@@ -23298,8 +23329,9 @@ function calculate() {
   else if (!r.exactDist) distNote += ' (~)';
 
   inner.innerHTML =
-    '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:2px 2px;">' +
-    '<span style="font-size:34px;font-weight:900;color:#ffffff;letter-spacing:-1px;line-height:1;">' + fLab(calcF) + '</span>' +
+    '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:2px 2px;flex-wrap:wrap;row-gap:2px;column-gap:6px;">' +
+    '<span style="font-size:34px;font-weight:900;color:#ffffff;letter-spacing:-1px;line-height:1;">' + fLab(calcF) +
+      fNumHint(calcF, 12, 'rgba(255,255,255,.55)') + '</span>' +
     (Math.abs(stopR) < 0.15
       ? '<span style="font-size:13px;font-weight:800;color:#4caf50;padding:2px 6px;border-radius:4px;background:rgba(76,175,80,.18);">OK</span>'
       : '<span style="font-size:13px;font-weight:800;padding:2px 6px;border-radius:4px;color:' +
@@ -24058,7 +24090,7 @@ function _cmpRenderRows() {
   var maxLux = -1, maxIdx = -1;
   luxes.forEach(function(v,i){ if (v != null && v > maxLux) { maxLux = v; maxIdx = i; } });
   var specs = [
-    { label: t('cmpFstop'), hi: true, val: function(l,i){ var lx=luxes[i]; if(lx==null) return '—'; var f=luxToFstopCamera(lx); return f? fLab(f) : '—'; } },
+    { label: t('cmpFstop'), hi: true, val: function(l,i){ var lx=luxes[i]; if(lx==null) return '—'; var f=luxToFstopCamera(lx); return f? (fLab(f) + fNumHint(f, 10)) : '—'; } },
     { label: t('cmpLuxAt') + ' @' + dv.toFixed(1) + 'm', hi: true, val: function(l,i){ var lx=luxes[i]; return lx==null? '—' : (lx.toLocaleString() + ' lx' + _cmpOutMark(infos[i])); } },
     { label: t('cmpMaxLux'), val: function(l,i){
         if(!l) return '—';
@@ -26334,9 +26366,9 @@ function renderFinderDistLabs() {
   var labs = el('finder-dist-labs'); if (!labs) return;
   var unit = S_finderImperial ? 'ft' : 'm';
   if (S_finderImperial) {
-    labs.innerHTML = '<span class="sl-lab">1ft</span><span class="sl-lab">2ft</span><span class="sl-lab" style="margin-left:auto;">328ft</span>';
+    labs.innerHTML = '<span class="sl-lab">1.6ft</span><span class="sl-lab">164ft</span><span class="sl-lab">328ft</span>';
   } else {
-    labs.innerHTML = '<span class="sl-lab">0.5m</span><span class="sl-lab">1m</span><span class="sl-lab" style="margin-left:auto;">100m</span>';
+    labs.innerHTML = '<span class="sl-lab">0.5m</span><span class="sl-lab">50m</span><span class="sl-lab">100m</span>';
   }
 }
 
@@ -28868,13 +28900,14 @@ function calcMix() {
         (stopDiff > 0 ? '#64b5f6;background:rgba(100,181,246,.18);">' : '#ef9a9a;background:rgba(239,154,154,.18);">') +
         stopDiffStr + '</span>';
     _msInner.innerHTML =
-      '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:2px 2px;">' +
-      '<span style="font-size:34px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">' + fLab(fvalForStop) + '</span>' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:2px 2px;flex-wrap:wrap;row-gap:2px;column-gap:6px;">' +
+      '<span style="font-size:34px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1;">' + fLab(fvalForStop) +
+        fNumHint(fvalForStop, 12, 'rgba(255,255,255,.55)') + '</span>' +
       _msBadge +
       '<span style="font-size:20px;font-weight:800;color:#fff;">' + luxRound(total).toLocaleString() + '<span style="font-size:11px;opacity:.65;margin-left:2px;">lx</span></span>' +
       '<span style="font-size:16px;font-weight:700;color:rgba(255,255,255,.5);">' + fc.toLocaleString() + '<span style="font-size:11px;margin-left:1px;">fc</span></span>' +
       '<span style="font-size:13px;font-weight:700;color:rgba(255,255,255,.85);">' + distDisp + unit + '</span>' +
-      (cctTotalLux > 0 ? '<span style="font-size:17px;font-weight:900;color:var(--accent,#f96);white-space:nowrap;">' + Math.round(cctLuxSum / cctTotalLux) + '<span style="font-size:11px;font-weight:700;">K</span></span>' : '') +
+      (cctTotalLux > 0 ? '<span style="font-size:17px;font-weight:900;color:var(--accent-ondark,#f96);white-space:nowrap;">' + Math.round(cctLuxSum / cctTotalLux) + '<span style="font-size:11px;font-weight:700;">K</span></span>' : '') +
       '</div>';
   }
   var _msCam = el('mix-sticky-cam'); if (_msCam) _msCam.innerHTML = buildCamInfoHtml();
@@ -28935,7 +28968,8 @@ function calcMix() {
     '<div style="padding:10px 16px 6px;display:flex;align-items:flex-end;justify-content:space-between;">' +
       '<div>' +
         '<div style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;margin-bottom:2px;">Total F-stop</div>' +
-        '<div style="font-size:48px;font-weight:700;color:white;line-height:1;letter-spacing:-2px;">' + flab + '</div>' +
+        '<div style="font-size:48px;font-weight:700;color:white;line-height:1;letter-spacing:-2px;">' + flab +
+          fNumHint(fval, 15, 'rgba(255,255,255,.55)') + '</div>' +
       '</div>' +
       '<div style="text-align:right;">' +
         '<div style="font-size:12px;font-weight:800;padding:3px 8px;border-radius:6px;' +
@@ -29985,13 +30019,13 @@ function updateMixDistDisplay() {
   if (S.imperial) {
     sl.min = 1.6; sl.max = 328; sl.step = 1;
     setHTML('mix-dist-labs',
-      '<span class="sl-lab">1ft</span><span class="sl-lab">2ft</span>' +
-      '<span class="sl-lab" style="margin-left:auto;">328ft</span>');
+      '<span class="sl-lab">1.6ft</span><span class="sl-lab">164ft</span>' +
+      '<span class="sl-lab">328ft</span>');
   } else {
     sl.min = 0.5; sl.max = 100; sl.step = 0.1;
     setHTML('mix-dist-labs',
-      '<span class="sl-lab">0.5m</span><span class="sl-lab">1m</span>' +
-      '<span class="sl-lab" style="margin-left:auto;">100m</span>');
+      '<span class="sl-lab">0.5m</span><span class="sl-lab">50m</span>' +
+      '<span class="sl-lab">100m</span>');
   }
   var unit = S.imperial ? 'ft' : 'm';
   var ul = el('mix-dist-unit-lbl'); if (ul) ul.textContent = unit;
