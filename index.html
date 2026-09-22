@@ -24359,8 +24359,10 @@ window.addEventListener('DOMContentLoaded', function() {
   try { showPage(S.page || 'calc'); } catch(e) {}
   // 距離スライダー横の 📷 は、対応機のときだけ出す
   try { _cmShowDistARButtons(); } catch(e) {}
-  // バージョンが上がった最初の一回だけ、新機能の説明を出す
-  try { helpAutoShow(); } catch(e) {}
+  // バージョンが上がった最初の一回だけ、新機能の説明を出す。
+  // 本体の番号を読んでから判定する（読めない環境ではそのまま進む）
+  try { _syncNativeVersion(function(){ try { helpAutoShow(); } catch(e) {} }); }
+  catch(e) { try { helpAutoShow(); } catch(e2) {} }
 
   // ── ダブルタップで直接入力 ──────────────────────────────────
   // Calcタブ メイン距離
@@ -25090,6 +25092,34 @@ function openHelp() {
   i18nOn('_help_ov', openHelp);
 }
 function closeHelp() { var o = document.getElementById('_help_ov'); if (o) o.remove(); }
+
+/* ── 本体（iOS アプリ）の版数とビルド番号を読む ──────────────
+ * 配布のときに Xcode が番号を付け直すことがあり、そのときは
+ * この中に書いてある APP_BUILD より本体の番号のほうが正しい。
+ * 起動時に一度だけ読んで、表示と「新機能の使いかた」の判定をそちらへ合わせる。
+ * Web や読めない環境では、書いてある値のまま進む。 */
+function _syncNativeVersion(done) {
+  var fin = false;
+  function end() { if (fin) return; fin = true; if (typeof done === 'function') { try { done(); } catch(e) {} } }
+  var P = null;
+  try { P = window.Capacitor && Capacitor.Plugins && Capacitor.Plugins.App; } catch(e) {}
+  if (!P || typeof P.getInfo !== 'function') { end(); return; }
+  var t = setTimeout(end, 1500);   // 応答が無くても起動を止めない
+  try {
+    P.getInfo().then(function(info) {
+      clearTimeout(t);
+      try {
+        if (info) {
+          if (info.version) APP_VER = String(info.version);
+          if (info.build != null && String(info.build) !== '') APP_BUILD = String(info.build);
+          ver = 'v' + APP_VER + ' (' + APP_BUILD + ')';
+          _applyVersionLabels();
+        }
+      } catch(e) {}
+      end();
+    }).catch(function(){ clearTimeout(t); end(); });
+  } catch(e) { clearTimeout(t); end(); }
+}
 
 /** バージョンが上がった最初の一回だけ自動で出す */
 function helpAutoShow() {
