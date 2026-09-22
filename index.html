@@ -30124,10 +30124,18 @@ function useMixTriDist() {
   var resEl = el('mix-tri-val'); if (!resEl) return;
   var v = parseFloat(resEl.textContent); if (!v) return;
   var distM = S.imperial ? v / 3.28084 : v;
+  /* 斜辺そのものを距離として持つ。ここで上限を 50m / 164ft に切っていたため、
+   * 56.17m と出ているのに 50m で計算されていた（スライダーの上限は 100m / 328ft）。
+   * 整数に丸めていたので小数も落ちていた。Calc・Finder・Alt と同じ扱いに揃える。 */
+  S_mixManualDist = distM;
+  var inp = el('mix-dist-direct'); if (inp) inp.value = '';
   var sl = el('mix-dist-sl');
-  if (sl) sl.value = S.imperial
-    ? Math.max(1, Math.min(164, Math.round(distM * 3.28084)))
-    : Math.max(1, Math.min(50,  Math.round(distM)));
+  if (sl) {
+    var disp = S.imperial ? distM * 3.28084 : distM;
+    var lo = parseFloat(sl.min), hi = parseFloat(sl.max);
+    sl.value = Math.max(lo, Math.min(hi, Math.round(disp * 10) / 10));
+  }
+  syncMixPerLightDists();
   updateMixDistDisplay(); calcMix();
 }
 
