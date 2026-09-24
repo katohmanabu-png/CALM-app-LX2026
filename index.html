@@ -23753,7 +23753,8 @@ function _cmpSetBeam(i, val) {
 }
 /** 比較表の見出しに出す距離の表記 */
 function _cmpDistLabel(d) {
-  return (S && S.imperial) ? (Math.round(d * 3.28084 * 10) / 10) + 'ft' : d + 'm';
+  // 内部は ft で打った値が崩れないよう細かく持つので、m の表示は小数第1位にまるめる
+  return (S && S.imperial) ? (Math.round(d * 3.28084 * 10) / 10) + 'ft' : (Math.round(d * 10) / 10) + 'm';
 }
 function _cmpBeamSliderHTML(i, light, pct) {
   var ang = _cmpBeamAngleAt(light, pct);
@@ -23838,7 +23839,7 @@ function renderCompare() {
     0.1,
     function(v) {
       var m = S.imperial ? v / 3.28084 : v;
-      _cmpSetDistAbs(Math.max(0.5, Math.min(100, Math.round(m * 10) / 10)));
+      _cmpSetDistAbs(Math.max(0.5, Math.min(100, Math.round(m * 1000) / 1000)));
       var sl = document.getElementById('_cmp_dist_sl');
       if (sl) sl.value = _cmp.dist;
     });
@@ -24098,7 +24099,7 @@ function _cmpRenderRows() {
   luxes.forEach(function(v,i){ if (v != null && v > maxLux) { maxLux = v; maxIdx = i; } });
   var specs = [
     { label: t('cmpFstop'), hi: true, val: function(l,i){ var lx=luxes[i]; if(lx==null) return '—'; var f=luxToFstopCamera(lx); return f? (fLab(f) + fNumHint(f, 10)) : '—'; } },
-    { label: t('cmpLuxAt') + ' @' + dv.toFixed(1) + 'm', hi: true, val: function(l,i){ var lx=luxes[i]; return lx==null? '—' : (lx.toLocaleString() + ' lx' + _cmpOutMark(infos[i])); } },
+    { label: t('cmpLuxAt') + ' @' + _cmpDistLabel(dv), hi: true, val: function(l,i){ var lx=luxes[i]; return lx==null? '—' : (lx.toLocaleString() + ' lx' + _cmpOutMark(infos[i])); } },
     { label: t('cmpMaxLux'), val: function(l,i){
         if(!l) return '—';
         if(l.__mix){ var mm=_cmpMixCalc(1, l.mixSet); return mm?(Math.round(mm.lux).toLocaleString()+' lx'):'—'; }
@@ -29615,6 +29616,11 @@ function _undoSnapshot(){
   return JSON.stringify({
     ls: ls,
     mix: (typeof mixLights!=='undefined'?mixLights:[]),
+    /* 構成 A / B / C は3つとも、どれを開いていたかと一緒に持つ。
+     * いま開いている分（mix）だけだと、C に切り替えてから戻すを押したとき、
+     * A の中身が C に書き込まれて C が消えていた。 */
+    mixSets: (typeof MIX_SETS!=='undefined'?MIX_SETS:null),
+    mixKey: (typeof mixSetKey!=='undefined'?mixSetKey:null),
     factors: (typeof S_calcFactors!=='undefined'?S_calcFactors:[]),
     mixPer: (typeof S_mixPerLightDist!=='undefined'?S_mixPerLightDist:false),
     mixMan: (typeof S_mixManualDist!=='undefined'?S_mixManualDist:null)
@@ -29630,13 +29636,25 @@ function _undoApply(str){
     Object.keys(snap.ls).forEach(function(k){
       if (UNDO_OWNED_KEYS.indexOf(k) >= 0) localStorage.setItem(k, snap.ls[k]);
     });
-    if (typeof mixLights!=='undefined'){ mixLights.length=0; (snap.mix||[]).forEach(function(m){ mixLights.push(JSON.parse(JSON.stringify(m))); }); }
+    if (snap.mixSets && typeof MIX_SETS!=='undefined') {
+      // 配列そのものは入れ替えず中身だけ戻す（mixLights が同じ配列を指しているため）
+      MIX_SET_KEYS.forEach(function(k){
+        var dst = MIX_SETS[k]; if (!dst) return;
+        dst.length = 0;
+        (snap.mixSets[k]||[]).forEach(function(m){ dst.push(JSON.parse(JSON.stringify(m))); });
+      });
+      if (snap.mixKey && MIX_SETS[snap.mixKey]) mixSetKey = snap.mixKey;
+      mixLights = MIX_SETS[mixSetKey];
+    } else if (typeof mixLights!=='undefined'){
+      // 構成を持つ前に作られた記録
+      mixLights.length=0; (snap.mix||[]).forEach(function(m){ mixLights.push(JSON.parse(JSON.stringify(m))); });
+    }
     if (typeof S_calcFactors!=='undefined'){ S_calcFactors.length=0; (snap.factors||[]).forEach(function(f){ S_calcFactors.push(JSON.parse(JSON.stringify(f))); }); }
     if (typeof S_mixPerLightDist!=='undefined') S_mixPerLightDist=snap.mixPer;
     if (typeof S_mixManualDist!=='undefined')  S_mixManualDist=snap.mixMan;
     try{ loadCalcState(); }catch(e){}
     try{ renderFactorSection('calc'); }catch(e){}
-    try{ renderMixList(); }catch(e){}
+    try{ renderMixList(); calcMix(); }catch(e){}
     try{ refreshAllTabs(); }catch(e){}
   }catch(e){ console.log('undo apply', e); }
   _undoRestoring=false;
