@@ -24976,10 +24976,26 @@ function calmOpenStore(feature) {
  * 出して何もしない。ここで localStorage を書いて開けてしまうと、Web 版で
  * 誰でも開けられることになるため。
  * ────────────────────────────────────────────────────────────── */
+/* Capacitor.Plugins には npm のプラグインしか入らない（この作りでは CalmStore は
+ * 載らない）。ここを Plugins だけで見ていたため、アプリでも「購入できません」に
+ * なり、買う・復元・価格の取り込みがどれも動いていなかった（シミュレータで確認）。
+ * ほかの自作プラグインと同じく identifier で直に呼ぶ。 */
 function _calmStorePlugin() {
   try {
-    var p = window.Capacitor && Capacitor.Plugins && Capacitor.Plugins.CalmStore;
-    return p || null;
+    if (!_calmNative()) return null;
+    var C = window.Capacitor; if (!C) return null;
+    if (C.Plugins && C.Plugins.CalmStore) return C.Plugins.CalmStore;
+    if (typeof C.nativePromise !== 'function') return null;
+    var call = function(m) {
+      return function(o) { return C.nativePromise('CalmStorePlugin', m, o || {}); };
+    };
+    return {
+      products: call('products'), owned: call('owned'),
+      purchase: call('purchase'), restore: call('restore'),
+      addListener: function(ev, cb) {
+        return (typeof C.addListener === 'function') ? C.addListener('CalmStorePlugin', ev, cb) : null;
+      }
+    };
   } catch(e) { return null; }
 }
 function calmBuy(key) {
