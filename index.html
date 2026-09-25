@@ -17312,7 +17312,7 @@ var S = {
   searchQ:'', typeFilter:'all', makerFilter:'', model:'storm1200x',
   cctIdx:3, accKey:'none', accGroup:null, beaker:'none', customCCT:null,
   dist:5, manualDist:null, useTriDist:false, triDist:null,
-  iso:9, fps:24, fstop:9,
+  iso:9, fps:24, fstop:21,   // 21 = T2.8（FSTOPS13 の番号。9 は T0.7）
   customISO:null, customFPS:null, customFstop:null,
   digCustomSS:null,   // 既定はシャッター角基準。コマ数を変えると露出が動く
   makerSort:'def', modelSort:getLightSort(),   // 最後に選んだ並び（初回は光量の強い順）
@@ -29356,7 +29356,7 @@ function syncCameraSliders(type) {
     if (fpsEl) fpsEl.value = S.fps || 24;
     // Fstop
     var fstEl = el('fstop');
-    if (fstEl) fstEl.value = S.fstop != null ? S.fstop : 9;
+    if (fstEl) fstEl.value = S.fstop != null ? S.fstop : 21;
   } else if (type === 'film') {
     // FPS
     var fpsFilmEl = el('film-fps-sl');
@@ -29600,7 +29600,7 @@ function saveCalcState() {
     localStorage.setItem('calm_camType',  S.camType || 'cinema');
     localStorage.setItem('calm_iso',      S.iso     || 9);
     localStorage.setItem('calm_fps',      S.fps     || 24);
-    localStorage.setItem('calm_fstop',    S.fstop   || 9);
+    localStorage.setItem('calm_fstop',    S.fstop   || 21);
     localStorage.setItem('calm_filmFPS',  S.filmFPS || 24);
     localStorage.setItem('calm_stillISO', S.stillISO|| 400);
     localStorage.setItem('calm_stillSS',  S.stillSS || 125);
@@ -29763,7 +29763,12 @@ function loadCalcState() {
     var sFps = localStorage.getItem('calm_fps');
     if (sFps !== null) S.fps = parseInt(sFps) || 24;
     var sFstop = localStorage.getItem('calm_fstop');
-    if (sFstop !== null) S.fstop = parseInt(sFstop) || 9;
+    if (sFstop !== null) S.fstop = parseInt(sFstop) || 21;
+    if (S.fstop === 9 && localStorage.getItem('calm_fstop_fix21') === null) {
+      S.fstop = 21;   // 初期値のずれ（T0.7）の名残を、一度だけ T2.8 に戻す
+      try { localStorage.setItem('calm_fstop', '21'); } catch(e) {}
+    }
+    try { localStorage.setItem('calm_fstop_fix21', '1'); } catch(e) {}
     var sFilmFPS = localStorage.getItem('calm_filmFPS');
     if (sFilmFPS !== null) S.filmFPS = parseInt(sFilmFPS) || 24;
     var sStillISO = localStorage.getItem('calm_stillISO');
@@ -29872,7 +29877,7 @@ function loadProject(idx) {
   S.camType = p.camType || 'cinema';
   S.iso = p.iso != null ? p.iso : 9;
   S.fps = p.fps || 24;
-  S.fstop = p.fstop != null ? p.fstop : 9;
+  S.fstop = p.fstop != null ? p.fstop : 21;
   S.filmFPS = p.filmFPS || 24;
   S.filmStockIdx = p.filmStockIdx || 0;
   S.stillISO = p.stillISO || 400;
