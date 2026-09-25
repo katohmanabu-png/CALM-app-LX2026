@@ -24666,7 +24666,7 @@ var PRIVACY_POLICY = {
 
 // ===== BETA 期限（TestFlight ベータ） =====
 // 初回起動から BETA_DAYS 日で使用不可。必要に応じ BETA_HARD_END に絶対終了日を設定可。
-var BETA_ENABLED  = true;    // 開発中。追加機能を全部開ける。発売時に false へ戻す
+var BETA_ENABLED  = false;   // 製品版。追加機能は課金で開く（true にすると全部開き、ベータ期限も効く）
                              // （合言葉の関門は WEB_PASSCODE 側。こことは別）
 var BETA_DAYS     = 21;          // 初回起動から3週間
 var BETA_HARD_END = null;        // 例: '2026-12-31'（全員一斉に終了させたい場合）
@@ -25146,6 +25146,13 @@ function helpAutoShow() {
   var seen = null;
   try { seen = localStorage.getItem(HELP_SEEN_KEY); } catch(e) { return; }
   if (seen === helpSeenToken()) return;   // この版はもう見せた
+  /* 初めて入れた人には出さない。App Store から入れた人にとっては
+   * どれも「新しく入った機能」ではないため。見たことにして終わる。
+   * 前の版を使っていた人（記録がある人）にだけ、更新のたびに出す。 */
+  if (seen === null) {
+    try { localStorage.setItem(HELP_SEEN_KEY, helpSeenToken()); } catch(e) {}
+    return;
+  }
   setTimeout(openHelp, 600);   // 画面が組み上がってから
 }
 
