@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CALM — Support</title>
+<!-- App Store のサポートURL。tools/make_public_pages.js で作っている。 -->
+<style>
+:root{--bg:#fff;--text:#1b1f24;--text-dim:#6b7480;--line:#e6e9ed;--accent:#e65100;}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1216;--text:#e6edf3;--text-dim:#93a0ad;--line:#252c34;--accent:#ff9d4d;}}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Arial,sans-serif;line-height:1.85;}
+.wrap{max-width:720px;margin:0 auto;padding:32px 20px 72px;}
+header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:8px;}
+h1{font-size:22px;font-weight:800;margin:0;letter-spacing:.02em;}
+.sub{font-size:12px;color:var(--text-dim);font-weight:700;}
+select{margin-left:auto;border:1px solid var(--line);background:transparent;color:var(--text);border-radius:8px;padding:6px 10px;font-size:13px;font-weight:700;}
+h2{font-size:17px;margin:22px 0 0;} h4{font-size:14px;margin:26px 0 6px;}
+p,li{font-size:14px;} p{margin:8px 0;} ul{padding-left:1.2em;} li{margin:4px 0;}
+a{color:var(--accent);}
+footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--text-dim);}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div><h1>CALM</h1><div class="sub">Cinema Advanced Lighting Matcher</div></div><select id="lang" aria-label="Language"><option value="ja">日本語</option><option value="en">English</option></select></header>
+<section id="body"></section>
+<footer id="foot"></footer>
+</div>
+<script>
+var BODY={"ja":"<p>CALM（Cinema Advanced Lighting Matcher）は、映画・映像の照明のための計算アプリです。ご不明な点や不具合は、下の方法でお知らせください。</p><h4>お問い合わせ</h4><ul><li>メール：<a href=\"mailto:katohmanabu@protonmail.com\">katohmanabu@protonmail.com</a></li><li>アプリ内のメニュー（右上の ≡）→「Feedback」からも送れます。返信をご希望の場合は、返信先の欄にメールアドレスをご記入ください。</li></ul><h4>よくあるご質問</h4><p><b>購入した機能が開かない／新しい端末に替えた</b><br>メニューの「追加機能」を開き、いちばん下の「購入を復元」を押してください。同じ Apple アカウントで購入したものが戻ります。</p><p><b>表示される値が露出計と違う</b><br>CALM の値は、各社の配光資料をもとに計算したものです。現場では電源の電圧、ランプの使用時間、個体差、反射、空気の状態などで変わるため、実際の露出計の値と違うことがあります。目安としてお使いいただき、最終的な判断は現場での測定でお願いします。</p><p><b>図面（Draft）が他の端末に出てこない</b><br>両方の端末で同じ Apple アカウントにサインインし、iCloud Drive をオンにしてください。そのうえで Draft の「他の端末の図面を取り込む」を押すと取り込めます。</p><p><b>対応している端末</b><br>iOS 15 以降の iPhone と iPad です。</p><p><b>言語を変えたい</b><br>12言語に対応しています。メニュー（右上の ≡）の言語の欄から選べます。</p><h4>プライバシーポリシー</h4><p><a href=\"privacy.html?lang=ja\">プライバシーポリシーを読む</a></p>","en":"<p>CALM (Cinema Advanced Lighting Matcher) is a lighting calculator for film and video. If you have a question or run into a problem, please get in touch as below.</p><h4>Contact</h4><ul><li>Email: <a href=\"mailto:katohmanabu@protonmail.com\">katohmanabu@protonmail.com</a></li><li>You can also write from inside the app: menu (≡ at the top right) → \"Feedback\". If you would like a reply, add your email address in the reply field.</li></ul><h4>Frequently asked questions</h4><p><b>A tool I bought is locked, or I moved to a new device</b><br>Open \"Add-ons\" from the menu and tap \"Restore purchases\" at the bottom. Everything bought with the same Apple Account comes back.</p><p><b>The values differ from my light meter</b><br>CALM calculates from each maker's photometric data. On set, mains voltage, lamp hours, unit-to-unit variation, reflections and the air all change the result, so a real meter can read differently. Use CALM as a guide and confirm with a meter on location.</p><p><b>My Draft plans do not appear on my other device</b><br>Sign in to the same Apple Account on both devices and turn on iCloud Drive. Then tap \"Bring in drafts from other devices\" in Draft.</p><p><b>Supported devices</b><br>iPhone and iPad running iOS 15 or later.</p><p><b>Changing the language</b><br>CALM is available in 12 languages. Choose one from the language field in the menu (≡ at the top right).</p><h4>Privacy Policy</h4><p><a href=\"privacy.html?lang=en\">Read the privacy policy</a></p>"};
+var TITLE={"ja":"サポート","en":"Support"};
+var FOOT={"ja":"CALM — <a href=\"mailto:katohmanabu@protonmail.com\">katohmanabu@protonmail.com</a>","en":"CALM — <a href=\"mailto:katohmanabu@protonmail.com\">katohmanabu@protonmail.com</a>"};
+function pickLang(have){
+  var q=(location.search.match(/lang=([A-Za-z]+)/)||[])[1]; if(q&&have[q]) return q;
+  var n=(navigator.language||"en").toLowerCase();
+  if(/^zh-(tw|hk|mo)|^zh-hant/.test(n)&&have.zhTW) return "zhTW";
+  if(/^pt-pt/.test(n)&&have.ptPT) return "ptPT";
+  var b=n.slice(0,2); return have[b]?b:"en";
+}
+function show(l){ if(!BODY[l]) l="en"; document.documentElement.lang=l;
+  document.getElementById("body").innerHTML="<h2>"+TITLE[l]+"</h2>"+BODY[l];
+  document.getElementById("foot").innerHTML=FOOT[l]||FOOT.en;
+  document.getElementById("lang").value=l;
+  try{ history.replaceState(null,"","?lang="+l); }catch(e){} }
+document.getElementById("lang").addEventListener("change",function(){ show(this.value); });
+show(pickLang(BODY));
+</script>
+</body>
+</html>
